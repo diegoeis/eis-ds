@@ -45,7 +45,7 @@ A project needs `src/shared/` and one scope. `site/` and `docs/` document the sy
 
 1. Token: edit the `.tokens.json` file of `shared` or of one scope. Run `python3 scripts/build-tokens.py`. If it fails, do not use the result.
 2. Element: change it in `src/shared/css/elements.css`, show it on `elements.html` and document it in `docs/manual/elements.md`. Scope component: change it in `src/<scope>/css/components.css` and list it in `docs/manual/layout.md` §7. Then run `python3 scripts/check-css.py`.
-3. New example: put it in `site/examples/<kind>/`. Add a card on `examples.html`.
+3. New example: put it in `site/examples/<kind>/`. Add a card on `examples.html` with a 1440×900 PNG screenshot next to the page (`<name>.png`), never a live iframe.
 4. New scope (slides, email…): follow `docs/manual/layout.md` §7, "Add a scope".
 5. New reference: pin it on Pinterest and add the link to the source table in `visual-guidance.md`. Do not commit image files.
 

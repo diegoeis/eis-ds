@@ -57,5 +57,5 @@ Run this before calling a piece, element or token done. Every box must be true.
 - [ ] New or changed scope component: in `src/<scope>/css/components.css`, listed in `layout.md` §7, `check-css.py` passes.
 - [ ] New scope: steps in `layout.md` §7, "Add a scope".
 - [ ] New page in this repository: Google Tag Manager snippet first in `<head>` and first in `<body>` (copy from `index.html`).
-- [ ] New example: in `site/examples/<kind>/`, card on `examples.html`.
+- [ ] New example: in `site/examples/<kind>/`, card on `examples.html` with a 1440×900 PNG screenshot (`<name>.png`) and a descriptive `alt`. No live iframe.
 - [ ] Decision recorded in `docs/visual-guidance/visual-guidance.md` §7.

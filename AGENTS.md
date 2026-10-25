@@ -1,48 +1,51 @@
 # eis-ds
 
-Design system visual: primitivos (cor, tipografia, espaço, forma) e elementos básicos, em HTML e CSS puros. Usos previstos: slides, websites, emails, ilustrações e imagens.
+A visual design system in plain HTML and CSS. It contains primitives (colour, type, space, shape) and basic elements. Uses: slides, websites, email, illustrations and images.
 
-v0.1, rascunho. Só o modo claro está definido.
+Version 0.1, draft. Only the light mode exists.
 
-## Leia antes de mexer
+## Read before you change anything
 
-1. `docs/tokens.md` — formato e convenções dos tokens (W3C DTCG 2025.10). Obrigatório antes de mexer em token.
-2. `docs/visual-guidance/visual-guidance.md` — direção visual, referências e decisões. Obrigatório antes de criar peça ou propor valor.
-3. `system/foundations.html`, `elements.html`, `examples.html` — o sistema renderizado.
-4. `docs/manual-backlog.md` — regras de uso dos elementos, até o manual existir.
+1. `docs/manual/` — how to use tokens and elements. MUST read before you build a piece.
+2. `docs/tokens.md` — the token format (W3C DTCG 2025.10). MUST read before you change a token.
+3. `docs/visual-guidance/visual-guidance.md` — visual direction, references and the decision log. Read it before you propose a new value.
+4. `system/foundations.html`, `elements.html`, `examples.html` — the rendered system.
 
-## Estrutura
+## Structure
 
 ```
-system/                  design system: páginas, tokens, CSS e exemplos
-  tokens/                fonte da verdade (.tokens.json)
-  css/tokens.css         GERADO. Nunca editar à mão
-  css/elements.css       base + elementos básicos
-  css/docs.css           layout só das páginas do sistema
-  examples/<tipo>/       páginas feitas com o sistema
-scripts/build-tokens.py  valida os tokens e gera tokens.css
-docs/                    tokens.md, manual-backlog.md
-  visual-guidance/       só referência: guidance + imagens
+system/                  the design system: pages, tokens, CSS and examples
+  tokens/                source of truth (.tokens.json)
+  css/tokens.css         GENERATED. Never edit by hand
+  css/elements.css       base and basic elements
+  css/docs.css           layout of the system pages only
+  examples/<kind>/       pages built with the system
+scripts/build-tokens.py  validates the tokens and generates tokens.css
+docs/
+  manual/                usage rules for tokens, elements and layout
+  tokens.md              token format
+  visual-guidance/       reference only: direction, images, decisions
 ```
 
-## Fluxo
+## Workflow
 
-1. Token: edite o `.tokens.json` e rode `python3 scripts/build-tokens.py`. Falhou, não usa.
-2. Elemento: muda em `elements.css` e aparece em `elements.html`.
-3. Exemplo novo: `system/examples/<tipo>/` + card em `examples.html`.
-4. Imagem de referência nova: entra na tabela de fontes do `visual-guidance.md`.
+1. Token: edit the `.tokens.json` file. Run `python3 scripts/build-tokens.py`. If it fails, do not use the result.
+2. Element: change it in `elements.css`. Show it on `elements.html`. Document it in `docs/manual/elements.md`.
+3. New example: put it in `system/examples/<kind>/`. Add a card on `examples.html`.
+4. New reference image: add it to the source table in `visual-guidance.md`.
 
-## Regras
+## Rules
 
-- Interface e nomes de arquivo em inglês.
-- Tudo responsivo, de 360px a telas largas, sem rolagem horizontal.
-- HTML semântico e controles nativos funcionando. Nada de emular tabela ou controle com `div`/`span`.
-- Toda classe com prefixo `eis-`.
-- Nenhum valor cru no CSS: tudo vem dos tokens.
-- Peça não redefine elemento básico; se precisa diferente, muda no sistema.
-- Variante muda só cor.
-- Exemplos usam só dados fictícios.
-- Sem framework (React, Tailwind etc.).
-- Decisão visual é proposta e mostrada em HTML antes de virar token.
-- Contraste é medido, nunca estimado.
-- Arquivos temporários começam com `_` e são apagados depois.
+- Interface text, file names and documentation are in English.
+- Write documentation in STE-flavored English (ASD-STE100): short sentences, active voice, no semicolons, no phrasal verbs.
+- Every piece is responsive from 360px to wide screens, with no horizontal scroll.
+- Use semantic HTML and native controls that work. Never fake a table or a control with `div` or `span`.
+- Every class starts with `eis-`.
+- No raw values in CSS. All values come from the tokens.
+- A piece does not restyle a basic element. If it needs a change, change the element in the system.
+- A variant changes colour only.
+- Examples use fictional data only.
+- No frameworks (React, Tailwind and similar).
+- Show a visual decision in HTML before it becomes a token.
+- Measure contrast. Never estimate it.
+- Temporary files start with `_`. Delete them after use.

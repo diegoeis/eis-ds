@@ -1,259 +1,261 @@
 # Visual guidance
 
-A linha visual do eis-ds, as referências que a originaram e o que foi tirado de cada uma. Serve para consulta futura: ao decidir um token ou criar uma peça, volte aqui para saber **de onde veio** cada escolha.
+The visual direction of eis-ds, the references it came from and what was taken from each. Use it for future lookup: when deciding a token or building a piece, come back here to see **where** each choice came from.
 
-> Este documento descreve a direção e as observações. Valores definitivos só existem em `system/tokens/`. Enquanto um valor aparecer aqui como "medido" ou "observado", ele é candidato, não decisão.
+> Usage rules for tokens and elements live in `docs/manual/`. This file is direction, provenance and decision history.
 
----
-
-## 1. Direção
-
-**Retrofuturismo minimalista.** O futuro como era imaginado nos anos 60 a 90 (aparelho de laboratório, rádio, calculadora, computador doméstico, pôster de ficção científica), desenhado com a disciplina e a limpeza de hoje.
-
-O que **é**: produto industrial, painel com serigrafia, grid à vista, linha fina, um único sinal de cor, tipografia de engenharia.
-
-O que **não é**: neon, synthwave, glitch, gradiente roxo e rosa, cromado, "cyberpunk". Essas imagens apareceram nas referências de ilustração e foram anotadas, mas não definem o sistema (ver §5).
-
-Uma frase para guiar qualquer peça: **parece um manual de equipamento que alguém deixou bonito demais.**
+> This document describes direction and observations. Final values exist only in `system/tokens/`. While a value appears here as "measured" or "observed", it is a candidate, not a decision.
 
 ---
 
-## 2. Fontes
+## 1. Direction
 
-### 2.1 Âncora: Teenage Engineering
+**Minimalist retrofuturism.** The future as imagined from the 60s to the 90s (lab equipment, radio, calculator, home computer, science fiction poster), drawn with today's discipline and cleanliness.
 
-Ponto de partida da inspiração. A linguagem de produto e a comunicação gráfica da marca são a base do sistema.
+What it **is**: industrial product, screen-printed panel, visible grid, thin line, a single color signal, engineering typography.
+
+What it **is not**: neon, synthwave, glitch, purple and pink gradient, chrome, "cyberpunk". These images appeared in the illustration references and were noted, but they do not define the system (see §5).
+
+One sentence to guide any piece: **it looks like an equipment manual someone made too beautiful.**
+
+---
+
+## 2. Sources
+
+### 2.1 Anchor: Teenage Engineering
+
+The starting point of the inspiration. The brand's product language and graphic communication are the base of the system.
 
 - Site: https://teenage.engineering/
-- Imagens em `references/te/`:
+- Images in `references/te/`:
 
-| Arquivo | O que mostra |
+| File | What it shows |
 |---|---|
-| `vinyl-sinus.png` | Disco e capa: tipografia de display, fios finos, colchetes |
-| `ko2-flat.png` | EP–133 K.O. II de cima: grid de teclas, laranja como sinal, título em contorno |
-| `tp7.png` | TP-7 em alumínio: rótulos pequenos em caixa alta, o vermelho só no botão de gravar |
-| `po80-record-factory.png` | PO-80: laranja como superfície, exceção à regra |
-| `op-xy.png` | OP-XY: preto fosco, teclas em grid, LED laranja |
-| `riddim-ting.png` | EP–40 Riddim: verde-escuro de produto, sinais em vermelho |
-| `tx6.png` | TX-6 em fundo preto: tipografia grande e fina, produto pequeno no centro |
-| `ep-series-lineup.png` | Família EP: módulos repetidos, japonês como textura, cada produto com sua cor |
-| `op1-field.png` | OP-1 field: alumínio, tela com azul de informação |
-| `ep-series-update.png` | Peça gráfica: tabela com fios, etiqueta UPDATE em bloco laranja, número de versão como título |
+| `vinyl-sinus.png` | Record and sleeve: display typography, thin rules, brackets |
+| `ko2-flat.png` | EP–133 K.O. II from above: key grid, orange as signal, outlined title |
+| `tp7.png` | TP-7 in aluminum: small uppercase labels, red only on the record button |
+| `po80-record-factory.png` | PO-80: orange as surface, an exception to the rule |
+| `op-xy.png` | OP-XY: matte black, keys in a grid, orange LED |
+| `riddim-ting.png` | EP–40 Riddim: dark product green, signals in red |
+| `tx6.png` | TX-6 on black: large thin typography, small product in the center |
+| `ep-series-lineup.png` | EP family: repeated modules, Japanese as texture, each product with its own color |
+| `op1-field.png` | OP-1 field: aluminum, screen with information blue |
+| `ep-series-update.png` | Graphic piece: ruled table, UPDATE label in an orange block, version number as title |
 
-### 2.2 Moodboard: retrofuturismo (Pinterest)
+### 2.2 Moodboard: retrofuturism (Pinterest)
 
-Ampliam o repertório, principalmente para **ilustrações e imagens**. Imagens em `references/pinterest/`.
+These widen the repertoire, mainly for **illustrations and images**. Images in `references/pinterest/`.
 
-| Arquivo | Pin | O que mostra |
+| File | Pin | What it shows |
 |---|---|---|
-| `palette-modern-retro-industrial.jpg` | [1132233162604331330](https://br.pinterest.com/pin/1132233162604331330/) | Paleta "Modern Retro Industrial", com hex publicados (ver §3.2) |
-| `retrofuturism-helmet-goggles.jpg` | [521925044333070995](https://br.pinterest.com/pin/521925044333070995/) | Retrato com capacete, neon rosa e azul |
-| `poster-luna.jpg` | [442478732134038569](https://br.pinterest.com/pin/442478732134038569/) | Pôster LUNA: Ball Chair, TV esférica, azul liso, grotesca arredondada |
-| `illus-sega-saturn-desk.jpg` | [354588170671333402](https://br.pinterest.com/pin/354588170671333402/) | Ilustração de mesa com console, traço preto e cor chapada |
-| `diagram-wormhole-blue.jpg` | [669840144618923623](https://br.pinterest.com/pin/669840144618923623/) | Diagrama de buraco de minhoca em linha branca sobre azul, esfera vermelha |
-| `logo-new-era-rainbow-stripes.jpg` | [850898923392490209](https://br.pinterest.com/pin/850898923392490209/) | Logo "RETRO" com faixas arco-íris sobre preto |
-| `diagram-wormhole-black.jpg` | [1136384918466043677](https://br.pinterest.com/pin/1136384918466043677/) | O mesmo diagrama em linha fina sobre preto, ponto vermelho |
-| `illus-cyberpunk-monitor.jpg` | [324751823145896643](https://br.pinterest.com/pin/324751823145896643/) | Ilustração: operadora no monitor, mecha amarelo, neon |
-| `poster-astral-plane.jpg` | [77616793573995629](https://br.pinterest.com/pin/77616793573995629/) | Capa "Meeting on the Astral Plane": planos em grid empilhados sobre preto |
-| `illus-amiga-desk-1994.jpg` | [461407924340903455](https://br.pinterest.com/pin/461407924340903455/) | "Lazy Saturday, 1994": mesa com Amiga, traço preto e cor chapada |
-| `scenography-prism-stars.jpg` | [634444666298973787](https://br.pinterest.com/pin/634444666298973787/) | Caixas de vidro, céu estrelado, feixe espectral |
-| `illus-retro-computer-library.jpg` | [1074812267312275160](https://br.pinterest.com/pin/1074812267312275160/) | Ilustração de mesa com computador antigo e estante |
-| `illus-space-eye.jpg` | [935904366328784289](https://br.pinterest.com/pin/935904366328784289/) | Olho mecânico em ilustração detalhada |
-| `illus-city-pink-moon.png` | sem link (enviada direto) | Cidade-máquina, lua rosa, céu amarelo, traço técnico |
-| `illus-workbench-mess.png` | sem link (enviada direto) | Garoto numa bancada de eletrônicos, estilo anime |
+| `palette-modern-retro-industrial.jpg` | [1132233162604331330](https://br.pinterest.com/pin/1132233162604331330/) | "Modern Retro Industrial" palette, with published hex values (see §3.2) |
+| `retrofuturism-helmet-goggles.jpg` | [521925044333070995](https://br.pinterest.com/pin/521925044333070995/) | Portrait with helmet, pink and blue neon |
+| `poster-luna.jpg` | [442478732134038569](https://br.pinterest.com/pin/442478732134038569/) | LUNA poster: Ball Chair, spherical TV, flat blue, rounded grotesque |
+| `illus-sega-saturn-desk.jpg` | [354588170671333402](https://br.pinterest.com/pin/354588170671333402/) | Desk illustration with console, black line and flat color |
+| `diagram-wormhole-blue.jpg` | [669840144618923623](https://br.pinterest.com/pin/669840144618923623/) | Wormhole diagram in white line on blue, red sphere |
+| `logo-new-era-rainbow-stripes.jpg` | [850898923392490209](https://br.pinterest.com/pin/850898923392490209/) | "RETRO" logo with rainbow stripes on black |
+| `diagram-wormhole-black.jpg` | [1136384918466043677](https://br.pinterest.com/pin/1136384918466043677/) | The same diagram in thin line on black, red dot |
+| `illus-cyberpunk-monitor.jpg` | [324751823145896643](https://br.pinterest.com/pin/324751823145896643/) | Illustration: operator at the monitor, yellow mecha, neon |
+| `poster-astral-plane.jpg` | [77616793573995629](https://br.pinterest.com/pin/77616793573995629/) | "Meeting on the Astral Plane" cover: stacked grid planes on black |
+| `illus-amiga-desk-1994.jpg` | [461407924340903455](https://br.pinterest.com/pin/461407924340903455/) | "Lazy Saturday, 1994": desk with Amiga, black line and flat color |
+| `scenography-prism-stars.jpg` | [634444666298973787](https://br.pinterest.com/pin/634444666298973787/) | Glass boxes, starry sky, spectral beam |
+| `illus-retro-computer-library.jpg` | [1074812267312275160](https://br.pinterest.com/pin/1074812267312275160/) | Illustration of a desk with an old computer and bookshelf |
+| `illus-space-eye.jpg` | [935904366328784289](https://br.pinterest.com/pin/935904366328784289/) | Mechanical eye in a detailed illustration |
+| `illus-city-pink-moon.png` | no link (sent directly) | Machine city, pink moon, yellow sky, technical line |
+| `illus-workbench-mess.png` | no link (sent directly) | Boy at an electronics workbench, anime style |
 
-### 2.4 Paleta
+### 2.4 Palette
 
-| Arquivo | Origem | O que mostra |
+| File | Origin | What it shows |
 |---|---|---|
-| `references/palette/orange-circles-grid.png` | enviada direto, sem link | Cards em laranja, creme, preto oliva e amarelo com diagramas de círculos em linha fina. **Fonte do laranja do sistema** (`#f35919`). Também tem creme `#f0f2e7`, preto oliva `#2c2e20` e amarelo `#f3cd4e`, anotados e não adotados |
+| `references/palette/orange-circles-grid.png` | sent directly, no link | Cards in orange, cream, olive black and yellow with thin-line circle diagrams. **Source of the system orange** (`#f35919`). Also has cream `#f0f2e7`, olive black `#2c2e20` and yellow `#f3cd4e`, noted and not adopted |
 
 ### 2.3 Interface (Pinterest)
 
-Referências de UI: sites, dashboards e apps. Definem como o sistema se comporta **em tela**. São do board [Interface Eis Design System References](https://br.pinterest.com/diegoeis/interface-eis-design-system-references/), com 66 pins em 2026-10-25. Imagens em `references/interface/`.
+UI references: sites, dashboards and apps. They define how the system behaves **on screen**. They come from the board [Interface Eis Design System References](https://br.pinterest.com/diegoeis/interface-eis-design-system-references/), with 66 pins as of 2026-10-25. Images in `references/interface/`.
 
-**Principais**, escolhidas pelo autor e com peso maior que o restante do board:
+**Main**, chosen by the author and weighted more than the rest of the board:
 
-| Arquivo | Pin | O que mostra |
+| File | Pin | What it shows |
 |---|---|---|
-| `main-1-layout-poster-pipeline.jpg` | [203647214397329946](https://br.pinterest.com/pin/203647214397329946/) | Site "How we manage your network": cinza claro com grid de fundo à vista, cards brancos, ilustração de arame, título grande e fino |
-| `main-2-dashboard-charts.jpg` | [203647214397329956](https://br.pinterest.com/pin/203647214397329956/) | Dashboard monocromático: rótulos e números em mono caixa alta, gráfico de barras feito de células, tabela com fios |
-| `main-3-analytics-dashboard.jpg` | [203647214397329953](https://br.pinterest.com/pin/203647214397329953/) | Dashboard de analytics: heatmap em grid, vermelho só nas anomalias, separadores de 1px |
-| `main-4-engineering-site.jpg` | [203647214397329912](https://br.pinterest.com/pin/203647214397329912/) | Site de engenharia: creme e laranja, mono no corpo, bloco laranja de seção com tabela em fios e desenho isométrico de arame |
+| `main-1-layout-poster-pipeline.jpg` | [203647214397329946](https://br.pinterest.com/pin/203647214397329946/) | "How we manage your network" site: light gray with visible background grid, white cards, wireframe illustration, large thin title |
+| `main-2-dashboard-charts.jpg` | [203647214397329956](https://br.pinterest.com/pin/203647214397329956/) | Monochrome dashboard: labels and numbers in uppercase mono, bar chart made of cells, ruled table |
+| `main-3-analytics-dashboard.jpg` | [203647214397329953](https://br.pinterest.com/pin/203647214397329953/) | Analytics dashboard: grid heatmap, red only on anomalies, 1px separators |
+| `main-4-engineering-site.jpg` | [203647214397329912](https://br.pinterest.com/pin/203647214397329912/) | Engineering site: cream and orange, mono body text, orange section block with ruled table and isometric wireframe drawing |
 
-**Restante do board**, em `references/interface/board/NN.ext`. O índice com título, link de origem e tamanho de cada imagem está em `board/_index.json`. Agrupado pelo que mostra:
+**Rest of the board**, in `references/interface/board/NN.ext`. The index with title, source link and size of each image is in `board/_index.json`. Grouped by what it shows:
 
-| Grupo | Números | O que somam |
+| Group | Numbers | What they add |
 |---|---|---|
-| Dashboards e apps | 01, 26, 29, 30, 32, 35, 37, 41, 50 | Versões ou parentes das principais. 50 é o modo escuro com o mesmo vocabulário |
-| Sites e layouts editoriais | 02, 09, 10, 17, 18, 22, 25, 42, 45, 47, 51, 53, 54, 61, 63, 65, 66 | Grid de colunas, fios, números grandes (61), bloco laranja de seção (45, 66), mesma página em azul (17) |
-| Styleguides | 06, 15, 55, 60 | Painel de componentes em creme e laranja (06), "The Grid Is Lying" (15), folha técnica em linha azul (55), mono como identidade (60) |
-| Mobile | 21, 31, 38, 56, 59 | Lista com tipografia grande em caixa alta (21, 31), gravador como aparelho físico (38), número ao lado de uma bola de cor (56) |
-| Login | 03, 24, 40 | Formulário mínimo ao lado de imagem |
-| Ilustração técnica e isométrica | 04, 07, 14, 16, 19, 43 | Isométrico em linha (07), corte técnico (43), topografia em linha (16) |
-| Objeto retrô | 11, 28, 33, 36, 48, 49, 57, 62, 64 | Aparelhos bege e cinza com teclas coloridas: o mesmo universo da TE |
-| Cena e ilustração | 05, 08, 12, 13, 20, 23, 27, 34, 39, 44, 46, 52, 58 | Clima e cor. Ver §5 |
+| Dashboards and apps | 01, 26, 29, 30, 32, 35, 37, 41, 50 | Versions or relatives of the main ones. 50 is dark mode with the same vocabulary |
+| Sites and editorial layouts | 02, 09, 10, 17, 18, 22, 25, 42, 45, 47, 51, 53, 54, 61, 63, 65, 66 | Column grid, rules, large numbers (61), orange section block (45, 66), same page in blue (17) |
+| Styleguides | 06, 15, 55, 60 | Component panel in cream and orange (06), "The Grid Is Lying" (15), technical sheet in blue line (55), mono as identity (60) |
+| Mobile | 21, 31, 38, 56, 59 | List with large uppercase typography (21, 31), recorder as a physical device (38), number next to a color ball (56) |
+| Login | 03, 24, 40 | Minimal form next to an image |
+| Technical and isometric illustration | 04, 07, 14, 16, 19, 43 | Line isometric (07), technical section (43), line topography (16) |
+| Retro object | 11, 28, 33, 36, 48, 49, 57, 62, 64 | Beige and gray devices with colored keys: the same universe as TE |
+| Scene and illustration | 05, 08, 12, 13, 20, 23, 27, 34, 39, 44, 46, 52, 58 | Mood and color. See §5 |
 
 
 ---
 
-## 3. O que as referências dizem
+## 3. What the references say
 
-### 3.1 Teenage Engineering: a linguagem do sistema
+### 3.1 Teenage Engineering: the system's language
 
-1. **Material antes de cor.** A peça é quase toda neutra: alumínio, plástico cinza e cru, preto fosco.
-2. **Um único acento, laranja-vermelho, usado como sinal.** Marca um estado ou chama atenção (gravar, LED, "INPUT", número de versão), nunca decora. Ocupa até ~5% da área. A exceção é o PO-80, onde vira superfície: isso é um **modo de destaque**, não a regra.
-3. **Tipografia de engenharia.**
-   - Grotesca geométrica, fina ou regular, muitas vezes em caixa alta.
-   - Números como protagonistas (`2.0`, `50`, `1.9.3`, `EP–133`), com travessão em vez de hífen.
-   - Títulos grandes em contorno, e números em display segmentado ou LCD.
-   - Rótulos pequenos em caixa alta e espaçados (OUTPUT, INPUT, SYNC, MIDI), como serigrafia de painel.
-   - Japonês (サンプラー) usado como textura gráfica.
-4. **Grid à vista.** A peça é uma matriz de módulos iguais, com alinhamento rígido e muito espaço vazio em volta.
-5. **Linha fina como estrutura.** Fios de 1px separam informação, colchetes agrupam controles e hachura diagonal faz faixa.
-6. **Etiquetas em bloco.** Retângulo sólido com texto vazado ("UPDATE", "MIDI", "USB"). É praticamente o único elemento gráfico recorrente.
-7. **Formas simples.** Retângulo com raio pequeno, círculo perfeito, padrão de pontos (grade de alto-falante).
-8. **Sem sombra na peça gráfica.** As sombras das referências são de fotografia de produto.
-9. **Três fundos:** cinza claro uniforme, papel cru, preto quase total.
+1. **Material before color.** The piece is almost entirely neutral: aluminum, gray and raw plastic, matte black.
+2. **A single accent, orange-red, used as a signal.** It marks a state or calls attention (record, LED, "INPUT", version number), never decorates. It takes up to ~5% of the area. The exception is the PO-80, where it becomes surface: that is a **highlight mode**, not the rule.
+3. **Engineering typography.**
+   - Geometric grotesque, thin or regular, often uppercase.
+   - Numbers as protagonists (`2.0`, `50`, `1.9.3`, `EP–133`), with a dash instead of a hyphen.
+   - Large outlined titles, and numbers in segmented or LCD display.
+   - Small, spaced uppercase labels (OUTPUT, INPUT, SYNC, MIDI), like panel screen printing.
+   - Japanese (サンプラー) used as graphic texture.
+4. **Visible grid.** The piece is a matrix of equal modules, with rigid alignment and lots of empty space around it.
+5. **Thin line as structure.** 1px rules separate information, brackets group controls and diagonal hatching makes bands.
+6. **Block labels.** Solid rectangle with knocked-out text ("UPDATE", "MIDI", "USB"). It is practically the only recurring graphic element.
+7. **Simple shapes.** Rectangle with small radius, perfect circle, dot pattern (speaker grille).
+8. **No shadow in the graphic piece.** The shadows in the references come from product photography.
+9. **Three backgrounds:** uniform light gray, raw paper, near-total black.
 
-### 3.2 Moodboard: o que soma
+### 3.2 Moodboard: what it adds
 
-- **A paleta "Modern Retro Industrial" converge com a TE.** O "Rust Signal" publicado (`#EC4624`) cai dentro da faixa medida no laranja da TE (`#DD451D`–`#FC6A34`, mediana `#F15033`). Duas fontes independentes apontando para o mesmo acento reforçam a escolha.
-  - Valores publicados no pin: Iron Core `#222A2A`, Industrial Aqua `#4FBBBC`, Rust Signal `#EC4624`, Heat Marker `#F39120`, Architectural Cream `#E2DAC2`.
-  - **Iron Core** (preto esverdeado) e **Architectural Cream** (cru quente) são candidatos naturais para o fundo escuro e o modo papel.
-  - **Industrial Aqua** e **Heat Marker** ficam como candidatos a cor de ilustração, não de sistema (ver §5).
-- **Diagrama científico em linha fina** (os dois buracos de minhoca e "Astral Plane"): linha branca de 1px, grid em perspectiva, um único ponto vermelho. É a mesma regra da TE (linha fina como estrutura, um sinal de cor) aplicada à ilustração. **É o modelo mais direto para imagens de artigo.**
-- **Pôster LUNA:** fundo de cor lisa, objeto icônico dos anos 60 (Ball Chair, TV esférica), muito espaço vazio, tipografia de display arredondada e grotesca simples para a informação. Modelo para capa e slide de abertura.
-- **Ilustração de traço preto com cor chapada** (Saturn, Amiga, biblioteca, cidade): contorno uniforme, cor plana sem gradiente, muitos objetos técnicos. É uma linguagem possível para ilustração de cena, mais densa que o sistema e só para quando a peça pedir.
+- **The "Modern Retro Industrial" palette converges with TE.** The published "Rust Signal" (`#EC4624`) falls within the range measured in TE's orange (`#DD451D`–`#FC6A34`, median `#F15033`). Two independent sources pointing at the same accent reinforce the choice.
+  - Values published on the pin: Iron Core `#222A2A`, Industrial Aqua `#4FBBBC`, Rust Signal `#EC4624`, Heat Marker `#F39120`, Architectural Cream `#E2DAC2`.
+  - **Iron Core** (greenish black) and **Architectural Cream** (warm raw) are natural candidates for the dark background and paper mode.
+  - **Industrial Aqua** and **Heat Marker** remain candidates for illustration color, not system color (see §5).
+- **Thin-line scientific diagram** (the two wormholes and "Astral Plane"): 1px white line, perspective grid, a single red dot. It is the same TE rule (thin line as structure, one color signal) applied to illustration. **It is the most direct model for article images.**
+- **LUNA poster:** flat color background, iconic 60s object (Ball Chair, spherical TV), lots of empty space, rounded display typography and simple grotesque for information. Model for covers and opening slides.
+- **Black-line illustration with flat color** (Saturn, Amiga, library, city): uniform outline, flat color without gradient, many technical objects. It is a possible language for scene illustration, denser than the system and only for when the piece calls for it.
 
-### 3.3 Observações de cor
+### 3.3 Color observations
 
-Medidas por amostragem de pixel (Pillow, imagens reduzidas, mediana entre imagens), exceto quando dito "publicado".
+Measured by pixel sampling (Pillow, reduced images, median across images), except where marked "published".
 
-| Papel candidato | Valor | Origem |
+| Candidate role | Value | Origin |
 |---|---|---|
-| Acento | `#F15033` (faixa `#DD451D`–`#FC6A34`) | Mediana em 8 imagens da TE |
-| Acento (publicado) | `#EC4624` | Pin da paleta |
-| Fundo claro frio | `#D0D0D0`–`#E0E0E0` | `tp7`, `op1-field`, `ko2-flat` |
-| Fundo papel | `#E0E0D8` medido; `#E2DAC2` publicado | `po80-record-factory`; pin da paleta |
-| Fundo escuro | `#101010`–`#181818` medido; `#222A2A` publicado | `vinyl-sinus`, `tx6`; pin da paleta |
-| Verde de produto | `#0F3A2E`–`#174E3A` | `riddim-ting`, `ep-series-lineup` |
-| Laranja de interface | `#E85818` (faixa `#E05818`–`#F87040`) | `main-4`, board 06, 25, 45, 66 |
-| Canvas de interface | `#E8E8E8`–`#F0F0F0`, painel `#F8F8F8` | `main-1`, `main-2`, `main-3` |
-| Creme de interface | `#F0E0C8`–`#F8E8D0` | `main-4`, board 06 |
-| Azul de variante | `#1850A8` | board 17 (a mesma página de `main-4`, em azul) |
+| Accent | `#F15033` (range `#DD451D`–`#FC6A34`) | Median across 8 TE images |
+| Accent (published) | `#EC4624` | Palette pin |
+| Cool light background | `#D0D0D0`–`#E0E0E0` | `tp7`, `op1-field`, `ko2-flat` |
+| Paper background | `#E0E0D8` measured, `#E2DAC2` published | `po80-record-factory`, palette pin |
+| Dark background | `#101010`–`#181818` measured, `#222A2A` published | `vinyl-sinus`, `tx6`, palette pin |
+| Product green | `#0F3A2E`–`#174E3A` | `riddim-ting`, `ep-series-lineup` |
+| Interface orange | `#E85818` (range `#E05818`–`#F87040`) | `main-4`, board 06, 25, 45, 66 |
+| Interface canvas | `#E8E8E8`–`#F0F0F0`, panel `#F8F8F8` | `main-1`, `main-2`, `main-3` |
+| Interface cream | `#F0E0C8`–`#F8E8D0` | `main-4`, board 06 |
+| Variant blue | `#1850A8` | board 17 (the same page as `main-4`, in blue) |
 
-O laranja das interfaces puxa mais para o amarelo (`#E85818`) que o da TE (`#F15033`). É preciso escolher um só.
+The interface orange leans more toward yellow (`#E85818`) than TE's (`#F15033`). Only one can be chosen.
 
-### 3.4 Interface: como o sistema se comporta em tela
+### 3.4 Interface: how the system behaves on screen
 
-Tirado principalmente das 4 principais e confirmado pelo restante do board.
+Drawn mainly from the 4 main references and confirmed by the rest of the board.
 
-1. **Canvas cinza claro, painel quase branco.** A tela é um cinza claro uniforme e o conteúdo fica em painéis um pouco mais claros. São dois níveis de superfície, não mais (`main-1`, `main-2`).
-2. **Grid de construção à vista.** Linhas finas de grid no fundo atravessam a página inteira e os cards se encaixam nelas (`main-1`, board 15, 25). É a régua do desenho técnico virando decoração estrutural.
-3. **Painel sem sombra.** O card se separa pelo tom da superfície, ou por um fio de 1px, nunca por sombra. O raio é pequeno e médio, em torno de 8–12px.
-4. **Mono como voz da interface.**
-   - Rótulos de seção e cabeçalhos de tabela em **mono caixa alta** pequena (TOTAL REVENUE, SALES TREND, ID, STATUS).
-   - **Números em mono** ($20,320; 10,320; 3.9%), o que alinha colunas e dá cara de instrumento.
-   - Breadcrumb e navegação em mono caixa alta, com o item atual no acento (`main-4`).
-   - Em sites mais editoriais, o corpo de texto inteiro em mono (`main-4`, board 60).
-5. **Grotesca em dois extremos.** Título grande e fino em caixa normal (`main-1`) ou título bold em caixa alta (`main-4`). O meio-termo quase não aparece.
-6. **Dado como grid de células.** Barras feitas de quadradinhos empilhados (`main-2`), heatmap de dias (`main-3`), barras finas verticais. É a mesma matriz de teclas da TE aplicada ao gráfico.
-7. **Gráfico monocromático, acento só na exceção.** Preto e cinzas mostram o dado normal; o vermelho e laranja marca a anomalia (as violações em `main-3`). É a regra do sinal da TE aplicada ao dado.
-8. **Tabela e lista em fios.** Linha de 1px entre itens, sem zebra, colunas numeradas (`01`, `02`, `03`) e itálico mono para o texto secundário (`main-4`).
-9. **Bloco de acento como seção.** Uma única seção por página pode ser inteira em laranja, com desenho em linha escura e tabela em fios por cima (`main-4`, board 45, 66). É o modo de destaque da TE (PO-80) aplicado à web: **um bloco por página**, nunca dois.
-10. **A variante troca só a cor.** Board 17 é a mesma página de `main-4` com azul no lugar do laranja e branco no lugar do creme. A estrutura não muda nada, o que confirma a regra de variante.
-11. **Ilustração em linha de arame.** Isométrico técnico, campo de pontos, espiral e corte técnico, sempre em linha fina de uma cor só, sem preenchimento (`main-1`, `main-4`, board 07, 43, 55).
-12. **Controles discretos.** Segmentado em pílula (Weekly / Monthly / Yearly), status como pílula com ponto, ícones de linha fina e um botão primário escuro e sólido (Export CSV). Nada é colorido sem motivo.
-13. **Modo escuro com o mesmo vocabulário** (board 50): mesmos grids, mesmas linhas, cores invertidas.
+1. **Light gray canvas, near-white panel.** The screen is a uniform light gray and content sits on slightly lighter panels. Two surface levels, no more (`main-1`, `main-2`).
+2. **Visible construction grid.** Thin grid lines in the background cross the whole page and the cards snap to them (`main-1`, board 15, 25). It is the technical drawing ruler turned into structural decoration.
+3. **Panel without shadow.** The card is separated by surface tone, or by a 1px rule, never by shadow. The radius is small to medium, around 8–12px.
+4. **Mono as the voice of the interface.**
+   - Section labels and table headers in small **uppercase mono** (TOTAL REVENUE, SALES TREND, ID, STATUS).
+   - **Numbers in mono** ($20,320, 10,320, 3.9%), which aligns columns and gives an instrument feel.
+   - Breadcrumb and navigation in uppercase mono, with the current item in the accent (`main-4`).
+   - On more editorial sites, the entire body text in mono (`main-4`, board 60).
+5. **Grotesque at two extremes.** Large thin title in sentence case (`main-1`) or bold uppercase title (`main-4`). The middle ground barely appears.
+6. **Data as a grid of cells.** Bars made of stacked squares (`main-2`), day heatmap (`main-3`), thin vertical bars. It is the same TE key matrix applied to charts.
+7. **Monochrome chart, accent only on the exception.** Black and grays show normal data. Red and orange mark the anomaly (the violations in `main-3`). It is TE's signal rule applied to data.
+8. **Ruled tables and lists.** 1px line between items, no zebra striping, numbered columns (`01`, `02`, `03`) and mono italic for secondary text (`main-4`).
+9. **Accent block as a section.** A single section per page can be entirely orange, with dark-line drawing and a ruled table on top (`main-4`, board 45, 66). It is TE's highlight mode (PO-80) applied to the web: **one block per page**, never two.
+10. **The variant swaps only the color.** Board 17 is the same page as `main-4` with blue instead of orange and white instead of cream. The structure does not change at all, which confirms the variant rule.
+11. **Wireframe line illustration.** Technical isometric, dot field, spiral and technical section, always in thin single-color line, no fill (`main-1`, `main-4`, board 07, 43, 55).
+12. **Discreet controls.** Pill segmented control (Weekly / Monthly / Yearly), status as a pill with a dot, thin-line icons and one dark solid primary button (Export CSV). Nothing is colored without reason.
+13. **Dark mode with the same vocabulary** (board 50): same grids, same lines, inverted colors.
 
 ---
 
-## 4. Princípios (com orçamento)
+## 4. Principles (with budget)
 
-Rascunho das regras que viram norma quando os tokens forem aprovados:
+Draft of the rules that become norms when the tokens are approved:
 
-- **Acento ≤ 5% da área** e só para sinalizar: estado, destaque único, número-chave. Nunca para decorar. Modo de destaque (acento como fundo) é exceção declarada por peça.
-- **Uma cor de sinal por peça.** Se duas coisas competem pelo acento, uma delas não é importante.
-- **Linha antes de preenchimento.** Separe com fio de 1px antes de pensar em caixa ou fundo.
-- **Grid visível ou implícito, nunca quebrado.** Alinhar é obrigatório; assimetria vem da composição, não do desalinhamento.
-- **Vazio é material.** Uma peça com pouca coisa e muito espaço está certa; cheia está errada.
-- **Texto pequeno em caixa alta e espaçado** é rótulo; texto corrido é sempre em caixa normal.
-- **Sem sombra, sem gradiente e sem brilho** na linguagem do sistema. Ilustração pode ter textura, mas não pode ter efeito. Única exceção: o glow do botão no hover, como resposta à interação, nunca em repouso.
-- **Dois níveis de superfície em tela**: canvas e painel. Um terceiro nível é sinal de que a composição precisa de fio, não de mais uma caixa.
-- **Toda borda e todo fio usam `--line`.** Tinta (`--ink`) nunca contorna forma, painel ou card. A única exceção é o contorno de controle interativo (checkbox, campo), que usa `--ink-muted` para ter contraste suficiente (WCAG pede 3:1 para componentes).
-- **Número e rótulo em mono, texto em grotesca.** A mono é a voz do instrumento; a grotesca é a voz do texto.
-- **Dado em preto e cinza; o acento marca só a exceção.**
-- **Um bloco de acento por página, no máximo.**
-
----
-
-## 5. Fora do núcleo (anotado, não adotado)
-
-| O quê | Onde aparece | Por que fica fora |
-|---|---|---|
-| Neon rosa, ciano e roxo | `retrofuturism-helmet-goggles`, `illus-cyberpunk-monitor`, `illus-city-pink-moon` | Cyberpunk e synthwave: contradizem o "minimalista" |
-| Faixas arco-íris | `logo-new-era-rainbow-stripes`, `scenography-prism-stars` | Retrô setentista decorativo. Pode virar motivo pontual, nunca paleta |
-| Verde de produto | `riddim-ting` | Cor de um produto específico. Candidato a variante opcional |
-| Azul de tela | `op1-field`, `vinyl-sinus` | Cor de informação em display. Reavaliar se o sistema precisar de cor de dado |
-| Aqua e Heat Marker | pin da paleta | Bons para ilustração. Avaliar como paleta de ilustração separada |
-| Gradientes, reflexos e sombras | fotos de produto TE | Vêm da fotografia, não da linguagem gráfica |
-| Ilustração densa estilo anime | `illus-workbench-mess`, `illus-space-eye` | Muito detalhe para o sistema. Referência de clima, não de forma |
-| Amarelo-limão e ciano no treemap | `main-3` | Neon em interface. A estrutura de `main-3` entra; as cores, não |
-| Verde e vermelho de variação (+0,94, ▲▼) | `main-2`, `main-3` | Cor semântica de dado. Decidir depois se o sistema terá cores de status |
-| Fotografia e cena 3D colorida | board 05, 08, 12, 20, 23, 44, 46 | Clima. Não definem UI |
+- **Accent ≤ 5% of the area** and only to signal: state, single highlight, key number. Never to decorate. Highlight mode (accent as background) is a declared exception per piece.
+- **One signal color per piece.** If two things compete for the accent, one of them is not important.
+- **Line before fill.** Separate with a 1px rule before thinking of a box or background.
+- **Grid visible or implicit, never broken.** Alignment is mandatory. Asymmetry comes from composition, not misalignment.
+- **Empty space is material.** A piece with little content and lots of space is right. A full one is wrong.
+- **Small, spaced uppercase text** is a label. Running text is always in sentence case.
+- **No shadow, no gradient and no glow** in the system's language. Illustration may have texture, but not effects. Only exception: the button glow on hover, as a response to interaction, never at rest.
+- **Two surface levels on screen**: canvas and panel. A third level is a sign the composition needs a rule, not another box.
+- **Every border and every rule uses `--line`.** Ink (`--ink`) never outlines a shape, panel or card. The only exception is the outline of interactive controls (checkbox, field), which uses `--ink-muted` for sufficient contrast (WCAG requires 3:1 for components).
+- **Numbers and labels in mono, text in grotesque.** Mono is the voice of the instrument. Grotesque is the voice of the text.
+- **Data in black and gray. The accent marks only the exception.**
+- **One accent block per page, at most.**
 
 ---
 
-## 6. Tipografia
+## 5. Outside the core (noted, not adopted)
 
-A Teenage Engineering usa tipografia própria, que não pode ser replicada. O sistema declara **slots** e preenche com fontes abertas:
-
-| Slot | Papel | Característica buscada |
+| What | Where it appears | Why it stays out |
 |---|---|---|
-| Texto | Corpo, títulos, informação | Grotesca geométrica, boa em peso fino, números tabulares |
-| Rótulo / mono | Rótulos de painel, números, código | Monoespaçada ou grotesca estreita, legível em caixa alta pequena |
-| Display (opcional) | Capas, números gigantes | Arredondada (LUNA) ou segmentada (LCD). Só em título |
-
-As interfaces confirmam que a **mono é um slot de primeira classe**, não um detalhe: é ela que carrega números, rótulos, tabelas, navegação e, em sites editoriais, até o corpo de texto. A grotesca precisa funcionar bem em fino e grande (`main-1`) e em bold caixa alta (`main-4`).
-
-Os candidatos serão comparados lado a lado em HTML antes da decisão.
-
-**Decidido (2026-10-25): Geist (texto) e Geist Mono (instrumento).** Aprovadas pelo autor na primeira versão do dashboard. Abertas, no Google Fonts.
+| Pink, cyan and purple neon | `retrofuturism-helmet-goggles`, `illus-cyberpunk-monitor`, `illus-city-pink-moon` | Cyberpunk and synthwave: contradict "minimalist" |
+| Rainbow stripes | `logo-new-era-rainbow-stripes`, `scenography-prism-stars` | Decorative 70s retro. May become an occasional motif, never a palette |
+| Product green | `riddim-ting` | Color of a specific product. Candidate for an optional variant |
+| Screen blue | `op1-field`, `vinyl-sinus` | Information color on a display. Reassess if the system needs a data color |
+| Aqua and Heat Marker | palette pin | Good for illustration. Evaluate as a separate illustration palette |
+| Gradients, reflections and shadows | TE product photos | They come from photography, not the graphic language |
+| Dense anime-style illustration | `illus-workbench-mess`, `illus-space-eye` | Too much detail for the system. Mood reference, not form |
+| Lime yellow and cyan in the treemap | `main-3` | Neon in the interface. The structure of `main-3` is in. The colors are not |
+| Green and red for change (+0,94, ▲▼) | `main-2`, `main-3` | Semantic data color. Decide later whether the system will have status colors |
+| Photography and colorful 3D scenes | board 05, 08, 12, 20, 23, 44, 46 | Mood. They do not define UI |
 
 ---
 
-## 7. Decisões
+## 6. Typography
 
-### Tomadas
+Teenage Engineering uses proprietary typography that cannot be replicated. The system declares **slots** and fills them with open fonts:
 
-| Data | Decisão | Origem |
+| Slot | Role | Desired trait |
 |---|---|---|
-| 2026-10-25 | Tipografia: Geist + Geist Mono | Aprovada no dashboard v0.1 |
-| 2026-10-25 | Canvas de cor sólida. **O grid de construção não vai como fundo de interface**; segue como recurso de ilustração e de peça gráfica | Pedido do autor no dashboard v0.1 |
-| 2026-10-25 | Primitivos v0.1 criados como tokens (provisórios nos valores, definitivos na estrutura): neutros frios, laranja `#f15033` + `#b8321a` para texto, espaço 8/16/32/64, raio 4/10/full, linha 1px | `system/tokens/`, `system/foundations.html` |
-| 2026-10-25 | `neutral.400` (`#bdbdbd`) existe só para escala de dado, nunca superfície ou texto | Escala de idade das tarefas |
-| 2026-10-25 | Canvas `neutral.100` passa de `#e6e6e6` para **`#eaeaea`** | Escolha do autor |
-| 2026-10-25 | Sinal passa a **`#f35919`** (antes `#f15033`); a versão para texto passa a `#b5400c`, mesmo matiz | `references/palette/orange-circles-grid.png`, cor chapada amostrada exata |
-| 2026-10-25 | Sem papéis `data-*`: gráficos usam os neutros primitivos direto. Semântico só quando acrescenta significado | Pedido do autor: menos complexidade |
-| 2026-10-25 | `neutral.500` (`#858585`) entra na escala: cinza médio para ícones, placeholders e gráficos não textuais (3,5:1 no painel) | Pedido do autor |
-| 2026-10-25 | Botão ganha glow no hover, na cor da variante. Exceção à regra de não ter sombra, só como resposta à interação | Pedido do autor |
-| 2026-10-25 | Escala de dado passa a `neutral.200` (`#dddddd`) · `400` (`#a3a3a3`, antes `#bdbdbd`) · `600` · `900`: os dois tons claros estavam quase iguais (1,2:1); agora cada passo difere ≥1,8:1 do vizinho | Pedido do autor no dashboard |
-| 2026-10-25 | Etiquetas viram **chips** (pílula, caixa normal, sem hover), para não confundir com botões. O "block label" retangular fica só para peças gráficas | Pedido do autor no dashboard |
-| 2026-10-25 | Células de tabela sempre centralizadas na vertical | Pedido do autor |
-| 2026-10-25 | Elementos básicos em `system/css/elements.css`, demonstrados em `system/elements.html` | Primeira versão |
+| Text | Body, titles, information | Geometric grotesque, good at thin weight, tabular figures |
+| Label / mono | Panel labels, numbers, code | Monospaced or narrow grotesque, legible in small uppercase |
+| Display (optional) | Covers, giant numbers | Rounded (LUNA) or segmented (LCD). Titles only |
 
-### Abertas
+The interfaces confirm that **mono is a first-class slot**, not a detail: it carries numbers, labels, tables, navigation and, on editorial sites, even body text. The grotesque must work well thin and large (`main-1`) and in bold uppercase (`main-4`).
 
-1. **Temperatura dos neutros:** em uso o frio (provisório). Quente cru (PO-80, Architectural Cream) segue como alternativa. O sistema não pode misturar os dois. Nas interfaces, 3 das 4 principais são cinza neutro e só `main-4` é creme.
-2. **Acento:** decidido `#f35919` (ver Tomadas).
-3. **Fundo escuro:** preto neutro (`#111`) ou Iron Core esverdeado (`#222A2A`)? Depende da decisão 1.
-4. **Paleta de ilustração:** ter uma paleta secundária só para ilustração (aqua, âmbar) ou ilustrar só com a paleta do sistema?
-5. **Display:** precisa de um terceiro slot tipográfico (arredondada ou LCD) para capas?
-6. **Cor de status:** o sistema terá verde e vermelho para variação de dado, ou só o acento marcando exceção?
-7. **Variante de cor:** o azul (`#1850A8`) como única variante alternativa ao laranja, trocando só a cor?
+Candidates will be compared side by side in HTML before the decision.
 
-## 8. Histórico
+**Decided (2026-10-25): Geist (text) and Geist Mono (instrument).** Approved by the author in the first version of the dashboard. Open, on Google Fonts.
 
-- **2026-10-25:** primeira leva de 10 referências da Teenage Engineering e 15 do moodboard de retrofuturismo.
-- **2026-10-25:** board de interface com 66 pins, 4 deles marcados como principais.
+---
+
+## 7. Decisions
+
+### Made
+
+| Date | Decision | Origin |
+|---|---|---|
+| 2026-10-25 | Typography: Geist + Geist Mono | Approved in dashboard v0.1 |
+| 2026-10-25 | Solid color canvas. **The construction grid is not used as an interface background**. It remains a resource for illustration and graphic pieces | Author's request in dashboard v0.1 |
+| 2026-10-25 | v0.1 primitives created as tokens (provisional in values, final in structure): cool neutrals, orange `#f15033` + `#b8321a` for text, spacing 8/16/32/64, radius 4/10/full, 1px line | `system/tokens/`, `system/foundations.html` |
+| 2026-10-25 | `neutral.400` (`#bdbdbd`) exists only for the data scale, never surface or text | Task age scale |
+| 2026-10-25 | Canvas `neutral.100` changes from `#e6e6e6` to **`#eaeaea`** | Author's choice |
+| 2026-10-25 | Signal becomes **`#f35919`** (previously `#f15033`). The text version becomes `#b5400c`, same hue | `references/palette/orange-circles-grid.png`, exact sampled flat color |
+| 2026-10-25 | No `data-*` roles: charts use the neutral primitives directly. Semantic only when it adds meaning | Author's request: less complexity |
+| 2026-10-25 | `neutral.500` (`#858585`) joins the scale: mid gray for icons, placeholders and non-text graphics (3.5:1 on the panel) | Author's request |
+| 2026-10-25 | Button gets a glow on hover, in the variant color. An exception to the no-shadow rule, only as a response to interaction | Author's request |
+| 2026-10-25 | Data scale becomes `neutral.200` (`#dddddd`) · `400` (`#a3a3a3`, previously `#bdbdbd`) · `600` · `900`: the two light tones were nearly identical (1.2:1). Now each step differs ≥1.8:1 from its neighbor | Author's request in the dashboard |
+| 2026-10-25 | Labels become **chips** (pill, sentence case, no hover), so they are not confused with buttons. The rectangular "block label" stays only for graphic pieces | Author's request in the dashboard |
+| 2026-10-25 | Table cells always vertically centered | Author's request |
+| 2026-10-25 | Basic elements in `system/css/elements.css`, demonstrated in `system/elements.html` | First version |
+
+### Open
+
+1. **Neutral temperature:** cool is in use (provisional). Warm raw (PO-80, Architectural Cream) remains an alternative. The system cannot mix the two. In the interfaces, 3 of the 4 main references are neutral gray and only `main-4` is cream.
+2. **Accent:** decided `#f35919` (see Made).
+3. **Dark background:** neutral black (`#111`) or greenish Iron Core (`#222A2A`)? Depends on decision 1.
+4. **Illustration palette:** have a secondary palette only for illustration (aqua, amber) or illustrate only with the system palette?
+5. **Display:** is a third typographic slot (rounded or LCD) needed for covers?
+6. **Status color:** will the system have green and red for data change, or only the accent marking the exception?
+7. **Color variant:** blue (`#1850A8`) as the only alternative variant to orange, swapping only the color?
+
+## 8. History
+
+- **2026-10-25:** first batch of 10 Teenage Engineering references and 15 from the retrofuturism moodboard.
+- **2026-10-25:** interface board with 66 pins, 4 of them marked as main.

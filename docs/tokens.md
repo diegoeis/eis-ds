@@ -1,165 +1,165 @@
-# Tokens — formato e convenções
+# Tokens — format and conventions
 
-Os tokens do eis-ds seguem o **Design Tokens Format Module 2025.10** do W3C Design Tokens Community Group (DTCG), junto com os módulos irmãos de Cor e Resolver da mesma versão.
+eis-ds tokens follow the **Design Tokens Format Module 2025.10** from the W3C Design Tokens Community Group (DTCG). They also follow the sibling Color and Resolver modules of the same version.
 
 - Format: https://www.w3.org/community/reports/design-tokens/CG-FINAL-format-20251028/
 - Color: https://www.w3.org/community/reports/design-tokens/CG-FINAL-color-20251028/
 - Resolver: https://www.w3.org/community/reports/design-tokens/CG-FINAL-resolver-20251028/
 
-> É um relatório final de Community Group, não um W3C Standard. O próprio documento se declara estável e pronto para implementação. Quando a spec usa MUST/SHOULD, aqui vale o mesmo peso.
+> This is a final Community Group report, not a W3C Standard. The document itself declares it stable and ready for implementation. When the spec uses MUST/SHOULD, the same weight applies here.
 
-Este documento diz **como** escrever tokens. **Quais** tokens existem e por quê fica em `docs/` à medida que a linha visual é definida.
+This document says **how** to write tokens. **Which** tokens exist and why lives in `docs/` as the visual direction is defined.
 
 ---
 
-## 1. Fonte da verdade
+## 1. Source of truth
 
-- Os arquivos `.tokens.json` são a única fonte da verdade. Todo o resto (CSS, prompts, documentação visual) é derivado deles.
-- Nunca edite um valor direto no CSS derivado. Mude o token e regenere.
-- Extensão: `.tokens.json` (a spec recomenda `.tokens` ou `.tokens.json`; usamos a segunda para os editores abrirem como JSON).
-- Media type, se algum dia for servido: `application/design-tokens+json`.
-- JSON puro (RFC 8259). Sem comentários, sem vírgula sobrando. Explicações vão em `$description`.
+- The `.tokens.json` files are the only source of truth. Everything else (CSS, prompts, visual documentation) is derived from them.
+- Never edit a value directly in the derived CSS. Change the token and regenerate.
+- Extension: `.tokens.json`. The spec recommends `.tokens` or `.tokens.json`. We use `.tokens.json` so editors open the files as JSON.
+- Media type, if ever served: `application/design-tokens+json`.
+- Plain JSON (RFC 8259). No comments, no trailing commas. Explanations go in `$description`.
 
-## 2. Anatomia de um token
+## 2. Anatomy of a token
 
-Um objeto com `$value` é um token. Um objeto sem `$value` é um grupo.
+An object with `$value` is a token. An object without `$value` is a group.
 
 ```json
 {
   "color": {
     "$type": "color",
-    "$description": "Cores primitivas. Não usar direto em peças; usar os papéis semânticos.",
+    "$description": "Primitive colors. Do not use directly in pieces; use the semantic roles.",
     "neutral": {
       "900": {
         "$value": { "colorSpace": "srgb", "components": [0.067, 0.067, 0.067], "hex": "#111111" },
-        "$description": "Tinta principal."
+        "$description": "Primary ink."
       }
     }
   }
 }
 ```
 
-Propriedades reservadas (prefixo `$`):
+Reserved properties (`$` prefix):
 
-| Propriedade | Onde | Uso no eis-ds |
+| Property | Where | Use in eis-ds |
 |---|---|---|
-| `$value` | token | **Obrigatório.** |
-| `$type` | token ou grupo | **Obrigatório**, declarado no grupo de nível mais alto possível e herdado pelos filhos. Ferramentas não podem adivinhar o tipo pelo valor. |
-| `$description` | token ou grupo | **Obrigatório em todo token.** Diz o papel e quando usar, não repete o valor. |
-| `$deprecated` | token ou grupo | `true` ou uma string apontando o substituto. Token não é apagado sem passar por aqui primeiro. |
-| `$extensions` | token ou grupo | Dados próprios, sempre sob a chave `com.diegoeis.eis-ds`. Ex.: proveniência da decisão. |
-| `$extends` | grupo | Herda outro grupo (deep merge). Evitar, exceto se um modo realmente for uma variação de outro. |
-| `$root` | dentro de grupo | Token "padrão" de um grupo que também tem variações (`color.accent.$root`, `color.accent.strong`). |
+| `$value` | token | **Required.** |
+| `$type` | token or group | **Required**, declared on the highest possible group and inherited by children. Tools cannot guess the type from the value. |
+| `$description` | token or group | **Required on every token.** States the role and when to use it. Does not repeat the value. |
+| `$deprecated` | token or group | `true` or a string pointing to the replacement. A token is never deleted without passing through here first. |
+| `$extensions` | token or group | Custom data, always under the `com.diegoeis.eis-ds` key. E.g.: provenance of the decision. |
+| `$extends` | group | Inherits another group (deep merge). Avoid, unless a mode really is a variation of another. |
+| `$root` | inside a group | "Default" token of a group that also has variations (`color.accent.$root`, `color.accent.strong`). |
 
-## 3. Nomes
+## 3. Names
 
-**Regras da spec (MUST):**
-- Nomes não começam com `$`.
-- Nomes não contêm `{`, `}` ou `.`.
-- Nomes diferenciam maiúsculas de minúsculas.
+**Spec rules (MUST):**
+- Names do not start with `$`.
+- Names do not contain `{`, `}` or `.`.
+- Names are case-sensitive.
 
-**Convenções do eis-ds:**
-- Tudo em minúsculas, `kebab-case`, sem espaços nem acentos: `line-height`, não `Line Height`.
-- Nunca dois nomes que diferem só na caixa.
-- Caminho = categoria › propriedade › variante, do geral para o específico: `color.neutral.900`, `space.200`, `font.size.300`.
-- Escalas numéricas usam passos de 100 (`100`, `200`, `300`…) para deixar espaço de inserção sem renomear.
-- O nome do primitivo descreve **o que é** (`neutral.900`). O nome semântico descreve **para que serve** (`surface.base`, `ink.primary`). Nunca misturar.
+**eis-ds conventions:**
+- All lowercase, `kebab-case`, no spaces or accents: `line-height`, not `Line Height`.
+- Never two names that differ only in case.
+- Path = category › property › variant, from general to specific: `color.neutral.900`, `space.200`, `font.size.300`.
+- Numeric scales use steps of 100 (`100`, `200`, `300`…) to leave room for insertion without renaming.
+- A primitive name describes **what it is** (`neutral.900`). A semantic name describes **what it is for** (`surface.base`, `ink.primary`). Never mix them.
 
-**Do caminho para o CSS:** troque `.` por `-` e prefixe com `--`.
-`color.neutral.900` → `--color-neutral-900`. Para `$root`, o segmento some: `color.accent.$root` → `--color-accent`.
+**From path to CSS:** replace `.` with `-` and prefix with `--`.
+`color.neutral.900` → `--color-neutral-900`. For `$root`, the segment is dropped: `color.accent.$root` → `--color-accent`.
 
-## 4. Camadas
+## 4. Layers
 
-| Camada | Pasta | Conteúdo | Quem consome |
+| Layer | Folder | Content | Consumed by |
 |---|---|---|---|
-| Primitivos | `system/tokens/primitive/` | Valores crus: a paleta, a escala de espaço, as fontes. | Peças, para tudo que não tem papel semântico. |
-| Semânticos | `system/tokens/semantic/` | Papéis de cor que carregam significado (`surface`, `ink`, `line`, `signal`) e estilos de texto. Apontam para primitivos por referência. | Peças, sempre que o papel existir. |
+| Primitives | `system/tokens/primitive/` | Raw values: the palette, the space scale, the fonts. | Pieces, for everything without a semantic role. |
+| Semantics | `system/tokens/semantic/` | Color roles that carry meaning (`surface`, `ink`, `line`, `signal`) and text styles. They point to primitives by reference. | Pieces, whenever the role exists. |
 
-- **Semântico só quando acrescenta significado.** Um papel existe se diz *para que serve* uma cor (fundo, texto, linha, sinal) ou se vai mudar entre modos. Um alias que só renomeia um primitivo é complexidade sem ganho e não entra.
-- **Usar o primitivo direto é o normal** para espaço, raio, borda, tamanho e peso de fonte, e para a escala de cinza de gráficos (`--color-neutral-200 · 400 · 600 · 900`).
-- **Cor de superfície, texto, linha e sinal sempre pelo papel** (`--surface-panel`, `--ink-muted`, `--signal`), nunca pelo primitivo, porque é isso que troca quando um modo novo entrar.
-- Ao criar o modo escuro, reavaliar a escala de gráficos: se ela precisar se inverter, aí sim ganha papéis semânticos.
+- **Semantic only when it adds meaning.** A role exists if it says *what a color is for* (background, text, line, signal) or if it will change between modes. An alias that only renames a primitive is complexity with no gain and is not added.
+- **Using the primitive directly is normal** for space, radius, border, font size and weight, and for the chart gray scale (`--color-neutral-200 · 400 · 600 · 900`).
+- **Surface, text, line and signal colors always through the role** (`--surface-panel`, `--ink-muted`, `--signal`), never through the primitive, because that is what changes when a new mode is added.
+- When creating dark mode, reassess the chart scale: if it needs to invert, then it gets semantic roles.
 
-## 5. Referências (aliases)
+## 5. References (aliases)
 
-- Sintaxe padrão: chaves com o caminho completo, `"$value": "{color.neutral.900}"`.
-- Uma referência aponta para um **token**, nunca para um grupo. Para o padrão de um grupo, use `{color.accent.$root}`.
-- Referências encadeadas são permitidas (`a → b → c`). Referência circular é erro.
-- Tipo não precisa ser repetido num alias; ele herda o tipo do token referenciado.
-- JSON Pointer (`{ "$ref": "#/color/neutral/900/$value/components/0" }`) só quando for preciso pegar uma parte de um valor composto. No eis-ds isso deve ser raro.
+- Standard syntax: curly braces with the full path, `"$value": "{color.neutral.900}"`.
+- A reference points to a **token**, never to a group. For a group's default, use `{color.accent.$root}`.
+- Chained references are allowed (`a → b → c`). A circular reference is an error.
+- The type does not need to be repeated in an alias. It inherits the type of the referenced token.
+- JSON Pointer (`{ "$ref": "#/color/neutral/900/$value/components/0" }`) only when you need part of a composite value. In eis-ds this should be rare.
 
-## 6. Tipos permitidos
+## 6. Allowed types
 
-Todo token usa um tipo da spec. Estes são os que o eis-ds usa:
+Every token uses a spec type. These are the ones eis-ds uses:
 
-| Tipo | Valor | Uso no eis-ds |
+| Type | Value | Use in eis-ds |
 |---|---|---|
-| `color` | objeto `{ colorSpace, components, alpha?, hex? }` | Paleta. |
-| `dimension` | `{ "value": 16, "unit": "px" }`, unidade só `px` ou `rem` | Espaço, raio, espessura de linha, tamanho de fonte. `unit` obrigatório até para 0. |
-| `fontFamily` | string ou array, do mais preferido ao fallback | Famílias tipográficas. |
-| `fontWeight` | número 1–1000 ou alias (`regular`, `bold`…) | Pesos. Preferimos **número**. |
-| `number` | número JSON | Entrelinha (multiplicador do tamanho), proporções. |
-| `typography` | composto: `fontFamily`, `fontSize`, `fontWeight`, `letterSpacing`, `lineHeight` | Estilos de texto, montados por referência aos primitivos. |
-| `border` | composto: `color`, `width`, `style` | Se o sistema tiver bordas. |
-| `shadow` | composto: `color`, `offsetX`, `offsetY`, `blur`, `spread`, `inset?` | Somente se o sistema decidir ter sombra. |
+| `color` | object `{ colorSpace, components, alpha?, hex? }` | Palette. |
+| `dimension` | `{ "value": 16, "unit": "px" }`, unit only `px` or `rem` | Space, radius, line thickness, font size. `unit` required even for 0. |
+| `fontFamily` | string or array, from most preferred to fallback | Typefaces. |
+| `fontWeight` | number 1–1000 or alias (`regular`, `bold`…) | Weights. We prefer **number**. |
+| `number` | JSON number | Line height (multiplier of the size), ratios. |
+| `typography` | composite: `fontFamily`, `fontSize`, `fontWeight`, `letterSpacing`, `lineHeight` | Text styles, built by reference to primitives. |
+| `border` | composite: `color`, `width`, `style` | If the system has borders. |
+| `shadow` | composite: `color`, `offsetX`, `offsetY`, `blur`, `spread`, `inset?` | Only if the system decides to have shadows. |
 
-Fora de escopo por enquanto: `duration`, `cubicBezier`, `transition`, `gradient`, `strokeStyle`. Entram se e quando forem decididos.
+Out of scope for now: `duration`, `cubicBezier`, `transition`, `gradient`, `strokeStyle`. They are added if and when decided.
 
-### 6.1 Cor
+### 6.1 Color
 
-- `colorSpace`: **`srgb`**. Emails, imagens geradas e a maioria das ferramentas só entendem sRGB. Outro espaço de cor (`oklch`, `display-p3`) só com decisão registrada.
-- `components`: `[r, g, b]` de 0 a 1, até 3 casas decimais.
-- `hex`: **sempre preenchido** no eis-ds (na spec é opcional). Seis dígitos, minúsculas: `#f05627`. É o valor usado em email, prompts de imagem e conferência humana.
-- `components` e `hex` têm de representar a mesma cor. Na dúvida, o `hex` é o que vale e os `components` são recalculados a partir dele.
-- `alpha`: só quando for diferente de 1. A transparência fica no `alpha`; o `hex` continua com seis dígitos.
+- `colorSpace`: **`srgb`**. Emails, generated images and most tools only understand sRGB. Another color space (`oklch`, `display-p3`) only with a recorded decision.
+- `components`: `[r, g, b]` from 0 to 1, up to 3 decimal places.
+- `hex`: **always filled in** in eis-ds (optional in the spec). Six digits, lowercase: `#f05627`. It is the value used in email, image prompts and human review.
+- `components` and `hex` must represent the same color. When in doubt, `hex` wins and `components` are recalculated from it.
+- `alpha`: only when different from 1. Transparency goes in `alpha`. `hex` stays at six digits.
 
-### 6.2 Dimensão
+### 6.2 Dimension
 
-- Unidade canônica: **`px`**. Slides, imagens e email trabalham em pixel, e a conversão para `rem` (÷16) pode ser feita na saída para web.
-- Valores inteiros sempre que possível.
+- Canonical unit: **`px`**. Slides, images and email work in pixels, and conversion to `rem` (÷16) can be done at web output.
+- Integer values whenever possible.
 
-## 7. Modos
+## 7. Modes
 
-Modos (claro, escuro, papel…) seguem o **Resolver Module 2025.10**:
+Modes (light, dark, paper…) follow the **Resolver Module 2025.10**:
 
-- Um arquivo `system/tokens/eis-ds.resolver.json` declara os conjuntos (`sets`) fixos, isto é, os primitivos, e um modificador `mode` com um contexto por modo, cada um apontando para seu arquivo semântico.
-- Primitivos são únicos para todos os modos. Só a camada semântica muda.
-- Todo modo define **o mesmo conjunto de nomes**. Um papel que existe em um modo existe em todos.
-- O modo padrão é declarado em `default`.
-- **Hoje só existe o modo claro.** Como um modificador com um único contexto é erro pela spec, o resolver tem apenas dois `sets` (`primitive`, `semantic`). O modificador `mode` entra junto com o segundo modo.
-- Observação: a spec do Resolver se contradiz sobre o `version` obrigatório (`2025-10-01` na tabela, `2025-11-01` no texto). Usamos `2025-10-01` até haver errata.
+- A `system/tokens/eis-ds.resolver.json` file declares the fixed `sets`, i.e. the primitives, and a `mode` modifier with one context per mode, each pointing to its semantic file.
+- Primitives are shared by all modes. Only the semantic layer changes.
+- Every mode defines **the same set of names**. A role that exists in one mode exists in all.
+- The default mode is declared in `default`.
+- **Today only light mode exists.** Since a modifier with a single context is an error per the spec, the resolver has only two `sets` (`primitive`, `semantic`). The `mode` modifier is added together with the second mode.
+- Note: the Resolver spec contradicts itself on the required `version` (`2025-10-01` in the table, `2025-11-01` in the text). We use `2025-10-01` until there is an erratum.
 
-## 8. Do token para o CSS
+## 8. From token to CSS
 
-Cada token vira uma CSS custom property nativa. Regras de conversão:
+Each token becomes a native CSS custom property. Conversion rules:
 
-| Tipo | Saída CSS |
+| Type | CSS output |
 |---|---|
-| `color` | o `hex`. Com `alpha` < 1: `rgb(r g b / a)` |
+| `color` | the `hex`. With `alpha` < 1: `rgb(r g b / a)` |
 | `dimension` | `16px` |
-| `fontFamily` | lista separada por vírgula, nomes com espaço entre aspas, genérico (`sans-serif`, `serif`, `monospace`) sempre por último |
-| `fontWeight` | número |
-| `number` | número |
-| alias | `var(--caminho-do-referenciado)`, para a cadeia continuar viva no CSS |
-| `typography` | não existe variável composta em CSS: vira uma variável por propriedade (`--type-body-font-size`, `--type-body-line-height`…) **e** uma classe `.eis-type-<nome>` que aplica todas (`text-transform: uppercase` no `label`) |
-| `border`, `shadow` | a forma abreviada do CSS (`1px solid var(--…)`, `0 2px 8px 0 rgb(…)`) |
+| `fontFamily` | comma-separated list, names with spaces in quotes, generic (`sans-serif`, `serif`, `monospace`) always last |
+| `fontWeight` | number |
+| `number` | number |
+| alias | `var(--path-of-referenced)`, so the chain stays live in the CSS |
+| `typography` | CSS has no composite variable: it becomes one variable per property (`--type-body-font-size`, `--type-body-line-height`…) **and** a `.eis-type-<name>` class that applies them all (`text-transform: uppercase` on `label`) |
+| `border`, `shadow` | the CSS shorthand (`1px solid var(--…)`, `0 2px 8px 0 rgb(…)`) |
 
-Modos no CSS: o modo padrão fica em `:root`, os outros em `[data-mode="<nome>"]`, redefinindo **apenas** variáveis semânticas.
+Modes in CSS: the default mode goes in `:root`, the others in `[data-mode="<name>"]`, redefining **only** semantic variables.
 
-A conversão é feita por `scripts/build-tokens.py` (Python, só stdlib), que também roda o checklist do §10 antes de escrever `system/css/tokens.css`. `letterSpacing` fica em `px` porque a spec não aceita `em`; o valor é calculado para o tamanho em que o estilo é usado (ex.: `0.88px` = 0.08em a 11px).
+Conversion is done by `scripts/build-tokens.py` (Python, stdlib only), which also runs the §10 checklist before writing `system/css/tokens.css`. `letterSpacing` stays in `px` because the spec does not accept `em`. The value is calculated for the size at which the style is used (e.g.: `0.88px` = 0.08em at 11px).
 
-## 9. Fora do CSS
+## 9. Outside CSS
 
-Prompts para geradores de imagem e ferramentas que não leem CSS recebem os valores resolvidos em texto simples: hex, px, nome da fonte. O `$description` de cada token é escrito pensando nesse uso, explicando o papel em linguagem comum.
+Prompts for image generators and tools that do not read CSS receive the resolved values as plain text: hex, px, font name. Each token's `$description` is written with this use in mind, explaining the role in plain language.
 
-## 10. Checklist antes de dar um token como pronto
+## 10. Checklist before marking a token as done
 
-- [ ] `$type` presente (no token ou herdado do grupo)
-- [ ] `$description` explica o papel
-- [ ] nome em minúsculas e kebab-case, sem `{`, `}`, `.` ou `$`
-- [ ] cor com `colorSpace: srgb`, `components` e `hex` coerentes entre si
-- [ ] dimensão com `unit`
-- [ ] referências resolvem e não formam ciclo
-- [ ] se for semântico, existe em todos os modos
-- [ ] contraste medido, se for par de texto e fundo
-- [ ] proveniência registrada em `$extensions["com.diegoeis.eis-ds"].source`, quando vier de uma referência
+- [ ] `$type` present (on the token or inherited from the group)
+- [ ] `$description` explains the role
+- [ ] name lowercase and kebab-case, without `{`, `}`, `.` or `$`
+- [ ] color with `colorSpace: srgb`, `components` and `hex` consistent with each other
+- [ ] dimension with `unit`
+- [ ] references resolve and do not form a cycle
+- [ ] if semantic, exists in all modes
+- [ ] contrast measured, if it is a text/background pair
+- [ ] provenance recorded in `$extensions["com.diegoeis.eis-ds"].source`, when it comes from a reference

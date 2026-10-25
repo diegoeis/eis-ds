@@ -63,4 +63,5 @@ A project needs `src/shared/` and one scope. `site/` and `docs/` document the sy
 - No frameworks (React, Tailwind and similar).
 - Show a visual decision in HTML before it becomes a token.
 - Measure contrast. Never estimate it.
+- Every HTML page published on GitHub Pages has the Google Tag Manager snippet (`GTM-KWLTJ7HD`): the script first in `<head>`, the `noscript` first in `<body>`. Copy it from `index.html`.
 - Temporary files start with `_`. Delete them after use.

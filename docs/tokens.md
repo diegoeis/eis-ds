@@ -76,7 +76,7 @@ Propriedades reservadas (prefixo `$`):
 | Semânticos | `system/tokens/semantic/` | Papéis de cor que carregam significado (`surface`, `ink`, `line`, `signal`) e estilos de texto. Apontam para primitivos por referência. | Peças, sempre que o papel existir. |
 
 - **Semântico só quando acrescenta significado.** Um papel existe se diz *para que serve* uma cor (fundo, texto, linha, sinal) ou se vai mudar entre modos. Um alias que só renomeia um primitivo é complexidade sem ganho e não entra.
-- **Usar o primitivo direto é o normal** para espaço, raio, borda, tamanho e peso de fonte, e para a escala de cinza de gráficos (`--color-neutral-300 · 400 · 600 · 900`).
+- **Usar o primitivo direto é o normal** para espaço, raio, borda, tamanho e peso de fonte, e para a escala de cinza de gráficos (`--color-neutral-200 · 400 · 600 · 900`).
 - **Cor de superfície, texto, linha e sinal sempre pelo papel** (`--surface-panel`, `--ink-muted`, `--signal`), nunca pelo primitivo, porque é isso que troca quando um modo novo entrar.
 - Ao criar o modo escuro, reavaliar a escala de gráficos: se ela precisar se inverter, aí sim ganha papéis semânticos.
 

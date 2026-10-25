@@ -38,6 +38,18 @@
           }
         }
       },
+      "200": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.867,
+            0.867,
+            0.867
+          ],
+          "hex": "#dddddd"
+        },
+        "$description": "Data visualisation only: lowest step of the chart ramp (200 · 400 · 600 · 900). Never a surface or a text colour."
+      },
       "300": {
         "$value": {
           "colorSpace": "srgb",
@@ -59,13 +71,18 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.741,
-            0.741,
-            0.741
+            0.639,
+            0.639,
+            0.639
           ],
-          "hex": "#bdbdbd"
+          "hex": "#a3a3a3"
         },
-        "$description": "Data visualisation only: the light-mid step of a chart ramp. Never a surface or a text colour."
+        "$description": "Data visualisation only: second step of the chart ramp. Never a surface or a text colour.",
+        "$extensions": {
+          "com.diegoeis.eis-ds": {
+            "source": "was #bdbdbd; darkened 2026-10-25 so adjacent ramp steps differ by ≥1.8:1"
+          }
+        }
       },
       "600": {
         "$value": {

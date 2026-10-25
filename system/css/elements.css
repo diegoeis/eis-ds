@@ -43,7 +43,7 @@ code{font-family:var(--font-family-mono);font-size:var(--font-size-200)}
   letter-spacing:var(--font-letter-spacing-wide);line-height:var(--font-line-height-tight);text-transform:uppercase;
   transition:background-color .12s linear,border-color .12s linear,box-shadow .12s linear}
 .eis-button:hover{background:var(--bg-hover);border-color:var(--bd-hover);
-  box-shadow:0 0 0 3px color-mix(in srgb,var(--glow) 18%,transparent),0 4px 16px color-mix(in srgb,var(--glow) 28%,transparent)}
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--glow) 28%,transparent),0 4px 15px color-mix(in srgb,var(--glow) 64%,transparent)}
 .eis-button--primary{--bg:var(--surface-inverse);--fg:var(--ink-inverse);--bd:var(--surface-inverse);
   --bg-hover:color-mix(in srgb,var(--surface-inverse) 80%,var(--surface-panel));--bd-hover:var(--bg-hover);--glow:var(--surface-inverse)}
 .eis-button--signal{--bg:var(--signal);--fg:var(--signal-on);--bd:var(--signal);

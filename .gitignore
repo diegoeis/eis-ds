@@ -3,3 +3,6 @@ __pycache__/
 *.pyc
 _*.html
 _*.png
+
+# Reference images live on Pinterest, not in the repo
+docs/visual-guidance/references/

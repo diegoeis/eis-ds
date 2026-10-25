@@ -32,7 +32,7 @@ site/                    the visual manual for humans (web scope). foundations.h
 docs/
   manual/                written usage rules: tokens, elements, layout and scopes
   tokens.md              token format
-  visual-guidance/       reference only: direction, images, decisions
+  visual-guidance/       reference only: direction, Pinterest links, decisions
 scripts/build-tokens.py  validates the tokens of every scope and generates each tokens.css
 scripts/check-css.py     checks that scopes never use each other's classes or variables
 ```
@@ -44,7 +44,7 @@ A project needs `src/shared/` and one scope. `site/` and `docs/` document the sy
 1. Token: edit the `.tokens.json` file of `shared` or of one scope. Run `python3 scripts/build-tokens.py`. If it fails, do not use the result.
 2. Element: change it in `src/shared/css/elements.css`. Scope component: change it in `src/<scope>/css/<scope>.css`. Then run `python3 scripts/check-css.py`. Show it on `elements.html`. Document it in `docs/manual/elements.md`.
 3. New example: put it in `site/examples/<kind>/`. Add a card on `examples.html`.
-4. New reference image: add it to the source table in `visual-guidance.md`.
+4. New reference: pin it on Pinterest and add the link to the source table in `visual-guidance.md`. Do not commit image files.
 
 ## Rules
 

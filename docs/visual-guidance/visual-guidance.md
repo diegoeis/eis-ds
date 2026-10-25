@@ -22,14 +22,16 @@ One sentence to guide any piece: **it looks like an equipment manual someone mad
 
 ## 2. Sources
 
+> The image files left the repository on 2026-10-25 to keep it small. The Pinterest links are now the source of record. Images without a link (Teenage Engineering screenshots, images sent directly) are not stored. Their observations stay in the tables below, and the values taken from them are already in the tokens.
+
 ### 2.1 Anchor: Teenage Engineering
 
 The starting point of the inspiration. The brand's product language and graphic communication are the base of the system.
 
 - Site: https://teenage.engineering/
-- Images in `references/te/`:
+- Screenshots of the site and products, not stored:
 
-| File | What it shows |
+| Reference | What it shows |
 |---|---|
 | `vinyl-sinus.png` | Record and sleeve: display typography, thin rules, brackets |
 | `ko2-flat.png` | EP–133 K.O. II from above: key grid, orange as signal, outlined title |
@@ -44,9 +46,9 @@ The starting point of the inspiration. The brand's product language and graphic 
 
 ### 2.2 Moodboard: retrofuturism (Pinterest)
 
-These widen the repertoire, mainly for **illustrations and images**. Images in `references/pinterest/`.
+These widen the repertoire, mainly for **illustrations and images**. Links below.
 
-| File | Pin | What it shows |
+| Reference | Pin | What it shows |
 |---|---|---|
 | `palette-modern-retro-industrial.jpg` | [1132233162604331330](https://br.pinterest.com/pin/1132233162604331330/) | "Modern Retro Industrial" palette, with published hex values (see §3.2) |
 | `retrofuturism-helmet-goggles.jpg` | [521925044333070995](https://br.pinterest.com/pin/521925044333070995/) | Portrait with helmet, pink and blue neon |
@@ -66,24 +68,24 @@ These widen the repertoire, mainly for **illustrations and images**. Images in `
 
 ### 2.4 Palette
 
-| File | Origin | What it shows |
+| Reference | Origin | What it shows |
 |---|---|---|
-| `references/palette/orange-circles-grid.png` | sent directly, no link | Cards in orange, cream, olive black and yellow with thin-line circle diagrams. **Source of the system orange** (`#f35919`). Also has cream `#f0f2e7`, olive black `#2c2e20` and yellow `#f3cd4e`, noted and not adopted |
+| `orange-circles-grid` | sent directly, no link, not stored | Cards in orange, cream, olive black and yellow with thin-line circle diagrams. **Source of the system orange** (`#f35919`). Also has cream `#f0f2e7`, olive black `#2c2e20` and yellow `#f3cd4e`, noted and not adopted |
 
 ### 2.3 Interface (Pinterest)
 
-UI references: sites, dashboards and apps. They define how the system behaves **on screen**. They come from the board [Interface Eis Design System References](https://br.pinterest.com/diegoeis/interface-eis-design-system-references/), with 66 pins as of 2026-10-25. Images in `references/interface/`.
+UI references: sites, dashboards and apps. They define how the system behaves **on screen**. They come from the board [Interface Eis Design System References](https://br.pinterest.com/diegoeis/interface-eis-design-system-references/), with 66 pins as of 2026-10-25.
 
 **Main**, chosen by the author and weighted more than the rest of the board:
 
-| File | Pin | What it shows |
+| Reference | Pin | What it shows |
 |---|---|---|
 | `main-1-layout-poster-pipeline.jpg` | [203647214397329946](https://br.pinterest.com/pin/203647214397329946/) | "How we manage your network" site: light gray with visible background grid, white cards, wireframe illustration, large thin title |
 | `main-2-dashboard-charts.jpg` | [203647214397329956](https://br.pinterest.com/pin/203647214397329956/) | Monochrome dashboard: labels and numbers in uppercase mono, bar chart made of cells, ruled table |
 | `main-3-analytics-dashboard.jpg` | [203647214397329953](https://br.pinterest.com/pin/203647214397329953/) | Analytics dashboard: grid heatmap, red only on anomalies, 1px separators |
 | `main-4-engineering-site.jpg` | [203647214397329912](https://br.pinterest.com/pin/203647214397329912/) | Engineering site: cream and orange, mono body text, orange section block with ruled table and isometric wireframe drawing |
 
-**Rest of the board**, in `references/interface/board/NN.ext`. The index with title, source link and size of each image is in `board/_index.json`. Grouped by what it shows:
+**Rest of the board**, numbered in board order as of 2026-10-25 (01 is the first pin). Grouped by what it shows:
 
 | Group | Numbers | What they add |
 |---|---|---|
@@ -236,7 +238,7 @@ Candidates will be compared side by side in HTML before the decision.
 | 2026-10-25 | v0.1 primitives created as tokens (provisional in values, final in structure): cool neutrals, orange `#f15033` + `#b8321a` for text, spacing 8/16/32/64, radius 4/10/full, 1px line | `src/tokens/`, `site/foundations.html` |
 | 2026-10-25 | `neutral.400` (`#bdbdbd`) exists only for the data scale, never surface or text | Task age scale |
 | 2026-10-25 | Canvas `neutral.100` changes from `#e6e6e6` to **`#eaeaea`** | Author's choice |
-| 2026-10-25 | Signal becomes **`#f35919`** (previously `#f15033`). The text version becomes `#b5400c`, same hue | `references/palette/orange-circles-grid.png`, exact sampled flat color |
+| 2026-10-25 | Signal becomes **`#f35919`** (previously `#f15033`). The text version becomes `#b5400c`, same hue | `orange-circles-grid` palette image, exact sampled flat color |
 | 2026-10-25 | No `data-*` roles: charts use the neutral primitives directly. Semantic only when it adds meaning | Author's request: less complexity |
 | 2026-10-25 | `neutral.500` (`#858585`) joins the scale: mid gray for icons, placeholders and non-text graphics (3.5:1 on the panel) | Author's request |
 | 2026-10-25 | Button gets a glow on hover, in the variant color. An exception to the no-shadow rule, only as a response to interaction | Author's request |
@@ -244,6 +246,7 @@ Candidates will be compared side by side in HTML before the decision.
 | 2026-10-25 | Labels become **chips** (pill, sentence case, no hover), so they are not confused with buttons. The rectangular "block label" stays only for graphic pieces | Author's request in the dashboard |
 | 2026-10-25 | Table cells always vertically centered | Author's request |
 | 2026-10-25 | Basic elements in `src/css/elements.css`, demonstrated in `site/elements.html` | First version |
+| 2026-10-25 | Reference images removed from the repository. Pinterest links are the source of record | Keep the repository small (82 MB of images) |
 | 2026-10-25 | Scopes: `src/shared/` (tokens, base, elements, one `shared.css` entry), `src/web/` (sites and docs) and `src/app/` (dashboards). Scope tokens reference shared ones. Prefixes `eis-web-`/`--web-` and `eis-app-`/`--app-`, checked by `scripts/check-css.py` | Several systems in one: same colours and spacing, no conflicts. Copy shared + one scope to start a project |
 
 ### Open

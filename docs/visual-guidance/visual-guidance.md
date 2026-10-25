@@ -179,7 +179,7 @@ Rascunho das regras que viram norma quando os tokens forem aprovados:
 - **Grid visível ou implícito, nunca quebrado.** Alinhar é obrigatório; assimetria vem da composição, não do desalinhamento.
 - **Vazio é material.** Uma peça com pouca coisa e muito espaço está certa; cheia está errada.
 - **Texto pequeno em caixa alta e espaçado** é rótulo; texto corrido é sempre em caixa normal.
-- **Sem sombra, sem gradiente e sem brilho** na linguagem do sistema. Ilustração pode ter textura, mas não pode ter efeito.
+- **Sem sombra, sem gradiente e sem brilho** na linguagem do sistema. Ilustração pode ter textura, mas não pode ter efeito. Única exceção: o glow do botão no hover, como resposta à interação, nunca em repouso.
 - **Dois níveis de superfície em tela**: canvas e painel. Um terceiro nível é sinal de que a composição precisa de fio, não de mais uma caixa.
 - **Toda borda e todo fio usam `--line`.** Tinta (`--ink`) nunca contorna forma, painel ou card. A única exceção é o contorno de controle interativo (checkbox, campo), que usa `--ink-muted` para ter contraste suficiente (WCAG pede 3:1 para componentes).
 - **Número e rótulo em mono, texto em grotesca.** A mono é a voz do instrumento; a grotesca é a voz do texto.
@@ -236,6 +236,7 @@ Os candidatos serão comparados lado a lado em HTML antes da decisão.
 | 2026-10-25 | Canvas `neutral.100` passa de `#e6e6e6` para **`#eaeaea`** | Escolha do autor |
 | 2026-10-25 | Sinal passa a **`#f35919`** (antes `#f15033`); a versão para texto passa a `#b5400c`, mesmo matiz | `references/palette/orange-circles-grid.png`, cor chapada amostrada exata |
 | 2026-10-25 | Sem papéis `data-*`: gráficos usam os neutros primitivos direto. Semântico só quando acrescenta significado | Pedido do autor: menos complexidade |
+| 2026-10-25 | Botão ganha glow no hover, na cor da variante. Exceção à regra de não ter sombra, só como resposta à interação | Pedido do autor |
 | 2026-10-25 | Escala de dado passa a `neutral.200` (`#dddddd`) · `400` (`#a3a3a3`, antes `#bdbdbd`) · `600` · `900`: os dois tons claros estavam quase iguais (1,2:1); agora cada passo difere ≥1,8:1 do vizinho | Pedido do autor no dashboard |
 | 2026-10-25 | Etiquetas viram **chips** (pílula, caixa normal, sem hover), para não confundir com botões. O "block label" retangular fica só para peças gráficas | Pedido do autor no dashboard |
 | 2026-10-25 | Células de tabela sempre centralizadas na vertical | Pedido do autor |

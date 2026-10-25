@@ -35,28 +35,30 @@ code{font-family:var(--font-family-mono);font-size:var(--font-size-200)}
 
 /* ---------- button: rectangle, uppercase mono. Acts. ---------- */
 .eis-button{--bg:var(--surface-panel);--fg:var(--ink);--bd:var(--line);
-  --bg-hover:var(--surface-canvas);--bd-hover:var(--ink-muted);
+  --bg-hover:var(--surface-canvas);--bd-hover:var(--ink-muted);--glow:var(--ink-muted);
   display:inline-flex;align-items:center;justify-content:center;gap:var(--space-100);
   min-height:40px;padding:0 var(--space-200);border:var(--border-width-100) solid var(--bd);border-radius:var(--radius-100);
   background:var(--bg);color:var(--fg);cursor:pointer;text-decoration:none;white-space:nowrap;
   font-family:var(--font-family-mono);font-size:var(--font-size-200);font-weight:var(--font-weight-medium);
   letter-spacing:var(--font-letter-spacing-wide);line-height:var(--font-line-height-tight);text-transform:uppercase;
-  transition:background-color .12s linear,border-color .12s linear}
-.eis-button:hover{background:var(--bg-hover);border-color:var(--bd-hover)}
+  transition:background-color .12s linear,border-color .12s linear,box-shadow .12s linear}
+.eis-button:hover{background:var(--bg-hover);border-color:var(--bd-hover);
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--glow) 18%,transparent),0 4px 16px color-mix(in srgb,var(--glow) 28%,transparent)}
 .eis-button--primary{--bg:var(--surface-inverse);--fg:var(--ink-inverse);--bd:var(--surface-inverse);
-  --bg-hover:color-mix(in srgb,var(--surface-inverse) 80%,var(--surface-panel));--bd-hover:var(--bg-hover)}
+  --bg-hover:color-mix(in srgb,var(--surface-inverse) 80%,var(--surface-panel));--bd-hover:var(--bg-hover);--glow:var(--surface-inverse)}
 .eis-button--signal{--bg:var(--signal);--fg:var(--signal-on);--bd:var(--signal);
-  --bg-hover:color-mix(in srgb,var(--signal) 85%,var(--surface-panel));--bd-hover:var(--bg-hover)}
+  --bg-hover:color-mix(in srgb,var(--signal) 85%,var(--surface-panel));--bd-hover:var(--bg-hover);--glow:var(--signal)}
 .eis-button--ghost{--bg:transparent;--bd:transparent;--bg-hover:var(--surface-canvas);--bd-hover:transparent}
 .eis-button:disabled{opacity:.4;cursor:not-allowed}
-.eis-button:disabled:hover{background:var(--bg);border-color:var(--bd)}
+.eis-button:disabled:hover{background:var(--bg);border-color:var(--bd);box-shadow:none}
+.eis-button--ghost:hover{box-shadow:none}
 
-/* ---------- chip: pill, sentence case. Describes a state or filters; no hover. ---------- */
+/* ---------- chip: pill, sentence case. Describes a state; default cursor, no hover. ---------- */
 .eis-chip{--bg:var(--surface-canvas);--fg:var(--ink-muted);--bd:transparent;
   display:inline-flex;align-items:center;gap:6px;min-height:24px;padding:0 10px;
   border:var(--border-width-100) solid var(--bd);border-radius:var(--radius-full);background:var(--bg);color:var(--fg);
   font-family:var(--font-family-mono);font-size:var(--font-size-200);font-weight:var(--font-weight-regular);
-  line-height:var(--font-line-height-tight);white-space:nowrap;cursor:pointer}
+  line-height:var(--font-line-height-tight);white-space:nowrap;cursor:default}
 .eis-chip--outline{--bg:transparent;--bd:var(--line)}
 .eis-chip--solid{--bg:var(--surface-inverse);--fg:var(--ink-inverse)}
 .eis-chip--signal{--bg:var(--signal);--fg:var(--signal-on)}

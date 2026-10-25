@@ -137,6 +137,7 @@ code{font-family:var(--font-family-mono);font-size:var(--font-size-200)}
 .eis-disclosure summary{display:flex;align-items:baseline;gap:var(--space-200);cursor:pointer;list-style:none;padding:var(--space-200)}
 .eis-disclosure summary::-webkit-details-marker{display:none}
 .eis-disclosure summary::after{content:"+";margin-left:auto;font-family:var(--font-family-mono);color:var(--ink-muted)}
+.eis-disclosure[open] > summary{background:var(--surface-canvas);border-bottom:var(--border-width-100) solid var(--line)}
 .eis-disclosure[open] summary::after{content:"−"}
 
 /* ---------- avatar ---------- */

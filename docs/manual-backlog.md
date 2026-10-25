@@ -19,6 +19,7 @@ Regras de uso de elementos e de HTML/CSS que vão para o **manual do design syst
 
 ## Elementos
 - **Botão age, chip descreve.** Botão: retângulo, raio 4px, mono em caixa alta, tem hover. Chip: pílula, caixa normal, cursor padrão, sem hover. Status, categoria e etiqueta são sempre chip.
+- Disclosure aberto: o `summary` ganha fundo `--surface-canvas` (neutral.100) e fio embaixo, para o título se destacar do conteúdo.
 - Célula de tabela (`th` e `td`) sempre `vertical-align: middle`.
 - Toda borda e todo fio usam `--line`. Contorno de controle interativo usa `--ink-muted` (WCAG 3:1). Tinta cheia nunca contorna forma.
 - Hover: botão muda o fundo (secundário e ghost vão para o canvas; primário e signal clareiam 20/15% em direção ao painel via `color-mix`, o que mantém o contraste do texto). Checkbox, radio e switch escurecem o contorno e ganham fundo canvas; marcados clareiam. Botão ganha um glow no hover na cor da própria variante (`--glow`: cinza no secundário, preto no primário, laranja no signal; ghost e desabilitado sem glow). Transição de 120ms, linear.

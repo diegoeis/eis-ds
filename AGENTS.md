@@ -5,11 +5,11 @@ A visual design system in plain HTML and CSS. It contains primitives (colour, ty
 Version 0.1, draft. Only the light mode exists.
 
 ## Read before you change anything
-
-1. `docs/manual/` — how to use tokens and elements. MUST read before you build a piece.
-2. `docs/tokens.md` — the token format (W3C DTCG 2025.10). MUST read before you change a token.
-3. `docs/visual-guidance/visual-guidance.md` — visual direction, references and the decision log. Read it before you propose a new value.
-4. `site/` — the visual manual. Start at `site/foundations.html`.
+1. `README.md` — what the system is and how a project uses it.
+2. `docs/manual/` — how to use tokens and elements. MUST read before you build a piece.
+3. `docs/tokens.md` — the token format (W3C DTCG 2025.10). MUST read before you change a token.
+4. `docs/visual-guidance/visual-guidance.md` — visual direction, references and the decision log. Read it before you propose a new value.
+5. `site/` — the visual manual. Start at `site/foundations.html`.
 
 ## Structure
 
@@ -42,9 +42,10 @@ A project needs `src/shared/` and one scope. `site/` and `docs/` document the sy
 ## Workflow
 
 1. Token: edit the `.tokens.json` file of `shared` or of one scope. Run `python3 scripts/build-tokens.py`. If it fails, do not use the result.
-2. Element: change it in `src/shared/css/elements.css`. Scope component: change it in `src/<scope>/css/<scope>.css`. Then run `python3 scripts/check-css.py`. Show it on `elements.html`. Document it in `docs/manual/elements.md`.
+2. Element: change it in `src/shared/css/elements.css`, show it on `elements.html` and document it in `docs/manual/elements.md`. Scope component: change it in `src/<scope>/css/<scope>.css` and list it in `docs/manual/layout.md` §7. Then run `python3 scripts/check-css.py`.
 3. New example: put it in `site/examples/<kind>/`. Add a card on `examples.html`.
-4. New reference: pin it on Pinterest and add the link to the source table in `visual-guidance.md`. Do not commit image files.
+4. New scope (slides, email…): follow `docs/manual/layout.md` §7, "Add a scope".
+5. New reference: pin it on Pinterest and add the link to the source table in `visual-guidance.md`. Do not commit image files.
 
 ## Rules
 

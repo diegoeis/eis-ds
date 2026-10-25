@@ -8,7 +8,7 @@ Read these files in this order before you build anything:
 |---|---|
 | [`tokens-usage.md`](tokens-usage.md) | Which variable do I use for this colour, size, space, radius or line? |
 | [`elements.md`](elements.md) | What HTML and classes make a button, chip, field, table, panel…? Which variant? |
-| [`layout.md`](layout.md) | How do I set up a page: files to load, page skeleton, grids, responsiveness? |
+| [`layout.md`](layout.md) | How do I set up a page: files to load, page skeleton, grids, responsiveness, scopes (shared, web, app)? |
 | [`checklist.md`](checklist.md) | What must be true before a piece is done? |
 
 Related, not part of the manual:

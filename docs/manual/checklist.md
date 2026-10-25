@@ -53,6 +53,8 @@ Run this before calling a piece, element or token done. Every box must be true.
 ## When adding to the system
 
 - [ ] New token: in `src/shared/tokens/` (shared) or `src/<scope>/tokens/` (one scope), `python3 scripts/build-tokens.py` passes, shown on `foundations.html`, usage added to `tokens-usage.md`.
-- [ ] New or changed element: in `elements.css`, shown on `elements.html`, documented in `elements.md`.
+- [ ] New or changed element: in `src/shared/css/elements.css`, shown on `elements.html`, documented in `elements.md`.
+- [ ] New or changed scope component: in `src/<scope>/css/<scope>.css`, listed in `layout.md` §7, `check-css.py` passes.
+- [ ] New scope: steps in `layout.md` §7, "Add a scope".
 - [ ] New example: in `site/examples/<kind>/`, card on `examples.html`.
 - [ ] Decision recorded in `docs/visual-guidance/visual-guidance.md` §7.

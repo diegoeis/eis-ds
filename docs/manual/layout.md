@@ -43,6 +43,21 @@ A piece is a standalone HTML file. It loads, in this order:
 </html>
 ```
 
+A web page (website, landing, docs) uses the web scope instead:
+
+```html
+<body>
+  <div class="eis-web-sheet">
+    <header class="eis-web-wrap eis-web-grid eis-web-header">…</header>
+    <main>
+      <section class="eis-web-hero" aria-labelledby="hero-h">…</section>
+      <section class="eis-web-section" aria-labelledby="…">…</section>
+    </main>
+    <footer class="eis-web-wrap eis-web-grid eis-web-footer">…</footer>
+  </div>
+</body>
+```
+
 Element roles:
 
 | Region | Element |
@@ -152,3 +167,13 @@ Rules:
 | `eis-app-agenda`, `eis-app-cells`, `eis-app-legend`, `eis-app-bar`, `eis-app-pips` | Agenda list, cell matrix, legend, stacked bar, pips |
 | `eis-app-tasks`, `eis-app-meta`, `eis-app-due` | Task groups with tables, task metadata, due dates |
 | `eis-app-topics`, `eis-app-people`, `eis-app-done` | Side lists |
+
+### Add a scope
+
+1. Create `src/<scope>/tokens/<scope>.tokens.json`. Put every token under the group `<scope>`. Reference shared tokens where a value already exists.
+2. Create `src/<scope>/tokens/<scope>.resolver.json`. Copy `src/web/tokens/web.resolver.json` and change the names.
+3. Run `python3 scripts/build-tokens.py`. It finds the new scope and writes `src/<scope>/css/tokens.css`.
+4. Create `src/<scope>/css/<scope>.css`. Every selector starts with `.eis-<scope>-`.
+5. Run `python3 scripts/check-css.py`.
+6. Add the scope to the table at the top of this section, to `README.md` and to `AGENTS.md`. Add its tokens to `tokens-usage.md` §7.
+7. Add an example in `site/examples/<kind>/` and a card on `examples.html`.

@@ -53,6 +53,10 @@
 @media (max-width:1024px){
   .eis-swatches,.eis-type-card{grid-column:span 12}
 }
+.eis-start{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr));gap:var(--space-200);margin-top:var(--space-300)}
+.eis-start figure{display:grid;gap:var(--space-100);min-width:0;align-content:start}
+.eis-start .eis-web-code{margin-top:0;height:100%;white-space:pre-wrap;overflow-wrap:anywhere}
+.eis-start__note{margin-top:var(--space-200)}
 </style>
 <script src="src/web/js/lines.js" defer></script>
 </head>
@@ -218,31 +222,64 @@
         <div class="eis-web-grid">
           <header class="eis-web-section__head">
             <span class="eis-label">/05 · Get started</span>
-            <h2 id="adopt-h">From file to page in five steps.</h2>
+            <h2 id="adopt-h">From files to a page in five steps.</h2>
           </header>
-          <p class="eis-web-section__aside">No package to install. Copy <code>src/shared/</code> and one scope: <code>src/web/</code> for sites, <code>src/app/</code> for dashboards. Link them and write HTML.</p>
+          <p class="eis-web-section__aside">No package and no build. Copy <code>src/shared/</code> and one scope into your project. <code>web</code> is for websites and docs. <code>app</code> is for dashboards and tools.</p>
         </div>
         <ol class="eis-web-steps">
-          <li><strong>Fonts</strong><p>Load Geist and Geist Mono.</p></li>
-          <li><strong>Shared</strong><p>Link <code>shared.css</code>: tokens, base and elements.</p></li>
-          <li><strong>Scope</strong><p>Link one scope: <code>web</code> or <code>app</code>.</p></li>
-          <li><strong>Build</strong><p>Native HTML with <code>eis-</code> classes. Layout CSS only.</p></li>
-          <li><strong>Check</strong><p>Run the checklist in the manual.</p></li>
+          <li><strong>Copy</strong><p><code>src/shared/</code> plus <code>src/web/</code> or <code>src/app/</code>.</p></li>
+          <li><strong>Fonts</strong><p>Load Geist and Geist Mono from Google Fonts.</p></li>
+          <li><strong>Link</strong><p><code>shared.css</code> first, then the scope's <code>tokens.css</code> and stylesheet.</p></li>
+          <li><strong>Build</strong><p>Native HTML with shared <code>eis-</code> classes and your scope's classes. Your own CSS is layout only.</p></li>
+          <li><strong>Check</strong><p>Run the <a class="eis-link" href="docs/manual/checklist.md">checklist</a> in the manual.</p></li>
         </ol>
-<pre class="eis-web-code"><code><span class="c">&lt;!-- 1 · fonts --&gt;</span>
-&lt;link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet"&gt;
+        <div class="eis-start">
+          <figure>
+            <figcaption class="eis-label">Website or docs · shared + web</figcaption>
+<pre class="eis-web-code"><code><span class="c">&lt;!-- fonts --&gt;</span>
+&lt;link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&amp;family=Geist+Mono:ital,wght@0,300;0,400;0,500;1,400&amp;display=swap" rel="stylesheet"&gt;
 
-<span class="c">&lt;!-- 2 · shared: tokens, base and elements in one file --&gt;</span>
-&lt;link rel="stylesheet" href="src/shared/shared.css"&gt;
-<span class="c">&lt;!-- 3 · one scope: web for sites and docs, app for dashboards --&gt;</span>
-&lt;link rel="stylesheet" href="src/web/css/tokens.css"&gt;
-&lt;link rel="stylesheet" href="src/web/css/web.css"&gt;
+<span class="c">&lt;!-- shared: tokens, base and elements in one file --&gt;</span>
+&lt;link rel="stylesheet" href="eis-ds/shared/shared.css"&gt;
+<span class="c">&lt;!-- web scope --&gt;</span>
+&lt;link rel="stylesheet" href="eis-ds/web/css/tokens.css"&gt;
+&lt;link rel="stylesheet" href="eis-ds/web/css/web.css"&gt;
+<span class="c">&lt;!-- optional: line art --&gt;</span>
+&lt;script src="eis-ds/web/js/lines.js" defer&gt;&lt;/script&gt;
 
-<span class="c">&lt;!-- 4 · build --&gt;</span>
-&lt;section class="eis-panel"&gt;
-  &lt;button class="eis-button eis-button--primary"&gt;Save&lt;/button&gt;
-  &lt;span class="eis-chip <span class="s">eis-chip--signal</span>"&gt;Overdue&lt;/span&gt;
+&lt;section class="<span class="s">eis-web-hero</span>"&gt;
+  &lt;div class="eis-web-wrap eis-web-grid"&gt;
+    &lt;h1&gt;Ship calmer.&lt;/h1&gt;
+    &lt;a class="eis-button eis-button--primary" href="#start"&gt;Get started&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;svg class="eis-web-lines" data-eis-web-lines viewBox="0 0 1440 360"
+       preserveAspectRatio="none" aria-hidden="true"&gt;&lt;/svg&gt;
 &lt;/section&gt;</code></pre>
+          </figure>
+          <figure>
+            <figcaption class="eis-label">Dashboard or tool · shared + app</figcaption>
+<pre class="eis-web-code"><code><span class="c">&lt;!-- fonts: same link as the website --&gt;</span>
+
+<span class="c">&lt;!-- shared --&gt;</span>
+&lt;link rel="stylesheet" href="eis-ds/shared/shared.css"&gt;
+<span class="c">&lt;!-- app scope --&gt;</span>
+&lt;link rel="stylesheet" href="eis-ds/app/css/tokens.css"&gt;
+&lt;link rel="stylesheet" href="eis-ds/app/css/app.css"&gt;
+
+&lt;body class="<span class="s">eis-app-shell</span>"&gt;
+  &lt;aside class="eis-app-sidebar" aria-label="Sidebar"&gt;
+    &lt;nav class="eis-app-nav" aria-label="Main"&gt;…&lt;/nav&gt;
+  &lt;/aside&gt;
+  &lt;main class="eis-app-main"&gt;
+    &lt;section class="eis-panel"&gt;
+      &lt;button class="eis-button eis-button--primary"&gt;Save&lt;/button&gt;
+      &lt;span class="eis-chip eis-chip--signal"&gt;Overdue&lt;/span&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+&lt;/body&gt;</code></pre>
+          </figure>
+        </div>
+        <p class="eis-start__note eis-mono">In these samples, <code>eis-ds/</code> is where you copied the files: the contents of <code>src/</code>.</p>
       </div>
     </section>
 

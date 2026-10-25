@@ -18,7 +18,7 @@ src/                     the design system assets. Apps and the site load these
   tokens/                source of truth (.tokens.json)
   css/tokens.css         GENERATED. Never edit by hand
   css/elements.css       base and basic elements
-index.html               entry point. Opens site/index.html
+index.html               landing page: what the system is, for whom, how to start
 site/                    the visual manual for humans. Loads ../src/css/
   index.html             home
   foundations.html, elements.html, examples.html

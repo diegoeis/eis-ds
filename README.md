@@ -14,6 +14,8 @@ More scopes (slides, email) will follow the same pattern.
 
 Version 0.1, draft. Light mode only.
 
+Site: https://diegoeis.github.io/eis-ds/
+
 ## Use it
 
 No package and no build step.

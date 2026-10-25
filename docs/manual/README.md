@@ -15,7 +15,7 @@ Related, not part of the manual:
 
 - `docs/tokens.md` — how tokens are **written** (W3C DTCG format). Read it only when adding or changing a token.
 - `docs/visual-guidance/visual-guidance.md` — where the visual direction came from, and the decision log. Read it to understand *why*. This manual says *what*.
-- `system/foundations.html`, `system/elements.html`, `system/examples.html` — the rendered system. When the manual and the CSS disagree, the CSS in `system/css/` wins. Then fix the manual.
+- `site/foundations.html`, `site/elements.html`, `site/examples.html` — this manual applied and rendered. `site/` also holds the tokens and the CSS. When the manual and the CSS disagree, the CSS in `docs/manual/site/css/` wins. Then fix the manual.
 
 ## Conventions used in this manual
 

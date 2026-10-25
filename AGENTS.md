@@ -9,29 +9,31 @@ Version 0.1, draft. Only the light mode exists.
 1. `docs/manual/` — how to use tokens and elements. MUST read before you build a piece.
 2. `docs/tokens.md` — the token format (W3C DTCG 2025.10). MUST read before you change a token.
 3. `docs/visual-guidance/visual-guidance.md` — visual direction, references and the decision log. Read it before you propose a new value.
-4. `system/foundations.html`, `elements.html`, `examples.html` — the rendered system.
+4. `docs/manual/site/foundations.html`, `elements.html`, `examples.html` — the manual rendered as pages.
 
 ## Structure
 
 ```
-system/                  the design system: pages, tokens, CSS and examples
-  tokens/                source of truth (.tokens.json)
-  css/tokens.css         GENERATED. Never edit by hand
-  css/elements.css       base and basic elements
-  css/docs.css           layout of the system pages only
-  examples/<kind>/       pages built with the system
 scripts/build-tokens.py  validates the tokens and generates tokens.css
 docs/
   manual/                usage rules for tokens, elements and layout
+    site/                the manual applied: pages, tokens, CSS and examples
+      tokens/            source of truth (.tokens.json)
+      css/tokens.css     GENERATED. Never edit by hand
+      css/elements.css   base and basic elements
+      css/docs.css       layout of the manual pages only
+      examples/<kind>/   pages built with the tokens and elements
   tokens.md              token format
   visual-guidance/       reference only: direction, images, decisions
 ```
+
+There is no production design system yet. Everything here is documentation: the rules (`docs/manual/*.md`) and their applied, rendered form (`docs/manual/site/`).
 
 ## Workflow
 
 1. Token: edit the `.tokens.json` file. Run `python3 scripts/build-tokens.py`. If it fails, do not use the result.
 2. Element: change it in `elements.css`. Show it on `elements.html`. Document it in `docs/manual/elements.md`.
-3. New example: put it in `system/examples/<kind>/`. Add a card on `examples.html`.
+3. New example: put it in `docs/manual/site/examples/<kind>/`. Add a card on `examples.html`.
 4. New reference image: add it to the source table in `visual-guidance.md`.
 
 ## Rules

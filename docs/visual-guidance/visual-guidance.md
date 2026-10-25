@@ -4,7 +4,7 @@ The visual direction of eis-ds, the references it came from and what was taken f
 
 > Usage rules for tokens and elements live in `docs/manual/`. This file is direction, provenance and decision history.
 
-> This document describes direction and observations. Final values exist only in `system/tokens/`. While a value appears here as "measured" or "observed", it is a candidate, not a decision.
+> This document describes direction and observations. Final values exist only in `docs/manual/site/tokens/`. While a value appears here as "measured" or "observed", it is a candidate, not a decision.
 
 ---
 
@@ -233,7 +233,7 @@ Candidates will be compared side by side in HTML before the decision.
 |---|---|---|
 | 2026-10-25 | Typography: Geist + Geist Mono | Approved in dashboard v0.1 |
 | 2026-10-25 | Solid color canvas. **The construction grid is not used as an interface background**. It remains a resource for illustration and graphic pieces | Author's request in dashboard v0.1 |
-| 2026-10-25 | v0.1 primitives created as tokens (provisional in values, final in structure): cool neutrals, orange `#f15033` + `#b8321a` for text, spacing 8/16/32/64, radius 4/10/full, 1px line | `system/tokens/`, `system/foundations.html` |
+| 2026-10-25 | v0.1 primitives created as tokens (provisional in values, final in structure): cool neutrals, orange `#f15033` + `#b8321a` for text, spacing 8/16/32/64, radius 4/10/full, 1px line | `docs/manual/site/tokens/`, `docs/manual/site/foundations.html` |
 | 2026-10-25 | `neutral.400` (`#bdbdbd`) exists only for the data scale, never surface or text | Task age scale |
 | 2026-10-25 | Canvas `neutral.100` changes from `#e6e6e6` to **`#eaeaea`** | Author's choice |
 | 2026-10-25 | Signal becomes **`#f35919`** (previously `#f15033`). The text version becomes `#b5400c`, same hue | `references/palette/orange-circles-grid.png`, exact sampled flat color |
@@ -243,7 +243,7 @@ Candidates will be compared side by side in HTML before the decision.
 | 2026-10-25 | Data scale becomes `neutral.200` (`#dddddd`) · `400` (`#a3a3a3`, previously `#bdbdbd`) · `600` · `900`: the two light tones were nearly identical (1.2:1). Now each step differs ≥1.8:1 from its neighbor | Author's request in the dashboard |
 | 2026-10-25 | Labels become **chips** (pill, sentence case, no hover), so they are not confused with buttons. The rectangular "block label" stays only for graphic pieces | Author's request in the dashboard |
 | 2026-10-25 | Table cells always vertically centered | Author's request |
-| 2026-10-25 | Basic elements in `system/css/elements.css`, demonstrated in `system/elements.html` | First version |
+| 2026-10-25 | Basic elements in `docs/manual/site/css/elements.css`, demonstrated in `docs/manual/site/elements.html` | First version |
 
 ### Open
 

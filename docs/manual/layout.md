@@ -10,14 +10,14 @@ A piece is a standalone HTML file. It loads, in this order:
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="<path>/system/css/tokens.css">
-<link rel="stylesheet" href="<path>/system/css/elements.css">
+<link rel="stylesheet" href="<path>/css/tokens.css">
+<link rel="stylesheet" href="<path>/css/elements.css">
 <style>/* this piece's layout only */</style>
 ```
 
-- From `system/examples/<kind>/`, `<path>` is `../..` (so `../../css/tokens.css`).
+- `<path>` is the path to `docs/manual/site/`. From `docs/manual/site/examples/<kind>/` it is `../..` (so `../../css/tokens.css`).
 - `elements.css` already sets the base (box-sizing, margins, body type, canvas background, focus). Don't repeat it.
-- `system/css/docs.css` is for the system's own documentation pages only. Pieces MUST NOT load it.
+- `docs/manual/site/css/docs.css` is for the system's own documentation pages only. Pieces MUST NOT load it.
 - The piece's `<style>` contains **layout only**: grids, regions, positions, page-specific arrangements. It MUST NOT redefine buttons, chips, fields, tables, panels or any element of `elements.css`.
 - No frameworks or libraries (React, Tailwind, Bootstrap, icon fonts).
 

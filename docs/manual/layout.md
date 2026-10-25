@@ -17,7 +17,7 @@ A piece is a standalone HTML file. It loads, in this order:
 
 - `<src>` is the relative path to the `src/` folder at the repository root. From `site/examples/<kind>/` it is `../../../src`.
 - `elements.css` already sets the base (box-sizing, margins, body type, canvas background, focus). Don't repeat it.
-- `site/css/docs.css` is for the site pages only. Pieces MUST NOT load it.
+- Site pages (landing, marketing, documentation) also load `<src>/css/site.css` after `elements.css`. Applications (dashboards, tools) MUST NOT load it.
 - The piece's `<style>` contains **layout only**: grids, regions, positions, page-specific arrangements. It MUST NOT redefine buttons, chips, fields, tables, panels or any element of `elements.css`.
 - No frameworks or libraries (React, Tailwind, Bootstrap, icon fonts).
 
@@ -101,3 +101,33 @@ Every piece MUST work from 360px to wide screens with **no horizontal scroll**, 
 - Grey ramp for normal values, `--signal` only for the exception (see `tokens-usage.md` §2).
 - Every chart has `role="img"` and an `aria-label` that states the numbers.
 - Legends are lists (`<ul>`), `aria-hidden` if the `aria-label` already carries the data.
+
+## 7. Two layers: application and site
+
+The core is shared: `tokens.css` and `elements.css`. On top of it there are two independent layers.
+
+| Layer | Use for | CSS | Class prefix |
+|---|---|---|---|
+| Application | Dashboards, tools, admin screens | The page's own layout CSS | `eis-` |
+| Site | Landing pages, marketing pages, documentation | `src/css/site.css` + the page's own CSS | `eis-site-` |
+
+- `site.css` styles only `.eis-site-*` classes. It never styles bare HTML or core classes. So it cannot change an element or an application layout. `scripts/check-css.py` enforces this.
+- An application MUST NOT use `eis-site-*` classes.
+- A site page uses the core elements (button, chip, panel…) as they are. It does not restyle them.
+- A site pattern used on two or more pages goes into `site.css`. A pattern used on one page only stays in that page's `<style>`.
+
+### Site components
+
+| Class | What it is |
+|---|---|
+| `eis-site-docnav` | Top bar of documentation pages |
+| `eis-site-page`, `eis-site-intro`, `eis-site-toc` | Documentation page shell, intro with title and facts, table of contents |
+| `eis-site-doc` | Documentation section: title column + content column |
+| `eis-site-spec`, `eis-site-pair`, `eis-site-scroll` | Specification table, contrast pair sample, horizontal scroll wrapper |
+| `eis-site-docfoot` | Footer of documentation pages |
+| `eis-site-sheet`, `eis-site-wrap`, `eis-site-grid` | Landing sheet on the canvas, side padding, 12-column grid |
+| `eis-site-header`, `eis-site-brand` | Landing top bar and brand mark |
+| `eis-site-hero` (`__index`, `__meta`, `__lead`, `__sub`, `__actions`), `eis-site-lines` | Hero block and its line art |
+| `eis-site-section` (`__head`, `__body`, `__aside`) | Landing section: numbered label, title, body column |
+| `eis-site-numbered`, `eis-site-cards`/`eis-site-card`, `eis-site-principles`, `eis-site-steps` | Numbered list, cards with a figure, principles grid, step timeline |
+| `eis-site-code`, `eis-site-cta`, `eis-site-footer`, `eis-site-arrow` | Code block, closing call to action, landing footer, arrow link |

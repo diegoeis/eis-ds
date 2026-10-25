@@ -10,59 +10,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="src/css/tokens.css">
 <link rel="stylesheet" href="src/css/elements.css">
+<link rel="stylesheet" href="src/css/site.css">
 <style>
-/* Landing page layout only. Tokens and elements come from src/css/. */
-.eis-sheet{max-width:1440px;margin:var(--space-300) auto;background:var(--surface-panel);border:var(--border-width-100) solid var(--line);border-radius:var(--radius-200);overflow:hidden}
-.eis-wrap{padding-inline:clamp(var(--space-200),4vw,var(--space-400))}
-.eis-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--space-200)}
-
-/* Top bar */
-.eis-top{padding-block:var(--space-300);align-items:start}
-.eis-brand{grid-column:span 3;font-size:var(--font-size-400);font-weight:var(--font-weight-semibold);text-decoration:none;color:var(--ink)}
-.eis-brand sup{font-family:var(--font-family-mono);font-size:var(--font-size-100);font-weight:var(--font-weight-regular);color:var(--ink-muted)}
-.eis-top__meta{grid-column:span 3;display:grid;gap:calc(var(--space-100)/2)}
-.eis-top__meta span:first-child{color:var(--ink-muted)}
-.eis-top nav{grid-column:span 4}
-.eis-top nav ul{list-style:none;display:grid;gap:calc(var(--space-100)/2)}
-.eis-top nav a{font-family:var(--font-family-mono);font-size:var(--font-size-200);text-transform:uppercase;letter-spacing:var(--font-letter-spacing-wide);color:var(--ink);text-decoration:none}
-.eis-top nav a:hover{color:var(--signal-ink)}
-.eis-top__cta{grid-column:span 2;justify-self:end}
-
-/* Hero */
-.eis-hero{padding-top:var(--space-400);position:relative}
-.eis-index{grid-column:1 / -1;font-weight:var(--font-weight-light);font-size:clamp(var(--font-size-600),6vw,var(--font-size-800));line-height:var(--font-line-height-tight);color:var(--color-neutral-400);letter-spacing:var(--font-letter-spacing-tight)}
-.eis-hero h1{grid-column:1 / span 8;font-weight:var(--font-weight-light);font-size:clamp(var(--font-size-700),9vw,calc(var(--font-size-800)*2.4));line-height:var(--font-line-height-tight);letter-spacing:calc(var(--font-letter-spacing-tight)*1.6);padding-bottom:var(--space-200);border-bottom:var(--border-width-100) solid var(--line);margin-bottom:var(--space-200)}
-.eis-hero__meta{grid-column:9 / span 4;align-self:end;display:grid;grid-template-columns:1fr 1fr;gap:var(--space-200);padding-bottom:var(--space-200)}
-.eis-hero__meta dd{font-family:var(--font-family-mono);font-size:var(--font-size-200)}
-.eis-hero__lead{grid-column:1 / span 5;font-size:var(--font-size-500);line-height:var(--font-line-height-snug)}
-.eis-hero__sub{grid-column:1 / span 5;color:var(--ink-muted);margin-top:var(--space-200)}
-.eis-hero__actions{grid-column:1 / span 6;display:flex;flex-wrap:wrap;gap:var(--space-100);margin-top:var(--space-300)}
-.eis-lines{display:block;width:100%;height:auto;margin-top:calc(var(--space-400) * -1);pointer-events:none}
-
-/* Sections */
-.eis-section{padding-block:var(--space-400);border-top:var(--border-width-100) solid var(--line)}
-.eis-section__head{grid-column:1 / span 5}
-.eis-section__head .eis-label{display:block;margin-bottom:var(--space-200)}
-.eis-section__head h2{font-weight:var(--font-weight-light);font-size:clamp(var(--font-size-600),4.4vw,var(--font-size-800));line-height:var(--font-line-height-tight);letter-spacing:var(--font-letter-spacing-tight)}
-.eis-section__head p{color:var(--ink-muted);margin-top:var(--space-200);max-width:44ch}
-.eis-section__body{grid-column:7 / span 6}
-.eis-section__aside{grid-column:7 / span 6;color:var(--ink-muted);align-self:end}
-
-/* Numbered list */
-.eis-numbered{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--space-300)}
-.eis-numbered li{display:grid;grid-template-columns:var(--space-300) 1fr;gap:var(--space-100);padding-block:var(--space-200);border-bottom:var(--border-width-100) solid var(--line)}
-.eis-numbered li > span{font-family:var(--font-family-mono);font-size:var(--font-size-200);color:var(--ink-muted)}
-.eis-numbered strong{font-weight:var(--font-weight-regular);font-size:var(--font-size-400);display:block}
-.eis-numbered p{color:var(--ink-muted);margin-top:calc(var(--space-100)/2)}
-
-/* Uses */
-.eis-uses{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:var(--space-200);margin-top:var(--space-300)}
-.eis-use{display:flex;flex-direction:column;border:var(--border-width-100) solid var(--line);border-radius:var(--radius-200);overflow:hidden}
-.eis-use figure{aspect-ratio:4/3;background:var(--surface-canvas);border-bottom:var(--border-width-100) solid var(--line);padding:var(--space-200);display:grid}
-.eis-use__body{padding:var(--space-200);display:grid;gap:var(--space-100);align-content:start;flex:1}
-.eis-use__body h3{font-weight:var(--font-weight-regular);font-size:var(--font-size-400)}
-.eis-use__body p{color:var(--ink-muted)}
-/* Use thumbnails, drawn with tokens only */
+/* Landing page only: illustrations and the specimen. Structure comes from src/css/site.css. */
 .eis-mini{background:var(--surface-panel);border:var(--border-width-100) solid var(--line);border-radius:var(--radius-100);padding:var(--space-100);display:grid;gap:calc(var(--space-100)/2);align-content:start;min-width:0}
 .eis-mini i{display:block;height:var(--space-100);background:var(--color-neutral-200);border-radius:var(--radius-full)}
 .eis-mini i.is-dark{background:var(--ink)}
@@ -80,13 +30,6 @@
 .eis-mini--mail .eis-mailbtn{width:40%;height:var(--space-200);background:var(--ink);border-radius:2px;margin-top:calc(var(--space-100)/2)}
 .eis-mini--image{background:var(--ink);padding:0;overflow:hidden;border-color:var(--ink)}
 .eis-mini--image svg{width:100%;height:100%;display:block}
-
-/* Principles */
-.eis-principles{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));column-gap:var(--space-300);border-top:var(--border-width-100) solid var(--line);margin-top:var(--space-300)}
-.eis-principles li{padding-block:var(--space-300);border-bottom:var(--border-width-100) solid var(--line);display:grid;gap:var(--space-100);align-content:start}
-.eis-glyph{height:var(--space-300);display:flex;align-items:center;gap:calc(var(--space-100)/2)}
-.eis-principles h3{font-weight:var(--font-weight-regular);font-size:var(--font-size-400)}
-.eis-principles p{color:var(--ink-muted);max-width:34ch}
 .eis-dotmark,.eis-ring,.eis-sq{width:var(--space-200);height:var(--space-200)}
 .eis-dotmark{border-radius:var(--radius-full);background:var(--signal)}
 .eis-ring{border-radius:var(--radius-full);border:var(--border-width-100) solid var(--ink-muted)}
@@ -96,8 +39,6 @@
 .eis-hair{width:var(--space-300);height:var(--border-width-100);background:var(--ink)}
 .eis-aa{font-size:var(--font-size-500);line-height:1}
 .eis-aa.is-mono{font-family:var(--font-family-mono)}
-
-/* Specimen */
 .eis-specimen{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--space-200);margin-top:var(--space-300)}
 .eis-specimen > *{border:var(--border-width-100) solid var(--line);border-radius:var(--radius-200);padding:var(--space-200);min-width:0}
 .eis-swatches{grid-column:span 7;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(88px,100%),1fr));gap:var(--space-100);list-style:none;align-content:start}
@@ -109,75 +50,17 @@
 .eis-aa-big span{font-family:var(--font-family-mono);color:var(--ink-muted)}
 .eis-live{grid-column:span 12;display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-200)}
 .eis-live > .eis-label{flex-basis:100%}
-
-/* Get started */
-.eis-steps{list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));position:relative;margin-top:var(--space-300);counter-reset:step}
-.eis-steps::before{content:"";position:absolute;left:0;right:0;top:calc(var(--space-100)/2);height:var(--border-width-100);background:var(--line)}
-.eis-steps li{position:relative;padding-top:var(--space-300);padding-right:var(--space-200);counter-increment:step;display:grid;gap:calc(var(--space-100)/2);align-content:start}
-.eis-steps li::before{content:"";position:absolute;top:0;left:0;width:var(--space-100);height:var(--space-100);border-radius:var(--radius-full);background:var(--surface-panel);border:var(--border-width-100) solid var(--ink-muted)}
-.eis-steps li:first-child::before{background:var(--ink);border-color:var(--ink)}
-.eis-steps li::after{content:counter(step,decimal-leading-zero);position:absolute;top:var(--space-200);left:0;font-family:var(--font-family-mono);font-size:var(--font-size-100);color:var(--ink-muted);line-height:1}
-.eis-steps strong{font-family:var(--font-family-mono);font-size:var(--font-size-200);font-weight:var(--font-weight-medium);text-transform:uppercase;letter-spacing:var(--font-letter-spacing-wide)}
-.eis-steps p{color:var(--ink-muted)}
-.eis-code{margin-top:var(--space-300);background:var(--surface-inverse);color:var(--ink-inverse);border-radius:var(--radius-200);padding:var(--space-300);overflow-x:auto;font-family:var(--font-family-mono);font-size:var(--font-size-200);line-height:var(--font-line-height-normal)}
-.eis-code .c{color:var(--color-neutral-400)}
-.eis-code .s{color:var(--signal)}
-
-/* CTA + footer */
-.eis-cta{padding-block:var(--space-400);border-top:var(--border-width-100) solid var(--line);align-items:end}
-.eis-cta h2{grid-column:1 / span 8;font-weight:var(--font-weight-light);font-size:clamp(var(--font-size-700),7vw,calc(var(--font-size-800)*1.8));line-height:var(--font-line-height-tight);letter-spacing:calc(var(--font-letter-spacing-tight)*1.4)}
-.eis-cta__actions{grid-column:9 / span 4;display:flex;flex-wrap:wrap;gap:var(--space-100);justify-content:flex-end}
-.eis-foot{padding-block:var(--space-300);border-top:var(--border-width-100) solid var(--line);row-gap:var(--space-300)}
-.eis-foot dl{grid-column:span 6;display:grid;grid-template-columns:var(--space-300) 1fr;row-gap:var(--space-100)}
-.eis-foot dt{font-family:var(--font-family-mono);font-size:var(--font-size-200);color:var(--ink-muted)}
-.eis-foot nav{grid-column:span 4}
-.eis-foot nav ul{list-style:none;display:grid;gap:calc(var(--space-100)/2)}
-.eis-foot nav a{text-decoration:none;color:var(--ink)}
-.eis-foot nav a:hover{color:var(--signal-ink)}
-.eis-foot__up{grid-column:span 2;justify-self:end;align-self:start;font-size:var(--font-size-500);text-decoration:none;color:var(--ink)}
-.eis-arrow{justify-self:start;font-family:var(--font-family-mono);font-size:var(--font-size-200);text-decoration:none;color:var(--ink);border-bottom:var(--border-width-100) solid var(--line);padding-bottom:2px;margin-top:var(--space-100)}
-.eis-arrow:hover{border-color:var(--ink)}
-
-/* Responsive */
 @media (max-width:1024px){
-  .eis-brand{grid-column:span 6}
-  .eis-top__meta{display:none}
-  .eis-top nav{grid-column:1 / -1;order:3;margin-top:var(--space-200)}
-  .eis-top nav ul{display:flex;flex-wrap:wrap;gap:var(--space-100) var(--space-200)}
-  .eis-top__cta{grid-column:span 6}
-  .eis-hero h1,.eis-hero__meta,.eis-hero__lead,.eis-hero__sub,.eis-hero__actions{grid-column:1 / -1}
-  .eis-hero__meta{grid-template-columns:repeat(4,minmax(0,1fr))}
-  .eis-section__head,.eis-section__body,.eis-section__aside{grid-column:1 / -1}
-  .eis-section__body,.eis-section__aside{margin-top:var(--space-300)}
   .eis-swatches,.eis-type-card{grid-column:span 12}
-  .eis-cta h2,.eis-cta__actions{grid-column:1 / -1}
-  .eis-cta__actions{justify-content:flex-start;margin-top:var(--space-300)}
-  .eis-lines{margin-top:var(--space-300)}
-}
-@media (max-width:760px){
-  .eis-sheet{margin:0;border:0;border-radius:0}
-  .eis-numbered{grid-template-columns:minmax(0,1fr)}
-  .eis-hero__meta{grid-template-columns:1fr 1fr}
-  .eis-steps{grid-template-columns:minmax(0,1fr);gap:var(--space-300)}
-  .eis-steps::before{top:0;bottom:0;left:calc(var(--space-100)/2);right:auto;width:var(--border-width-100);height:auto}
-  .eis-steps li{padding-top:0;padding-left:var(--space-300)}
-  .eis-steps li::after{position:static;order:-1}
-  .eis-foot dl,.eis-foot nav{grid-column:1 / -1}
-  .eis-foot__up{display:none}
-  .eis-code{padding:var(--space-200)}
-}
-@media (max-width:420px){
-  .eis-top__cta{display:none}
-  .eis-hero__actions .eis-button{flex:1 1 100%;justify-content:center}
 }
 </style>
 </head>
 <body>
-<div class="eis-sheet">
+<div class="eis-site-sheet">
 
-  <header class="eis-wrap eis-grid eis-top">
-    <a class="eis-brand" href="index.html">eis-ds<sup>v0.1</sup></a>
-    <p class="eis-top__meta"><span>Release</span><span>Draft · light mode</span></p>
+  <header class="eis-site-wrap eis-site-grid eis-site-header">
+    <a class="eis-site-brand" href="index.html">eis-ds<sup>v0.1</sup></a>
+    <p class="eis-site-header__meta"><span>Release</span><span>Draft · light mode</span></p>
     <nav aria-label="Main">
       <ul>
         <li><a href="site/foundations.html">Foundations</a></li>
@@ -186,39 +69,39 @@
         <li><a href="#adopt">Get started</a></li>
       </ul>
     </nav>
-    <p class="eis-top__cta"><a class="eis-button eis-button--primary" href="site/index.html">Open the manual</a></p>
+    <p class="eis-site-header__cta"><a class="eis-button eis-button--primary" href="site/foundations.html">Open the manual</a></p>
   </header>
 
   <main>
-    <section class="eis-hero" aria-labelledby="hero-h">
-      <div class="eis-wrap eis-grid">
-        <p class="eis-index" aria-hidden="true">/00</p>
+    <section class="eis-site-hero" aria-labelledby="hero-h">
+      <div class="eis-site-wrap eis-site-grid">
+        <p class="eis-site-hero__index" aria-hidden="true">/00</p>
         <h1 id="hero-h">Design that reads like an&nbsp;instrument.</h1>
-        <dl class="eis-hero__meta">
+        <dl class="eis-site-hero__meta">
           <div><dt class="eis-label">Format</dt><dd>HTML + CSS</dd></div>
           <div><dt class="eis-label">Tokens</dt><dd>W3C DTCG</dd></div>
           <div><dt class="eis-label">Build</dt><dd>None</dd></div>
           <div><dt class="eis-label">Signal</dt><dd>One</dd></div>
         </dl>
-        <p class="eis-hero__lead">A visual design system in plain HTML and CSS. Cool neutrals, thin lines, a mono voice for data and one orange signal for the thing that matters.</p>
-        <p class="eis-hero__sub">Use it for interfaces, slides, email and images. Link two stylesheets and build with native HTML. No framework, no build step.</p>
-        <p class="eis-hero__actions">
+        <p class="eis-site-hero__lead">A visual design system in plain HTML and CSS. Cool neutrals, thin lines, a mono voice for data and one orange signal for the thing that matters.</p>
+        <p class="eis-site-hero__sub">Use it for interfaces, slides, email and images. Link two stylesheets and build with native HTML. No framework, no build step.</p>
+        <p class="eis-site-hero__actions">
           <a class="eis-button eis-button--primary" href="#adopt">Get started</a>
           <a class="eis-button" href="site/foundations.html">See the foundations</a>
         </p>
       </div>
-      <svg class="eis-lines" id="eis-lines" viewBox="0 0 1440 360" preserveAspectRatio="none" aria-hidden="true" focusable="false"></svg>
+      <svg class="eis-site-lines" id="eis-site-lines" viewBox="0 0 1440 360" preserveAspectRatio="none" aria-hidden="true" focusable="false"></svg>
     </section>
 
-    <section class="eis-section" aria-labelledby="what-h">
-      <div class="eis-wrap eis-grid">
-        <header class="eis-section__head">
+    <section class="eis-site-section" aria-labelledby="what-h">
+      <div class="eis-site-wrap eis-site-grid">
+        <header class="eis-site-section__head">
           <span class="eis-label">/01 · What it is</span>
           <h2 id="what-h">A small set of decisions. Made once.</h2>
           <p>Every value has a job. Colour, type, space and shape are tokens. The basic elements are native HTML styled by those tokens. You decide less and ship a consistent result.</p>
         </header>
-        <div class="eis-section__body">
-          <ol class="eis-numbered">
+        <div class="eis-site-section__body">
+          <ol class="eis-site-numbered">
             <li><span>01</span><div><strong>Colour</strong><p>Eight cool neutrals, two surfaces, one signal.</p></div></li>
             <li><span>02</span><div><strong>Type</strong><p>A sans for text. A mono for labels and numbers.</p></div></li>
             <li><span>03</span><div><strong>Space</strong><p>Four steps: 8, 16, 32, 64. Each one has a job.</p></div></li>
@@ -230,67 +113,67 @@
       </div>
     </section>
 
-    <section class="eis-section" aria-labelledby="uses-h">
-      <div class="eis-wrap">
-        <div class="eis-grid">
-          <header class="eis-section__head">
+    <section class="eis-site-section" aria-labelledby="uses-h">
+      <div class="eis-site-wrap">
+        <div class="eis-site-grid">
+          <header class="eis-site-section__head">
             <span class="eis-label">/02 · Where it goes</span>
             <h2 id="uses-h">One look. Every surface.</h2>
           </header>
-          <p class="eis-section__aside">The same tokens drive a dashboard, a deck, a newsletter and an article image. A reader recognises the voice before they read a word.</p>
+          <p class="eis-site-section__aside">The same tokens drive a dashboard, a deck, a newsletter and an article image. A reader recognises the voice before they read a word.</p>
         </div>
-        <ul class="eis-uses">
-          <li class="eis-use">
+        <ul class="eis-site-cards">
+          <li class="eis-site-card">
             <figure aria-hidden="true">
               <div class="eis-mini eis-mini--ui">
                 <div><i class="is-dark" style="width:70%"></i><i></i><i></i><i style="width:60%"></i></div>
                 <div><i style="width:40%"></i><div class="eis-cells"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div><i></i><i style="width:80%"></i></div>
               </div>
             </figure>
-            <div class="eis-use__body"><span class="eis-label">Interfaces</span><h3>Dashboards and tools</h3><p>Dense data in grey cells. The signal marks only the exception.</p><a class="eis-arrow" href="site/examples/dashboard/tasks-work.html">↘ See an example</a></div>
+            <div class="eis-site-card__body"><span class="eis-label">Interfaces</span><h3>Dashboards and tools</h3><p>Dense data in grey cells. The signal marks only the exception.</p><a class="eis-site-arrow" href="site/examples/dashboard/tasks-work.html">↘ See an example</a></div>
           </li>
-          <li class="eis-use">
+          <li class="eis-site-card">
             <figure aria-hidden="true">
               <div class="eis-mini eis-mini--slide"><span class="eis-label">Q3 · Review</span><span class="eis-big">Fewer, better.</span><i class="is-signal" style="width:18%"></i></div>
             </figure>
-            <div class="eis-use__body"><span class="eis-label">Slides</span><h3>Decks and talks</h3><p>One idea per slide. Display type, a thin rule, generous space.</p></div>
+            <div class="eis-site-card__body"><span class="eis-label">Slides</span><h3>Decks and talks</h3><p>One idea per slide. Display type, a thin rule, generous space.</p></div>
           </li>
-          <li class="eis-use">
+          <li class="eis-site-card">
             <figure aria-hidden="true">
               <div class="eis-mini eis-mini--mail"><i style="width:30%" class="is-dark"></i><i></i><i></i><i style="width:70%"></i><div class="eis-mailbtn"></div></div>
             </figure>
-            <div class="eis-use__body"><span class="eis-label">Email</span><h3>Newsletters and notices</h3><p>Two surfaces and one column survive every mail client.</p></div>
+            <div class="eis-site-card__body"><span class="eis-label">Email</span><h3>Newsletters and notices</h3><p>Two surfaces and one column survive every mail client.</p></div>
           </li>
-          <li class="eis-use">
+          <li class="eis-site-card">
             <figure aria-hidden="true">
               <div class="eis-mini eis-mini--image" id="eis-art"></div>
             </figure>
-            <div class="eis-use__body"><span class="eis-label">Images</span><h3>Covers and illustrations</h3><p>Line, grid and a single warm mark, at any ratio.</p></div>
+            <div class="eis-site-card__body"><span class="eis-label">Images</span><h3>Covers and illustrations</h3><p>Line, grid and a single warm mark, at any ratio.</p></div>
           </li>
         </ul>
       </div>
     </section>
 
-    <section class="eis-section" aria-labelledby="principles-h">
-      <div class="eis-wrap">
-        <header class="eis-section__head">
+    <section class="eis-site-section" aria-labelledby="principles-h">
+      <div class="eis-site-wrap">
+        <header class="eis-site-section__head">
           <span class="eis-label">/03 · Principles</span>
           <h2 id="principles-h">Restraint is the feature.</h2>
         </header>
-        <ul class="eis-principles">
-          <li><div class="eis-glyph" aria-hidden="true"><span class="eis-dotmark"></span><span class="eis-ring"></span><span class="eis-ring"></span></div><h3>One signal</h3><p>Orange marks the one thing that matters. Never more than 5% of the area.</p></li>
-          <li><div class="eis-glyph" aria-hidden="true"><span class="eis-aa">Aa</span><span class="eis-aa is-mono">01</span></div><h3>Two voices</h3><p>Sans speaks the text. Mono speaks for the instrument: labels, numbers, dates.</p></li>
-          <li><div class="eis-glyph" aria-hidden="true"><span class="eis-sq is-canvas"></span><span class="eis-sq is-panel"></span></div><h3>Two surfaces</h3><p>Canvas and panel. A third level is a line, not another box.</p></li>
-          <li><div class="eis-glyph" aria-hidden="true"><span class="eis-hair"></span></div><h3>One line weight</h3><p>Every border and divider is 1px. No shadows at rest.</p></li>
-          <li><div class="eis-glyph" aria-hidden="true"><span class="eis-mono">&lt;button&gt;</span></div><h3>Native first</h3><p>Real tables, real checkboxes, real buttons. Accessible by default.</p></li>
-          <li><div class="eis-glyph" aria-hidden="true"><span class="eis-mono">0 deps</span></div><h3>No build</h3><p>Two stylesheets and custom properties. It works from a file on disk.</p></li>
+        <ul class="eis-site-principles">
+          <li><div class="eis-site-principles__glyph" aria-hidden="true"><span class="eis-dotmark"></span><span class="eis-ring"></span><span class="eis-ring"></span></div><h3>One signal</h3><p>Orange marks the one thing that matters. Never more than 5% of the area.</p></li>
+          <li><div class="eis-site-principles__glyph" aria-hidden="true"><span class="eis-aa">Aa</span><span class="eis-aa is-mono">01</span></div><h3>Two voices</h3><p>Sans speaks the text. Mono speaks for the instrument: labels, numbers, dates.</p></li>
+          <li><div class="eis-site-principles__glyph" aria-hidden="true"><span class="eis-sq is-canvas"></span><span class="eis-sq is-panel"></span></div><h3>Two surfaces</h3><p>Canvas and panel. A third level is a line, not another box.</p></li>
+          <li><div class="eis-site-principles__glyph" aria-hidden="true"><span class="eis-hair"></span></div><h3>One line weight</h3><p>Every border and divider is 1px. No shadows at rest.</p></li>
+          <li><div class="eis-site-principles__glyph" aria-hidden="true"><span class="eis-mono">&lt;button&gt;</span></div><h3>Native first</h3><p>Real tables, real checkboxes, real buttons. Accessible by default.</p></li>
+          <li><div class="eis-site-principles__glyph" aria-hidden="true"><span class="eis-mono">0 deps</span></div><h3>No build</h3><p>Two stylesheets and custom properties. It works from a file on disk.</p></li>
         </ul>
       </div>
     </section>
 
-    <section class="eis-section" aria-labelledby="specimen-h">
-      <div class="eis-wrap">
-        <header class="eis-section__head">
+    <section class="eis-site-section" aria-labelledby="specimen-h">
+      <div class="eis-site-wrap">
+        <header class="eis-site-section__head">
           <span class="eis-label">/04 · Specimen</span>
           <h2 id="specimen-h">The parts, running live.</h2>
           <p>Everything below comes from the same two stylesheets you will use.</p>
@@ -329,28 +212,30 @@
       </div>
     </section>
 
-    <section class="eis-section" id="adopt" aria-labelledby="adopt-h">
-      <div class="eis-wrap">
-        <div class="eis-grid">
-          <header class="eis-section__head">
+    <section class="eis-site-section" id="adopt" aria-labelledby="adopt-h">
+      <div class="eis-site-wrap">
+        <div class="eis-site-grid">
+          <header class="eis-site-section__head">
             <span class="eis-label">/05 · Get started</span>
             <h2 id="adopt-h">From file to page in five steps.</h2>
           </header>
-          <p class="eis-section__aside">No package to install. Copy the <code>src/</code> folder, link it and write HTML.</p>
+          <p class="eis-site-section__aside">No package to install. Copy the <code>src/</code> folder, link it and write HTML.</p>
         </div>
-        <ol class="eis-steps">
+        <ol class="eis-site-steps">
           <li><strong>Fonts</strong><p>Load Geist and Geist Mono.</p></li>
           <li><strong>Tokens</strong><p>Link <code>tokens.css</code>.</p></li>
           <li><strong>Elements</strong><p>Link <code>elements.css</code>.</p></li>
           <li><strong>Build</strong><p>Native HTML with <code>eis-</code> classes. Layout CSS only.</p></li>
           <li><strong>Check</strong><p>Run the checklist in the manual.</p></li>
         </ol>
-<pre class="eis-code"><code><span class="c">&lt;!-- 1 · fonts --&gt;</span>
+<pre class="eis-site-code"><code><span class="c">&lt;!-- 1 · fonts --&gt;</span>
 &lt;link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet"&gt;
 
 <span class="c">&lt;!-- 2 · 3 · the system --&gt;</span>
 &lt;link rel="stylesheet" href="src/css/tokens.css"&gt;
 &lt;link rel="stylesheet" href="src/css/elements.css"&gt;
+<span class="c">&lt;!-- sites and docs only --&gt;</span>
+&lt;link rel="stylesheet" href="src/css/site.css"&gt;
 
 <span class="c">&lt;!-- 4 · build --&gt;</span>
 &lt;section class="eis-panel"&gt;
@@ -360,16 +245,16 @@
       </div>
     </section>
 
-    <section class="eis-wrap eis-grid eis-cta" aria-labelledby="cta-h">
+    <section class="eis-site-wrap eis-site-grid eis-site-cta" aria-labelledby="cta-h">
       <h2 id="cta-h">Start with the foundations.</h2>
-      <p class="eis-cta__actions">
+      <p class="eis-site-cta__actions">
         <a class="eis-button" href="site/elements.html">Elements</a>
         <a class="eis-button eis-button--primary" href="site/foundations.html">Foundations</a>
       </p>
     </section>
   </main>
 
-  <footer class="eis-wrap eis-grid eis-foot">
+  <footer class="eis-site-wrap eis-site-grid eis-site-footer">
     <dl>
       <dt>V</dt><dd>0.1 · draft · light mode</dd>
       <dt>F</dt><dd>HTML + CSS custom properties</dd>
@@ -377,13 +262,13 @@
     </dl>
     <nav aria-label="Footer">
       <ul>
-        <li><a href="site/index.html">Manual</a></li>
+        <li><a href="site/foundations.html">Manual</a></li>
         <li><a href="site/foundations.html">Foundations</a></li>
         <li><a href="site/elements.html">Elements</a></li>
         <li><a href="site/examples.html">Examples</a></li>
       </ul>
     </nav>
-    <a class="eis-foot__up" href="#hero-h" aria-label="Back to top">↑</a>
+    <a class="eis-site-footer__up" href="#hero-h" aria-label="Back to top">↑</a>
   </footer>
 </div>
 
@@ -395,7 +280,7 @@
   const NS = "http://www.w3.org/2000/svg";
   const el = (n, a) => { const e = document.createElementNS(NS, n); for (const k in a) e.setAttribute(k, a[k]); return e; };
 
-  const svg = document.getElementById("eis-lines");
+  const svg = document.getElementById("eis-site-lines");
   const W = 1440, H = 360, step = 7, gap = 3;
   const ridge = x => { const t = x / W; return H * (0.95 - 0.8 * Math.pow(t, 1.4)) + 24 * Math.sin(t * 9) + 12 * Math.sin(t * 23 + 1); };
   const g = el("g", { fill: "var(--signal)" });

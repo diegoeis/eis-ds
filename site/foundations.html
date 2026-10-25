@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../src/css/tokens.css">
 <link rel="stylesheet" href="../src/css/elements.css">
-<link rel="stylesheet" href="css/docs.css">
+<link rel="stylesheet" href="../src/css/site.css">
 <style>
 
 /* swatches */
@@ -77,8 +77,8 @@
 </style>
 </head>
 <body>
-<header class="eis-docnav">
-  <a href="index.html">eis-ds</a>
+<header class="eis-site-docnav">
+  <a href="../index.html">eis-ds</a>
   <nav aria-label="Site pages">
     <ul>
       <li><a href="foundations.html" aria-current="page">Foundations</a></li>
@@ -87,13 +87,13 @@
     </ul>
   </nav>
 </header>
-<main class="eis-page">
+<main class="eis-site-page">
 
-  <header class="eis-intro">
+  <header class="eis-site-intro">
     <div>
       <p class="eis-label">eis-ds / foundations</p>
       <h1>Foundations</h1>
-      <p>The primitives of the system: colour, type, space, shape and the few motifs that carry the retrofuturist line. Every value on this page is read live from <code>src/css/tokens.css</code>, which is generated from the DTCG files in <code>tokens/</code>.</p>
+      <p>The primitives of the system: colour, type, space, shape and the few motifs that carry the retrofuturist line. Every value on this page is read live from <code>src/css/tokens.css</code>, which is generated from the DTCG files in <code>src/tokens/</code>.</p>
     </div>
     <dl>
       <dt class="eis-label">Version</dt><dd>0.1 · draft</dd>
@@ -103,12 +103,12 @@
     </dl>
   </header>
 
-  <nav class="eis-toc" aria-label="Sections">
+  <nav class="eis-site-toc" aria-label="Sections">
     <a href="#color">Color</a><a href="#contrast">Contrast</a><a href="#type">Type</a><a href="#space">Space</a><a href="#shape">Shape</a><a href="#motifs">Motifs</a><a href="#rules">Rules</a>
   </nav>
 
   <!-- COLOR -->
-  <section class="eis-section" id="color" aria-labelledby="color-h">
+  <section class="eis-site-doc" id="color" aria-labelledby="color-h">
     <header>
       <h2 id="color-h"><small class="eis-label">01</small>Color</h2>
       <p>Material before colour. A cool neutral ramp does almost all the work; one orange marks the single thing that matters and stays under 5% of the area.</p>
@@ -132,20 +132,20 @@
 
       <section class="eis-panel" aria-labelledby="sem-h">
         <h3 class="eis-label" id="sem-h">Semantic roles · what pieces actually use</h3>
-        <div class="eis-scroll">
-          <table class="eis-spec">
+        <div class="eis-site-scroll">
+          <table class="eis-site-spec">
             <thead class="eis-label"><tr><th scope="col">Role</th><th scope="col">Variable</th><th scope="col">Points to</th><th scope="col">Use</th></tr></thead>
             <tbody>
-              <tr><th scope="row"><span class="eis-pair" style="--bg:var(--surface-canvas)"></span></th><td><code>--surface-canvas</code></td><td class="eis-mono">neutral.100</td><td>Page background. Solid, no grid.</td></tr>
-              <tr><th scope="row"><span class="eis-pair" style="--bg:var(--surface-panel)"></span></th><td><code>--surface-panel</code></td><td class="eis-mono">neutral.0</td><td>Panels, sidebar. The second and last surface level.</td></tr>
-              <tr><th scope="row"><span class="eis-pair" style="--bg:var(--surface-inverse)"></span></th><td><code>--surface-inverse</code></td><td class="eis-mono">neutral.900</td><td>Active nav, primary button, solid tag.</td></tr>
-              <tr><th scope="row"><span class="eis-pair" style="--bg:var(--line)"></span></th><td><code>--line</code></td><td class="eis-mono">neutral.300</td><td>Every separator and border.</td></tr>
-              <tr><th scope="row"><span class="eis-pair" style="--bg:var(--surface-panel);--fg:var(--ink)">Aa</span></th><td><code>--ink</code></td><td class="eis-mono">neutral.900</td><td>Primary text.</td></tr>
-              <tr><th scope="row"><span class="eis-pair" style="--bg:var(--surface-panel);--fg:var(--ink-muted)">Aa</span></th><td><code>--ink-muted</code></td><td class="eis-mono">neutral.600</td><td>Labels, metadata, secondary text.</td></tr>
-              <tr><th scope="row"><span class="eis-pair" style="--bg:var(--surface-inverse);--fg:var(--ink-inverse)">Aa</span></th><td><code>--ink-inverse</code></td><td class="eis-mono">neutral.0</td><td>Text on the inverse surface.</td></tr>
-              <tr><th scope="row"><span class="eis-pair" style="--bg:var(--signal);--fg:var(--signal-on)">Aa</span></th><td><code>--signal</code> · <code>--signal-on</code></td><td class="eis-mono">orange.500 · neutral.900</td><td>Overdue, conflict, urgent. Dark text on it, never white.</td></tr>
-              <tr><th scope="row"><span class="eis-pair" style="--bg:var(--surface-panel);--fg:var(--signal-ink)">Aa</span></th><td><code>--signal-ink</code></td><td class="eis-mono">orange.700</td><td>Signal when it has to be text.</td></tr>
-              <tr><th scope="row"><span class="eis-pair" style="--bg:linear-gradient(90deg,var(--color-neutral-200) 25%,var(--color-neutral-400) 25% 50%,var(--color-neutral-600) 50% 75%,var(--color-neutral-900) 75%)"></span></th><td><code>--color-neutral-200 · 400 · 600 · 900</code></td><td class="eis-mono">primitives, used directly</td><td>Charts: low to high in grey. Signal marks the exception. No semantic layer: it would only rename the neutrals.</td></tr>
+              <tr><th scope="row"><span class="eis-site-pair" style="--bg:var(--surface-canvas)"></span></th><td><code>--surface-canvas</code></td><td class="eis-mono">neutral.100</td><td>Page background. Solid, no grid.</td></tr>
+              <tr><th scope="row"><span class="eis-site-pair" style="--bg:var(--surface-panel)"></span></th><td><code>--surface-panel</code></td><td class="eis-mono">neutral.0</td><td>Panels, sidebar. The second and last surface level.</td></tr>
+              <tr><th scope="row"><span class="eis-site-pair" style="--bg:var(--surface-inverse)"></span></th><td><code>--surface-inverse</code></td><td class="eis-mono">neutral.900</td><td>Active nav, primary button, solid tag.</td></tr>
+              <tr><th scope="row"><span class="eis-site-pair" style="--bg:var(--line)"></span></th><td><code>--line</code></td><td class="eis-mono">neutral.300</td><td>Every separator and border.</td></tr>
+              <tr><th scope="row"><span class="eis-site-pair" style="--bg:var(--surface-panel);--fg:var(--ink)">Aa</span></th><td><code>--ink</code></td><td class="eis-mono">neutral.900</td><td>Primary text.</td></tr>
+              <tr><th scope="row"><span class="eis-site-pair" style="--bg:var(--surface-panel);--fg:var(--ink-muted)">Aa</span></th><td><code>--ink-muted</code></td><td class="eis-mono">neutral.600</td><td>Labels, metadata, secondary text.</td></tr>
+              <tr><th scope="row"><span class="eis-site-pair" style="--bg:var(--surface-inverse);--fg:var(--ink-inverse)">Aa</span></th><td><code>--ink-inverse</code></td><td class="eis-mono">neutral.0</td><td>Text on the inverse surface.</td></tr>
+              <tr><th scope="row"><span class="eis-site-pair" style="--bg:var(--signal);--fg:var(--signal-on)">Aa</span></th><td><code>--signal</code> · <code>--signal-on</code></td><td class="eis-mono">orange.500 · neutral.900</td><td>Overdue, conflict, urgent. Dark text on it, never white.</td></tr>
+              <tr><th scope="row"><span class="eis-site-pair" style="--bg:var(--surface-panel);--fg:var(--signal-ink)">Aa</span></th><td><code>--signal-ink</code></td><td class="eis-mono">orange.700</td><td>Signal when it has to be text.</td></tr>
+              <tr><th scope="row"><span class="eis-site-pair" style="--bg:linear-gradient(90deg,var(--color-neutral-200) 25%,var(--color-neutral-400) 25% 50%,var(--color-neutral-600) 50% 75%,var(--color-neutral-900) 75%)"></span></th><td><code>--color-neutral-200 · 400 · 600 · 900</code></td><td class="eis-mono">primitives, used directly</td><td>Charts: low to high in grey. Signal marks the exception. No semantic layer: it would only rename the neutrals.</td></tr>
             </tbody>
           </table>
         </div>
@@ -154,32 +154,32 @@
   </section>
 
   <!-- CONTRAST -->
-  <section class="eis-section" id="contrast" aria-labelledby="contrast-h">
+  <section class="eis-site-doc" id="contrast" aria-labelledby="contrast-h">
     <header>
       <h2 id="contrast-h"><small class="eis-label">02</small>Contrast</h2>
       <p>Measured with the WCAG 2.1 formula, never estimated. AA asks 4.5:1 for text and 3:1 for large text and graphics.</p>
     </header>
-    <div class="eis-panel eis-scroll">
-      <table class="eis-spec">
+    <div class="eis-panel eis-site-scroll">
+      <table class="eis-site-spec">
         <thead class="eis-label"><tr><th scope="col">Pair</th><th scope="col">Text on surface</th><th scope="col">Ratio</th><th scope="col">Result</th></tr></thead>
         <tbody>
-          <tr><th scope="row"><span class="eis-pair" style="--bg:var(--surface-panel);--fg:var(--ink)">Aa</span></th><td class="eis-mono">ink / panel</td><td class="eis-mono" data-ratio="--ink|--surface-panel"></td><td class="eis-pass">AA</td></tr>
-          <tr><th scope="row"><span class="eis-pair" style="--bg:var(--surface-canvas);--fg:var(--ink)">Aa</span></th><td class="eis-mono">ink / canvas</td><td class="eis-mono" data-ratio="--ink|--surface-canvas"></td><td class="eis-pass">AA</td></tr>
-          <tr><th scope="row"><span class="eis-pair" style="--bg:var(--surface-panel);--fg:var(--ink-muted)">Aa</span></th><td class="eis-mono">ink-muted / panel</td><td class="eis-mono" data-ratio="--ink-muted|--surface-panel"></td><td class="eis-pass">AA</td></tr>
-          <tr><th scope="row"><span class="eis-pair" style="--bg:var(--surface-canvas);--fg:var(--ink-muted)">Aa</span></th><td class="eis-mono">ink-muted / canvas</td><td class="eis-mono" data-ratio="--ink-muted|--surface-canvas"></td><td class="eis-pass">AA</td></tr>
-          <tr><th scope="row"><span class="eis-pair" style="--bg:var(--surface-panel);--fg:var(--signal-ink)">Aa</span></th><td class="eis-mono">signal-ink / panel</td><td class="eis-mono" data-ratio="--signal-ink|--surface-panel"></td><td class="eis-pass">AA</td></tr>
-          <tr><th scope="row"><span class="eis-pair" style="--bg:var(--surface-canvas);--fg:var(--signal-ink)">Aa</span></th><td class="eis-mono">signal-ink / canvas</td><td class="eis-mono" data-ratio="--signal-ink|--surface-canvas"></td><td class="eis-pass">AA</td></tr>
-          <tr><th scope="row"><span class="eis-pair" style="--bg:var(--signal);--fg:var(--signal-on)">Aa</span></th><td class="eis-mono">signal-on / signal</td><td class="eis-mono" data-ratio="--signal-on|--signal"></td><td class="eis-pass">AA</td></tr>
-          <tr><th scope="row"><span class="eis-pair" style="--bg:var(--surface-inverse);--fg:var(--ink-inverse)">Aa</span></th><td class="eis-mono">ink-inverse / inverse</td><td class="eis-mono" data-ratio="--ink-inverse|--surface-inverse"></td><td class="eis-pass">AA</td></tr>
-          <tr><th scope="row"><span class="eis-pair" style="--bg:var(--signal);--fg:var(--surface-panel)">Aa</span></th><td class="eis-mono">panel / signal</td><td class="eis-mono" data-ratio="--surface-panel|--signal"></td><td class="eis-fail">Don't</td></tr>
-          <tr><th scope="row"><span class="eis-pair" style="--bg:var(--surface-panel);--fg:var(--signal)">Aa</span></th><td class="eis-mono">signal / panel</td><td class="eis-mono" data-ratio="--signal|--surface-panel"></td><td class="eis-fail">Graphics only</td></tr>
+          <tr><th scope="row"><span class="eis-site-pair" style="--bg:var(--surface-panel);--fg:var(--ink)">Aa</span></th><td class="eis-mono">ink / panel</td><td class="eis-mono" data-ratio="--ink|--surface-panel"></td><td class="eis-site-pass">AA</td></tr>
+          <tr><th scope="row"><span class="eis-site-pair" style="--bg:var(--surface-canvas);--fg:var(--ink)">Aa</span></th><td class="eis-mono">ink / canvas</td><td class="eis-mono" data-ratio="--ink|--surface-canvas"></td><td class="eis-site-pass">AA</td></tr>
+          <tr><th scope="row"><span class="eis-site-pair" style="--bg:var(--surface-panel);--fg:var(--ink-muted)">Aa</span></th><td class="eis-mono">ink-muted / panel</td><td class="eis-mono" data-ratio="--ink-muted|--surface-panel"></td><td class="eis-site-pass">AA</td></tr>
+          <tr><th scope="row"><span class="eis-site-pair" style="--bg:var(--surface-canvas);--fg:var(--ink-muted)">Aa</span></th><td class="eis-mono">ink-muted / canvas</td><td class="eis-mono" data-ratio="--ink-muted|--surface-canvas"></td><td class="eis-site-pass">AA</td></tr>
+          <tr><th scope="row"><span class="eis-site-pair" style="--bg:var(--surface-panel);--fg:var(--signal-ink)">Aa</span></th><td class="eis-mono">signal-ink / panel</td><td class="eis-mono" data-ratio="--signal-ink|--surface-panel"></td><td class="eis-site-pass">AA</td></tr>
+          <tr><th scope="row"><span class="eis-site-pair" style="--bg:var(--surface-canvas);--fg:var(--signal-ink)">Aa</span></th><td class="eis-mono">signal-ink / canvas</td><td class="eis-mono" data-ratio="--signal-ink|--surface-canvas"></td><td class="eis-site-pass">AA</td></tr>
+          <tr><th scope="row"><span class="eis-site-pair" style="--bg:var(--signal);--fg:var(--signal-on)">Aa</span></th><td class="eis-mono">signal-on / signal</td><td class="eis-mono" data-ratio="--signal-on|--signal"></td><td class="eis-site-pass">AA</td></tr>
+          <tr><th scope="row"><span class="eis-site-pair" style="--bg:var(--surface-inverse);--fg:var(--ink-inverse)">Aa</span></th><td class="eis-mono">ink-inverse / inverse</td><td class="eis-mono" data-ratio="--ink-inverse|--surface-inverse"></td><td class="eis-site-pass">AA</td></tr>
+          <tr><th scope="row"><span class="eis-site-pair" style="--bg:var(--signal);--fg:var(--surface-panel)">Aa</span></th><td class="eis-mono">panel / signal</td><td class="eis-mono" data-ratio="--surface-panel|--signal"></td><td class="eis-site-fail">Don't</td></tr>
+          <tr><th scope="row"><span class="eis-site-pair" style="--bg:var(--surface-panel);--fg:var(--signal)">Aa</span></th><td class="eis-mono">signal / panel</td><td class="eis-mono" data-ratio="--signal|--surface-panel"></td><td class="eis-site-fail">Graphics only</td></tr>
         </tbody>
       </table>
     </div>
   </section>
 
   <!-- TYPE -->
-  <section class="eis-section" id="type" aria-labelledby="type-h">
+  <section class="eis-site-doc" id="type" aria-labelledby="type-h">
     <header>
       <h2 id="type-h"><small class="eis-label">03</small>Type</h2>
       <p>Two voices. The grotesque speaks text; the mono speaks for the instrument: labels, numbers, dates, sources, navigation.</p>
@@ -235,7 +235,7 @@
   </section>
 
   <!-- SPACE -->
-  <section class="eis-section" id="space" aria-labelledby="space-h">
+  <section class="eis-site-doc" id="space" aria-labelledby="space-h">
     <header>
       <h2 id="space-h"><small class="eis-label">04</small>Space</h2>
       <p>Four values, each double the previous. They cover margin, padding, gap and offsets. Each one has a place, so it isn't picked at random.</p>
@@ -249,7 +249,7 @@
   </section>
 
   <!-- SHAPE -->
-  <section class="eis-section" id="shape" aria-labelledby="shape-h">
+  <section class="eis-site-doc" id="shape" aria-labelledby="shape-h">
     <header>
       <h2 id="shape-h"><small class="eis-label">05</small>Shape</h2>
       <p>One line weight. Small radii. No shadows: panels separate by surface tone or a hairline.</p>
@@ -263,7 +263,7 @@
   </section>
 
   <!-- MOTIFS -->
-  <section class="eis-section" id="motifs" aria-labelledby="motifs-h">
+  <section class="eis-site-doc" id="motifs" aria-labelledby="motifs-h">
     <header>
       <h2 id="motifs-h"><small class="eis-label">06</small>Motifs</h2>
       <p>Built only from the tokens above. They come from the Teenage Engineering references: panel silkscreen, key matrices, hatched bands.</p>
@@ -280,7 +280,7 @@
   </section>
 
   <!-- RULES -->
-  <section class="eis-section" id="rules" aria-labelledby="rules-h">
+  <section class="eis-site-doc" id="rules" aria-labelledby="rules-h">
     <header>
       <h2 id="rules-h"><small class="eis-label">07</small>Rules</h2>
       <p>Budgets, not adjectives. The full list lives in <code>docs/visual-guidance/visual-guidance.md</code>.</p>
@@ -295,7 +295,7 @@
     </ul>
   </section>
 
-  <footer class="eis-foot eis-mono">
+  <footer class="eis-site-docfoot eis-mono">
     <span>eis-ds · foundations · v0.1</span>
     <span>Generated values: src/css/tokens.css · source: src/tokens/*.tokens.json</span>
   </footer>

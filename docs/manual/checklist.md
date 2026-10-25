@@ -4,7 +4,9 @@ Run this before calling a piece, element or token done. Every box must be true.
 
 ## Files and CSS
 
-- [ ] Loads fonts, `tokens.css`, `elements.css`, then only its own layout CSS. Does not load `docs.css`.
+- [ ] Loads fonts, `tokens.css`, `elements.css`, then only its own layout CSS.
+- [ ] An application page does not load `site.css`. A site page (landing, marketing, docs) MAY load it after `elements.css`.
+- [ ] `site.css` changed? `python3 scripts/check-css.py` passes.
 - [ ] No raw colours, font sizes, spacing or radii (only the exceptions in `tokens-usage.md` §7).
 - [ ] Backgrounds, text, lines and signal use roles (`--surface-*`, `--ink*`, `--line`, `--signal*`), not primitives.
 - [ ] Does not restyle any element from `elements.css`.

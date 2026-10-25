@@ -1,0 +1,70 @@
+{
+  "space": {
+    "$type": "dimension",
+    "$description": "Exactly four steps, each double the previous. Covers margin, padding, gap and offsets.",
+    "100": {
+      "$value": {
+        "value": 8,
+        "unit": "px"
+      },
+      "$description": "Inside a component: icon to label, tag padding."
+    },
+    "200": {
+      "$value": {
+        "value": 16,
+        "unit": "px"
+      },
+      "$description": "Between siblings: rows, list items, panel padding."
+    },
+    "300": {
+      "$value": {
+        "value": 32,
+        "unit": "px"
+      },
+      "$description": "Between blocks: panels, groups."
+    },
+    "400": {
+      "$value": {
+        "value": 64,
+        "unit": "px"
+      },
+      "$description": "Between sections and page-level gutters."
+    }
+  },
+  "radius": {
+    "$type": "dimension",
+    "100": {
+      "$value": {
+        "value": 4,
+        "unit": "px"
+      },
+      "$description": "Small controls: buttons, nav items, checkboxes."
+    },
+    "200": {
+      "$value": {
+        "value": 10,
+        "unit": "px"
+      },
+      "$description": "Panels."
+    },
+    "full": {
+      "$value": {
+        "value": 999,
+        "unit": "px"
+      },
+      "$description": "Pills and circles."
+    }
+  },
+  "border": {
+    "width": {
+      "$type": "dimension",
+      "100": {
+        "$value": {
+          "value": 1,
+          "unit": "px"
+        },
+        "$description": "The only line weight. Hairlines separate; boxes are the exception."
+      }
+    }
+  }
+}

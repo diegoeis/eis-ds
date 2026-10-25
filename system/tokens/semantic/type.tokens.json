@@ -1,0 +1,76 @@
+{
+  "type": {
+    "$type": "typography",
+    "$description": "Text styles. Each becomes per-property variables and a .type-<name> class.",
+    "display": {
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": "{font.size.800}",
+        "fontWeight": "{font.weight.light}",
+        "letterSpacing": "{font.letter-spacing.tight}",
+        "lineHeight": "{font.line-height.tight}"
+      },
+      "$description": "Page title. Big and thin."
+    },
+    "heading": {
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": "{font.size.500}",
+        "fontWeight": "{font.weight.regular}",
+        "letterSpacing": "{font.letter-spacing.none}",
+        "lineHeight": "{font.line-height.snug}"
+      },
+      "$description": "Section heading."
+    },
+    "lead": {
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": "{font.size.400}",
+        "fontWeight": "{font.weight.regular}",
+        "letterSpacing": "{font.letter-spacing.none}",
+        "lineHeight": "{font.line-height.normal}"
+      },
+      "$description": "Intro paragraph."
+    },
+    "body": {
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": "{font.size.300}",
+        "fontWeight": "{font.weight.regular}",
+        "letterSpacing": "{font.letter-spacing.none}",
+        "lineHeight": "{font.line-height.normal}"
+      },
+      "$description": "Body and UI text."
+    },
+    "metric": {
+      "$value": {
+        "fontFamily": "{font.family.mono}",
+        "fontSize": "{font.size.700}",
+        "fontWeight": "{font.weight.light}",
+        "letterSpacing": "{font.letter-spacing.tight}",
+        "lineHeight": "{font.line-height.tight}"
+      },
+      "$description": "Big numbers in panels."
+    },
+    "mono": {
+      "$value": {
+        "fontFamily": "{font.family.mono}",
+        "fontSize": "{font.size.200}",
+        "fontWeight": "{font.weight.regular}",
+        "letterSpacing": "{font.letter-spacing.none}",
+        "lineHeight": "{font.line-height.normal}"
+      },
+      "$description": "Dates, sources, metadata."
+    },
+    "label": {
+      "$value": {
+        "fontFamily": "{font.family.mono}",
+        "fontSize": "{font.size.100}",
+        "fontWeight": "{font.weight.medium}",
+        "letterSpacing": "{font.letter-spacing.wide}",
+        "lineHeight": "{font.line-height.tight}"
+      },
+      "$description": "Uppercase panel labels, table heads, tags. Always text-transform: uppercase."
+    }
+  }
+}

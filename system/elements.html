@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Elements — eis-ds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/elements.css">
+<link rel="stylesheet" href="css/docs.css">
+<style>
+/* page-only layout for the specimens */
+.eis-demo{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-200);padding:var(--space-300) var(--space-200)}
+.eis-demo + .eis-demo{border-top:var(--border-width-100) solid var(--line)}
+.eis-demo--col{flex-direction:column;align-items:stretch}
+.eis-demo__name{flex-basis:100%}
+.eis-note{padding:var(--space-200);border-top:var(--border-width-100) solid var(--line);color:var(--ink-muted)}
+.eis-note code{color:var(--ink)}
+.eis-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-300) var(--space-200);padding:var(--space-300) var(--space-200)}
+.eis-form .eis-field--wide{grid-column:1/-1}
+.eis-form__actions{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:var(--space-100);justify-content:flex-end;padding-top:var(--space-200);border-top:var(--border-width-100) solid var(--line)}
+.eis-compare{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.eis-compare > div{padding:var(--space-300) var(--space-200);display:flex;flex-direction:column;gap:var(--space-200)}
+.eis-compare > div + div{border-left:var(--border-width-100) solid var(--line)}
+.eis-compare p.eis-row{display:flex;flex-wrap:wrap;gap:var(--space-100);align-items:center}
+.eis-people li{display:flex;align-items:center;gap:var(--space-200);padding:var(--space-200);border-top:var(--border-width-100) solid var(--line)}
+.eis-people li:first-child{border-top:0}
+.eis-people p{flex:1;min-width:0}
+.eis-people small{display:block}
+.eis-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.eis-metrics > div{display:flex;flex-direction:column;padding:var(--space-200);min-height:128px}
+.eis-metrics > div + div{border-left:var(--border-width-100) solid var(--line)}
+.eis-metrics dt{margin-bottom:auto;padding-bottom:var(--space-300)}
+.eis-metrics dd:first-of-type{font-family:var(--type-metric-font-family);font-size:var(--type-metric-font-size);font-weight:var(--type-metric-font-weight);letter-spacing:var(--type-metric-letter-spacing);line-height:var(--type-metric-line-height)}
+.eis-metrics dd + dd{margin-top:var(--space-100)}
+@media (max-width:640px){
+  .eis-form,.eis-compare,.eis-metrics{grid-template-columns:minmax(0,1fr)}
+  .eis-compare > div + div,.eis-metrics > div + div{border-left:0;border-top:var(--border-width-100) solid var(--line)}
+  .eis-metrics > div{min-height:0}
+  .eis-metrics dd:first-of-type{font-size:var(--font-size-600)}
+}
+</style>
+</head>
+<body>
+<header class="eis-docnav">
+  <a href="foundations.html">eis-ds</a>
+  <nav aria-label="System pages">
+    <ul>
+      <li><a href="foundations.html">Foundations</a></li>
+      <li><a href="elements.html" aria-current="page">Elements</a></li>
+      <li><a href="examples.html">Examples</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="eis-page">
+
+  <header class="eis-intro">
+    <div>
+      <p class="eis-label">eis-ds / elements</p>
+      <h1>Elements</h1>
+      <p>The basic elements, built on the foundations. Native HTML, every control works, every class starts with <code>eis-</code>. Styles live in <code>css/elements.css</code>; values come only from <code>css/tokens.css</code>.</p>
+    </div>
+    <dl>
+      <dt class="eis-label">Version</dt><dd>0.1 · draft</dd>
+      <dt class="eis-label">Stylesheet</dt><dd>css/elements.css</dd>
+      <dt class="eis-label">Depends on</dt><dd>css/tokens.css</dd>
+    </dl>
+  </header>
+
+  <nav class="eis-toc" aria-label="Sections">
+    <a href="#buttons">Buttons</a><a href="#chips">Chips</a><a href="#fields">Fields</a><a href="#choices">Choices</a><a href="#table">Table</a><a href="#panel">Panel</a><a href="#nav">Navigation</a><a href="#lists">Lists</a>
+  </nav>
+
+  <!-- BUTTONS -->
+  <section class="eis-section" id="buttons" aria-labelledby="buttons-h">
+    <header>
+      <h2 id="buttons-h"><small class="eis-label">01</small>Buttons</h2>
+      <p>A button acts. Rectangle, small radius, uppercase mono. Use <code>&lt;button&gt;</code> for actions and <code>&lt;a&gt;</code> styled as a button only for navigation.</p>
+    </header>
+    <div class="eis-panel">
+      <div class="eis-demo">
+        <button class="eis-button eis-button--primary" type="button">Save</button>
+        <button class="eis-button" type="button">Cancel</button>
+        <button class="eis-button eis-button--ghost" type="button">Skip</button>
+        <button class="eis-button eis-button--signal" type="button">Record</button>
+        <button class="eis-button" type="button" disabled>Disabled</button>
+      </div>
+      <div class="eis-demo">
+        <button class="eis-button eis-button--primary" type="button">+ New task</button>
+        <a class="eis-button" href="#buttons">Open report →</a>
+      </div>
+      <p class="eis-note"><code>.eis-button</code> + <code>--primary</code> · <code>--ghost</code> · <code>--signal</code>. Variants change colour only. One primary per view; <code>--signal</code> only for the action that is itself the signal (record, go live).</p>
+    </div>
+  </section>
+
+  <!-- CHIPS -->
+  <section class="eis-section" id="chips" aria-labelledby="chips-h">
+    <header>
+      <h2 id="chips-h"><small class="eis-label">02</small>Chips</h2>
+      <p>A chip describes; it never acts. Pill shape, sentence case and no hover state, so it can't be mistaken for a button.</p>
+    </header>
+    <div>
+      <div class="eis-panel">
+        <div class="eis-demo">
+          <span class="eis-chip">Accepted</span>
+          <span class="eis-chip eis-chip--outline">Maybe</span>
+          <span class="eis-chip eis-chip--solid">Organizer</span>
+          <span class="eis-chip eis-chip--signal">Conflict</span>
+          <span class="eis-chip eis-chip--hatch">Personal</span>
+        </div>
+        <div class="eis-demo">
+          <span class="eis-chip eis-chip--dot">On track</span>
+          <span class="eis-chip eis-chip--signal eis-chip--dot">Urgent</span>
+          <span class="eis-chip eis-chip--outline">PLT-204</span>
+          <span class="eis-chip eis-chip--outline">Billing</span>
+        </div>
+        <p class="eis-note"><code>.eis-chip</code> + <code>--outline</code> · <code>--solid</code> · <code>--signal</code> · <code>--hatch</code> · <code>--dot</code>. Hatch marks what isn't yours (personal, blocked). Signal is the only chip with colour.</p>
+      </div>
+      <div class="eis-panel">
+        <h3 class="eis-label">Chip vs button</h3>
+        <div class="eis-compare">
+          <div>
+            <p class="eis-label">Button · acts</p>
+            <p class="eis-row"><button class="eis-button" type="button">Filter</button><button class="eis-button eis-button--primary" type="button">Export</button></p>
+            <p class="eis-mono">Rectangle · 4px radius · UPPERCASE · 40px tall · hover border</p>
+          </div>
+          <div>
+            <p class="eis-label">Chip · describes</p>
+            <p class="eis-row"><span class="eis-chip">Accepted</span><span class="eis-chip eis-chip--signal">Conflict</span></p>
+            <p class="eis-mono">Pill · full radius · Sentence case · 24px tall · static</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIELDS -->
+  <section class="eis-section" id="fields" aria-labelledby="fields-h">
+    <header>
+      <h2 id="fields-h"><small class="eis-label">03</small>Fields</h2>
+      <p>Label above, in the label style. Hint and error below, in mono. Control outlines use <code>--ink-muted</code> so they pass the 3:1 contrast WCAG asks of components.</p>
+    </header>
+    <form class="eis-panel eis-form" action="#" onsubmit="return false">
+      <div class="eis-field">
+        <label for="f-title">Title</label>
+        <input class="eis-input" id="f-title" name="title" type="text" placeholder="What needs to be done" aria-describedby="f-title-hint">
+        <p class="eis-field__hint" id="f-title-hint">Start with a verb.</p>
+      </div>
+      <div class="eis-field">
+        <label for="f-stream">Stream</label>
+        <select class="eis-select" id="f-stream" name="stream">
+          <option>Priority</option><option>Billing</option><option>Platform</option><option>Data</option>
+        </select>
+      </div>
+      <div class="eis-field">
+        <label for="f-due">Due</label>
+        <input class="eis-input" id="f-due" name="due" type="date" value="2026-10-26">
+      </div>
+      <div class="eis-field">
+        <label for="f-owner">Owner</label>
+        <input class="eis-input" id="f-owner" name="owner" type="email" value="not-an-email" aria-invalid="true" aria-describedby="f-owner-err">
+        <p class="eis-field__error" id="f-owner-err">Enter a valid email.</p>
+      </div>
+      <div class="eis-field eis-field--wide">
+        <label for="f-notes">Notes</label>
+        <textarea class="eis-textarea" id="f-notes" name="notes" placeholder="Context, links, who asked"></textarea>
+      </div>
+      <div class="eis-field">
+        <label for="f-source">Source</label>
+        <input class="eis-input" id="f-source" name="source" type="text" value="Sprint review 21.10" disabled>
+      </div>
+      <div class="eis-form__actions">
+        <button class="eis-button eis-button--ghost" type="reset">Clear</button>
+        <button class="eis-button eis-button--primary" type="submit">Create task</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- CHOICES -->
+  <section class="eis-section" id="choices" aria-labelledby="choices-h">
+    <header>
+      <h2 id="choices-h"><small class="eis-label">04</small>Choices</h2>
+      <p>Checkbox for independent options, radio for one of many, switch for a setting that applies at once, segmented for switching a view.</p>
+    </header>
+    <div class="eis-panel">
+      <div class="eis-demo">
+        <fieldset class="eis-field eis-choices">
+          <legend>Show</legend>
+          <label class="eis-choice"><input class="eis-checkbox" type="checkbox" checked> Overdue</label>
+          <label class="eis-choice"><input class="eis-checkbox" type="checkbox"> New today</label>
+          <label class="eis-choice"><input class="eis-checkbox" type="checkbox" disabled> Archived</label>
+        </fieldset>
+        <fieldset class="eis-field eis-choices">
+          <legend>Sort by</legend>
+          <label class="eis-choice"><input class="eis-radio" type="radio" name="sort" checked> Due date</label>
+          <label class="eis-choice"><input class="eis-radio" type="radio" name="sort"> Age</label>
+          <label class="eis-choice"><input class="eis-radio" type="radio" name="sort"> Stream</label>
+        </fieldset>
+        <fieldset class="eis-field eis-choices">
+          <legend>Settings</legend>
+          <label class="eis-choice"><input class="eis-switch" type="checkbox" role="switch" checked> Hide personal</label>
+          <label class="eis-choice"><input class="eis-switch" type="checkbox" role="switch"> Compact rows</label>
+        </fieldset>
+      </div>
+      <div class="eis-demo">
+        <fieldset class="eis-segmented">
+          <legend>Range</legend>
+          <label><input type="radio" name="range" value="today" checked><span>Today</span></label>
+          <label><input type="radio" name="range" value="week"><span>Week</span></label>
+          <label><input type="radio" name="range" value="all"><span>All</span></label>
+        </fieldset>
+      </div>
+      <p class="eis-note"><code>.eis-checkbox</code> · <code>.eis-radio</code> · <code>.eis-switch</code> (checkbox + <code>role="switch"</code>) inside <code>.eis-choice</code> labels; groups in <code>fieldset.eis-choices</code>. <code>.eis-segmented</code> is a radio group.</p>
+    </div>
+  </section>
+
+  <!-- TABLE -->
+  <section class="eis-section" id="table" aria-labelledby="table-h">
+    <header>
+      <h2 id="table-h"><small class="eis-label">05</small>Table</h2>
+      <p>A real <code>&lt;table&gt;</code>. Hairlines between rows, no zebra, cells vertically centred, numbers in mono and right-aligned.</p>
+    </header>
+    <div class="eis-panel eis-scroll">
+      <table class="eis-table">
+        <caption class="eis-visually-hidden">Open tasks by stream</caption>
+        <thead><tr><th scope="col"><span class="eis-visually-hidden">Select</span></th><th scope="col">Stream</th><th scope="col">Status</th><th scope="col" class="eis-num">Open</th><th scope="col" class="eis-num">Overdue</th></tr></thead>
+        <tbody>
+          <tr><td><input class="eis-checkbox" type="checkbox" aria-label="Select Priority"></td><th scope="row">Priority</th><td><span class="eis-chip">On track</span></td><td class="eis-num">14</td><td class="eis-num">0</td></tr>
+          <tr><td><input class="eis-checkbox" type="checkbox" aria-label="Select Billing"></td><th scope="row">Billing</th><td><span class="eis-chip eis-chip--signal">Overdue</span></td><td class="eis-num">13</td><td class="eis-num">1</td></tr>
+          <tr><td><input class="eis-checkbox" type="checkbox" aria-label="Select Platform" checked></td><th scope="row">Platform</th><td><span class="eis-chip eis-chip--signal">Overdue</span></td><td class="eis-num">15</td><td class="eis-num">3</td></tr>
+          <tr><td><input class="eis-checkbox" type="checkbox" aria-label="Select Data"></td><th scope="row">Data</th><td><span class="eis-chip">On track</span></td><td class="eis-num">7</td><td class="eis-num">0</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- PANEL -->
+  <section class="eis-section" id="panel" aria-labelledby="panel-h">
+    <header>
+      <h2 id="panel-h"><small class="eis-label">06</small>Panel</h2>
+      <p>The one container. Second surface level, 1px line, 10px radius, no shadow. Head with a label on the left and a mono count on the right.</p>
+    </header>
+    <div>
+      <section class="eis-panel" aria-labelledby="p-h">
+        <header class="eis-panel__head"><h3 class="eis-label" id="p-h">Summary</h3><span class="eis-mono">today</span></header>
+        <dl class="eis-metrics">
+          <div><dt class="eis-label">Open</dt><dd>84</dd><dd class="eis-mono">11 streams</dd></div>
+          <div><dt class="eis-label">New today</dt><dd>16</dd><dd class="eis-mono">6 in one stream</dd></div>
+          <div><dt class="eis-label">Overdue</dt><dd>06</dd><dd class="eis-mono">3 in Platform</dd></div>
+        </dl>
+      </section>
+      <section class="eis-panel">
+        <details class="eis-disclosure">
+          <summary><h3 class="eis-label">Disclosure</h3><span class="eis-mono">7</span></summary>
+          <p class="eis-note">A <code>&lt;details&gt;</code> with <code>.eis-disclosure</code>. Opens and closes natively, keyboard included.</p>
+        </details>
+      </section>
+    </div>
+  </section>
+
+  <!-- NAV -->
+  <section class="eis-section" id="nav" aria-labelledby="nav-h">
+    <header>
+      <h2 id="nav-h"><small class="eis-label">07</small>Navigation</h2>
+      <p>Breadcrumb in label style, current page in signal ink. Text links underline with a hairline that darkens on hover.</p>
+    </header>
+    <div class="eis-panel">
+      <div class="eis-demo">
+        <nav class="eis-breadcrumb eis-label" aria-label="Breadcrumb"><ol><li><a href="#nav">Tasks</a></li><li><a href="#nav">Work</a></li><li aria-current="page">Billing</li></ol></nav>
+      </div>
+      <div class="eis-demo">
+        <p>Read the <a class="eis-link" href="foundations.html">foundations</a> before changing a token.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LISTS -->
+  <section class="eis-section" id="lists" aria-labelledby="lists-h">
+    <header>
+      <h2 id="lists-h"><small class="eis-label">08</small>Lists</h2>
+      <p>Rows separated by hairlines. Avatar is initials in a circle, never a photo frame with colour.</p>
+    </header>
+    <ul class="eis-panel eis-people">
+      <li><span class="eis-avatar" aria-hidden="true">AN</span><p>Ana<small class="eis-mono">Release plan with the 6 milestones</small></p><span class="eis-chip eis-chip--signal">Overdue</span></li>
+      <li><span class="eis-avatar" aria-hidden="true">BR</span><p>Bruno<small class="eis-mono">Test list for the provider migration</small></p><span class="eis-chip">Waiting</span></li>
+      <li><span class="eis-avatar" aria-hidden="true">DV</span><p>Davi<small class="eis-mono">Payment slip in the checkout drawer</small></p><span class="eis-chip eis-chip--outline">In review</span></li>
+    </ul>
+  </section>
+
+  <footer class="eis-foot eis-mono">
+    <span>eis-ds · elements · v0.1</span>
+    <span>css/tokens.css · css/elements.css</span>
+  </footer>
+</main>
+</body>
+</html>

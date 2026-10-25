@@ -1,0 +1,54 @@
+{
+  "surface": {
+    "$type": "color",
+    "canvas": {
+      "$value": "{color.neutral.100}",
+      "$description": "Page background. Solid; no grid."
+    },
+    "panel": {
+      "$value": "{color.neutral.0}",
+      "$description": "Panels and sidebar. The second and last surface level."
+    },
+    "inverse": {
+      "$value": "{color.neutral.900}",
+      "$description": "Active nav item, primary button, solid tag."
+    }
+  },
+  "line": {
+    "$type": "color",
+    "$root": {
+      "$value": "{color.neutral.300}",
+      "$description": "Every separator and border."
+    }
+  },
+  "ink": {
+    "$type": "color",
+    "$root": {
+      "$value": "{color.neutral.900}",
+      "$description": "Primary text."
+    },
+    "muted": {
+      "$value": "{color.neutral.600}",
+      "$description": "Labels, metadata, secondary text."
+    },
+    "inverse": {
+      "$value": "{color.neutral.0}",
+      "$description": "Text on surface.inverse."
+    }
+  },
+  "signal": {
+    "$type": "color",
+    "$root": {
+      "$value": "{color.orange.500}",
+      "$description": "Fills and marks for the one thing that matters: overdue, conflict, urgent."
+    },
+    "ink": {
+      "$value": "{color.orange.700}",
+      "$description": "Signal as text: overdue dates, current breadcrumb."
+    },
+    "on": {
+      "$value": "{color.neutral.900}",
+      "$description": "Text placed on a signal fill."
+    }
+  }
+}

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Examples — eis-ds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/elements.css">
+<link rel="stylesheet" href="css/docs.css">
+<style>
+.eis-examples{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(320px,100%),1fr));gap:var(--space-200)}
+.eis-example{display:flex;flex-direction:column;text-decoration:none;color:inherit}
+.eis-example:hover{border-color:var(--ink-muted)}
+.eis-example figure{aspect-ratio:16/10;background:var(--surface-canvas);border-bottom:var(--border-width-100) solid var(--line);overflow:hidden;position:relative}
+.eis-example iframe{position:absolute;top:0;left:0;width:1440px;height:900px;border:0;transform:scale(var(--k));transform-origin:0 0;pointer-events:none}
+.eis-example__body{display:flex;flex-direction:column;gap:var(--space-100);padding:var(--space-200)}
+.eis-example__body h2{font-family:var(--type-heading-font-family);font-size:var(--font-size-400);font-weight:var(--font-weight-regular);line-height:var(--font-line-height-snug)}
+.eis-example__body p{color:var(--ink-muted)}
+.eis-example__meta{display:flex;flex-wrap:wrap;gap:var(--space-100);margin-top:var(--space-100)}
+</style>
+</head>
+<body>
+<header class="eis-docnav">
+  <a href="foundations.html">eis-ds</a>
+  <nav aria-label="System pages">
+    <ul>
+      <li><a href="foundations.html">Foundations</a></li>
+      <li><a href="elements.html">Elements</a></li>
+      <li><a href="examples.html" aria-current="page">Examples</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="eis-page">
+  <header class="eis-intro">
+    <div>
+      <p class="eis-label">eis-ds / examples</p>
+      <h1>Examples</h1>
+      <p>Pages and templates built with the system. Each one links <code>css/tokens.css</code> and <code>css/elements.css</code> and keeps only its own layout CSS, so changing an element here changes it everywhere.</p>
+    </div>
+    <dl>
+      <dt class="eis-label">Examples</dt><dd>1</dd>
+      <dt class="eis-label">Folder</dt><dd>system/examples/</dd>
+    </dl>
+  </header>
+
+  <ul class="eis-examples">
+    <li>
+      <a class="eis-panel eis-example" href="examples/dashboard/tasks-work.html">
+        <figure aria-hidden="true"><iframe src="examples/dashboard/tasks-work.html" scrolling="no" tabindex="-1" loading="lazy" title=""></iframe></figure>
+        <div class="eis-example__body">
+          <h2>Dashboard · Tasks / Work</h2>
+          <p>Personal productivity dashboard: sidebar, metrics, agenda, task age, task tables by stream, key topics.</p>
+          <p class="eis-example__meta"><span class="eis-chip eis-chip--outline">Dashboard</span><span class="eis-chip eis-chip--outline">Responsive</span><span class="eis-chip">v0.1</span></p>
+        </div>
+      </a>
+    </li>
+  </ul>
+
+  <footer class="eis-foot eis-mono">
+    <span>eis-ds · examples · v0.1</span>
+    <span>system/examples/</span>
+  </footer>
+</main>
+
+<script>
+// Scale each live preview to the width of its card.
+const fit = () => document.querySelectorAll('.eis-example figure').forEach(f => f.style.setProperty('--k', f.clientWidth / 1440));
+fit(); addEventListener('resize', fit);
+</script>
+</body>
+</html>

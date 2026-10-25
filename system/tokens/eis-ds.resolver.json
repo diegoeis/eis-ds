@@ -1,0 +1,40 @@
+{
+  "name": "eis-ds",
+  "version": "2025-10-01",
+  "description": "Primitives, then semantic roles. Only the light mode exists so far; a mode modifier is added when a second mode is defined.",
+  "sets": {
+    "primitive": {
+      "description": "Raw values",
+      "sources": [
+        {
+          "$ref": "primitive/color.tokens.json"
+        },
+        {
+          "$ref": "primitive/dimension.tokens.json"
+        },
+        {
+          "$ref": "primitive/font.tokens.json"
+        }
+      ]
+    },
+    "semantic": {
+      "description": "Roles and text styles, light mode",
+      "sources": [
+        {
+          "$ref": "semantic/light.tokens.json"
+        },
+        {
+          "$ref": "semantic/type.tokens.json"
+        }
+      ]
+    }
+  },
+  "resolutionOrder": [
+    {
+      "$ref": "#/sets/primitive"
+    },
+    {
+      "$ref": "#/sets/semantic"
+    }
+  ]
+}

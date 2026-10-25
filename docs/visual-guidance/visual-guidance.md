@@ -4,7 +4,7 @@ The visual direction of eis-ds, the references it came from and what was taken f
 
 > Usage rules for tokens and elements live in `docs/manual/`. This file is direction, provenance and decision history.
 
-> This document describes direction and observations. Final values exist only in `src/tokens/`. While a value appears here as "measured" or "observed", it is a candidate, not a decision.
+> This document describes direction and observations. Final values exist only in `src/shared/tokens/` and `src/<scope>/tokens/`. While a value appears here as "measured" or "observed", it is a candidate, not a decision.
 
 ---
 
@@ -244,6 +244,7 @@ Candidates will be compared side by side in HTML before the decision.
 | 2026-10-25 | Labels become **chips** (pill, sentence case, no hover), so they are not confused with buttons. The rectangular "block label" stays only for graphic pieces | Author's request in the dashboard |
 | 2026-10-25 | Table cells always vertically centered | Author's request |
 | 2026-10-25 | Basic elements in `src/css/elements.css`, demonstrated in `site/elements.html` | First version |
+| 2026-10-25 | Scopes: `src/shared/` (tokens, base, elements, one `shared.css` entry), `src/web/` (sites and docs) and `src/app/` (dashboards). Scope tokens reference shared ones. Prefixes `eis-web-`/`--web-` and `eis-app-`/`--app-`, checked by `scripts/check-css.py` | Several systems in one: same colours and spacing, no conflicts. Copy shared + one scope to start a project |
 
 ### Open
 

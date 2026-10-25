@@ -1,6 +1,6 @@
 # Elements
 
-Every basic element: when to use it, the HTML to copy, variants, and what is forbidden. Styles live in `src/css/elements.css`. The rendered versions are on `site/elements.html`.
+Every basic element: when to use it, the HTML to copy, variants, and what is forbidden. Styles live in `src/shared/css/elements.css`. Elements are shared by every scope. The rendered versions are on `site/elements.html`.
 
 **General rules for all elements**
 

@@ -10,15 +10,16 @@ A piece is a standalone HTML file. It loads, in this order:
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="<src>/css/tokens.css">
-<link rel="stylesheet" href="<src>/css/elements.css">
+<link rel="stylesheet" href="<src>/shared/shared.css">
+<link rel="stylesheet" href="<src>/<scope>/css/tokens.css">
+<link rel="stylesheet" href="<src>/<scope>/css/<scope>.css">
 <style>/* this piece's layout only */</style>
 ```
 
 - `<src>` is the relative path to the `src/` folder at the repository root. From `site/examples/<kind>/` it is `../../../src`.
-- `elements.css` already sets the base (box-sizing, margins, body type, canvas background, focus). Don't repeat it.
-- Site pages (landing, marketing, documentation) also load `<src>/css/site.css` after `elements.css`. Applications (dashboards, tools) MUST NOT load it.
-- The piece's `<style>` contains **layout only**: grids, regions, positions, page-specific arrangements. It MUST NOT redefine buttons, chips, fields, tables, panels or any element of `elements.css`.
+- `<scope>` is `web` (websites, landing pages, docs) or `app` (dashboards, tools). See §7.
+- `shared.css` imports the shared tokens, the base and the elements. The base already sets box-sizing, margins, body type, canvas background and focus. Don't repeat it.
+- The piece's `<style>` contains **layout only**: grids, regions, positions, page-specific arrangements. It MUST NOT redefine buttons, chips, fields, tables, panels or any shared element.
 - No frameworks or libraries (React, Tailwind, Bootstrap, icon fonts).
 
 ## 2. Page skeleton
@@ -27,11 +28,11 @@ A piece is a standalone HTML file. It loads, in this order:
 <!doctype html>
 <html lang="en">
 <head>…files above…</head>
-<body>
-  <aside class="eis-sidebar" aria-label="Sidebar">
-    <nav aria-label="Main">…</nav>
+<body class="eis-app-shell">
+  <aside class="eis-app-sidebar" aria-label="Sidebar">
+    <nav class="eis-app-nav" aria-label="Main">…</nav>
   </aside>
-  <main>
+  <main class="eis-app-main">
     <header>
       <nav class="eis-breadcrumb eis-label" aria-label="Breadcrumb">…</nav>
       <h1>Page title</h1>
@@ -102,32 +103,52 @@ Every piece MUST work from 360px to wide screens with **no horizontal scroll**, 
 - Every chart has `role="img"` and an `aria-label` that states the numbers.
 - Legends are lists (`<ul>`), `aria-hidden` if the `aria-label` already carries the data.
 
-## 7. Two layers: application and site
+## 7. Scopes: shared, web and app
 
-The core is shared: `tokens.css` and `elements.css`. On top of it there are two independent layers.
+eis-ds is several design systems in one. They share the same base and never conflict.
 
-| Layer | Use for | CSS | Class prefix |
-|---|---|---|---|
-| Application | Dashboards, tools, admin screens | The page's own layout CSS | `eis-` |
-| Site | Landing pages, marketing pages, documentation | `src/css/site.css` + the page's own CSS | `eis-site-` |
+| Folder | Use for | Load | Class prefix | Variable prefix |
+|---|---|---|---|---|
+| `src/shared/` | Every scope | `shared/shared.css` | `eis-` | `--color-`, `--space-`, `--ink`… |
+| `src/web/` | Websites, landing pages, marketing pages, documentation | `web/css/tokens.css`, `web/css/web.css`, optional `web/js/lines.js` | `eis-web-` | `--web-` |
+| `src/app/` | Dashboards, tools, system screens | `app/css/tokens.css`, `app/css/app.css` | `eis-app-` | `--app-` |
 
-- `site.css` styles only `.eis-site-*` classes. It never styles bare HTML or core classes. So it cannot change an element or an application layout. `scripts/check-css.py` enforces this.
-- An application MUST NOT use `eis-site-*` classes.
-- A site page uses the core elements (button, chip, panel…) as they are. It does not restyle them.
-- A site pattern used on two or more pages goes into `site.css`. A pattern used on one page only stays in that page's `<style>`.
+To build a website, copy `src/shared/` and `src/web/`. To build a dashboard, copy `src/shared/` and `src/app/`. More scopes (slides, email, docs) follow the same pattern.
 
-### Site components
+Rules:
+- `shared` never depends on a scope. Shared elements (button, chip, fields, table, panel) and, later, icons live there.
+- A scope's tokens live under its own group (`web.*`, `app.*`) and MAY reference shared tokens: `"{font.size.800}"`. A colour change in shared reaches every scope.
+- A scope MUST NOT reference another scope's tokens, variables or classes.
+- Every selector in `<scope>.css` starts with `.eis-<scope>-`. A scope never styles bare HTML or shared classes on their own. It MAY place a shared element in its own context (`.eis-app-tasks .eis-table`) for layout only.
+- `scripts/build-tokens.py` validates the token rules. `scripts/check-css.py` validates the CSS rules. Both MUST pass.
+- A pattern used on two or more pages goes into the scope CSS. A pattern used on one page only stays in that page's `<style>`.
+
+### Web components
 
 | Class | What it is |
 |---|---|
-| `eis-site-docnav` | Top bar of documentation pages |
-| `eis-site-page`, `eis-site-intro`, `eis-site-toc` | Documentation page shell, intro with title and facts, table of contents |
-| `eis-site-doc` | Documentation section: title column + content column |
-| `eis-site-spec`, `eis-site-pair`, `eis-site-scroll` | Specification table, contrast pair sample, horizontal scroll wrapper |
-| `eis-site-docfoot` | Footer of documentation pages |
-| `eis-site-sheet`, `eis-site-wrap`, `eis-site-grid` | Landing sheet on the canvas, side padding, 12-column grid |
-| `eis-site-header`, `eis-site-brand` | Landing top bar and brand mark |
-| `eis-site-hero` (`__index`, `__meta`, `__lead`, `__sub`, `__actions`), `eis-site-lines` | Hero block and its line art |
-| `eis-site-section` (`__head`, `__body`, `__aside`) | Landing section: numbered label, title, body column |
-| `eis-site-numbered`, `eis-site-cards`/`eis-site-card`, `eis-site-principles`, `eis-site-steps` | Numbered list, cards with a figure, principles grid, step timeline |
-| `eis-site-code`, `eis-site-cta`, `eis-site-footer`, `eis-site-arrow` | Code block, closing call to action, landing footer, arrow link |
+| `eis-web-docnav` | Top bar of documentation pages |
+| `eis-web-page`, `eis-web-intro`, `eis-web-toc` | Documentation page shell, intro with title and facts, table of contents |
+| `eis-web-doc` | Documentation section: title column + content column |
+| `eis-web-spec`, `eis-web-pair`, `eis-web-scroll` | Specification table, contrast pair sample, horizontal scroll wrapper |
+| `eis-web-docfoot` | Footer of documentation pages |
+| `eis-web-sheet`, `eis-web-wrap`, `eis-web-grid` | Landing sheet on the canvas, side padding, 12-column grid |
+| `eis-web-header`, `eis-web-brand` | Landing top bar and brand mark |
+| `eis-web-hero` (`__index`, `__meta`, `__lead`, `__sub`, `__actions`) | Hero block |
+| `eis-web-lines` + `data-eis-web-lines` | Line art drawn by `web/js/lines.js`. Options: `data-seed`, `data-step` |
+| `eis-web-section` (`__head`, `__body`, `__aside`) | Landing section: numbered label, title, body column |
+| `eis-web-numbered`, `eis-web-cards`/`eis-web-card`, `eis-web-principles`, `eis-web-steps` | Numbered list, cards with a figure, principles grid, step timeline |
+| `eis-web-code`, `eis-web-cta`, `eis-web-footer`, `eis-web-arrow` | Code block, closing call to action, landing footer, arrow link |
+
+### App components
+
+| Class | What it is |
+|---|---|
+| `eis-app-shell` | On `<body>`: sidebar + main grid. Becomes a top bar below 1024px |
+| `eis-app-sidebar`, `eis-app-brand`, `eis-app-nav` (`__section`, `__count`) | Sidebar, brand, navigation with counts |
+| `eis-app-main`, `eis-app-page-head`, `eis-app-toolbar` | Main region, page title row, action toolbar |
+| `eis-app-metrics` | Row of metric cells (`<dl>`) |
+| `eis-app-grid` (`--halves`, `--main`), `eis-app-stack` | Panel grids and the side column stack |
+| `eis-app-agenda`, `eis-app-cells`, `eis-app-legend`, `eis-app-bar`, `eis-app-pips` | Agenda list, cell matrix, legend, stacked bar, pips |
+| `eis-app-tasks`, `eis-app-meta`, `eis-app-due` | Task groups with tables, task metadata, due dates |
+| `eis-app-topics`, `eis-app-people`, `eis-app-done` | Side lists |

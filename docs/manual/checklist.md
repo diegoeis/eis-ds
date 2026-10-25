@@ -4,10 +4,10 @@ Run this before calling a piece, element or token done. Every box must be true.
 
 ## Files and CSS
 
-- [ ] Loads fonts, `tokens.css`, `elements.css`, then only its own layout CSS.
-- [ ] An application page does not load `site.css`. A site page (landing, marketing, docs) MAY load it after `elements.css`.
-- [ ] `site.css` changed? `python3 scripts/check-css.py` passes.
-- [ ] No raw colours, font sizes, spacing or radii (only the exceptions in `tokens-usage.md` §7).
+- [ ] Loads fonts, `shared/shared.css`, one scope (`web` or `app`), then only its own layout CSS.
+- [ ] Uses only shared classes and the classes of its own scope.
+- [ ] Scope CSS changed? `python3 scripts/check-css.py` passes.
+- [ ] No raw colours, font sizes, spacing or radii (only the exceptions in `tokens-usage.md` §8).
 - [ ] Backgrounds, text, lines and signal use roles (`--surface-*`, `--ink*`, `--line`, `--signal*`), not primitives.
 - [ ] Does not restyle any element from `elements.css`.
 - [ ] Every class starts with `eis-`.
@@ -52,7 +52,7 @@ Run this before calling a piece, element or token done. Every box must be true.
 
 ## When adding to the system
 
-- [ ] New token: in `src/tokens/*.tokens.json`, `python3 scripts/build-tokens.py` passes, shown on `foundations.html`, usage added to `tokens-usage.md`.
+- [ ] New token: in `src/shared/tokens/` (shared) or `src/<scope>/tokens/` (one scope), `python3 scripts/build-tokens.py` passes, shown on `foundations.html`, usage added to `tokens-usage.md`.
 - [ ] New or changed element: in `elements.css`, shown on `elements.html`, documented in `elements.md`.
 - [ ] New example: in `site/examples/<kind>/`, card on `examples.html`.
 - [ ] Decision recorded in `docs/visual-guidance/visual-guidance.md` §7.

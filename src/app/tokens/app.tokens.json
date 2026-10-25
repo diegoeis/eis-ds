@@ -1,0 +1,50 @@
+{
+  "app": {
+    "$description": "App scope: dashboards, tools and system screens. Values here exist only for applications; everything else comes from shared.",
+    "size": {
+      "$type": "dimension",
+      "sidebar": {
+        "$value": {
+          "value": 248,
+          "unit": "px"
+        },
+        "$description": "Width of the sidebar on wide screens."
+      },
+      "aside": {
+        "$value": {
+          "value": 360,
+          "unit": "px"
+        },
+        "$description": "Width of the side column next to the main content."
+      },
+      "nav-item": {
+        "$value": {
+          "value": 32,
+          "unit": "px"
+        },
+        "$description": "Min height of a sidebar navigation item. Denser than a 40px control."
+      },
+      "row": {
+        "$value": {
+          "value": 44,
+          "unit": "px"
+        },
+        "$description": "Min height of a list row (agenda, people)."
+      },
+      "metric": {
+        "$value": {
+          "value": 136,
+          "unit": "px"
+        },
+        "$description": "Min height of a metric cell."
+      },
+      "avatar": {
+        "$value": {
+          "value": 28,
+          "unit": "px"
+        },
+        "$description": "Avatar size in lists."
+      }
+    }
+  }
+}

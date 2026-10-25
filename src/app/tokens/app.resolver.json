@@ -1,0 +1,20 @@
+{
+  "name": "eis-ds-app",
+  "version": "2025-10-01",
+  "description": "App scope tokens. Resolved against shared.",
+  "sets": {
+    "app": {
+      "description": "App scope tokens. Resolved against shared.",
+      "sources": [
+        {
+          "$ref": "app.tokens.json"
+        }
+      ]
+    }
+  },
+  "resolutionOrder": [
+    {
+      "$ref": "#/sets/app"
+    }
+  ]
+}

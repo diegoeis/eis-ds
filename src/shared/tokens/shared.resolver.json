@@ -1,5 +1,5 @@
 {
-  "name": "eis-ds",
+  "name": "eis-ds-shared",
   "version": "2025-10-01",
   "description": "Primitives, then semantic roles. Only the light mode exists so far; a mode modifier is added when a second mode is defined.",
   "sets": {

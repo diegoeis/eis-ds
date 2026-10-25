@@ -14,30 +14,35 @@ Version 0.1, draft. Only the light mode exists.
 ## Structure
 
 ```
-src/                     the design system assets. Apps and the site load these
-  tokens/                source of truth (.tokens.json)
-  css/tokens.css         GENERATED. Never edit by hand
-  css/elements.css       base and basic elements
-  css/site.css           site layer: landing, marketing and docs pages. Apps never load it
+src/                     the design system. Copy shared/ + one scope into a project
+  shared/                used by every scope
+    shared.css           one entry point: imports the three files below
+    tokens/              shared tokens (.tokens.json): source of truth
+    css/tokens.css       GENERATED. Never edit by hand
+    css/base.css         reset, body type, focus, text helpers
+    css/elements.css     basic elements: button, chip, fields, table, panel…
+  web/                   scope: websites, landing pages, docs
+    tokens/  css/tokens.css (GENERATED)  css/web.css  js/lines.js
+  app/                   scope: dashboards, tools
+    tokens/  css/tokens.css (GENERATED)  css/app.css
 index.html               landing page: what the system is, for whom, how to start
-site/                    the visual manual for humans. Loads ../src/css/
-  foundations.html       home of the manual
-  elements.html, examples.html
-  examples/<kind>/       pages built with the tokens and elements
+site/                    the visual manual for humans (web scope). foundations.html is the home
+  foundations.html, elements.html, examples.html
+  examples/<kind>/       pages built with the system
 docs/
-  manual/                written usage rules for tokens, elements and layout
+  manual/                written usage rules: tokens, elements, layout and scopes
   tokens.md              token format
   visual-guidance/       reference only: direction, images, decisions
-scripts/build-tokens.py  validates src/tokens and generates src/css/tokens.css
-scripts/check-css.py     checks that site.css only has .eis-site- selectors
+scripts/build-tokens.py  validates the tokens of every scope and generates each tokens.css
+scripts/check-css.py     checks that scopes never use each other's classes or variables
 ```
 
-`src/` is the only thing an application needs. `site/` and `docs/` document it and never hold tokens or element CSS.
+A project needs `src/shared/` and one scope. `site/` and `docs/` document the system and never hold tokens or CSS. Scope rules: `docs/manual/layout.md` §7.
 
 ## Workflow
 
-1. Token: edit the `.tokens.json` file. Run `python3 scripts/build-tokens.py`. If it fails, do not use the result.
-2. Element: change it in `elements.css`. Site component (landing, docs): change it in `site.css`, then run `python3 scripts/check-css.py`. Show it on `elements.html`. Document it in `docs/manual/elements.md`.
+1. Token: edit the `.tokens.json` file of `shared` or of one scope. Run `python3 scripts/build-tokens.py`. If it fails, do not use the result.
+2. Element: change it in `src/shared/css/elements.css`. Scope component: change it in `src/<scope>/css/<scope>.css`. Then run `python3 scripts/check-css.py`. Show it on `elements.html`. Document it in `docs/manual/elements.md`.
 3. New example: put it in `site/examples/<kind>/`. Add a card on `examples.html`.
 4. New reference image: add it to the source table in `visual-guidance.md`.
 
@@ -47,7 +52,7 @@ scripts/check-css.py     checks that site.css only has .eis-site- selectors
 - Write documentation in STE-flavored English (ASD-STE100): short sentences, active voice, no semicolons, no phrasal verbs.
 - Every piece is responsive from 360px to wide screens, with no horizontal scroll.
 - Use semantic HTML and native controls that work. Never fake a table or a control with `div` or `span`.
-- Every class starts with `eis-`. Site-layer classes start with `eis-site-` and live only in `site.css`.
+- Every class starts with `eis-`. Scope classes start with `eis-<scope>-` and live only in that scope. Scopes never use each other.
 - No raw values in CSS. All values come from the tokens.
 - A piece does not restyle a basic element. If it needs a change, change the element in the system.
 - A variant changes colour only.

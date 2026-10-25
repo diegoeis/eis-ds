@@ -7,9 +7,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../src/css/tokens.css">
-<link rel="stylesheet" href="../src/css/elements.css">
-<link rel="stylesheet" href="../src/css/site.css">
+<link rel="stylesheet" href="../src/shared/shared.css">
+<link rel="stylesheet" href="../src/web/css/tokens.css">
+<link rel="stylesheet" href="../src/web/css/web.css">
 <style>
 .eis-examples{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(320px,100%),1fr));gap:var(--space-200)}
 .eis-example{display:flex;flex-direction:column;text-decoration:none;color:inherit}
@@ -23,7 +23,7 @@
 </style>
 </head>
 <body>
-<header class="eis-site-docnav">
+<header class="eis-web-docnav">
   <a href="../index.html">eis-ds</a>
   <nav aria-label="Site pages">
     <ul>
@@ -34,12 +34,12 @@
   </nav>
 </header>
 
-<main class="eis-site-page">
-  <header class="eis-site-intro">
+<main class="eis-web-page">
+  <header class="eis-web-intro">
     <div>
       <p class="eis-label">eis-ds / examples</p>
       <h1>Examples</h1>
-      <p>Pages and templates built with the system. Each one links <code>src/css/tokens.css</code> and <code>src/css/elements.css</code> and keeps only its own layout CSS, so changing an element here changes it everywhere.</p>
+      <p>Pages and templates built with the system. Each one links <code>src/shared/css/tokens.css</code> and <code>src/shared/css/elements.css</code> and keeps only its own layout CSS, so changing an element here changes it everywhere.</p>
     </div>
     <dl>
       <dt class="eis-label">Examples</dt><dd>1</dd>
@@ -60,7 +60,7 @@
     </li>
   </ul>
 
-  <footer class="eis-site-docfoot eis-mono">
+  <footer class="eis-web-docfoot eis-mono">
     <span>eis-ds · examples · v0.1</span>
     <span>site/examples/</span>
   </footer>

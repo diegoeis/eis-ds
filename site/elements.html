@@ -7,9 +7,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../src/css/tokens.css">
-<link rel="stylesheet" href="../src/css/elements.css">
-<link rel="stylesheet" href="../src/css/site.css">
+<link rel="stylesheet" href="../src/shared/shared.css">
+<link rel="stylesheet" href="../src/web/css/tokens.css">
+<link rel="stylesheet" href="../src/web/css/web.css">
 <style>
 /* page-only layout for the specimens */
 .eis-demo{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-200);padding:var(--space-300) var(--space-200)}
@@ -44,7 +44,7 @@
 </style>
 </head>
 <body>
-<header class="eis-site-docnav">
+<header class="eis-web-docnav">
   <a href="../index.html">eis-ds</a>
   <nav aria-label="Site pages">
     <ul>
@@ -55,27 +55,27 @@
   </nav>
 </header>
 
-<main class="eis-site-page">
+<main class="eis-web-page">
 
-  <header class="eis-site-intro">
+  <header class="eis-web-intro">
     <div>
       <p class="eis-label">eis-ds / elements</p>
       <h1>Elements</h1>
-      <p>The basic elements, built on the foundations. Native HTML, every control works, every class starts with <code>eis-</code>. Styles live in <code>src/css/elements.css</code>; values come only from <code>src/css/tokens.css</code>.</p>
+      <p>The basic elements, built on the foundations. Native HTML, every control works, every class starts with <code>eis-</code>. Styles live in <code>src/shared/css/elements.css</code>; values come only from <code>src/shared/css/tokens.css</code>.</p>
     </div>
     <dl>
       <dt class="eis-label">Version</dt><dd>0.1 · draft</dd>
-      <dt class="eis-label">Stylesheet</dt><dd>src/css/elements.css</dd>
-      <dt class="eis-label">Depends on</dt><dd>src/css/tokens.css</dd>
+      <dt class="eis-label">Stylesheet</dt><dd>src/shared/css/elements.css</dd>
+      <dt class="eis-label">Depends on</dt><dd>src/shared/css/tokens.css</dd>
     </dl>
   </header>
 
-  <nav class="eis-site-toc" aria-label="Sections">
+  <nav class="eis-web-toc" aria-label="Sections">
     <a href="#buttons">Buttons</a><a href="#chips">Chips</a><a href="#fields">Fields</a><a href="#choices">Choices</a><a href="#table">Table</a><a href="#panel">Panel</a><a href="#nav">Navigation</a><a href="#lists">Lists</a>
   </nav>
 
   <!-- BUTTONS -->
-  <section class="eis-site-doc" id="buttons" aria-labelledby="buttons-h">
+  <section class="eis-web-doc" id="buttons" aria-labelledby="buttons-h">
     <header>
       <h2 id="buttons-h"><small class="eis-label">01</small>Buttons</h2>
       <p>A button acts. Rectangle, small radius, uppercase mono. Use <code>&lt;button&gt;</code> for actions and <code>&lt;a&gt;</code> styled as a button only for navigation.</p>
@@ -97,7 +97,7 @@
   </section>
 
   <!-- CHIPS -->
-  <section class="eis-site-doc" id="chips" aria-labelledby="chips-h">
+  <section class="eis-web-doc" id="chips" aria-labelledby="chips-h">
     <header>
       <h2 id="chips-h"><small class="eis-label">02</small>Chips</h2>
       <p>A chip describes a state. Pill shape and sentence case, so it can't be mistaken for a button. Default cursor and no hover.</p>
@@ -138,7 +138,7 @@
   </section>
 
   <!-- FIELDS -->
-  <section class="eis-site-doc" id="fields" aria-labelledby="fields-h">
+  <section class="eis-web-doc" id="fields" aria-labelledby="fields-h">
     <header>
       <h2 id="fields-h"><small class="eis-label">03</small>Fields</h2>
       <p>Label above, in the label style. Hint and error below, in mono. Control outlines use <code>--ink-muted</code> so they pass the 3:1 contrast WCAG asks of components.</p>
@@ -180,7 +180,7 @@
   </section>
 
   <!-- CHOICES -->
-  <section class="eis-site-doc" id="choices" aria-labelledby="choices-h">
+  <section class="eis-web-doc" id="choices" aria-labelledby="choices-h">
     <header>
       <h2 id="choices-h"><small class="eis-label">04</small>Choices</h2>
       <p>Checkbox for independent options, radio for one of many, switch for a setting that applies at once, segmented for switching a view.</p>
@@ -218,12 +218,12 @@
   </section>
 
   <!-- TABLE -->
-  <section class="eis-site-doc" id="table" aria-labelledby="table-h">
+  <section class="eis-web-doc" id="table" aria-labelledby="table-h">
     <header>
       <h2 id="table-h"><small class="eis-label">05</small>Table</h2>
       <p>A real <code>&lt;table&gt;</code>. Hairlines between rows, no zebra, cells vertically centred, numbers in mono and right-aligned.</p>
     </header>
-    <div class="eis-panel eis-site-scroll">
+    <div class="eis-panel eis-web-scroll">
       <table class="eis-table">
         <caption class="eis-visually-hidden">Open tasks by stream</caption>
         <thead><tr><th scope="col"><span class="eis-visually-hidden">Select</span></th><th scope="col">Stream</th><th scope="col">Status</th><th scope="col" class="eis-num">Open</th><th scope="col" class="eis-num">Overdue</th></tr></thead>
@@ -238,7 +238,7 @@
   </section>
 
   <!-- PANEL -->
-  <section class="eis-site-doc" id="panel" aria-labelledby="panel-h">
+  <section class="eis-web-doc" id="panel" aria-labelledby="panel-h">
     <header>
       <h2 id="panel-h"><small class="eis-label">06</small>Panel</h2>
       <p>The one container. Second surface level, 1px line, 10px radius, no shadow. Head with a label on the left and a mono count on the right.</p>
@@ -262,7 +262,7 @@
   </section>
 
   <!-- NAV -->
-  <section class="eis-site-doc" id="nav" aria-labelledby="nav-h">
+  <section class="eis-web-doc" id="nav" aria-labelledby="nav-h">
     <header>
       <h2 id="nav-h"><small class="eis-label">07</small>Navigation</h2>
       <p>Breadcrumb in label style, current page in signal ink. Text links underline with a hairline that darkens on hover.</p>
@@ -278,7 +278,7 @@
   </section>
 
   <!-- LISTS -->
-  <section class="eis-site-doc" id="lists" aria-labelledby="lists-h">
+  <section class="eis-web-doc" id="lists" aria-labelledby="lists-h">
     <header>
       <h2 id="lists-h"><small class="eis-label">08</small>Lists</h2>
       <p>Rows separated by hairlines. Avatar is initials in a circle, never a photo frame with colour.</p>
@@ -290,9 +290,9 @@
     </ul>
   </section>
 
-  <footer class="eis-site-docfoot eis-mono">
+  <footer class="eis-web-docfoot eis-mono">
     <span>eis-ds · elements · v0.1</span>
-    <span>src/css/tokens.css · src/css/elements.css</span>
+    <span>src/shared/css/tokens.css · src/shared/css/elements.css</span>
   </footer>
 </main>
 </body>

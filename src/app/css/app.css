@@ -1,0 +1,163 @@
+/* eis-ds · app/app.css
+   App scope: dashboards, tools and system screens.
+   Load after the shared CSS and app/css/tokens.css. Web pages never load it.
+   Every selector starts with .eis-app-. Put .eis-app-shell on <body> for the sidebar layout.
+   It never styles bare HTML or shared classes outside .eis-app-*, so it cannot change
+   an element or another scope. scripts/check-css.py enforces this. */
+
+.eis-app-shell{display:grid;grid-template-columns:var(--app-size-sidebar) minmax(0,1fr);min-height:100vh}
+.eis-app-shell a{text-decoration:none}
+/* ---------- sidebar ---------- */
+.eis-app-sidebar{background:var(--surface-panel);border-right:var(--border-width-100) solid var(--line);
+  display:flex;flex-direction:column;gap:var(--space-300);padding:var(--space-300) var(--space-200);
+  position:sticky;top:0;height:100vh}
+.eis-app-brand{display:flex;align-items:baseline;justify-content:space-between;padding:0 var(--space-100)}
+.eis-app-brand a{font-family:var(--font-family-mono);font-size:var(--font-size-300);font-weight:var(--font-weight-semibold);letter-spacing:var(--font-letter-spacing-wide)}
+.eis-app-nav{display:flex;flex-direction:column;gap:var(--space-300)}
+.eis-app-nav__section{display:flex;flex-direction:column;gap:var(--space-100)}
+.eis-app-nav__section > .eis-label{padding:0 var(--space-100)}
+.eis-app-nav ul{display:flex;flex-direction:column;gap:calc(var(--space-100) / 2)}
+.eis-app-nav a{--bg:transparent;--fg:var(--ink);
+  display:flex;align-items:center;gap:var(--space-100);min-height:var(--app-size-nav-item);padding:0 var(--space-100);
+  border-radius:var(--radius-100);background:var(--bg);color:var(--fg)}
+.eis-app-nav a:hover{--bg:var(--surface-canvas)}
+.eis-app-nav a[aria-current="page"]{--bg:var(--surface-inverse);--fg:var(--ink-inverse)}
+.eis-app-nav__count{margin-left:auto;font-family:var(--font-family-mono);font-size:var(--font-size-200);opacity:.7}
+.eis-app-nav__count--signal{opacity:1;background:var(--signal);color:var(--signal-on);padding:2px var(--space-100);border-radius:2px;font-weight:var(--font-weight-medium)}
+.eis-app-sidebar__foot{margin-top:auto;padding:var(--space-200) var(--space-100) 0;border-top:var(--border-width-100) solid var(--line)}
+.eis-app-sidebar__foot dl{display:grid;grid-template-columns:auto 1fr;gap:var(--space-100) var(--space-200)}
+.eis-app-sidebar__foot dd{text-align:right}
+
+/* ---------- page ---------- */
+.eis-app-main{padding:var(--space-300);display:flex;flex-direction:column;gap:var(--space-300);min-width:0}
+.eis-app-page-head{display:flex;align-items:flex-end;justify-content:space-between;gap:var(--space-300);flex-wrap:wrap}
+.eis-app-page-head h1{font-family:var(--type-display-font-family);font-weight:var(--type-display-font-weight);
+  letter-spacing:var(--type-display-letter-spacing);line-height:var(--type-display-line-height);
+  font-size:clamp(var(--font-size-600),5vw,var(--type-display-font-size));display:flex;align-items:center;flex-wrap:wrap;gap:var(--space-100) var(--space-200)}
+.eis-app-page-head h1 time{font-family:var(--type-label-font-family);font-size:var(--font-size-200);font-weight:var(--font-weight-regular);
+  letter-spacing:var(--type-label-letter-spacing);text-transform:uppercase;color:var(--ink-muted)}
+.eis-app-toolbar{display:flex;gap:var(--space-100);align-items:center;flex-wrap:wrap}
+
+/* metrics */
+.eis-app-metrics{display:grid;grid-template-columns:repeat(4,1fr)}
+.eis-app-metrics > div{display:flex;flex-direction:column;padding:var(--space-200);min-height:var(--app-size-metric)}
+.eis-app-metrics > div + div{border-left:var(--border-width-100) solid var(--line)}
+.eis-app-metrics dt{margin-bottom:auto;padding-bottom:var(--space-300)}
+.eis-app-metrics dd{font-family:var(--type-metric-font-family);font-size:var(--type-metric-font-size);font-weight:var(--type-metric-font-weight);
+  letter-spacing:var(--type-metric-letter-spacing);line-height:var(--type-metric-line-height)}
+.eis-app-metrics dd + dd{font-family:var(--type-mono-font-family);font-size:var(--type-mono-font-size);font-weight:var(--type-mono-font-weight);
+  letter-spacing:0;line-height:var(--type-mono-line-height);color:var(--ink-muted);margin-top:var(--space-100)}
+.eis-app-metrics .eis-is-signal dt{display:flex;align-items:center;gap:var(--space-100)}
+.eis-app-metrics .eis-is-signal dt::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--signal)}
+
+.eis-app-grid{display:grid;gap:var(--space-200)}
+.eis-app-grid--halves{grid-template-columns:repeat(2,minmax(0,1fr))}
+.eis-app-grid--main{grid-template-columns:minmax(0,1fr) var(--app-size-aside);align-items:start}
+.eis-app-stack{display:flex;flex-direction:column;gap:var(--space-200)}
+
+/* agenda */
+.eis-app-agenda li{display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:var(--space-200);align-items:center;
+  padding:var(--space-100) var(--space-200);min-height:var(--app-size-row);border-top:var(--border-width-100) solid var(--line)}
+.eis-app-agenda li:first-child{border-top:0}
+.eis-app-agenda--personal{color:var(--ink-muted);background:repeating-linear-gradient(135deg,transparent 0 6px,var(--line) 6px 7px)}
+.eis-app-agenda--now{box-shadow:inset 3px 0 0 var(--ink)}
+.eis-app-agenda--now time{color:var(--ink)}
+
+/* age cells */
+.eis-app-cells{display:grid;grid-template-columns:repeat(14,1fr);gap:calc(var(--space-100) / 2);padding:var(--space-200)}
+.eis-app-cells li{aspect-ratio:1;border-radius:2px;background:var(--color-neutral-200)}
+.eis-app-cells [data-age="1"]{background:var(--color-neutral-300)}
+.eis-app-cells [data-age="2-7"]{background:var(--color-neutral-400)}
+.eis-app-cells [data-age="8-14"]{background:var(--color-neutral-500)}
+.eis-app-cells [data-age="15-21"]{background:var(--color-neutral-600)}
+.eis-app-cells [data-age="22+"]{background:var(--color-neutral-900)}
+.eis-app-cells [data-age="overdue"]{background:var(--signal)}
+.eis-app-legend{display:flex;flex-wrap:wrap;gap:var(--space-100) var(--space-200);padding:0 var(--space-200) var(--space-200)}
+.eis-app-legend li{display:flex;align-items:center;gap:var(--space-100)}
+.eis-app-legend li::before{content:"";width:10px;height:10px;border-radius:2px;background:var(--swatch)}
+
+/* task groups: details + real tables */
+.eis-app-tasks details + details{border-top:var(--border-width-100) solid var(--line)}
+.eis-app-tasks summary{display:flex;align-items:baseline;gap:var(--space-200);cursor:pointer;list-style:none;
+  padding:var(--space-300) var(--space-200) var(--space-200)}
+.eis-app-tasks summary::-webkit-details-marker{display:none}
+.eis-app-tasks summary::after{content:"−";margin-left:auto;font-family:var(--font-family-mono);color:var(--ink-muted)}
+.eis-app-tasks details[open] > summary{background:var(--surface-canvas)}
+.eis-app-tasks details:first-child > summary{padding-top:var(--space-200)}
+.eis-app-tasks details:not([open]) summary{padding-block:var(--space-200)}
+.eis-app-tasks details:not([open]) summary::after{content:"+"}
+.eis-app-tasks summary h2{font-family:var(--type-label-font-family);font-size:var(--font-size-200);font-weight:var(--font-weight-medium);
+  letter-spacing:var(--type-label-letter-spacing);line-height:var(--type-label-line-height);text-transform:uppercase}
+.eis-app-tasks .eis-table{table-layout:fixed}
+.eis-app-tasks .eis-table .eis-app-col-check{width:48px}
+.eis-app-tasks .eis-table .eis-app-col-idx{width:44px}
+.eis-app-tasks .eis-table .eis-app-col-src{width:184px}
+.eis-app-tasks .eis-table .eis-app-col-due{width:88px}
+.eis-app-tasks .eis-table th{text-align:left;padding:0 var(--space-200) var(--space-100) 0;font-weight:inherit}
+.eis-app-tasks .eis-table th:first-child,.eis-app-tasks .eis-table td:first-child{padding-left:var(--space-200)}
+.eis-app-tasks .eis-table th:last-child,.eis-app-tasks .eis-table td:last-child{padding-right:var(--space-200);text-align:right}
+.eis-app-tasks .eis-table td{vertical-align:middle;padding:var(--space-200) var(--space-200) var(--space-200) 0;border-top:var(--border-width-100) solid var(--line)}
+.eis-app-tasks .eis-table td.eis-mono{line-height:20px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.eis-app-tasks .eis-table label{display:block;line-height:20px;cursor:pointer}
+.eis-app-tasks .eis-table tr:has(.eis-checkbox:checked) label{color:var(--ink-muted);text-decoration:line-through}
+.eis-app-meta{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-100);margin-top:var(--space-100)}
+.eis-app-meta em{font-family:var(--font-family-mono);font-size:var(--font-size-200);color:var(--ink-muted)}
+.eis-app-due--over,.eis-app-meta .eis-app-over,.eis-app-over{color:var(--signal-ink);font-weight:var(--font-weight-medium)}
+.eis-app-due--today{color:var(--ink);font-weight:var(--font-weight-medium)}
+
+/* side lists */
+.eis-app-bar{display:flex;gap:calc(var(--space-100) / 2);height:10px;margin:var(--space-200) var(--space-200) var(--space-100)}
+.eis-app-bar li{border-radius:2px;background:var(--swatch)}
+.eis-app-topics li,.eis-app-people > li,.eis-app-done li{border-top:var(--border-width-100) solid var(--line);padding:var(--space-200)}
+.eis-app-topics li{display:grid;grid-template-columns:24px minmax(0,1fr);gap:var(--space-100) var(--space-200)}
+.eis-app-topics .eis-chip{justify-self:start;grid-column:2}
+.eis-app-people > li{display:grid;grid-template-columns:var(--app-size-avatar) minmax(0,1fr) auto;gap:var(--space-200);align-items:center}
+.eis-app-people small{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.eis-app-pips{display:flex;gap:3px}
+.eis-app-pips li{width:6px;height:14px;border-radius:1px;background:var(--ink)}
+.eis-app-pips .eis-is-signal{background:var(--signal)}
+.eis-app-done li{display:flex;gap:var(--space-200);color:var(--ink-muted)}
+.eis-app-done li::before{content:"✓";font-family:var(--font-family-mono);color:var(--ink)}
+
+/* ---------- responsive ---------- */
+@media (max-width:1280px){
+  .eis-app-grid--main{grid-template-columns:minmax(0,1fr)}
+  .eis-app-stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));align-items:start}
+}
+@media (max-width:1024px){
+  .eis-app-shell{grid-template-columns:minmax(0,1fr)}
+  .eis-app-sidebar{position:sticky;top:0;z-index:10;height:auto;flex-direction:row;align-items:center;gap:var(--space-200);
+    padding:var(--space-100) var(--space-200);border-right:0;border-bottom:var(--border-width-100) solid var(--line);overflow-x:auto}
+  .eis-app-sidebar__foot,.eis-app-nav__section > .eis-label{display:none}
+  .eis-app-nav,.eis-app-nav ul{flex-direction:row;gap:var(--space-100)}
+  .eis-app-nav a{white-space:nowrap}
+  .eis-app-main{padding:var(--space-200)}
+  .eis-app-grid--halves{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:760px){
+  .eis-app-metrics{grid-template-columns:repeat(2,1fr)}
+  .eis-app-metrics > div{min-height:112px}
+  .eis-app-metrics dt{padding-bottom:var(--space-200)}
+  .eis-app-metrics > div:nth-child(3){border-left:0}
+  .eis-app-metrics > div:nth-child(n+3){border-top:var(--border-width-100) solid var(--line)}
+  .eis-app-metrics dd{font-size:var(--font-size-600)}
+  /* table rows reflow into cards; semantics stay a table */
+  .eis-app-tasks .eis-table thead,.eis-app-tasks .eis-table colgroup,.eis-app-tasks .eis-table td:nth-child(2){display:none}
+  .eis-app-tasks .eis-table,.eis-app-tasks .eis-table tbody{display:block}
+  .eis-app-tasks .eis-table tr{display:grid;grid-template-columns:32px minmax(0,1fr) auto;column-gap:var(--space-100);
+    padding:var(--space-200);border-top:var(--border-width-100) solid var(--line)}
+  .eis-app-tasks .eis-table td,.eis-app-tasks .eis-table td:first-child,.eis-app-tasks .eis-table td:last-child{border:0;padding:0;text-align:left}
+  .eis-app-tasks .eis-table td:nth-child(1){grid-column:1;grid-row:1}
+  .eis-app-tasks .eis-table td:nth-child(3){grid-column:2;grid-row:1}
+  .eis-app-tasks .eis-table td:nth-child(4){grid-column:2;grid-row:2;margin-top:var(--space-100)}
+  .eis-app-tasks .eis-table td:nth-child(5){grid-column:3;grid-row:1}
+  .eis-app-agenda li{grid-template-columns:minmax(0,1fr) auto;row-gap:calc(var(--space-100) / 2)}
+  .eis-app-agenda time{grid-column:1/-1}
+  .eis-app-cells{grid-template-columns:repeat(12,1fr)}
+}
+@media (max-width:420px){
+  .eis-app-toolbar{width:100%}
+  .eis-app-toolbar .eis-segmented{flex:1 0 100%}
+  .eis-app-toolbar .eis-segmented label{flex:1;text-align:center}
+  .eis-app-toolbar .eis-button{flex:1}
+}

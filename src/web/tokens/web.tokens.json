@@ -1,0 +1,50 @@
+{
+  "web": {
+    "$description": "Web scope: websites, landing pages, marketing pages and documentation. Values here exist only for web pages; everything else comes from shared.",
+    "size": {
+      "$type": "dimension",
+      "sheet": {
+        "$value": {
+          "value": 1440,
+          "unit": "px"
+        },
+        "$description": "Max width of the landing sheet."
+      },
+      "page": {
+        "$value": {
+          "value": 1280,
+          "unit": "px"
+        },
+        "$description": "Max width of a documentation page."
+      }
+    },
+    "font-size": {
+      "$type": "dimension",
+      "hero": {
+        "$value": {
+          "value": 134,
+          "unit": "px"
+        },
+        "$description": "Hero title on landing pages. Scales down with clamp() to font.size.700."
+      },
+      "cta": {
+        "$value": {
+          "value": 100,
+          "unit": "px"
+        },
+        "$description": "Closing call-to-action title."
+      },
+      "section": {
+        "$value": "{font.size.800}",
+        "$description": "Section titles on landing pages."
+      },
+      "specimen": {
+        "$value": {
+          "value": 90,
+          "unit": "px"
+        },
+        "$description": "Large type specimen (Aa) on landing pages."
+      }
+    }
+  }
+}

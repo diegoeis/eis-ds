@@ -1,12 +1,12 @@
 # Tokens: usage
 
-Which variable to use for what. All variables come from `src/css/tokens.css` (generated — never edit it).
+Which variable to use for what. Shared variables come from `src/shared/css/tokens.css`. Scope variables (`--web-*`, `--app-*`) come from `src/<scope>/css/tokens.css`. All are generated — never edit them.
 
 **Two layers.**
 - **Semantic roles** (`--surface-*`, `--ink*`, `--line`, `--signal*`) carry meaning and will change between modes (dark, paper). For backgrounds, text, lines and the signal colour you **MUST** use the role, never the primitive behind it.
 - **Primitives** (`--color-*`, `--space-*`, `--radius-*`, `--border-*`, `--font-*`): use them directly for everything that has no role: spacing, radii, type sizes and weights, and the grey ramp for data.
 
-**No raw values.** You MUST NOT write a hex, rgb, px font size, px spacing or radius in piece CSS. If a value is missing, the token is missing: add it (see `docs/tokens.md`), don't hard-code it. [§7](#7-allowed-raw-values) lists the allowed exceptions.
+**No raw values.** You MUST NOT write a hex, rgb, px font size, px spacing or radius in piece CSS. If a value is missing, the token is missing: add it (see `docs/tokens.md`), don't hard-code it. [§8](#8-allowed-raw-values) lists the allowed exceptions.
 
 ---
 
@@ -121,7 +121,26 @@ Rules:
 
 Only the light mode exists. Pieces MUST still use roles for surfaces/ink/line/signal so a dark mode can be added by redefining roles only.
 
-## 7. Allowed raw values
+## 7. Scope tokens
+
+Use a scope token only inside that scope.
+
+| Variable | Value | Use for |
+|---|---|---|
+| `--web-size-sheet` | 1440px | Max width of the landing sheet. |
+| `--web-size-page` | 1280px | Max width of a documentation page. |
+| `--web-font-size-hero` | 134px | Hero title. Use `clamp(--font-size-700, 9vw, --web-font-size-hero)`. |
+| `--web-font-size-cta` | 100px | Closing call-to-action title. |
+| `--web-font-size-section` | = `--font-size-800` | Landing section titles. |
+| `--web-font-size-specimen` | 90px | Large type specimen. |
+| `--app-size-sidebar` | 248px | Sidebar width. |
+| `--app-size-aside` | 360px | Side column width. |
+| `--app-size-nav-item` | 32px | Min height of a navigation item. |
+| `--app-size-row` | 44px | Min height of a list row. |
+| `--app-size-metric` | 136px | Min height of a metric cell. |
+| `--app-size-avatar` | 28px | Avatar size in lists. |
+
+## 8. Allowed raw values
 
 The only places a literal number is acceptable in piece CSS:
 - Component dimensions: control heights (40px, 24px chips), icon and avatar sizes, checkbox 16px, fixed sidebar width, column widths in a table.

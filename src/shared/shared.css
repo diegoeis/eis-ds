@@ -1,0 +1,6 @@
+/* eis-ds · shared/shared.css
+   One entry point for everything shared: tokens, base and elements.
+   Link this file, then one scope (web or app). The order below matters. */
+@import url("css/tokens.css");
+@import url("css/base.css");
+@import url("css/elements.css");

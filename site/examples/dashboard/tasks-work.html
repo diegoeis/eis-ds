@@ -7,192 +7,30 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../../src/css/tokens.css">
-<link rel="stylesheet" href="../../../src/css/elements.css">
-<style>
-/* Page layout only. Base and elements come from src/css/elements.css. */
-body{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
-a{text-decoration:none}
-/* ---------- sidebar ---------- */
-.eis-sidebar{background:var(--surface-panel);border-right:var(--border-width-100) solid var(--line);
-  display:flex;flex-direction:column;gap:var(--space-300);padding:var(--space-300) var(--space-200);
-  position:sticky;top:0;height:100vh}
-.eis-brand{display:flex;align-items:baseline;justify-content:space-between;padding:0 var(--space-100)}
-.eis-brand a{font-family:var(--font-family-mono);font-size:var(--font-size-300);font-weight:var(--font-weight-semibold);letter-spacing:var(--font-letter-spacing-wide)}
-.eis-nav{display:flex;flex-direction:column;gap:var(--space-300)}
-.eis-nav__section{display:flex;flex-direction:column;gap:var(--space-100)}
-.eis-nav__section > .eis-label{padding:0 var(--space-100)}
-.eis-nav ul{display:flex;flex-direction:column;gap:calc(var(--space-100) / 2)}
-.eis-nav a{--bg:transparent;--fg:var(--ink);
-  display:flex;align-items:center;gap:var(--space-100);min-height:32px;padding:0 var(--space-100);
-  border-radius:var(--radius-100);background:var(--bg);color:var(--fg)}
-.eis-nav a:hover{--bg:var(--surface-canvas)}
-.eis-nav a[aria-current="page"]{--bg:var(--surface-inverse);--fg:var(--ink-inverse)}
-.eis-nav__count{margin-left:auto;font-family:var(--font-family-mono);font-size:var(--font-size-200);opacity:.7}
-.eis-nav__count--signal{opacity:1;background:var(--signal);color:var(--signal-on);padding:2px var(--space-100);border-radius:2px;font-weight:var(--font-weight-medium)}
-.eis-sidebar__foot{margin-top:auto;padding:var(--space-200) var(--space-100) 0;border-top:var(--border-width-100) solid var(--line)}
-.eis-sidebar__foot dl{display:grid;grid-template-columns:auto 1fr;gap:var(--space-100) var(--space-200)}
-.eis-sidebar__foot dd{text-align:right}
-
-/* ---------- page ---------- */
-.eis-main{padding:var(--space-300);display:flex;flex-direction:column;gap:var(--space-300);min-width:0}
-.eis-page-head{display:flex;align-items:flex-end;justify-content:space-between;gap:var(--space-300);flex-wrap:wrap}
-.eis-breadcrumb ol{display:flex;gap:var(--space-100);margin-bottom:var(--space-200)}
-.eis-breadcrumb li + li::before{content:"/";margin-right:var(--space-100)}
-.eis-breadcrumb [aria-current]{color:var(--signal-ink)}
-.eis-page-head h1{font-family:var(--type-display-font-family);font-weight:var(--type-display-font-weight);
-  letter-spacing:var(--type-display-letter-spacing);line-height:var(--type-display-line-height);
-  font-size:clamp(var(--font-size-600),5vw,var(--type-display-font-size));display:flex;align-items:center;flex-wrap:wrap;gap:var(--space-100) var(--space-200)}
-.eis-page-head h1 time{font-family:var(--type-label-font-family);font-size:var(--font-size-200);font-weight:var(--font-weight-regular);
-  letter-spacing:var(--type-label-letter-spacing);text-transform:uppercase;color:var(--ink-muted)}
-.eis-toolbar{display:flex;gap:var(--space-100);align-items:center;flex-wrap:wrap}
-
-/* metrics */
-.eis-metrics{display:grid;grid-template-columns:repeat(4,1fr)}
-.eis-metrics > div{display:flex;flex-direction:column;padding:var(--space-200);min-height:136px}
-.eis-metrics > div + div{border-left:var(--border-width-100) solid var(--line)}
-.eis-metrics dt{margin-bottom:auto;padding-bottom:var(--space-300)}
-.eis-metrics dd{font-family:var(--type-metric-font-family);font-size:var(--type-metric-font-size);font-weight:var(--type-metric-font-weight);
-  letter-spacing:var(--type-metric-letter-spacing);line-height:var(--type-metric-line-height)}
-.eis-metrics dd + dd{font-family:var(--type-mono-font-family);font-size:var(--type-mono-font-size);font-weight:var(--type-mono-font-weight);
-  letter-spacing:0;line-height:var(--type-mono-line-height);color:var(--ink-muted);margin-top:var(--space-100)}
-.eis-metrics .eis-is-signal dt{display:flex;align-items:center;gap:var(--space-100)}
-.eis-metrics .eis-is-signal dt::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--signal)}
-
-.eis-grid{display:grid;gap:var(--space-200)}
-.eis-grid--halves{grid-template-columns:repeat(2,minmax(0,1fr))}
-.eis-grid--main{grid-template-columns:minmax(0,1fr) 360px;align-items:start}
-.eis-stack{display:flex;flex-direction:column;gap:var(--space-200)}
-
-/* agenda */
-.eis-agenda li{display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:var(--space-200);align-items:center;
-  padding:var(--space-100) var(--space-200);min-height:44px;border-top:var(--border-width-100) solid var(--line)}
-.eis-agenda li:first-child{border-top:0}
-.eis-agenda--personal{color:var(--ink-muted);background:repeating-linear-gradient(135deg,transparent 0 6px,var(--line) 6px 7px)}
-.eis-agenda--now{box-shadow:inset 3px 0 0 var(--ink)}
-.eis-agenda--now time{color:var(--ink)}
-
-/* age cells */
-.eis-cells{display:grid;grid-template-columns:repeat(14,1fr);gap:calc(var(--space-100) / 2);padding:var(--space-200)}
-.eis-cells li{aspect-ratio:1;border-radius:2px;background:var(--color-neutral-200)}
-.eis-cells [data-age="1"]{background:var(--color-neutral-300)}
-.eis-cells [data-age="2-7"]{background:var(--color-neutral-400)}
-.eis-cells [data-age="8-14"]{background:var(--color-neutral-500)}
-.eis-cells [data-age="15-21"]{background:var(--color-neutral-600)}
-.eis-cells [data-age="22+"]{background:var(--color-neutral-900)}
-.eis-cells [data-age="overdue"]{background:var(--signal)}
-.eis-legend{display:flex;flex-wrap:wrap;gap:var(--space-100) var(--space-200);padding:0 var(--space-200) var(--space-200)}
-.eis-legend li{display:flex;align-items:center;gap:var(--space-100)}
-.eis-legend li::before{content:"";width:10px;height:10px;border-radius:2px;background:var(--swatch)}
-
-/* task groups: details + real tables */
-.eis-tasks details + details{border-top:var(--border-width-100) solid var(--line)}
-.eis-tasks summary{display:flex;align-items:baseline;gap:var(--space-200);cursor:pointer;list-style:none;
-  padding:var(--space-300) var(--space-200) var(--space-200)}
-.eis-tasks summary::-webkit-details-marker{display:none}
-.eis-tasks summary::after{content:"−";margin-left:auto;font-family:var(--font-family-mono);color:var(--ink-muted)}
-.eis-tasks details[open] > summary{background:var(--surface-canvas)}
-.eis-tasks details:first-child > summary{padding-top:var(--space-200)}
-.eis-tasks details:not([open]) summary{padding-block:var(--space-200)}
-.eis-tasks details:not([open]) summary::after{content:"+"}
-.eis-tasks summary h2{font-family:var(--type-label-font-family);font-size:var(--font-size-200);font-weight:var(--font-weight-medium);
-  letter-spacing:var(--type-label-letter-spacing);line-height:var(--type-label-line-height);text-transform:uppercase}
-.eis-table{table-layout:fixed}
-.eis-table .eis-col-check{width:48px}
-.eis-table .eis-col-idx{width:44px}
-.eis-table .eis-col-src{width:184px}
-.eis-table .eis-col-due{width:88px}
-.eis-table th{text-align:left;padding:0 var(--space-200) var(--space-100) 0;font-weight:inherit}
-.eis-table th:first-child,.eis-table td:first-child{padding-left:var(--space-200)}
-.eis-table th:last-child,.eis-table td:last-child{padding-right:var(--space-200);text-align:right}
-.eis-table td{vertical-align:middle;padding:var(--space-200) var(--space-200) var(--space-200) 0;border-top:var(--border-width-100) solid var(--line)}
-.eis-table td.eis-mono{line-height:20px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.eis-table label{display:block;line-height:20px;cursor:pointer}
-.eis-table tr:has(.eis-checkbox:checked) label{color:var(--ink-muted);text-decoration:line-through}
-.eis-meta{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-100);margin-top:var(--space-100)}
-.eis-meta em{font-family:var(--font-family-mono);font-size:var(--font-size-200);color:var(--ink-muted)}
-.eis-due--over,.eis-meta .eis-over,.eis-over{color:var(--signal-ink);font-weight:var(--font-weight-medium)}
-.eis-due--today{color:var(--ink);font-weight:var(--font-weight-medium)}
-
-/* side lists */
-.eis-bar{display:flex;gap:calc(var(--space-100) / 2);height:10px;margin:var(--space-200) var(--space-200) var(--space-100)}
-.eis-bar li{border-radius:2px;background:var(--swatch)}
-.eis-topics li,.eis-people > li,.eis-done li{border-top:var(--border-width-100) solid var(--line);padding:var(--space-200)}
-.eis-topics li{display:grid;grid-template-columns:24px minmax(0,1fr);gap:var(--space-100) var(--space-200)}
-.eis-topics .eis-chip{justify-self:start;grid-column:2}
-.eis-people > li{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:var(--space-200);align-items:center}
-.eis-avatar{width:28px;height:28px;border-radius:50%;border:var(--border-width-100) solid var(--line);display:grid;place-items:center}
-.eis-people small{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
-.eis-pips{display:flex;gap:3px}
-.eis-pips li{width:6px;height:14px;border-radius:1px;background:var(--ink)}
-.eis-pips .eis-is-signal{background:var(--signal)}
-.eis-done li{display:flex;gap:var(--space-200);color:var(--ink-muted)}
-.eis-done li::before{content:"✓";font-family:var(--font-family-mono);color:var(--ink)}
-
-/* ---------- responsive ---------- */
-@media (max-width:1280px){
-  .eis-grid--main{grid-template-columns:minmax(0,1fr)}
-  .eis-stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));align-items:start}
-}
-@media (max-width:1024px){
-  body{grid-template-columns:minmax(0,1fr)}
-  .eis-sidebar{position:sticky;top:0;z-index:10;height:auto;flex-direction:row;align-items:center;gap:var(--space-200);
-    padding:var(--space-100) var(--space-200);border-right:0;border-bottom:var(--border-width-100) solid var(--line);overflow-x:auto}
-  .eis-sidebar__foot,.eis-nav__section > .eis-label{display:none}
-  .eis-nav,.eis-nav ul{flex-direction:row;gap:var(--space-100)}
-  .eis-nav a{white-space:nowrap}
-  .eis-main{padding:var(--space-200)}
-  .eis-grid--halves{grid-template-columns:minmax(0,1fr)}
-}
-@media (max-width:760px){
-  .eis-metrics{grid-template-columns:repeat(2,1fr)}
-  .eis-metrics > div{min-height:112px}
-  .eis-metrics dt{padding-bottom:var(--space-200)}
-  .eis-metrics > div:nth-child(3){border-left:0}
-  .eis-metrics > div:nth-child(n+3){border-top:var(--border-width-100) solid var(--line)}
-  .eis-metrics dd{font-size:var(--font-size-600)}
-  /* table rows reflow into cards; semantics stay a table */
-  .eis-table thead,.eis-table colgroup,.eis-table td:nth-child(2){display:none}
-  .eis-table,.eis-table tbody{display:block}
-  .eis-table tr{display:grid;grid-template-columns:32px minmax(0,1fr) auto;column-gap:var(--space-100);
-    padding:var(--space-200);border-top:var(--border-width-100) solid var(--line)}
-  .eis-table td,.eis-table td:first-child,.eis-table td:last-child{border:0;padding:0;text-align:left}
-  .eis-table td:nth-child(1){grid-column:1;grid-row:1}
-  .eis-table td:nth-child(3){grid-column:2;grid-row:1}
-  .eis-table td:nth-child(4){grid-column:2;grid-row:2;margin-top:var(--space-100)}
-  .eis-table td:nth-child(5){grid-column:3;grid-row:1}
-  .eis-agenda li{grid-template-columns:minmax(0,1fr) auto;row-gap:calc(var(--space-100) / 2)}
-  .eis-agenda time{grid-column:1/-1}
-  .eis-cells{grid-template-columns:repeat(12,1fr)}
-}
-@media (max-width:420px){
-  .eis-toolbar{width:100%}
-  .eis-segmented{flex:1 0 100%}
-  .eis-segmented label{flex:1;text-align:center}
-  .eis-toolbar .eis-button{flex:1}
-}
-</style>
+<link rel="stylesheet" href="../../../src/shared/shared.css">
+<link rel="stylesheet" href="../../../src/app/css/tokens.css">
+<link rel="stylesheet" href="../../../src/app/css/app.css">
 </head>
-<body>
+<body class="eis-app-shell">
 
-<aside class="eis-sidebar" aria-label="Sidebar">
-  <p class="eis-brand"><a href="#">EIS/OS</a> <span class="eis-mono">v0.1</span></p>
-  <nav class="eis-nav" aria-label="Main">
-    <section class="eis-nav__section" aria-labelledby="nav-tasks">
+<aside class="eis-app-sidebar" aria-label="Sidebar">
+  <p class="eis-app-brand"><a href="#">EIS/OS</a> <span class="eis-mono">v0.1</span></p>
+  <nav class="eis-app-nav" aria-label="Main">
+    <section class="eis-app-nav__section" aria-labelledby="nav-tasks">
       <h2 class="eis-label" id="nav-tasks">Tasks</h2>
       <ul>
-        <li><a href="#">Personal <span class="eis-nav__count">12</span></a></li>
-        <li><a href="#" aria-current="page">Work <span class="eis-nav__count">84</span></a></li>
+        <li><a href="#">Personal <span class="eis-app-nav__count">12</span></a></li>
+        <li><a href="#" aria-current="page">Work <span class="eis-app-nav__count">84</span></a></li>
       </ul>
     </section>
-    <section class="eis-nav__section" aria-labelledby="nav-msg">
+    <section class="eis-app-nav__section" aria-labelledby="nav-msg">
       <h2 class="eis-label" id="nav-msg">Messages &amp; email</h2>
       <ul>
-        <li><a href="#">Inbox <span class="eis-nav__count eis-nav__count--signal">7</span></a></li>
-        <li><a href="#">Awaiting reply <span class="eis-nav__count">15</span></a></li>
+        <li><a href="#">Inbox <span class="eis-app-nav__count eis-app-nav__count--signal">7</span></a></li>
+        <li><a href="#">Awaiting reply <span class="eis-app-nav__count">15</span></a></li>
       </ul>
     </section>
-    <section class="eis-nav__section" aria-labelledby="nav-money">
+    <section class="eis-app-nav__section" aria-labelledby="nav-money">
       <h2 class="eis-label" id="nav-money">Money &amp; investments</h2>
       <ul>
         <li><a href="#">Accounts</a></li>
@@ -200,7 +38,7 @@ a{text-decoration:none}
       </ul>
     </section>
   </nav>
-  <footer class="eis-sidebar__foot">
+  <footer class="eis-app-sidebar__foot">
     <dl>
       <dt class="eis-label">Today</dt><dd class="eis-mono"><time datetime="2026-10-23">FRI 23.10</time></dd>
       <dt class="eis-label">Now</dt><dd class="eis-mono"><time datetime="10:42">10:42</time></dd>
@@ -209,15 +47,15 @@ a{text-decoration:none}
   </footer>
 </aside>
 
-<main class="eis-main">
-  <header class="eis-page-head">
+<main class="eis-app-main">
+  <header class="eis-app-page-head">
     <div>
       <nav class="eis-breadcrumb eis-label" aria-label="Breadcrumb">
         <ol><li><a href="#">Tasks</a></li><li aria-current="page">Work</li></ol>
       </nav>
       <h1>Work <time datetime="2026-10-23">Friday, Oct 23 2026</time></h1>
     </div>
-    <form class="eis-toolbar" action="#" onsubmit="return false">
+    <form class="eis-app-toolbar" action="#" onsubmit="return false">
       <fieldset class="eis-segmented">
         <legend>Range</legend>
         <label><input type="radio" name="range" value="today" checked><span>Today</span></label>
@@ -230,7 +68,7 @@ a{text-decoration:none}
   </header>
 
   <section class="eis-panel" aria-label="Summary">
-    <dl class="eis-metrics">
+    <dl class="eis-app-metrics">
       <div><dt class="eis-label">Open</dt><dd>84</dd><dd>11 streams</dd></div>
       <div><dt class="eis-label">New today</dt><dd>16</dd><dd>6 in Growth</dd></div>
       <div class="eis-is-signal"><dt class="eis-label">Overdue</dt><dd>06</dd><dd>3 in Platform</dd></div>
@@ -238,14 +76,14 @@ a{text-decoration:none}
     </dl>
   </section>
 
-  <div class="eis-grid eis-grid--halves">
+  <div class="eis-app-grid eis-app-grid--halves">
     <section class="eis-panel" aria-labelledby="agenda-h">
       <header class="eis-panel__head"><h2 class="eis-label" id="agenda-h">Today's agenda</h2><span class="eis-mono">10:30 — 17:15</span></header>
-      <ol class="eis-agenda">
-        <li class="eis-agenda--personal"><time class="eis-mono" datetime="09:45">09:45–10:00</time><span>Personal block</span><span class="eis-chip eis-chip--hatch">Personal</span></li>
-        <li class="eis-agenda--now"><time class="eis-mono" datetime="10:30">10:30–11:30</time><span>1:1 with Ana</span><span class="eis-chip eis-chip--signal">Conflict</span></li>
+      <ol class="eis-app-agenda">
+        <li class="eis-app-agenda--personal"><time class="eis-mono" datetime="09:45">09:45–10:00</time><span>Personal block</span><span class="eis-chip eis-chip--hatch">Personal</span></li>
+        <li class="eis-app-agenda--now"><time class="eis-mono" datetime="10:30">10:30–11:30</time><span>1:1 with Ana</span><span class="eis-chip eis-chip--signal">Conflict</span></li>
         <li><time class="eis-mono" datetime="10:45">10:45–11:00</time><span>Daily — platform</span><span class="eis-chip">Maybe</span></li>
-        <li class="eis-agenda--personal"><time class="eis-mono" datetime="11:45">11:45–12:50</time><span>Lunch</span><span class="eis-chip eis-chip--hatch">Personal</span></li>
+        <li class="eis-app-agenda--personal"><time class="eis-mono" datetime="11:45">11:45–12:50</time><span>Lunch</span><span class="eis-chip eis-chip--hatch">Personal</span></li>
         <li><time class="eis-mono" datetime="13:00">13:00–14:00</time><span>Checkout flow review</span><span class="eis-chip">Accepted</span></li>
         <li><time class="eis-mono" datetime="14:00">14:00–15:00</time><span>Billing weekly planning</span><span class="eis-chip eis-chip--solid">Organizer</span></li>
         <li><time class="eis-mono" datetime="15:00">15:00–16:20</time><span>Leadership workshop — hard conversations</span><span class="eis-chip">Accepted</span></li>
@@ -255,8 +93,8 @@ a{text-decoration:none}
 
     <section class="eis-panel" aria-labelledby="age-h">
       <header class="eis-panel__head"><h2 class="eis-label" id="age-h">Open task age</h2><span class="eis-mono">84 items</span></header>
-      <ol class="eis-cells" role="img" aria-label="84 open tasks: 6 overdue, 5 older than 21 days, 8 between 15 and 21 days, 6 between 8 and 14 days, 25 between 2 and 7 days, 18 from yesterday, 16 from today"><li data-age="overdue"></li><li data-age="overdue"></li><li data-age="overdue"></li><li data-age="overdue"></li><li data-age="overdue"></li><li data-age="overdue"></li><li data-age="22+"></li><li data-age="22+"></li><li data-age="22+"></li><li data-age="22+"></li><li data-age="22+"></li><li data-age="15-21"></li><li data-age="15-21"></li><li data-age="15-21"></li><li data-age="15-21"></li><li data-age="15-21"></li><li data-age="15-21"></li><li data-age="15-21"></li><li data-age="15-21"></li><li data-age="8-14"></li><li data-age="8-14"></li><li data-age="8-14"></li><li data-age="8-14"></li><li data-age="8-14"></li><li data-age="8-14"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li></ol>
-      <ul class="eis-legend eis-mono" aria-hidden="true">
+      <ol class="eis-app-cells" role="img" aria-label="84 open tasks: 6 overdue, 5 older than 21 days, 8 between 15 and 21 days, 6 between 8 and 14 days, 25 between 2 and 7 days, 18 from yesterday, 16 from today"><li data-age="overdue"></li><li data-age="overdue"></li><li data-age="overdue"></li><li data-age="overdue"></li><li data-age="overdue"></li><li data-age="overdue"></li><li data-age="22+"></li><li data-age="22+"></li><li data-age="22+"></li><li data-age="22+"></li><li data-age="22+"></li><li data-age="15-21"></li><li data-age="15-21"></li><li data-age="15-21"></li><li data-age="15-21"></li><li data-age="15-21"></li><li data-age="15-21"></li><li data-age="15-21"></li><li data-age="15-21"></li><li data-age="8-14"></li><li data-age="8-14"></li><li data-age="8-14"></li><li data-age="8-14"></li><li data-age="8-14"></li><li data-age="8-14"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li></ol>
+      <ul class="eis-app-legend eis-mono" aria-hidden="true">
         <li style="--swatch:var(--color-neutral-200)">today</li>
         <li style="--swatch:var(--color-neutral-300)">1 day</li>
         <li style="--swatch:var(--color-neutral-400)">2–7</li>
@@ -268,38 +106,38 @@ a{text-decoration:none}
     </section>
   </div>
 
-  <div class="eis-grid eis-grid--main">
-    <section class="eis-panel eis-tasks" aria-label="Tasks by stream">
+  <div class="eis-app-grid eis-app-grid--main">
+    <section class="eis-panel eis-app-tasks" aria-label="Tasks by stream">
 
       <details open>
         <summary><h2>Priority</h2><span class="eis-mono">14</span></summary>
         <table class="eis-table">
-          <colgroup><col class="eis-col-check"><col class="eis-col-idx"><col><col class="eis-col-src"><col class="eis-col-due"></colgroup>
+          <colgroup><col class="eis-app-col-check"><col class="eis-app-col-idx"><col><col class="eis-app-col-src"><col class="eis-app-col-due"></colgroup>
           <thead class="eis-label"><tr><th scope="col"><span class="eis-visually-hidden">Done</span></th><th scope="col">#</th><th scope="col">Task</th><th scope="col">Source</th><th scope="col">Due</th></tr></thead>
           <tbody>
             <tr><td><input class="eis-checkbox" type="checkbox" id="t1"></td><td class="eis-mono">01</td>
               <td><label for="t1">Write the launch checklist for the new reports page</label>
-                <p class="eis-meta"><span class="eis-chip eis-chip--outline">PLT-204</span><em>created 2 days ago</em></p></td>
-              <td class="eis-mono">Sprint review 21.10</td><td class="eis-mono eis-due--today"><time datetime="2026-10-23">TODAY</time></td></tr>
+                <p class="eis-app-meta"><span class="eis-chip eis-chip--outline">PLT-204</span><em>created 2 days ago</em></p></td>
+              <td class="eis-mono">Sprint review 21.10</td><td class="eis-mono eis-app-due--today"><time datetime="2026-10-23">TODAY</time></td></tr>
             <tr><td><input class="eis-checkbox" type="checkbox" id="t2"></td><td class="eis-mono">02</td>
               <td><label for="t2">Turn on the new invoices screen for all accounts</label>
-                <p class="eis-meta"><span class="eis-chip eis-chip--solid">New</span></p></td>
+                <p class="eis-app-meta"><span class="eis-chip eis-chip--solid">New</span></p></td>
               <td class="eis-mono">—</td><td class="eis-mono">—</td></tr>
             <tr><td><input class="eis-checkbox" type="checkbox" id="t3"></td><td class="eis-mono">03</td>
               <td><label for="t3">Prototype bulk import of receipts with an AI parser; the study is done, the proof of concept is missing</label>
-                <p class="eis-meta"><span class="eis-chip">High</span><em>created 10 days ago</em></p></td>
+                <p class="eis-app-meta"><span class="eis-chip">High</span><em>created 10 days ago</em></p></td>
               <td class="eis-mono">Customer call</td><td class="eis-mono">—</td></tr>
             <tr><td><input class="eis-checkbox" type="checkbox" id="t4"></td><td class="eis-mono">04</td>
               <td><label for="t4">Set up the config file and test the slide generator</label>
-                <p class="eis-meta"><em>chased on 13.10 · created 17 days ago</em></p></td>
+                <p class="eis-app-meta"><em>chased on 13.10 · created 17 days ago</em></p></td>
               <td class="eis-mono">Chat</td><td class="eis-mono">—</td></tr>
             <tr><td><input class="eis-checkbox" type="checkbox" id="t5"></td><td class="eis-mono">05</td>
               <td><label for="t5">Prepare the platform strategy deck: how it connects to the business and what it changes in the product</label>
-                <p class="eis-meta"><span class="eis-chip">High</span></p></td>
+                <p class="eis-app-meta"><span class="eis-chip">High</span></p></td>
               <td class="eis-mono">—</td><td class="eis-mono"><time datetime="2026-11-15">15.11</time></td></tr>
             <tr><td><input class="eis-checkbox" type="checkbox" id="t6"></td><td class="eis-mono">06</td>
               <td><label for="t6">Specify the service status indicator in the header</label>
-                <p class="eis-meta"><span class="eis-chip eis-chip--solid">New</span></p></td>
+                <p class="eis-app-meta"><span class="eis-chip eis-chip--solid">New</span></p></td>
               <td class="eis-mono">Monthly 1:1 22.10</td><td class="eis-mono">—</td></tr>
           </tbody>
         </table>
@@ -308,20 +146,20 @@ a{text-decoration:none}
       <details open>
         <summary><h2>Billing</h2><span class="eis-mono">13</span></summary>
         <table class="eis-table">
-          <colgroup><col class="eis-col-check"><col class="eis-col-idx"><col><col class="eis-col-src"><col class="eis-col-due"></colgroup>
+          <colgroup><col class="eis-app-col-check"><col class="eis-app-col-idx"><col><col class="eis-app-col-src"><col class="eis-app-col-due"></colgroup>
           <thead class="eis-visually-hidden"><tr><th scope="col">Done</th><th scope="col">#</th><th scope="col">Task</th><th scope="col">Source</th><th scope="col">Due</th></tr></thead>
           <tbody>
             <tr><td><input class="eis-checkbox" type="checkbox" id="p1"></td><td class="eis-mono">01</td>
               <td><label for="p1">Get API access approved with the new payment provider</label>
-                <p class="eis-meta"><em class="eis-over">overdue by 14 days</em></p></td>
-              <td class="eis-mono">Billing planning 02.10</td><td class="eis-mono eis-due--over"><time datetime="2026-10-09">09.10</time></td></tr>
+                <p class="eis-app-meta"><em class="eis-app-over">overdue by 14 days</em></p></td>
+              <td class="eis-mono">Billing planning 02.10</td><td class="eis-mono eis-app-due--over"><time datetime="2026-10-09">09.10</time></td></tr>
             <tr><td><input class="eis-checkbox" type="checkbox" id="p2"></td><td class="eis-mono">02</td>
               <td><label for="p2">Review the billing stories and move them to tech spec</label>
-                <p class="eis-meta"><span class="eis-chip eis-chip--solid">New</span></p></td>
+                <p class="eis-app-meta"><span class="eis-chip eis-chip--solid">New</span></p></td>
               <td class="eis-mono">Billing daily 22.10</td><td class="eis-mono"><time datetime="2026-10-26">26.10</time></td></tr>
             <tr><td><input class="eis-checkbox" type="checkbox" id="p3"></td><td class="eis-mono">03</td>
               <td><label for="p3">Decide how to roll out the invoices screen: gradual rollout or selected accounts</label>
-                <p class="eis-meta"><span class="eis-chip eis-chip--solid">New</span></p></td>
+                <p class="eis-app-meta"><span class="eis-chip eis-chip--solid">New</span></p></td>
               <td class="eis-mono">Billing daily 22.10</td><td class="eis-mono">—</td></tr>
           </tbody>
         </table>
@@ -330,49 +168,49 @@ a{text-decoration:none}
       <details open>
         <summary><h2>Platform</h2><span class="eis-mono">15</span></summary>
         <table class="eis-table">
-          <colgroup><col class="eis-col-check"><col class="eis-col-idx"><col><col class="eis-col-src"><col class="eis-col-due"></colgroup>
+          <colgroup><col class="eis-app-col-check"><col class="eis-app-col-idx"><col><col class="eis-app-col-src"><col class="eis-app-col-due"></colgroup>
           <thead class="eis-visually-hidden"><tr><th scope="col">Done</th><th scope="col">#</th><th scope="col">Task</th><th scope="col">Source</th><th scope="col">Due</th></tr></thead>
           <tbody>
             <tr><td><input class="eis-checkbox" type="checkbox" id="r1"></td><td class="eis-mono">01</td>
               <td><label for="r1">Prioritise the services still pending migration and agree on the cut-over pace</label>
-                <p class="eis-meta"><em>goal: 1st week of December</em></p></td>
-              <td class="eis-mono">Platform sync 30.09</td><td class="eis-mono eis-due--over"><time datetime="2026-10-07">07.10</time></td></tr>
+                <p class="eis-app-meta"><em>goal: 1st week of December</em></p></td>
+              <td class="eis-mono">Platform sync 30.09</td><td class="eis-mono eis-app-due--over"><time datetime="2026-10-07">07.10</time></td></tr>
             <tr><td><input class="eis-checkbox" type="checkbox" id="r2"></td><td class="eis-mono">02</td>
               <td><label for="r2">Book 30 min on the long-term vision for mobile</label></td>
-              <td class="eis-mono">Mobile sync 06.10</td><td class="eis-mono eis-due--over"><time datetime="2026-10-12">12.10</time></td></tr>
+              <td class="eis-mono">Mobile sync 06.10</td><td class="eis-mono eis-app-due--over"><time datetime="2026-10-12">12.10</time></td></tr>
             <tr><td><input class="eis-checkbox" type="checkbox" id="r3"></td><td class="eis-mono">03</td>
               <td><label for="r3">Define who owns what across the platform squad</label></td>
-              <td class="eis-mono">1:1 01.10</td><td class="eis-mono eis-due--over"><time datetime="2026-10-14">14.10</time></td></tr>
+              <td class="eis-mono">1:1 01.10</td><td class="eis-mono eis-app-due--over"><time datetime="2026-10-14">14.10</time></td></tr>
           </tbody>
         </table>
       </details>
 
       <details><summary><h2>Data</h2><span class="eis-mono">7</span></summary></details>
-      <details><summary><h2>Team</h2><span class="eis-mono"><span class="eis-over">1 overdue</span> · 7</span></summary></details>
+      <details><summary><h2>Team</h2><span class="eis-mono"><span class="eis-app-over">1 overdue</span> · 7</span></summary></details>
       <details><summary><h2>Growth</h2><span class="eis-mono">6</span></summary></details>
       <details><summary><h2>Partners</h2><span class="eis-mono">6</span></summary></details>
       <details><summary><h2>Vendors</h2><span class="eis-mono">5</span></summary></details>
       <details><summary><h2>Roadmap</h2><span class="eis-mono">4</span></summary></details>
       <details><summary><h2>Onboarding</h2><span class="eis-mono">4</span></summary></details>
-      <details><summary><h2>Mobile</h2><span class="eis-mono"><span class="eis-over">1 overdue</span> · 3</span></summary></details>
+      <details><summary><h2>Mobile</h2><span class="eis-mono"><span class="eis-app-over">1 overdue</span> · 3</span></summary></details>
     </section>
 
-    <div class="eis-stack">
+    <div class="eis-app-stack">
       <section class="eis-panel" aria-labelledby="topics-h">
         <header class="eis-panel__head"><h2 class="eis-label" id="topics-h">Key topics</h2><span class="eis-mono">18</span></header>
-        <ol class="eis-bar" aria-hidden="true">
+        <ol class="eis-app-bar" aria-hidden="true">
           <li style="flex:2;--swatch:var(--signal)"></li>
           <li style="flex:5;--swatch:var(--color-neutral-900)"></li>
           <li style="flex:9;--swatch:var(--color-neutral-600)"></li>
           <li style="flex:2;--swatch:var(--color-neutral-200)"></li>
         </ol>
-        <ul class="eis-legend eis-mono">
+        <ul class="eis-app-legend eis-mono">
           <li style="--swatch:var(--signal)">2 urgent</li>
           <li style="--swatch:var(--color-neutral-900)">5 problem</li>
           <li style="--swatch:var(--color-neutral-600)">9 at risk</li>
           <li style="--swatch:var(--color-neutral-200)">2 on track</li>
         </ul>
-        <ol class="eis-topics">
+        <ol class="eis-app-topics">
           <li><span class="eis-mono">01</span><p>Large account at risk of churn: export is missing two fields they rely on</p><span class="eis-chip eis-chip--signal">Urgent</span></li>
           <li><span class="eis-mono">02</span><p>PLT-204 and PLT-219 are due today with no owner</p><span class="eis-chip eis-chip--signal">Urgent</span></li>
           <li><span class="eis-mono">03</span><p>90 open bugs on the platform, some since March</p><span class="eis-chip eis-chip--solid">Problem</span></li>
@@ -382,23 +220,23 @@ a{text-decoration:none}
 
       <section class="eis-panel" aria-labelledby="people-h">
         <header class="eis-panel__head"><h2 class="eis-label" id="people-h">Waiting on others</h2><span class="eis-mono">24</span></header>
-        <ul class="eis-people">
+        <ul class="eis-app-people">
           <li><span class="eis-avatar eis-label" aria-hidden="true">AN</span><p>Ana<small class="eis-mono">Release plan with the 6 milestones</small></p>
-            <ul class="eis-pips" aria-label="4 pending, 1 overdue"><li class="eis-is-signal"></li><li></li><li></li><li></li></ul></li>
+            <ul class="eis-app-pips" aria-label="4 pending, 1 overdue"><li class="eis-is-signal"></li><li></li><li></li><li></li></ul></li>
           <li><span class="eis-avatar eis-label" aria-hidden="true">BR</span><p>Bruno<small class="eis-mono">Test list for the provider migration</small></p>
-            <ul class="eis-pips" aria-label="3 pending"><li></li><li></li><li></li></ul></li>
+            <ul class="eis-app-pips" aria-label="3 pending"><li></li><li></li><li></li></ul></li>
           <li><span class="eis-avatar eis-label" aria-hidden="true">CA</span><p>Carla<small class="eis-mono">Proposal for the product vision</small></p>
-            <ul class="eis-pips" aria-label="3 pending, 1 overdue"><li class="eis-is-signal"></li><li></li><li></li></ul></li>
+            <ul class="eis-app-pips" aria-label="3 pending, 1 overdue"><li class="eis-is-signal"></li><li></li><li></li></ul></li>
           <li><span class="eis-avatar eis-label" aria-hidden="true">DV</span><p>Davi<small class="eis-mono">Payment slip in the checkout drawer</small></p>
-            <ul class="eis-pips" aria-label="2 pending"><li></li><li></li></ul></li>
+            <ul class="eis-app-pips" aria-label="2 pending"><li></li><li></li></ul></li>
           <li><span class="eis-avatar eis-label" aria-hidden="true">EL</span><p>Elisa<small class="eis-mono">MOB-312 stuck in Ready to Dev</small></p>
-            <ul class="eis-pips" aria-label="2 pending, 1 overdue"><li class="eis-is-signal"></li><li></li></ul></li>
+            <ul class="eis-app-pips" aria-label="2 pending, 1 overdue"><li class="eis-is-signal"></li><li></li></ul></li>
         </ul>
       </section>
 
       <section class="eis-panel" aria-labelledby="done-h">
         <header class="eis-panel__head"><h2 class="eis-label" id="done-h">Done</h2><span class="eis-mono">6</span></header>
-        <ul class="eis-done">
+        <ul class="eis-app-done">
           <li>Provider integration tested end to end, delivered early</li>
           <li>Automatic billing dry run, no errors</li>
           <li>Invoices screen in production, waiting for the flag</li>

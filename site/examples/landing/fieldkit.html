@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWLTJ7HD');</script>
+<!-- End Google Tag Manager -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fieldkit — the logbook for teams that run equipment</title>
+<meta name="description" content="Example landing page built with eis-ds (web scope). Fictional product.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../../../src/web/web.css">
+<script src="../../../src/web/js/lines.js" defer></script>
+<style>
+/* Page layout only. Structure comes from src/web/web.css. */
+.eis-proof{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));border-top:var(--border-width-100) solid var(--line);margin-top:var(--space-300)}
+.eis-proof div{padding:var(--space-300) var(--space-200) var(--space-300) 0;border-bottom:var(--border-width-100) solid var(--line);display:grid;gap:var(--space-100);align-content:start}
+.eis-proof dd:first-of-type{font-family:var(--type-metric-font-family);font-size:var(--type-metric-font-size);font-weight:var(--type-metric-font-weight);letter-spacing:var(--type-metric-letter-spacing);line-height:var(--type-metric-line-height)}
+.eis-proof dd + dd{color:var(--ink-muted)}
+.eis-card-figure{display:grid;place-items:end start;padding:var(--space-200)}
+.eis-card-figure span{font-family:var(--font-family-mono);font-size:var(--font-size-600);font-weight:var(--font-weight-light);line-height:var(--font-line-height-tight)}
+.eis-card-figure.is-signal{background:var(--signal);color:var(--signal-on)}
+.eis-plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:var(--space-200);margin-top:var(--space-300)}
+.eis-plan{display:flex;flex-direction:column;gap:var(--space-200);padding:var(--space-300) var(--space-200)}
+.eis-plan h3{font-weight:var(--font-weight-regular);font-size:var(--font-size-400)}
+.eis-plan .eis-price{font-family:var(--type-metric-font-family);font-size:var(--type-metric-font-size);font-weight:var(--type-metric-font-weight);letter-spacing:var(--type-metric-letter-spacing);line-height:var(--type-metric-line-height)}
+.eis-plan .eis-price small{font-family:var(--font-family-mono);font-size:var(--font-size-200);letter-spacing:0;color:var(--ink-muted)}
+.eis-plan ul{display:grid;gap:var(--space-100);color:var(--ink-muted);flex:1}
+.eis-plan li::before{content:"— ";color:var(--ink)}
+.eis-plan .eis-button{align-self:flex-start}
+.eis-faq{margin-top:var(--space-300)}
+.eis-faq p{padding:0 var(--space-200) var(--space-200);color:var(--ink-muted);max-width:64ch}
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWLTJ7HD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="eis-web-sheet">
+
+  <header class="eis-web-wrap eis-web-grid eis-web-header">
+    <a class="eis-web-brand" href="#top">Fieldkit<sup>2.4</sup></a>
+    <p class="eis-web-header__meta"><span>Status</span><span>All systems normal</span></p>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <p class="eis-web-header__cta"><a class="eis-button eis-button--primary" href="#pricing">Start free</a></p>
+  </header>
+
+  <main id="top">
+    <section class="eis-web-hero" aria-labelledby="hero-h">
+      <div class="eis-web-wrap eis-web-grid">
+        <p class="eis-web-hero__index" aria-hidden="true">/FK</p>
+        <h1 id="hero-h">Every machine, one&nbsp;logbook.</h1>
+        <dl class="eis-web-hero__meta">
+          <div><dt class="eis-label">Teams</dt><dd>1,200+</dd></div>
+          <div><dt class="eis-label">Checks / day</dt><dd>48k</dd></div>
+          <div><dt class="eis-label">Setup</dt><dd>10 min</dd></div>
+          <div><dt class="eis-label">Offline</dt><dd>Yes</dd></div>
+        </dl>
+        <p class="eis-web-hero__lead">Fieldkit is the shared logbook for teams that run equipment. Record checks, faults and fixes from the floor, and see what needs attention today.</p>
+        <p class="eis-web-hero__sub">Works on a phone in a glove. Syncs when the signal comes back.</p>
+        <p class="eis-web-hero__actions">
+          <a class="eis-button eis-button--primary" href="#pricing">Start free</a>
+          <a class="eis-button" href="#how">See how it works</a>
+        </p>
+      </div>
+      <svg class="eis-web-lines" data-eis-web-lines data-seed="31" viewBox="0 0 1440 360" preserveAspectRatio="none" aria-hidden="true" focusable="false"></svg>
+    </section>
+
+    <section class="eis-web-section" id="features" aria-labelledby="features-h">
+      <div class="eis-web-wrap eis-web-grid">
+        <header class="eis-web-section__head">
+          <span class="eis-label">/01 · Features</span>
+          <h2 id="features-h">What the floor needs. Nothing else.</h2>
+          <p>Six tools that replace the clipboard, the group chat and the spreadsheet nobody updates.</p>
+        </header>
+        <div class="eis-web-section__body">
+          <ol class="eis-web-numbered">
+            <li><span>01</span><div><strong>Checklists</strong><p>Daily and weekly checks per machine, with photos.</p></div></li>
+            <li><span>02</span><div><strong>Fault log</strong><p>Report a fault in three taps. It reaches the right person.</p></div></li>
+            <li><span>03</span><div><strong>History</strong><p>Every check and fix on one timeline per machine.</p></div></li>
+            <li><span>04</span><div><strong>Due today</strong><p>One list of what is overdue, due and done.</p></div></li>
+            <li><span>05</span><div><strong>Offline</strong><p>Record without signal. Sync when it returns.</p></div></li>
+            <li><span>06</span><div><strong>Export</strong><p>CSV and PDF reports for audits, any time.</p></div></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="eis-web-section" aria-labelledby="results-h">
+      <div class="eis-web-wrap">
+        <div class="eis-web-grid">
+          <header class="eis-web-section__head">
+            <span class="eis-label">/02 · Results</span>
+            <h2 id="results-h">Fewer surprises on the floor.</h2>
+          </header>
+          <p class="eis-web-section__aside">Average results from teams in their first 90 days. Sample figures for this example.</p>
+        </div>
+        <dl class="eis-proof">
+          <div><dt class="eis-label">Missed checks</dt><dd>−64%</dd><dd>From paper to Fieldkit.</dd></div>
+          <div><dt class="eis-label">Time to fix</dt><dd>2.1 d</dd><dd>Down from 5.4 days.</dd></div>
+          <div><dt class="eis-label">Audit prep</dt><dd>1 h</dd><dd>Down from two days.</dd></div>
+          <div><dt class="eis-label">Adoption</dt><dd>92%</dd><dd>Of the team, week one.</dd></div>
+        </dl>
+        <ul class="eis-web-cards">
+          <li class="eis-web-card">
+            <figure class="eis-card-figure" aria-hidden="true"><span>PLT-204</span></figure>
+            <div class="eis-web-card__body"><span class="eis-label">Plants</span><h3>Production lines</h3><p>Shift checks on presses, conveyors and ovens.</p></div>
+          </li>
+          <li class="eis-web-card">
+            <figure class="eis-card-figure" aria-hidden="true"><span>FLT-031</span></figure>
+            <div class="eis-web-card__body"><span class="eis-label">Fleets</span><h3>Vehicles and trailers</h3><p>Pre-trip inspections and defect reports.</p></div>
+          </li>
+          <li class="eis-web-card">
+            <figure class="eis-card-figure is-signal" aria-hidden="true"><span>LAB-112</span></figure>
+            <div class="eis-web-card__body"><span class="eis-label">Labs</span><h3>Instruments</h3><p>Calibration due dates you cannot miss.</p></div>
+          </li>
+          <li class="eis-web-card">
+            <figure class="eis-card-figure" aria-hidden="true"><span>BLD-007</span></figure>
+            <div class="eis-web-card__body"><span class="eis-label">Buildings</span><h3>Facilities</h3><p>HVAC, lifts and fire systems on one schedule.</p></div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="eis-web-section" id="how" aria-labelledby="how-h">
+      <div class="eis-web-wrap">
+        <div class="eis-web-grid">
+          <header class="eis-web-section__head">
+            <span class="eis-label">/03 · How it works</span>
+            <h2 id="how-h">Running before lunch.</h2>
+          </header>
+          <p class="eis-web-section__aside">No installation and no training day. Import a list of machines and invite the team.</p>
+        </div>
+        <ol class="eis-web-steps">
+          <li><strong>Import</strong><p>Upload your machine list as CSV.</p></li>
+          <li><strong>Templates</strong><p>Pick check templates or write your own.</p></li>
+          <li><strong>Invite</strong><p>Send a link. No passwords on the floor.</p></li>
+          <li><strong>Record</strong><p>Checks and faults from any phone.</p></li>
+          <li><strong>Review</strong><p>See what is due today, every morning.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="eis-web-section" id="pricing" aria-labelledby="pricing-h">
+      <div class="eis-web-wrap">
+        <header class="eis-web-section__head">
+          <span class="eis-label">/04 · Pricing</span>
+          <h2 id="pricing-h">Priced per site, not per person.</h2>
+        </header>
+        <div class="eis-plans">
+          <section class="eis-panel eis-plan" aria-labelledby="plan-1">
+            <span class="eis-label">Starter</span>
+            <h3 id="plan-1">One site, small team</h3>
+            <p class="eis-price">$0 <small>/ month</small></p>
+            <ul><li>Up to 25 machines</li><li>Checklists and fault log</li><li>30 days of history</li></ul>
+            <a class="eis-button" href="#top">Start free</a>
+          </section>
+          <section class="eis-panel eis-plan" aria-labelledby="plan-2">
+            <span class="eis-label">Site <span class="eis-chip eis-chip--signal">Popular</span></span>
+            <h3 id="plan-2">One site, whole team</h3>
+            <p class="eis-price">$49 <small>/ site / month</small></p>
+            <ul><li>Unlimited machines and people</li><li>Offline mode and exports</li><li>Full history</li></ul>
+            <a class="eis-button eis-button--primary" href="#top">Start 30-day trial</a>
+          </section>
+          <section class="eis-panel eis-plan" aria-labelledby="plan-3">
+            <span class="eis-label">Group</span>
+            <h3 id="plan-3">Many sites</h3>
+            <p class="eis-price">Talk to us</p>
+            <ul><li>Everything in Site</li><li>Cross-site reports</li><li>Single sign-on</li></ul>
+            <a class="eis-button" href="#top">Contact sales</a>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="eis-web-section" id="faq" aria-labelledby="faq-h">
+      <div class="eis-web-wrap eis-web-grid">
+        <header class="eis-web-section__head">
+          <span class="eis-label">/05 · FAQ</span>
+          <h2 id="faq-h">Questions.</h2>
+        </header>
+        <div class="eis-web-section__body eis-panel eis-faq">
+          <details class="eis-disclosure" open>
+            <summary><h3 class="eis-label">Does it work without signal?</h3></summary>
+            <p>Yes. Fieldkit stores records on the phone and syncs them when the connection returns.</p>
+          </details>
+          <details class="eis-disclosure">
+            <summary><h3 class="eis-label">Can we keep our paper checklists?</h3></summary>
+            <p>Type them in once as templates. Fieldkit keeps the same order and wording.</p>
+          </details>
+          <details class="eis-disclosure">
+            <summary><h3 class="eis-label">Who owns the data?</h3></summary>
+            <p>You do. Export everything as CSV at any time, also after you cancel.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="eis-web-wrap eis-web-grid eis-web-cta" aria-labelledby="cta-h">
+      <h2 id="cta-h">Put the clipboard down.</h2>
+      <p class="eis-web-cta__actions">
+        <a class="eis-button" href="#how">How it works</a>
+        <a class="eis-button eis-button--primary" href="#pricing">Start free</a>
+      </p>
+    </section>
+  </main>
+
+  <footer class="eis-web-wrap eis-web-grid eis-web-footer">
+    <dl>
+      <dt>P</dt><dd>Fieldkit 2.4 · fictional product</dd>
+      <dt>B</dt><dd>Built with eis-ds, web scope</dd>
+      <dt>©</dt><dd>2026 Fieldkit Ltd. Example only</dd>
+    </dl>
+    <nav aria-label="Footer">
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="../../examples.html">Back to examples</a></li>
+      </ul>
+    </nav>
+    <a class="eis-web-footer__up" href="#top" aria-label="Back to top">↑</a>
+  </footer>
+</div>
+</body>
+</html>

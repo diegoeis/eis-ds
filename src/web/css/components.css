@@ -50,7 +50,7 @@
 .eis-web-docnav ul a[aria-current="page"]{background:var(--surface-inverse);color:var(--ink-inverse)}
 
 /* ---------- landing and marketing pages: sheet, grid, header, hero, sections, lists, steps, code, CTA, footer ---------- */
-.eis-web-sheet{max-width:var(--web-size-sheet);margin:var(--space-300) auto;background:var(--surface-panel);border:var(--border-width-100) solid var(--line);border-radius:var(--radius-200);overflow:hidden}
+.eis-web-sheet{--eis-web-gap:var(--space-300);width:min(var(--web-size-sheet),100% - 2 * var(--eis-web-gap));margin:var(--eis-web-gap) auto;background:var(--surface-panel);border:var(--border-width-100) solid var(--line);border-radius:var(--radius-200);overflow:hidden}
 .eis-web-wrap{padding-inline:clamp(var(--space-200),4vw,var(--space-400))}
 .eis-web-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--space-200)}
 .eis-web-header{padding-block:var(--space-300);align-items:start}
@@ -134,7 +134,7 @@
   .eis-web-lines{margin-top:var(--space-300)}
 }
 @media (max-width:760px){
-  .eis-web-sheet{margin:0;border:0;border-radius:0}
+  .eis-web-sheet{--eis-web-gap:calc(var(--space-200) + var(--space-100))}
   .eis-web-numbered{grid-template-columns:minmax(0,1fr)}
   .eis-web-hero__meta{grid-template-columns:1fr 1fr}
   .eis-web-steps{grid-template-columns:minmax(0,1fr);gap:var(--space-300)}

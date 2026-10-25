@@ -145,7 +145,7 @@ Rules:
 | `eis-web-doc` | Documentation section: title column + content column |
 | `eis-web-spec`, `eis-web-pair`, `eis-web-scroll` | Specification table, contrast pair sample, horizontal scroll wrapper |
 | `eis-web-docfoot` | Footer of documentation pages |
-| `eis-web-sheet`, `eis-web-wrap`, `eis-web-grid` | Landing sheet on the canvas, side padding, 12-column grid |
+| `eis-web-sheet`, `eis-web-wrap`, `eis-web-grid` | Landing sheet on the canvas (always 32px from the window edge, 24px up to 760px), side padding, 12-column grid |
 | `eis-web-header`, `eis-web-brand` | Landing top bar and brand mark |
 | `eis-web-hero` (`__index`, `__meta`, `__lead`, `__sub`, `__actions`) | Hero block |
 | `eis-web-lines` + `data-eis-web-lines` | Line art drawn by `web/js/lines.js`. Options: `data-seed`, `data-step` |

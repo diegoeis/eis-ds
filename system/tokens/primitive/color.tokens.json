@@ -84,6 +84,18 @@
           }
         }
       },
+      "500": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.522,
+            0.522,
+            0.522
+          ],
+          "hex": "#858585"
+        },
+        "$description": "Mid grey. Icons, placeholders and other non-text graphics (3.5:1 on neutral.0, passes the 3:1 for UI graphics). Not for body text."
+      },
       "600": {
         "$value": {
           "colorSpace": "srgb",

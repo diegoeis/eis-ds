@@ -236,6 +236,7 @@ Os candidatos serão comparados lado a lado em HTML antes da decisão.
 | 2026-10-25 | Canvas `neutral.100` passa de `#e6e6e6` para **`#eaeaea`** | Escolha do autor |
 | 2026-10-25 | Sinal passa a **`#f35919`** (antes `#f15033`); a versão para texto passa a `#b5400c`, mesmo matiz | `references/palette/orange-circles-grid.png`, cor chapada amostrada exata |
 | 2026-10-25 | Sem papéis `data-*`: gráficos usam os neutros primitivos direto. Semântico só quando acrescenta significado | Pedido do autor: menos complexidade |
+| 2026-10-25 | `neutral.500` (`#858585`) entra na escala: cinza médio para ícones, placeholders e gráficos não textuais (3,5:1 no painel) | Pedido do autor |
 | 2026-10-25 | Botão ganha glow no hover, na cor da variante. Exceção à regra de não ter sombra, só como resposta à interação | Pedido do autor |
 | 2026-10-25 | Escala de dado passa a `neutral.200` (`#dddddd`) · `400` (`#a3a3a3`, antes `#bdbdbd`) · `600` · `900`: os dois tons claros estavam quase iguais (1,2:1); agora cada passo difere ≥1,8:1 do vizinho | Pedido do autor no dashboard |
 | 2026-10-25 | Etiquetas viram **chips** (pílula, caixa normal, sem hover), para não confundir com botões. O "block label" retangular fica só para peças gráficas | Pedido do autor no dashboard |

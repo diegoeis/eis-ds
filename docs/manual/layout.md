@@ -4,21 +4,19 @@ How to set up a page or piece built with the system.
 
 ## 1. Files to load
 
-A piece is a standalone HTML file. It loads, in this order:
+A piece is a standalone HTML file. It links one stylesheet:
 
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="<src>/shared/shared.css">
-<link rel="stylesheet" href="<src>/<scope>/css/tokens.css">
-<link rel="stylesheet" href="<src>/<scope>/css/<scope>.css">
+<link rel="stylesheet" href="<src>/<scope>/<scope>.css">
 <style>/* this piece's layout only */</style>
 ```
 
 - `<src>` is the relative path to the `src/` folder at the repository root. From `site/examples/<kind>/` it is `../../../src`.
 - `<scope>` is `web` (websites, landing pages, docs) or `app` (dashboards, tools). See §7.
-- `shared.css` imports the shared tokens, the base and the elements. The base already sets box-sizing, margins, body type, canvas background and focus. Don't repeat it.
+- `<scope>.css` is the only stylesheet to link. It imports `../shared/shared.css` (fonts, shared tokens, base, elements), then the scope tokens and components. Keep `shared/` next to the scope folder. The preconnect lines are optional: they make the fonts load faster.
+- `shared.css` imports the fonts, the shared tokens, the base and the elements. The base already sets box-sizing, margins, body type, canvas background and focus. Don't repeat it.
 - The piece's `<style>` contains **layout only**: grids, regions, positions, page-specific arrangements. It MUST NOT redefine buttons, chips, fields, tables, panels or any shared element.
 - No frameworks or libraries (React, Tailwind, Bootstrap, icon fonts).
 
@@ -124,9 +122,9 @@ eis-ds is several design systems in one. They share the same base and never conf
 
 | Folder | Use for | Load | Class prefix | Variable prefix |
 |---|---|---|---|---|
-| `src/shared/` | Every scope | `shared/shared.css` | `eis-` | `--color-`, `--space-`, `--ink`… |
-| `src/web/` | Websites, landing pages, marketing pages, documentation | `web/css/tokens.css`, `web/css/web.css`, optional `web/js/lines.js` | `eis-web-` | `--web-` |
-| `src/app/` | Dashboards, tools, system screens | `app/css/tokens.css`, `app/css/app.css` | `eis-app-` | `--app-` |
+| `src/shared/` | Every scope | Imported by each scope entry | `eis-` | `--color-`, `--space-`, `--ink`… |
+| `src/web/` | Websites, landing pages, marketing pages, documentation | `web/web.css`, optional `web/js/lines.js` | `eis-web-` | `--web-` |
+| `src/app/` | Dashboards, tools, system screens | `app/app.css` | `eis-app-` | `--app-` |
 
 To build a website, copy `src/shared/` and `src/web/`. To build a dashboard, copy `src/shared/` and `src/app/`. More scopes (slides, email, docs) follow the same pattern.
 
@@ -134,7 +132,7 @@ Rules:
 - `shared` never depends on a scope. Shared elements (button, chip, fields, table, panel) and, later, icons live there.
 - A scope's tokens live under its own group (`web.*`, `app.*`) and MAY reference shared tokens: `"{font.size.800}"`. A colour change in shared reaches every scope.
 - A scope MUST NOT reference another scope's tokens, variables or classes.
-- Every selector in `<scope>.css` starts with `.eis-<scope>-`. A scope never styles bare HTML or shared classes on their own. It MAY place a shared element in its own context (`.eis-app-tasks .eis-table`) for layout only.
+- Every selector in `<scope>/css/components.css` starts with `.eis-<scope>-`. A scope never styles bare HTML or shared classes on their own. It MAY place a shared element in its own context (`.eis-app-tasks .eis-table`) for layout only.
 - `scripts/build-tokens.py` validates the token rules. `scripts/check-css.py` validates the CSS rules. Both MUST pass.
 - A pattern used on two or more pages goes into the scope CSS. A pattern used on one page only stays in that page's `<style>`.
 
@@ -173,7 +171,7 @@ Rules:
 1. Create `src/<scope>/tokens/<scope>.tokens.json`. Put every token under the group `<scope>`. Reference shared tokens where a value already exists.
 2. Create `src/<scope>/tokens/<scope>.resolver.json`. Copy `src/web/tokens/web.resolver.json` and change the names.
 3. Run `python3 scripts/build-tokens.py`. It finds the new scope and writes `src/<scope>/css/tokens.css`.
-4. Create `src/<scope>/css/<scope>.css`. Every selector starts with `.eis-<scope>-`.
+4. Create `src/<scope>/css/components.css`. Every selector starts with `.eis-<scope>-`. Then create the entry `src/<scope>/<scope>.css`: copy `src/web/web.css` and change the names.
 5. Run `python3 scripts/check-css.py`.
 6. Add the scope to the table at the top of this section, to `README.md` and to `AGENTS.md`. Add its tokens to `tokens-usage.md` §7.
 7. Add an example in `site/examples/<kind>/` and a card on `examples.html`.

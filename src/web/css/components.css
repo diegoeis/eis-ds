@@ -1,6 +1,6 @@
-/* eis-ds · web/web.css
+/* eis-ds · web/css/components.css
    Web scope: landing pages, marketing pages and documentation pages.
-   Load after shared/shared.css and web/css/tokens.css. Apps never load it.
+   Imported by web/web.css. Apps never load it.
    Every selector starts with .eis-web-. It never styles bare HTML or shared classes,
    so it cannot change an element or another scope. scripts/check-css.py enforces this. */
 

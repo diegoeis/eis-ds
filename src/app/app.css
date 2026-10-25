@@ -1,0 +1,7 @@
+/* eis-ds · app/app.css
+   The one file a app page links: dashboards, tools and system screens.
+   It imports shared (fonts, tokens, base, elements), then the app tokens and components.
+   Keep src/shared/ next to src/app/: the first import is ../shared/shared.css. */
+@import url("../shared/shared.css");
+@import url("css/tokens.css");
+@import url("css/components.css");

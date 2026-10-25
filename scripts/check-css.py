@@ -4,7 +4,7 @@
 Scopes are the folders in src/ that have a tokens/<scope>.resolver.json, plus shared.
 
 - shared/css/*.css: no selector or variable from any scope (.eis-<scope>-, --<scope>-).
-- <scope>/css/<scope>.css: every selector starts with .eis-<scope>-, and it uses no
+- <scope>/css/components.css: every selector starts with .eis-<scope>-, and it uses no
   selector or variable from another scope. So a scope cannot restyle bare HTML, a shared
   element or another scope.
 
@@ -52,7 +52,7 @@ def main() -> int:
     names = scopes()
     failed = False
     files = [(p, None) for p in sorted((SRC / "shared" / "css").glob("*.css")) if p.name != "tokens.css"]
-    files += [(SRC / s / "css" / f"{s}.css", s) for s in names if (SRC / s / "css" / f"{s}.css").exists()]
+    files += [(SRC / s / "css" / "components.css", s) for s in names if (SRC / s / "css" / "components.css").exists()]
     for path, own in files:
         bad = check(path, own, names)
         rel = path.relative_to(ROOT)

@@ -7,12 +7,9 @@
 <meta name="description" content="eis-ds is a visual design system in plain HTML and CSS. Tokens in the W3C DTCG format, native elements, no build step.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="src/shared/shared.css">
-<link rel="stylesheet" href="src/web/css/tokens.css">
-<link rel="stylesheet" href="src/web/css/web.css">
+<link rel="stylesheet" href="src/web/web.css">
 <style>
-/* Landing page only: illustrations and the specimen. Structure comes from src/web/css/web.css. */
+/* Landing page only: illustrations and the specimen. Structure comes from src/web/web.css. */
 .eis-mini{background:var(--surface-panel);border:var(--border-width-100) solid var(--line);border-radius:var(--radius-100);padding:var(--space-100);display:grid;gap:calc(var(--space-100)/2);align-content:start;min-width:0}
 .eis-mini i{display:block;height:var(--space-100);background:var(--color-neutral-200);border-radius:var(--radius-full)}
 .eis-mini i.is-dark{background:var(--ink)}
@@ -89,7 +86,7 @@
           <div><dt class="eis-label">Signal</dt><dd>One</dd></div>
         </dl>
         <p class="eis-web-hero__lead">A visual design system in plain HTML and CSS. Cool neutrals, thin lines, a mono voice for data and one orange signal for the thing that matters.</p>
-        <p class="eis-web-hero__sub">Use it for interfaces, slides, email and images. Link a few stylesheets and build with native HTML. No framework, no build step.</p>
+        <p class="eis-web-hero__sub">Use it for interfaces, slides, email and images. Link one stylesheet and build with native HTML. No framework, no build step.</p>
         <p class="eis-web-hero__actions">
           <a class="eis-button eis-button--primary" href="#adopt">Get started</a>
           <a class="eis-button" href="site/foundations.html">See the foundations</a>
@@ -171,7 +168,7 @@
           <li><div class="eis-web-principles__glyph" aria-hidden="true"><span class="eis-sq is-canvas"></span><span class="eis-sq is-panel"></span></div><h3>Two surfaces</h3><p>Canvas and panel. A third level is a line, not another box.</p></li>
           <li><div class="eis-web-principles__glyph" aria-hidden="true"><span class="eis-hair"></span></div><h3>One line weight</h3><p>Every border and divider is 1px. No shadows at rest.</p></li>
           <li><div class="eis-web-principles__glyph" aria-hidden="true"><span class="eis-mono">&lt;button&gt;</span></div><h3>Native first</h3><p>Real tables, real checkboxes, real buttons. Accessible by default.</p></li>
-          <li><div class="eis-web-principles__glyph" aria-hidden="true"><span class="eis-mono">0 deps</span></div><h3>No build</h3><p>Plain stylesheets and custom properties. It works from a file on disk.</p></li>
+          <li><div class="eis-web-principles__glyph" aria-hidden="true"><span class="eis-mono">0 deps</span></div><h3>No build</h3><p>One stylesheet per scope and custom properties. It works from a file on disk.</p></li>
         </ul>
       </div>
     </section>
@@ -181,7 +178,7 @@
         <header class="eis-web-section__head">
           <span class="eis-label">/04 · Specimen</span>
           <h2 id="specimen-h">The parts, running live.</h2>
-          <p>Everything below comes from the same stylesheets you will use.</p>
+          <p>Everything below comes from the same file you will link.</p>
         </header>
         <div class="eis-specimen">
           <ul class="eis-swatches" aria-label="Colour roles">
@@ -228,22 +225,16 @@
         </div>
         <ol class="eis-web-steps">
           <li><strong>Copy</strong><p><code>src/shared/</code> plus <code>src/web/</code> or <code>src/app/</code>.</p></li>
-          <li><strong>Fonts</strong><p>Load Geist and Geist Mono from Google Fonts.</p></li>
-          <li><strong>Link</strong><p><code>shared.css</code> first, then the scope's <code>tokens.css</code> and stylesheet.</p></li>
+          <li><strong>Link</strong><p>One file: <code>web/web.css</code> or <code>app/app.css</code>. It brings the fonts, the shared tokens and elements, and the scope.</p></li>
+          <li><strong>Mark up</strong><p>Use semantic HTML: <code>header</code>, <code>main</code>, <code>section</code>, real tables and controls.</p></li>
           <li><strong>Build</strong><p>Native HTML with shared <code>eis-</code> classes and your scope's classes. Your own CSS is layout only.</p></li>
           <li><strong>Check</strong><p>Run the <a class="eis-link" href="docs/manual/checklist.md">checklist</a> in the manual.</p></li>
         </ol>
         <div class="eis-start">
           <figure>
             <figcaption class="eis-label">Website or docs · shared + web</figcaption>
-<pre class="eis-web-code"><code><span class="c">&lt;!-- fonts --&gt;</span>
-&lt;link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&amp;family=Geist+Mono:ital,wght@0,300;0,400;0,500;1,400&amp;display=swap" rel="stylesheet"&gt;
-
-<span class="c">&lt;!-- shared: tokens, base and elements in one file --&gt;</span>
-&lt;link rel="stylesheet" href="eis-ds/shared/shared.css"&gt;
-<span class="c">&lt;!-- web scope --&gt;</span>
-&lt;link rel="stylesheet" href="eis-ds/web/css/tokens.css"&gt;
-&lt;link rel="stylesheet" href="eis-ds/web/css/web.css"&gt;
+<pre class="eis-web-code"><code><span class="c">&lt;!-- one file: fonts, shared and web --&gt;</span>
+&lt;link rel="stylesheet" href="eis-ds/web/web.css"&gt;
 <span class="c">&lt;!-- optional: line art --&gt;</span>
 &lt;script src="eis-ds/web/js/lines.js" defer&gt;&lt;/script&gt;
 
@@ -258,13 +249,8 @@
           </figure>
           <figure>
             <figcaption class="eis-label">Dashboard or tool · shared + app</figcaption>
-<pre class="eis-web-code"><code><span class="c">&lt;!-- fonts: same link as the website --&gt;</span>
-
-<span class="c">&lt;!-- shared --&gt;</span>
-&lt;link rel="stylesheet" href="eis-ds/shared/shared.css"&gt;
-<span class="c">&lt;!-- app scope --&gt;</span>
-&lt;link rel="stylesheet" href="eis-ds/app/css/tokens.css"&gt;
-&lt;link rel="stylesheet" href="eis-ds/app/css/app.css"&gt;
+<pre class="eis-web-code"><code><span class="c">&lt;!-- one file: fonts, shared and app --&gt;</span>
+&lt;link rel="stylesheet" href="eis-ds/app/app.css"&gt;
 
 &lt;body class="<span class="s">eis-app-shell</span>"&gt;
   &lt;aside class="eis-app-sidebar" aria-label="Sidebar"&gt;

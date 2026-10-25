@@ -1,6 +1,6 @@
-/* eis-ds · app/app.css
+/* eis-ds · app/css/components.css
    App scope: dashboards, tools and system screens.
-   Load after the shared CSS and app/css/tokens.css. Web pages never load it.
+   Imported by app/app.css. Web pages never load it.
    Every selector starts with .eis-app-. Put .eis-app-shell on <body> for the sidebar layout.
    It never styles bare HTML or shared classes outside .eis-app-*, so it cannot change
    an element or another scope. scripts/check-css.py enforces this. */

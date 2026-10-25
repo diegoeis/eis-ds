@@ -4,11 +4,11 @@ A visual design system in plain HTML and CSS. Minimal retrofuturism: cool neutra
 
 It is several design systems in one. They share the same base and never conflict:
 
-| Folder | For | Load |
+| Folder | For | Link |
 |---|---|---|
-| `src/shared/` | Every project | `shared/shared.css` (tokens, base, elements) |
-| `src/web/` | Websites, landing pages, documentation | `web/css/tokens.css`, `web/css/web.css`, optional `web/js/lines.js` |
-| `src/app/` | Dashboards, tools, system screens | `app/css/tokens.css`, `app/css/app.css` |
+| `src/shared/` | Every project: fonts, tokens, base, elements | Imported by each scope |
+| `src/web/` | Websites, landing pages, documentation | `web/web.css`, optional `web/js/lines.js` |
+| `src/app/` | Dashboards, tools, system screens | `app/app.css` |
 
 More scopes (slides, email) will follow the same pattern.
 
@@ -21,13 +21,18 @@ Site: https://diegoeis.github.io/eis-ds/
 No package and no build step.
 
 1. Copy `src/shared/` and one scope (`src/web/` or `src/app/`) into your project.
-2. Load the fonts, then the CSS:
+2. Link one file. It imports the fonts, shared and the scope:
 
 ```html
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="eis-ds/shared/shared.css">
-<link rel="stylesheet" href="eis-ds/app/css/tokens.css">
-<link rel="stylesheet" href="eis-ds/app/css/app.css">
+<link rel="stylesheet" href="eis-ds/app/app.css">
+```
+
+Keep `shared/` next to the scope folder: the scope file imports `../shared/shared.css`.
+
+Or link it from the published site, with no copy:
+
+```html
+<link rel="stylesheet" href="https://diegoeis.github.io/eis-ds/src/app/app.css">
 ```
 
 3. Build with native HTML: shared classes (`eis-button`, `eis-chip`, `eis-panel`…) and the classes of your scope (`eis-app-*` or `eis-web-*`). Your own CSS holds layout only.

@@ -4,7 +4,7 @@ Run this before calling a piece, element or token done. Every box must be true.
 
 ## Files and CSS
 
-- [ ] Loads fonts, `shared/shared.css`, one scope (`web` or `app`), then only its own layout CSS.
+- [ ] Links one scope entry (`web/web.css` or `app/app.css`), then only its own layout CSS. No separate font link.
 - [ ] Uses only shared classes and the classes of its own scope.
 - [ ] Scope CSS changed? `python3 scripts/check-css.py` passes.
 - [ ] No raw colours, font sizes, spacing or radii (only the exceptions in `tokens-usage.md` §8).
@@ -54,7 +54,7 @@ Run this before calling a piece, element or token done. Every box must be true.
 
 - [ ] New token: in `src/shared/tokens/` (shared) or `src/<scope>/tokens/` (one scope), `python3 scripts/build-tokens.py` passes, shown on `foundations.html`, usage added to `tokens-usage.md`.
 - [ ] New or changed element: in `src/shared/css/elements.css`, shown on `elements.html`, documented in `elements.md`.
-- [ ] New or changed scope component: in `src/<scope>/css/<scope>.css`, listed in `layout.md` §7, `check-css.py` passes.
+- [ ] New or changed scope component: in `src/<scope>/css/components.css`, listed in `layout.md` §7, `check-css.py` passes.
 - [ ] New scope: steps in `layout.md` §7, "Add a scope".
 - [ ] New example: in `site/examples/<kind>/`, card on `examples.html`.
 - [ ] Decision recorded in `docs/visual-guidance/visual-guidance.md` §7.

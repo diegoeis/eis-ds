@@ -1,0 +1,7 @@
+/* eis-ds · web/web.css
+   The one file a web page links: websites, landing pages, marketing pages and documentation.
+   It imports shared (fonts, tokens, base, elements), then the web tokens and components.
+   Keep src/shared/ next to src/web/: the first import is ../shared/shared.css. */
+@import url("../shared/shared.css");
+@import url("css/tokens.css");
+@import url("css/components.css");

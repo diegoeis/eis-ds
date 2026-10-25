@@ -7,8 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/tokens.css">
-<link rel="stylesheet" href="css/elements.css">
+<link rel="stylesheet" href="../src/css/tokens.css">
+<link rel="stylesheet" href="../src/css/elements.css">
 <link rel="stylesheet" href="css/docs.css">
 <style>
 
@@ -93,7 +93,7 @@
     <div>
       <p class="eis-label">eis-ds / foundations</p>
       <h1>Foundations</h1>
-      <p>The primitives of the system: colour, type, space, shape and the few motifs that carry the retrofuturist line. Every value on this page is read live from <code>css/tokens.css</code>, which is generated from the DTCG files in <code>tokens/</code>.</p>
+      <p>The primitives of the system: colour, type, space, shape and the few motifs that carry the retrofuturist line. Every value on this page is read live from <code>src/css/tokens.css</code>, which is generated from the DTCG files in <code>tokens/</code>.</p>
     </div>
     <dl>
       <dt class="eis-label">Version</dt><dd>0.1 · draft</dd>
@@ -297,13 +297,13 @@
 
   <footer class="eis-foot eis-mono">
     <span>eis-ds · foundations · v0.1</span>
-    <span>Generated values: css/tokens.css · source: tokens/*.tokens.json</span>
+    <span>Generated values: src/css/tokens.css · source: src/tokens/*.tokens.json</span>
   </footer>
 </main>
 
 <script>
 // Show the live value of each variable, and compute contrast from the live colours,
-// so this page can never drift from css/tokens.css.
+// so this page can never drift from src/css/tokens.css.
 const css = getComputedStyle(document.documentElement);
 const hexOf = v => {
   const probe = document.createElement('i'); probe.style.color = `var(${v})`; document.body.append(probe);

@@ -14,23 +14,24 @@ Version 0.1, draft. Only the light mode exists.
 ## Structure
 
 ```
-index.html               entry point. Opens site/index.html
-site/                    the visual manual for humans: the rules applied and rendered
-  index.html             home
-  foundations.html, elements.html, examples.html
+src/                     the design system assets. Apps and the site load these
   tokens/                source of truth (.tokens.json)
   css/tokens.css         GENERATED. Never edit by hand
   css/elements.css       base and basic elements
+index.html               entry point. Opens site/index.html
+site/                    the visual manual for humans. Loads ../src/css/
+  index.html             home
+  foundations.html, elements.html, examples.html
   css/docs.css           layout of the site pages only
   examples/<kind>/       pages built with the tokens and elements
 docs/
   manual/                written usage rules for tokens, elements and layout
   tokens.md              token format
   visual-guidance/       reference only: direction, images, decisions
-scripts/build-tokens.py  validates the tokens and generates tokens.css
+scripts/build-tokens.py  validates src/tokens and generates src/css/tokens.css
 ```
 
-There is no production design system yet. Everything here is documentation: the written rules (`docs/manual/*.md`) and the visual manual (`site/`).
+`src/` is the only thing an application needs. `site/` and `docs/` document it and never hold tokens or element CSS.
 
 ## Workflow
 

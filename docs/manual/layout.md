@@ -10,14 +10,14 @@ A piece is a standalone HTML file. It loads, in this order:
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="<path>/css/tokens.css">
-<link rel="stylesheet" href="<path>/css/elements.css">
+<link rel="stylesheet" href="<src>/css/tokens.css">
+<link rel="stylesheet" href="<src>/css/elements.css">
 <style>/* this piece's layout only */</style>
 ```
 
-- `<path>` is the path to `site/`. From `site/examples/<kind>/` it is `../..` (so `../../css/tokens.css`).
+- `<src>` is the relative path to the `src/` folder at the repository root. From `site/examples/<kind>/` it is `../../../src`.
 - `elements.css` already sets the base (box-sizing, margins, body type, canvas background, focus). Don't repeat it.
-- `site/css/docs.css` is for the system's own documentation pages only. Pieces MUST NOT load it.
+- `site/css/docs.css` is for the site pages only. Pieces MUST NOT load it.
 - The piece's `<style>` contains **layout only**: grids, regions, positions, page-specific arrangements. It MUST NOT redefine buttons, chips, fields, tables, panels or any element of `elements.css`.
 - No frameworks or libraries (React, Tailwind, Bootstrap, icon fonts).
 

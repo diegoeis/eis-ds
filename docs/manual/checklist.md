@@ -50,7 +50,7 @@ Run this before calling a piece, element or token done. Every box must be true.
 
 ## When adding to the system
 
-- [ ] New token: in `site/tokens/*.tokens.json`, `python3 scripts/build-tokens.py` passes, shown on `foundations.html`, usage added to `tokens-usage.md`.
+- [ ] New token: in `src/tokens/*.tokens.json`, `python3 scripts/build-tokens.py` passes, shown on `foundations.html`, usage added to `tokens-usage.md`.
 - [ ] New or changed element: in `elements.css`, shown on `elements.html`, documented in `elements.md`.
 - [ ] New example: in `site/examples/<kind>/`, card on `examples.html`.
 - [ ] Decision recorded in `docs/visual-guidance/visual-guidance.md` §7.

@@ -72,8 +72,8 @@ Reserved properties (`$` prefix):
 
 | Layer | Folder | Content | Consumed by |
 |---|---|---|---|
-| Primitives | `site/tokens/primitive/` | Raw values: the palette, the space scale, the fonts. | Pieces, for everything without a semantic role. |
-| Semantics | `site/tokens/semantic/` | Color roles that carry meaning (`surface`, `ink`, `line`, `signal`) and text styles. They point to primitives by reference. | Pieces, whenever the role exists. |
+| Primitives | `src/tokens/primitive/` | Raw values: the palette, the space scale, the fonts. | Pieces, for everything without a semantic role. |
+| Semantics | `src/tokens/semantic/` | Color roles that carry meaning (`surface`, `ink`, `line`, `signal`) and text styles. They point to primitives by reference. | Pieces, whenever the role exists. |
 
 - **Semantic only when it adds meaning.** A role exists if it says *what a color is for* (background, text, line, signal) or if it will change between modes. An alias that only renames a primitive is complexity with no gain and is not added.
 - **Using the primitive directly is normal** for space, radius, border, font size and weight, and for the chart gray scale (`--color-neutral-200 · 400 · 600 · 900`).
@@ -122,7 +122,7 @@ Out of scope for now: `duration`, `cubicBezier`, `transition`, `gradient`, `stro
 
 Modes (light, dark, paper…) follow the **Resolver Module 2025.10**:
 
-- A `site/tokens/eis-ds.resolver.json` file declares the fixed `sets`, i.e. the primitives, and a `mode` modifier with one context per mode, each pointing to its semantic file.
+- A `src/tokens/eis-ds.resolver.json` file declares the fixed `sets`, i.e. the primitives, and a `mode` modifier with one context per mode, each pointing to its semantic file.
 - Primitives are shared by all modes. Only the semantic layer changes.
 - Every mode defines **the same set of names**. A role that exists in one mode exists in all.
 - The default mode is declared in `default`.
@@ -146,7 +146,7 @@ Each token becomes a native CSS custom property. Conversion rules:
 
 Modes in CSS: the default mode goes in `:root`, the others in `[data-mode="<name>"]`, redefining **only** semantic variables.
 
-Conversion is done by `scripts/build-tokens.py` (Python, stdlib only), which also runs the §10 checklist before writing `site/css/tokens.css`. `letterSpacing` stays in `px` because the spec does not accept `em`. The value is calculated for the size at which the style is used (e.g.: `0.88px` = 0.08em at 11px).
+Conversion is done by `scripts/build-tokens.py` (Python, stdlib only), which also runs the §10 checklist before writing `src/css/tokens.css`. `letterSpacing` stays in `px` because the spec does not accept `em`. The value is calculated for the size at which the style is used (e.g.: `0.88px` = 0.08em at 11px).
 
 ## 9. Outside CSS
 

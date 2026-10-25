@@ -1,6 +1,6 @@
 # Tokens: usage
 
-Which variable to use for what. All variables come from `site/css/tokens.css` (generated — never edit it).
+Which variable to use for what. All variables come from `src/css/tokens.css` (generated — never edit it).
 
 **Two layers.**
 - **Semantic roles** (`--surface-*`, `--ink*`, `--line`, `--signal*`) carry meaning and will change between modes (dark, paper). For backgrounds, text, lines and the signal colour you **MUST** use the role, never the primitive behind it.

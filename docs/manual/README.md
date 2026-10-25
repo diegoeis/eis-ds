@@ -15,7 +15,7 @@ Related, not part of the manual:
 
 - `docs/tokens.md` — how tokens are **written** (W3C DTCG format). Read it only when adding or changing a token.
 - `docs/visual-guidance/visual-guidance.md` — where the visual direction came from, and the decision log. Read it to understand *why*. This manual says *what*.
-- `site/` (at the repository root) — the visual manual for humans: this manual applied and rendered. Start at `site/index.html`. `site/` also holds the tokens and the CSS. When the manual and the CSS disagree, the CSS in `site/css/` wins. Then fix the manual.
+- `site/` (at the repository root) — the visual manual for humans: this manual applied and rendered. Start at `site/index.html`. The tokens and the CSS live in `src/`. When the manual and the CSS disagree, the CSS in `src/css/` wins. Then fix the manual.
 
 ## Conventions used in this manual
 

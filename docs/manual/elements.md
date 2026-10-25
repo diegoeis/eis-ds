@@ -1,6 +1,6 @@
 # Elements
 
-Every basic element: when to use it, the HTML to copy, variants, and what is forbidden. Styles live in `docs/manual/site/css/elements.css`. The rendered versions are on `docs/manual/site/elements.html`.
+Every basic element: when to use it, the HTML to copy, variants, and what is forbidden. Styles live in `site/css/elements.css`. The rendered versions are on `site/elements.html`.
 
 **General rules for all elements**
 
@@ -238,7 +238,7 @@ A status MUST be a chip. A chip MUST NOT be clickable.
 
 - Always `<dl>`. Value in `metric` style, context line in `mono`.
 - Only the metric that is the exception gets a signal mark.
-- The layout of `.eis-metrics` is page CSS today. See `docs/manual/site/elements.html` for the reference.
+- The layout of `.eis-metrics` is page CSS today. See `site/elements.html` for the reference.
 
 ## Breadcrumb and link
 

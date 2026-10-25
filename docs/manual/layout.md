@@ -15,9 +15,9 @@ A piece is a standalone HTML file. It loads, in this order:
 <style>/* this piece's layout only */</style>
 ```
 
-- `<path>` is the path to `docs/manual/site/`. From `docs/manual/site/examples/<kind>/` it is `../..` (so `../../css/tokens.css`).
+- `<path>` is the path to `site/`. From `site/examples/<kind>/` it is `../..` (so `../../css/tokens.css`).
 - `elements.css` already sets the base (box-sizing, margins, body type, canvas background, focus). Don't repeat it.
-- `docs/manual/site/css/docs.css` is for the system's own documentation pages only. Pieces MUST NOT load it.
+- `site/css/docs.css` is for the system's own documentation pages only. Pieces MUST NOT load it.
 - The piece's `<style>` contains **layout only**: grids, regions, positions, page-specific arrangements. It MUST NOT redefine buttons, chips, fields, tables, panels or any element of `elements.css`.
 - No frameworks or libraries (React, Tailwind, Bootstrap, icon fonts).
 

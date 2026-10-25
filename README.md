@@ -16,6 +16,10 @@ Version 0.1, draft. Light mode only.
 
 Site: https://diegoeis.github.io/eis-ds/
 
+[![Example dashboard built with eis-ds (app scope): sidebar, four metrics, agenda, task age matrix and task tables](site/examples/dashboard/tasks-work.png)](https://diegoeis.github.io/eis-ds/site/examples/dashboard/tasks-work.html)
+
+*Example dashboard (app scope), with fictional data. [Open it live](https://diegoeis.github.io/eis-ds/site/examples/dashboard/tasks-work.html).*
+
 ## Use it
 
 No package and no build step.

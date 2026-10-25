@@ -75,9 +75,11 @@ a{text-decoration:none}
 /* age cells */
 .eis-cells{display:grid;grid-template-columns:repeat(14,1fr);gap:calc(var(--space-100) / 2);padding:var(--space-200)}
 .eis-cells li{aspect-ratio:1;border-radius:2px;background:var(--color-neutral-200)}
-.eis-cells [data-age="2"]{background:var(--color-neutral-400)}
-.eis-cells [data-age="3"]{background:var(--color-neutral-600)}
-.eis-cells [data-age="4"]{background:var(--color-neutral-900)}
+.eis-cells [data-age="1"]{background:var(--color-neutral-300)}
+.eis-cells [data-age="2-7"]{background:var(--color-neutral-400)}
+.eis-cells [data-age="8-14"]{background:var(--color-neutral-500)}
+.eis-cells [data-age="15-21"]{background:var(--color-neutral-600)}
+.eis-cells [data-age="22+"]{background:var(--color-neutral-900)}
 .eis-cells [data-age="overdue"]{background:var(--signal)}
 .eis-legend{display:flex;flex-wrap:wrap;gap:var(--space-100) var(--space-200);padding:0 var(--space-200) var(--space-200)}
 .eis-legend li{display:flex;align-items:center;gap:var(--space-100)}
@@ -253,12 +255,14 @@ a{text-decoration:none}
 
     <section class="eis-panel" aria-labelledby="age-h">
       <header class="eis-panel__head"><h2 class="eis-label" id="age-h">Open task age</h2><span class="eis-mono">84 items</span></header>
-      <ol class="eis-cells" role="img" aria-label="84 open tasks: 6 overdue, 13 older than 14 days, 6 between 8 and 14 days, 25 between 2 and 7 days, 34 from the last day"><li data-age="overdue"></li><li data-age="overdue"></li><li data-age="overdue"></li><li data-age="overdue"></li><li data-age="overdue"></li><li data-age="overdue"></li><li data-age="4"></li><li data-age="4"></li><li data-age="4"></li><li data-age="4"></li><li data-age="4"></li><li data-age="4"></li><li data-age="4"></li><li data-age="4"></li><li data-age="4"></li><li data-age="4"></li><li data-age="4"></li><li data-age="4"></li><li data-age="4"></li><li data-age="3"></li><li data-age="3"></li><li data-age="3"></li><li data-age="3"></li><li data-age="3"></li><li data-age="3"></li><li data-age="2"></li><li data-age="2"></li><li data-age="2"></li><li data-age="2"></li><li data-age="2"></li><li data-age="2"></li><li data-age="2"></li><li data-age="2"></li><li data-age="2"></li><li data-age="2"></li><li data-age="2"></li><li data-age="2"></li><li data-age="2"></li><li data-age="2"></li><li data-age="2"></li><li data-age="2"></li><li data-age="2"></li><li data-age="2"></li><li data-age="2"></li><li data-age="2"></li><li data-age="2"></li><li data-age="2"></li><li data-age="2"></li><li data-age="2"></li><li data-age="2"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li></ol>
+      <ol class="eis-cells" role="img" aria-label="84 open tasks: 6 overdue, 5 older than 21 days, 8 between 15 and 21 days, 6 between 8 and 14 days, 25 between 2 and 7 days, 18 from yesterday, 16 from today"><li data-age="overdue"></li><li data-age="overdue"></li><li data-age="overdue"></li><li data-age="overdue"></li><li data-age="overdue"></li><li data-age="overdue"></li><li data-age="22+"></li><li data-age="22+"></li><li data-age="22+"></li><li data-age="22+"></li><li data-age="22+"></li><li data-age="15-21"></li><li data-age="15-21"></li><li data-age="15-21"></li><li data-age="15-21"></li><li data-age="15-21"></li><li data-age="15-21"></li><li data-age="15-21"></li><li data-age="15-21"></li><li data-age="8-14"></li><li data-age="8-14"></li><li data-age="8-14"></li><li data-age="8-14"></li><li data-age="8-14"></li><li data-age="8-14"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="2-7"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="1"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li><li data-age="0"></li></ol>
       <ul class="eis-legend eis-mono" aria-hidden="true">
-        <li style="--swatch:var(--color-neutral-200)">0–1 day</li>
+        <li style="--swatch:var(--color-neutral-200)">today</li>
+        <li style="--swatch:var(--color-neutral-300)">1 day</li>
         <li style="--swatch:var(--color-neutral-400)">2–7</li>
-        <li style="--swatch:var(--color-neutral-600)">8–14</li>
-        <li style="--swatch:var(--color-neutral-900)">15+</li>
+        <li style="--swatch:var(--color-neutral-500)">8–14</li>
+        <li style="--swatch:var(--color-neutral-600)">15–21</li>
+        <li style="--swatch:var(--color-neutral-900)">22+</li>
         <li style="--swatch:var(--signal)">overdue</li>
       </ul>
     </section>

@@ -169,6 +169,33 @@
         },
         "$description": "Accent when it has to BE text on light surfaces. Same hue as orange.500, darkened. 4.7:1 on neutral.100, 5.3:1 on neutral.0."
       }
+    },
+    "green": {
+      "$description": "Status colour for success. Not a second accent: it only confirms a state.",
+      "500": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.165,
+            0.616,
+            0.361
+          ],
+          "hex": "#2a9d5c"
+        },
+        "$description": "Success fill: done, saved, sent. Fails as text on light surfaces (2.9:1 on neutral.100); put neutral.900 on it (5.5:1), never white (3.5:1)."
+      },
+      "700": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.086,
+            0.459,
+            0.247
+          ],
+          "hex": "#16753f"
+        },
+        "$description": "Success when it has to BE text on light surfaces. Same hue as green.500, darkened. 4.8:1 on neutral.100, 5.4:1 on neutral.0."
+      }
     }
   }
 }

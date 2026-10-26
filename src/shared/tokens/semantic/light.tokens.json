@@ -54,5 +54,20 @@
       "$value": "{color.neutral.900}",
       "$description": "Text placed on a accent fill."
     }
+  },
+  "success": {
+    "$type": "color",
+    "$root": {
+      "$value": "{color.green.500}",
+      "$description": "Fill for a positive state: done, saved, sent. Use sparingly; it never competes with the accent."
+    },
+    "ink": {
+      "$value": "{color.green.700}",
+      "$description": "Success as text: 'Saved', 'Sent'."
+    },
+    "on": {
+      "$value": "{color.neutral.900}",
+      "$description": "Text placed on a success fill."
+    }
   }
 }

@@ -64,6 +64,7 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 | *(default)* | Secondary actions. White background (`--surface-raised`), line border. | — |
 | `--ghost` | Low-emphasis actions next to others (Skip, Clear). | No glow on hover. |
 | `--accent` | Only when the action **is** the accent: record, go live, publish. | Rare. Never "Save" or "Delete". |
+| `--success` | Save, when the page asks for a positive action in green. | One per view. Not together with a `--black` button for the same action. |
 
 - `type="button"` unless it submits a form (`type="submit"`) or resets (`type="reset"`).
 - Hover: background shifts and a glow in the variant's colour appears (built in). Don't add your own shadow.
@@ -87,6 +88,7 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 | `--outline` | Identifiers and categories: ticket codes, stream names. |
 | `--solid` | Strong neutral status: new, organizer, problem. |
 | `--accent` | The exception: overdue, conflict, urgent. Counts toward the accent budget. |
+| `--success` | A positive state: done, sent, saved. |
 | `--hatch` | What no longer counts: cancelled, blocked. |
 | `--dot` | Adds a status dot. Combine it with any variant. |
 

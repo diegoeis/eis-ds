@@ -246,6 +246,7 @@ Candidates will be compared side by side in HTML before the decision.
 | 2026-10-25 | Labels become **chips** (pill, sentence case, no hover), so they are not confused with buttons. The rectangular "block label" stays only for graphic pieces | Author's request in the dashboard |
 | 2026-10-25 | Table cells always vertically centered | Author's request |
 | 2026-10-25 | Basic elements in `src/css/elements.css`, demonstrated in `site/elements.html` | First version |
+| 2026-10-26 | New status colour **success** (green): `green.500` `#2a9d5c` fill with dark text, `green.700` `#16753f` as text. Tokens `--success`, `--success-ink`, `--success-on`; classes `eis-button--success`, `eis-chip--success`. Answers open question 6 for the positive state only; no red | Asked by the author for the Save action of an app. Same pattern as the accent: dark text on the fill, a darker sibling for text |
 | 2026-10-26 | `signal` renamed **`accent`** everywhere (tokens `--accent`, `--accent-ink`, `--accent-on`; classes `eis-button--accent`, `eis-chip--accent`, `eis-is-accent`). `eis-button--primary` renamed **`eis-button--black`**. Default button gets a white background (`--surface-raised` → `--color-white`) | Use the name the market knows for the brand highlight colour. Breaking change from v0.1.0 |
 | 2026-10-25 | One stylesheet per page: `web/web.css` or `app/app.css` imports shared (fonts included), the scope tokens and the components | Simpler adoption. Cost: chained imports load in sequence, acceptable at this size |
 | 2026-10-25 | Reference images removed from the repository. Pinterest links are the source of record | Keep the repository small (82 MB of images) |
@@ -258,7 +259,7 @@ Candidates will be compared side by side in HTML before the decision.
 3. **Dark background:** neutral black (`#111`) or greenish Iron Core (`#222A2A`)? Depends on decision 1.
 4. **Illustration palette:** have a secondary palette only for illustration (aqua, amber) or illustrate only with the system palette?
 5. **Display:** is a third typographic slot (rounded or LCD) needed for covers?
-6. **Status color:** will the system have green and red for data change, or only the accent marking the exception?
+6. **Status color:** ~~green and red?~~ Partly decided 2026-10-26: green `success` exists; no red, the accent marks problems.
 7. **Color variant:** blue (`#1850A8`) as the only alternative variant to orange, swapping only the color?
 
 ## 8. History

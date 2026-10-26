@@ -25,6 +25,9 @@ Which variable to use for what. Shared variables come from `src/shared/css/token
 | `--accent` | `#f35919` | **Fills and marks** for the one thing that matters: overdue, conflict, urgent, record. | Use as text on light surfaces (3.1:1, fails). Decorate. Exceed ~5% of the visible area. |
 | `--accent-ink` | `#b5400c` | The accent **as text**: overdue dates, error messages, current breadcrumb item. 4.7:1 on canvas. | Use as a fill. |
 | `--accent-on` | `#111111` | Text and icons placed **on** a `--accent` fill. 5.6:1. | Use white on `--accent` (3.1:1, fails). |
+| `--success` | `#2a9d5c` | **Fills** for a positive state: done, saved, sent. Also the save button when the page needs one (`eis-button--success`). | Use as text on light surfaces (2.9:1, fails). Use it to decorate or to compete with the accent. |
+| `--success-ink` | `#16753f` | Success **as text**: "Saved", "Sent". 4.8:1 on canvas. | Use as a fill. |
+| `--success-on` | `#111111` | Text and icons **on** a `--success` fill. 5.5:1. | Use white on `--success` (3.5:1, fails). |
 
 ### Accent budget
 
@@ -40,6 +43,7 @@ Which variable to use for what. Shared variables come from `src/shared/css/token
 | `--surface-panel` | `--ink` | `--ink-muted` | `--accent-ink` |
 | `--surface-inverse` | `--ink-inverse` | — | — |
 | `--accent` | `--accent-on` | — | — |
+| `--success` | `--success-on` | — | — |
 
 Any other pair MUST be measured (WCAG 2.1: 4.5:1 text, 3:1 large text and UI graphics) before use.
 
@@ -67,7 +71,7 @@ Ordinal data (age, volume, intensity) goes from light to dark, low to high:
 
 - Use as many steps as there are buckets, keeping the order. With fewer than 6 buckets, prefer skipping steps so neighbours differ more (e.g. 4 buckets: `200 · 400 · 600 · 900`).
 - `200` and `300` are close (1.15:1). Don't put them next to each other when the difference matters.
-- No hues for data. Status colours (green/red) do not exist in the system yet.
+- No hues for data. The only status colour is `--success` (green), for a positive state. There is no red: the accent marks problems.
 
 ## 3. Space
 

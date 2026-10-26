@@ -26,6 +26,8 @@
   --bg-hover:color-mix(in srgb,var(--surface-inverse) 80%,var(--surface-panel));--bd-hover:var(--bg-hover);--glow:var(--surface-inverse)}
 .eis-button--accent{--bg:var(--accent);--fg:var(--accent-on);--bd:var(--accent);
   --bg-hover:color-mix(in srgb,var(--accent) 85%,var(--surface-panel));--bd-hover:var(--bg-hover);--glow:var(--accent)}
+.eis-button--success{--bg:var(--success);--fg:var(--success-on);--bd:var(--success);
+  --bg-hover:color-mix(in srgb,var(--success) 85%,var(--surface-panel));--bd-hover:var(--bg-hover);--glow:var(--success)}
 .eis-button--ghost{--bg:transparent;--bd:transparent;--bg-hover:var(--surface-canvas);--bd-hover:transparent}
 .eis-button:disabled{opacity:.4;cursor:not-allowed}
 .eis-button:disabled:hover{background:var(--bg);border-color:var(--bd);box-shadow:none}
@@ -40,6 +42,7 @@
 .eis-chip--outline{--bg:transparent;--bd:var(--line)}
 .eis-chip--solid{--bg:var(--surface-inverse);--fg:var(--ink-inverse)}
 .eis-chip--accent{--bg:var(--accent);--fg:var(--accent-on)}
+.eis-chip--success{--bg:var(--success);--fg:var(--success-on)}
 .eis-chip--hatch{--bg:repeating-linear-gradient(135deg,var(--surface-panel) 0 3px,var(--line) 3px 4px);--bd:var(--line)}
 .eis-chip--dot::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
 

@@ -3,6 +3,7 @@
 :root {
 
   /* color */
+  --color-white: #ffffff;
   --color-neutral-0: #f7f7f7;
   --color-neutral-100: #eaeaea;
   --color-neutral-200: #dddddd;
@@ -53,6 +54,7 @@
   /* surface */
   --surface-canvas: var(--color-neutral-100);
   --surface-panel: var(--color-neutral-0);
+  --surface-raised: var(--color-white);
   --surface-inverse: var(--color-neutral-900);
 
   /* line */
@@ -63,10 +65,10 @@
   --ink-muted: var(--color-neutral-600);
   --ink-inverse: var(--color-neutral-0);
 
-  /* signal */
-  --signal: var(--color-orange-500);
-  --signal-ink: var(--color-orange-700);
-  --signal-on: var(--color-neutral-900);
+  /* accent */
+  --accent: var(--color-orange-500);
+  --accent-ink: var(--color-orange-700);
+  --accent-on: var(--color-neutral-900);
 
   /* type */
   --type-display-font-family: var(--font-family-sans);

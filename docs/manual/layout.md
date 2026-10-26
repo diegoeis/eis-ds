@@ -112,7 +112,7 @@ Every piece MUST work from 360px to wide screens with **no horizontal scroll**, 
 ## 6. Data visualisation
 
 - Data as a matrix of equal cells (like device keys) or thin bars. No pie charts, no 3D, no gradients.
-- Grey ramp for normal values, `--signal` only for the exception (see `tokens-usage.md` §2).
+- Grey ramp for normal values, `--accent` only for the exception (see `tokens-usage.md` §2).
 - Every chart has `role="img"` and an `aria-label` that states the numbers.
 - Legends are lists (`<ul>`), `aria-hidden` if the `aria-label` already carries the data.
 

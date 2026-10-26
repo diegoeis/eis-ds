@@ -1,5 +1,5 @@
 /* eis-ds · web/lines.js
-   Decorative line art for web pages: horizontal bars in the signal colour that rise
+   Decorative line art for web pages: horizontal bars in the accent colour that rise
    like terrain. Seeded, so a page shows the same art on every load.
 
    Use:
@@ -26,7 +26,7 @@
       return H * (0.95 - 0.8 * Math.pow(t, 1.4)) + 24 * Math.sin(t * 9) + 12 * Math.sin(t * 23 + 1);
     };
     var g = document.createElementNS(NS, "g");
-    g.setAttribute("fill", "var(--signal)");
+    g.setAttribute("fill", "var(--accent)");
     for (var y = 0; y < H; y += step) {
       var x = 0;
       while (x < W) {

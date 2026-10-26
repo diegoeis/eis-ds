@@ -12,7 +12,7 @@
   padding:var(--space-200);border-bottom:var(--border-width-100) solid var(--line)}
 
 /* ---------- button: rectangle, uppercase mono. Acts. ---------- */
-.eis-button{--bg:var(--surface-panel);--fg:var(--ink);--bd:var(--line);
+.eis-button{--bg:var(--surface-raised);--fg:var(--ink);--bd:var(--line);
   --bg-hover:var(--surface-canvas);--bd-hover:var(--ink-muted);--glow:var(--ink-muted);
   display:inline-flex;align-items:center;justify-content:center;gap:var(--space-100);
   min-height:40px;padding:0 var(--space-200);border:var(--border-width-100) solid var(--bd);border-radius:var(--radius-100);
@@ -22,10 +22,10 @@
   transition:background-color .12s linear,border-color .12s linear,box-shadow .12s linear}
 .eis-button:hover{background:var(--bg-hover);border-color:var(--bd-hover);
   box-shadow:0 0 0 3px color-mix(in srgb,var(--glow) 28%,transparent),0 4px 15px color-mix(in srgb,var(--glow) 64%,transparent)}
-.eis-button--primary{--bg:var(--surface-inverse);--fg:var(--ink-inverse);--bd:var(--surface-inverse);
+.eis-button--black{--bg:var(--surface-inverse);--fg:var(--ink-inverse);--bd:var(--surface-inverse);
   --bg-hover:color-mix(in srgb,var(--surface-inverse) 80%,var(--surface-panel));--bd-hover:var(--bg-hover);--glow:var(--surface-inverse)}
-.eis-button--signal{--bg:var(--signal);--fg:var(--signal-on);--bd:var(--signal);
-  --bg-hover:color-mix(in srgb,var(--signal) 85%,var(--surface-panel));--bd-hover:var(--bg-hover);--glow:var(--signal)}
+.eis-button--accent{--bg:var(--accent);--fg:var(--accent-on);--bd:var(--accent);
+  --bg-hover:color-mix(in srgb,var(--accent) 85%,var(--surface-panel));--bd-hover:var(--bg-hover);--glow:var(--accent)}
 .eis-button--ghost{--bg:transparent;--bd:transparent;--bg-hover:var(--surface-canvas);--bd-hover:transparent}
 .eis-button:disabled{opacity:.4;cursor:not-allowed}
 .eis-button:disabled:hover{background:var(--bg);border-color:var(--bd);box-shadow:none}
@@ -39,7 +39,7 @@
   line-height:var(--font-line-height-tight);white-space:nowrap;cursor:default}
 .eis-chip--outline{--bg:transparent;--bd:var(--line)}
 .eis-chip--solid{--bg:var(--surface-inverse);--fg:var(--ink-inverse)}
-.eis-chip--signal{--bg:var(--signal);--fg:var(--signal-on)}
+.eis-chip--accent{--bg:var(--accent);--fg:var(--accent-on)}
 .eis-chip--hatch{--bg:repeating-linear-gradient(135deg,var(--surface-panel) 0 3px,var(--line) 3px 4px);--bd:var(--line)}
 .eis-chip--dot::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
 
@@ -48,7 +48,7 @@
 .eis-field > label,.eis-field > legend{font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);
   font-weight:var(--type-label-font-weight);letter-spacing:var(--type-label-letter-spacing);text-transform:uppercase;color:var(--ink-muted)}
 .eis-field__hint{font-family:var(--font-family-mono);font-size:var(--font-size-200);color:var(--ink-muted)}
-.eis-field__error{font-family:var(--font-family-mono);font-size:var(--font-size-200);color:var(--signal-ink)}
+.eis-field__error{font-family:var(--font-family-mono);font-size:var(--font-size-200);color:var(--accent-ink)}
 
 .eis-input,.eis-select,.eis-textarea{--bd:var(--ink-muted);
   width:100%;min-height:40px;padding:0 var(--space-200);background:var(--surface-panel);
@@ -57,7 +57,7 @@
 .eis-input::placeholder,.eis-textarea::placeholder{color:var(--ink-muted)}
 .eis-input:hover,.eis-select:hover,.eis-textarea:hover{--bd:var(--ink)}
 .eis-input:focus-visible,.eis-select:focus-visible,.eis-textarea:focus-visible{outline:2px solid var(--ink);outline-offset:0;--bd:var(--ink)}
-.eis-input[aria-invalid="true"],.eis-textarea[aria-invalid="true"],.eis-select[aria-invalid="true"]{--bd:var(--signal-ink)}
+.eis-input[aria-invalid="true"],.eis-textarea[aria-invalid="true"],.eis-select[aria-invalid="true"]{--bd:var(--accent-ink)}
 .eis-input:disabled,.eis-select:disabled,.eis-textarea:disabled{opacity:.4;cursor:not-allowed}
 .eis-select{appearance:none;padding-right:var(--space-300);cursor:pointer;
   background-image:linear-gradient(45deg,transparent 50%,var(--ink) 50%),linear-gradient(135deg,var(--ink) 50%,transparent 50%);
@@ -109,7 +109,7 @@
 .eis-breadcrumb li + li::before{content:"/";margin-right:var(--space-100)}
 .eis-breadcrumb a{text-decoration:none}
 .eis-breadcrumb a:hover{color:var(--ink)}
-.eis-breadcrumb [aria-current]{color:var(--signal-ink)}
+.eis-breadcrumb [aria-current]{color:var(--accent-ink)}
 
 /* ---------- disclosure ---------- */
 .eis-disclosure summary{display:flex;align-items:baseline;gap:var(--space-200);cursor:pointer;list-style:none;padding:var(--space-200)}

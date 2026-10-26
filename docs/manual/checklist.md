@@ -8,7 +8,7 @@ Run this before calling a piece, element or token done. Every box must be true.
 - [ ] Uses only shared classes and the classes of its own scope.
 - [ ] Scope CSS changed? `python3 scripts/check-css.py` passes.
 - [ ] No raw colours, font sizes, spacing or radii (only the exceptions in `tokens-usage.md` §8).
-- [ ] Backgrounds, text, lines and signal use roles (`--surface-*`, `--ink*`, `--line`, `--signal*`), not primitives.
+- [ ] Backgrounds, text, lines and accent use roles (`--surface-*`, `--ink*`, `--line`, `--accent*`), not primitives.
 - [ ] Does not restyle any element from `elements.css`.
 - [ ] Every class starts with `eis-`.
 - [ ] Variants change colour only.
@@ -27,8 +27,8 @@ Run this before calling a piece, element or token done. Every box must be true.
 
 ## Visual rules
 
-- [ ] Signal used once per piece, ≤ 5% of the area (or one declared accent block).
-- [ ] Statuses are chips. Actions are buttons. One primary button per view.
+- [ ] Accent used once per piece, ≤ 5% of the area (or one declared accent block).
+- [ ] Statuses are chips. Actions are buttons. One `eis-button--black` per view.
 - [ ] Every border and divider is `--line`, 1px.
 - [ ] Numbers are mono and tabular. Labels use the label style. Running text is in sentence case.
 - [ ] Two surface levels only: canvas and panel. No panel inside a panel.
@@ -36,7 +36,7 @@ Run this before calling a piece, element or token done. Every box must be true.
 ## Contrast
 
 - [ ] You measured every text/background pair that is not in the pairing table (`tokens-usage.md` §1): ≥ 4.5:1 text, ≥ 3:1 large text and UI graphics.
-- [ ] No white or `--ink-inverse` on `--signal`. No `--signal` as text.
+- [ ] No white or `--ink-inverse` on `--accent`. No `--accent` as text.
 
 ## Responsive
 

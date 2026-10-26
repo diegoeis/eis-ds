@@ -9,6 +9,10 @@
       "$value": "{color.neutral.0}",
       "$description": "Panels and sidebar. The second and last surface level."
     },
+    "raised": {
+      "$value": "{color.white}",
+      "$description": "Background of a default button: a control raised above canvas and panel. Not for panels or page areas."
+    },
     "inverse": {
       "$value": "{color.neutral.900}",
       "$description": "Active nav item, primary button, solid tag."
@@ -36,7 +40,7 @@
       "$description": "Text on surface.inverse."
     }
   },
-  "signal": {
+  "accent": {
     "$type": "color",
     "$root": {
       "$value": "{color.orange.500}",
@@ -44,11 +48,11 @@
     },
     "ink": {
       "$value": "{color.orange.700}",
-      "$description": "Signal as text: overdue dates, current breadcrumb."
+      "$description": "Accent as text: overdue dates, current breadcrumb."
     },
     "on": {
       "$value": "{color.neutral.900}",
-      "$description": "Text placed on a signal fill."
+      "$description": "Text placed on a accent fill."
     }
   }
 }

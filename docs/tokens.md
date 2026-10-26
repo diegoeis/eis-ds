@@ -73,11 +73,11 @@ Reserved properties (`$` prefix):
 | Layer | Folder | Content | Consumed by |
 |---|---|---|---|
 | Primitives | `src/shared/tokens/primitive/` | Raw values: the palette, the space scale, the fonts. | Pieces, for everything without a semantic role. |
-| Semantics | `src/shared/tokens/semantic/` | Color roles that carry meaning (`surface`, `ink`, `line`, `signal`) and text styles. They point to primitives by reference. | Pieces, whenever the role exists. |
+| Semantics | `src/shared/tokens/semantic/` | Color roles that carry meaning (`surface`, `ink`, `line`, `accent`) and text styles. They point to primitives by reference. | Pieces, whenever the role exists. |
 
-- **Semantic only when it adds meaning.** A role exists if it says *what a color is for* (background, text, line, signal) or if it will change between modes. An alias that only renames a primitive is complexity with no gain and is not added.
+- **Semantic only when it adds meaning.** A role exists if it says *what a color is for* (background, text, line, accent) or if it will change between modes. An alias that only renames a primitive is complexity with no gain and is not added.
 - **Using the primitive directly is normal** for space, radius, border, font size and weight, and for the chart gray scale (`--color-neutral-200 · 400 · 600 · 900`).
-- **Surface, text, line and signal colors always through the role** (`--surface-panel`, `--ink-muted`, `--signal`), never through the primitive, because that is what changes when a new mode is added.
+- **Surface, text, line and accent colors always through the role** (`--surface-panel`, `--ink-muted`, `--accent`), never through the primitive, because that is what changes when a new mode is added.
 - When creating dark mode, reassess the chart scale: if it needs to invert, then it gets semantic roles.
 
 ## 5. References (aliases)

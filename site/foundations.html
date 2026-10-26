@@ -46,7 +46,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 /* space, radius, line */
 .eis-space li{display:grid;grid-template-columns:120px 80px minmax(0,1fr);gap:var(--space-200);align-items:center;padding:var(--space-200);border-top:var(--border-width-100) solid var(--line)}
 .eis-space li:first-child{border-top:0}
-.eis-space i{display:block;height:var(--space-200);width:var(--s);background:var(--signal)}
+.eis-space i{display:block;height:var(--space-200);width:var(--s);background:var(--accent)}
 .eis-space p{grid-column:1/-1;color:var(--ink-muted)}
 .eis-shapes{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(180px,100%),1fr))}
 .eis-shapes li{padding:var(--space-200);display:flex;flex-direction:column;gap:var(--space-200);border-right:var(--border-width-100) solid var(--line);border-bottom:var(--border-width-100) solid var(--line);margin:0 -1px -1px 0}
@@ -59,7 +59,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .eis-hatch{width:100%;height:100%;border-radius:var(--radius-100);background:repeating-linear-gradient(135deg,transparent 0 6px,var(--line) 6px 7px)}
 .eis-block{background:var(--surface-inverse);color:var(--ink-inverse);padding:calc(var(--space-100) / 2) var(--space-100);font-family:var(--type-label-font-family);
   font-size:var(--type-label-font-size);font-weight:var(--type-label-font-weight);letter-spacing:var(--type-label-letter-spacing);text-transform:uppercase}
-.eis-block--signal{background:var(--signal);color:var(--signal-on)}
+.eis-block--accent{background:var(--accent);color:var(--accent-on)}
 .eis-cells{display:grid;grid-template-columns:repeat(8,14px);gap:calc(var(--space-100) / 2)}
 .eis-cells i{width:14px;height:14px;border-radius:2px;background:var(--c)}
 .eis-rule{width:80%;display:flex;flex-direction:column;gap:var(--space-100)}
@@ -133,8 +133,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li><div class="eis-swatch" style="--c:var(--color-neutral-500)"></div><dl><dt>neutral.500</dt><dd>--color-neutral-500</dd><dd data-var="--color-neutral-500"></dd><dd class="eis-desc">Icons, placeholders</dd></dl></li>
           <li><div class="eis-swatch" style="--c:var(--color-neutral-600)"></div><dl><dt>neutral.600</dt><dd>--color-neutral-600</dd><dd data-var="--color-neutral-600"></dd><dd class="eis-desc">Secondary ink</dd></dl></li>
           <li><div class="eis-swatch" style="--c:var(--color-neutral-900)"></div><dl><dt>neutral.900</dt><dd>--color-neutral-900</dd><dd data-var="--color-neutral-900"></dd><dd class="eis-desc">Ink, inverse surface</dd></dl></li>
-          <li><div class="eis-swatch" style="--c:var(--color-orange-500)"></div><dl><dt>orange.500</dt><dd>--color-orange-500</dd><dd data-var="--color-orange-500"></dd><dd class="eis-desc">Signal fill</dd></dl></li>
-          <li><div class="eis-swatch" style="--c:var(--color-orange-700)"></div><dl><dt>orange.700</dt><dd>--color-orange-700</dd><dd data-var="--color-orange-700"></dd><dd class="eis-desc">Signal as text</dd></dl></li>
+          <li><div class="eis-swatch" style="--c:var(--color-orange-500)"></div><dl><dt>orange.500</dt><dd>--color-orange-500</dd><dd data-var="--color-orange-500"></dd><dd class="eis-desc">Accent fill</dd></dl></li>
+          <li><div class="eis-swatch" style="--c:var(--color-orange-700)"></div><dl><dt>orange.700</dt><dd>--color-orange-700</dd><dd data-var="--color-orange-700"></dd><dd class="eis-desc">Accent as text</dd></dl></li>
         </ul>
       </section>
 
@@ -146,14 +146,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <tbody>
               <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--surface-canvas)"></span></th><td><code>--surface-canvas</code></td><td class="eis-mono">neutral.100</td><td>Page background. Solid, no grid.</td></tr>
               <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--surface-panel)"></span></th><td><code>--surface-panel</code></td><td class="eis-mono">neutral.0</td><td>Panels, sidebar. The second and last surface level.</td></tr>
+              <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--surface-raised)"></span></th><td><code>--surface-raised</code></td><td class="eis-mono">white</td><td>Default button background. A control, not a surface level.</td></tr>
               <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--surface-inverse)"></span></th><td><code>--surface-inverse</code></td><td class="eis-mono">neutral.900</td><td>Active nav, primary button, solid tag.</td></tr>
               <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--line)"></span></th><td><code>--line</code></td><td class="eis-mono">neutral.300</td><td>Every separator and border.</td></tr>
               <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--surface-panel);--fg:var(--ink)">Aa</span></th><td><code>--ink</code></td><td class="eis-mono">neutral.900</td><td>Primary text.</td></tr>
               <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--surface-panel);--fg:var(--ink-muted)">Aa</span></th><td><code>--ink-muted</code></td><td class="eis-mono">neutral.600</td><td>Labels, metadata, secondary text.</td></tr>
               <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--surface-inverse);--fg:var(--ink-inverse)">Aa</span></th><td><code>--ink-inverse</code></td><td class="eis-mono">neutral.0</td><td>Text on the inverse surface.</td></tr>
-              <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--signal);--fg:var(--signal-on)">Aa</span></th><td><code>--signal</code> · <code>--signal-on</code></td><td class="eis-mono">orange.500 · neutral.900</td><td>Overdue, conflict, urgent. Dark text on it, never white.</td></tr>
-              <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--surface-panel);--fg:var(--signal-ink)">Aa</span></th><td><code>--signal-ink</code></td><td class="eis-mono">orange.700</td><td>Signal when it has to be text.</td></tr>
-              <tr><th scope="row"><span class="eis-web-pair" style="--bg:linear-gradient(90deg,var(--color-neutral-200) 25%,var(--color-neutral-400) 25% 50%,var(--color-neutral-600) 50% 75%,var(--color-neutral-900) 75%)"></span></th><td><code>--color-neutral-200 · 400 · 600 · 900</code></td><td class="eis-mono">primitives, used directly</td><td>Charts: low to high in grey. Signal marks the exception. No semantic layer: it would only rename the neutrals.</td></tr>
+              <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--accent);--fg:var(--accent-on)">Aa</span></th><td><code>--accent</code> · <code>--accent-on</code></td><td class="eis-mono">orange.500 · neutral.900</td><td>Overdue, conflict, urgent. Dark text on it, never white.</td></tr>
+              <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--surface-panel);--fg:var(--accent-ink)">Aa</span></th><td><code>--accent-ink</code></td><td class="eis-mono">orange.700</td><td>Accent when it has to be text.</td></tr>
+              <tr><th scope="row"><span class="eis-web-pair" style="--bg:linear-gradient(90deg,var(--color-neutral-200) 25%,var(--color-neutral-400) 25% 50%,var(--color-neutral-600) 50% 75%,var(--color-neutral-900) 75%)"></span></th><td><code>--color-neutral-200 · 400 · 600 · 900</code></td><td class="eis-mono">primitives, used directly</td><td>Charts: low to high in grey. Accent marks the exception. No semantic layer: it would only rename the neutrals.</td></tr>
             </tbody>
           </table>
         </div>
@@ -175,12 +176,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--surface-canvas);--fg:var(--ink)">Aa</span></th><td class="eis-mono">ink / canvas</td><td class="eis-mono" data-ratio="--ink|--surface-canvas"></td><td class="eis-web-pass">AA</td></tr>
           <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--surface-panel);--fg:var(--ink-muted)">Aa</span></th><td class="eis-mono">ink-muted / panel</td><td class="eis-mono" data-ratio="--ink-muted|--surface-panel"></td><td class="eis-web-pass">AA</td></tr>
           <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--surface-canvas);--fg:var(--ink-muted)">Aa</span></th><td class="eis-mono">ink-muted / canvas</td><td class="eis-mono" data-ratio="--ink-muted|--surface-canvas"></td><td class="eis-web-pass">AA</td></tr>
-          <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--surface-panel);--fg:var(--signal-ink)">Aa</span></th><td class="eis-mono">signal-ink / panel</td><td class="eis-mono" data-ratio="--signal-ink|--surface-panel"></td><td class="eis-web-pass">AA</td></tr>
-          <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--surface-canvas);--fg:var(--signal-ink)">Aa</span></th><td class="eis-mono">signal-ink / canvas</td><td class="eis-mono" data-ratio="--signal-ink|--surface-canvas"></td><td class="eis-web-pass">AA</td></tr>
-          <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--signal);--fg:var(--signal-on)">Aa</span></th><td class="eis-mono">signal-on / signal</td><td class="eis-mono" data-ratio="--signal-on|--signal"></td><td class="eis-web-pass">AA</td></tr>
+          <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--surface-panel);--fg:var(--accent-ink)">Aa</span></th><td class="eis-mono">accent-ink / panel</td><td class="eis-mono" data-ratio="--accent-ink|--surface-panel"></td><td class="eis-web-pass">AA</td></tr>
+          <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--surface-canvas);--fg:var(--accent-ink)">Aa</span></th><td class="eis-mono">accent-ink / canvas</td><td class="eis-mono" data-ratio="--accent-ink|--surface-canvas"></td><td class="eis-web-pass">AA</td></tr>
+          <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--accent);--fg:var(--accent-on)">Aa</span></th><td class="eis-mono">accent-on / accent</td><td class="eis-mono" data-ratio="--accent-on|--accent"></td><td class="eis-web-pass">AA</td></tr>
           <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--surface-inverse);--fg:var(--ink-inverse)">Aa</span></th><td class="eis-mono">ink-inverse / inverse</td><td class="eis-mono" data-ratio="--ink-inverse|--surface-inverse"></td><td class="eis-web-pass">AA</td></tr>
-          <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--signal);--fg:var(--surface-panel)">Aa</span></th><td class="eis-mono">panel / signal</td><td class="eis-mono" data-ratio="--surface-panel|--signal"></td><td class="eis-web-fail">Don't</td></tr>
-          <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--surface-panel);--fg:var(--signal)">Aa</span></th><td class="eis-mono">signal / panel</td><td class="eis-mono" data-ratio="--signal|--surface-panel"></td><td class="eis-web-fail">Graphics only</td></tr>
+          <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--accent);--fg:var(--surface-panel)">Aa</span></th><td class="eis-mono">panel / accent</td><td class="eis-mono" data-ratio="--surface-panel|--accent"></td><td class="eis-web-fail">Don't</td></tr>
+          <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--surface-panel);--fg:var(--accent)">Aa</span></th><td class="eis-mono">accent / panel</td><td class="eis-mono" data-ratio="--accent|--surface-panel"></td><td class="eis-web-fail">Graphics only</td></tr>
         </tbody>
       </table>
     </div>
@@ -280,7 +281,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li><figure><span class="eis-block">Update</span></figure><strong>Block label</strong><p class="eis-mono">Solid rectangle, knocked-out mono text. For graphic pieces (posters, slides, covers). In UI, use a chip.</p></li>
       <li><figure><div class="eis-hatch"></div></figure><strong>Hatch</strong><p class="eis-mono">Diagonal line at 135°. Marks what is not yours: personal blocks, unavailable.</p></li>
       <li><figure><div class="eis-cells" aria-hidden="true">
-        <i style="--c:var(--signal)"></i><i style="--c:var(--color-neutral-900)"></i><i style="--c:var(--color-neutral-900)"></i><i style="--c:var(--color-neutral-600)"></i><i style="--c:var(--color-neutral-600)"></i><i style="--c:var(--color-neutral-400)"></i><i style="--c:var(--color-neutral-400)"></i><i style="--c:var(--color-neutral-200)"></i>
+        <i style="--c:var(--accent)"></i><i style="--c:var(--color-neutral-900)"></i><i style="--c:var(--color-neutral-900)"></i><i style="--c:var(--color-neutral-600)"></i><i style="--c:var(--color-neutral-600)"></i><i style="--c:var(--color-neutral-400)"></i><i style="--c:var(--color-neutral-400)"></i><i style="--c:var(--color-neutral-200)"></i>
         <i style="--c:var(--color-neutral-900)"></i><i style="--c:var(--color-neutral-600)"></i><i style="--c:var(--color-neutral-400)"></i><i style="--c:var(--color-neutral-400)"></i><i style="--c:var(--color-neutral-200)"></i><i style="--c:var(--color-neutral-200)"></i><i style="--c:var(--color-neutral-200)"></i><i style="--c:var(--color-neutral-200)"></i>
       </div></figure><strong>Cell matrix</strong><p class="eis-mono">Data as a grid of equal squares, like keys on a device.</p></li>
       <li><figure><div class="eis-rule"><i></i><i></i><i></i></div></figure><strong>Hairline</strong><p class="eis-mono">Separate with a 1px line before reaching for a box.</p></li>
@@ -294,11 +295,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p>Budgets, not adjectives. The full list lives in <code>docs/visual-guidance/visual-guidance.md</code>.</p>
     </header>
     <ul class="eis-panel eis-rules">
-      <li><strong>Signal ≤ 5% of the area</strong><p>It marks a state, never decorates. One signal per piece.</p></li>
+      <li><strong>Accent ≤ 5% of the area</strong><p>It marks a state, never decorates. One accent per piece.</p></li>
       <li><strong>Two surface levels</strong><p>Canvas and panel. A third level means the layout needs a line, not a box.</p></li>
       <li><strong>Mono for numbers and labels</strong><p>Sans for text. Labels are always uppercase and tracked.</p></li>
       <li><strong>No shadow, gradient or glow</strong><p>Depth comes from tone and hairlines.</p></li>
-      <li><strong>Data in grey; signal for the exception</strong><p>Normal values never get colour.</p></li>
+      <li><strong>Data in grey; accent for the exception</strong><p>Normal values never get colour.</p></li>
       <li><strong>Variants change colour only</strong><p>Never structure, size, radius or behaviour.</p></li>
     </ul>
   </section>

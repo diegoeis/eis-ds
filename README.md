@@ -1,6 +1,6 @@
 # eis-ds
 
-A visual design system in plain HTML and CSS. Minimal retrofuturism: cool neutrals, thin lines, a mono voice for data and one orange signal.
+A visual design system in plain HTML and CSS. Minimal retrofuturism: cool neutrals, thin lines, a mono voice for data and one orange accent.
 
 It is several design systems in one. They share the same base and never conflict:
 

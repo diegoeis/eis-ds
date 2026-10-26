@@ -5,7 +5,7 @@ Every basic element: when to use it, the HTML to copy, variants, and what is for
 **General rules for all elements**
 
 - MUST use the native HTML element that carries the meaning. A `div` or `span` never pretends to be a button, checkbox, table, list or form.
-- Every class starts with `eis-`. Naming: block `eis-panel`, part `eis-panel__head`, variant `eis-chip--signal`, state `eis-is-signal`.
+- Every class starts with `eis-`. Naming: block `eis-panel`, part `eis-panel__head`, variant `eis-chip--accent`, state `eis-is-accent`.
 - A **variant changes colour only** (through the local `--bg`, `--fg`, `--bd`, `--glow`). Never size, padding, radius, structure or behaviour.
 - A piece MUST NOT restyle an element from `elements.css`. If it needs something different, change the element in the system (and on `elements.html`).
 - Every control is keyboard-reachable and has a visible focus (`:focus-visible`, 2px `--ink` outline — already global).
@@ -43,30 +43,32 @@ Every basic element: when to use it, the HTML to copy, variants, and what is for
 
 A status MUST be a chip. A chip MUST NOT be clickable.
 
+Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--accent`), the market name for the brand highlight colour. The solid dark button is **black** (`eis-button--black`). Plain `eis-button` is the default (white).
+
 ---
 
 ## Button
 
 ```html
-<button class="eis-button eis-button--primary" type="button">Save</button>
+<button class="eis-button eis-button--black" type="button">Save</button>
 <button class="eis-button" type="button">Cancel</button>
 <button class="eis-button eis-button--ghost" type="button">Skip</button>
-<button class="eis-button eis-button--signal" type="button">Record</button>
+<button class="eis-button eis-button--accent" type="button">Record</button>
 <button class="eis-button" type="button" disabled>Disabled</button>
 <a class="eis-button" href="/report">Open report →</a>
 ```
 
 | Variant | Use for | Limit |
 |---|---|---|
-| `--primary` | The main action of the view. | **One** per view. |
-| *(default)* | Secondary actions. | — |
+| `--black` | The main action of the view. | **One** per view. |
+| *(default)* | Secondary actions. White background (`--surface-raised`), line border. | — |
 | `--ghost` | Low-emphasis actions next to others (Skip, Clear). | No glow on hover. |
-| `--signal` | Only when the action **is** the signal: record, go live, publish. | Rare. Never "Save" or "Delete". |
+| `--accent` | Only when the action **is** the accent: record, go live, publish. | Rare. Never "Save" or "Delete". |
 
 - `type="button"` unless it submits a form (`type="submit"`) or resets (`type="reset"`).
 - Hover: background shifts and a glow in the variant's colour appears (built in). Don't add your own shadow.
 - Disabled: the `disabled` attribute, never a class.
-- Order in a group: secondary/ghost first, primary last (rightmost).
+- Order in a group: secondary/ghost first, the `--black` button last (rightmost).
 
 ## Chip
 
@@ -74,7 +76,7 @@ A status MUST be a chip. A chip MUST NOT be clickable.
 <span class="eis-chip">Accepted</span>
 <span class="eis-chip eis-chip--outline">PLT-204</span>
 <span class="eis-chip eis-chip--solid">Organizer</span>
-<span class="eis-chip eis-chip--signal">Overdue</span>
+<span class="eis-chip eis-chip--accent">Overdue</span>
 <span class="eis-chip eis-chip--hatch">Cancelled</span>
 <span class="eis-chip eis-chip--dot">On track</span>
 ```
@@ -84,7 +86,7 @@ A status MUST be a chip. A chip MUST NOT be clickable.
 | *(default)* | Neutral status: accepted, waiting, on track. |
 | `--outline` | Identifiers and categories: ticket codes, stream names. |
 | `--solid` | Strong neutral status: new, organizer, problem. |
-| `--signal` | The exception: overdue, conflict, urgent. Counts toward the signal budget. |
+| `--accent` | The exception: overdue, conflict, urgent. Counts toward the accent budget. |
 | `--hatch` | What no longer counts: cancelled, blocked. |
 | `--dot` | Adds a status dot. Combine it with any variant. |
 
@@ -123,7 +125,7 @@ A status MUST be a chip. A chip MUST NOT be clickable.
 - Use the right `type`: `email`, `date`, `number`, `search`, `url`…
 - Error: `aria-invalid="true"` on the control + `aria-describedby` pointing to `.eis-field__error`. Never colour alone.
 - Hint and error sit below the control.
-- Put fields in a `<form>`. Put the actions at the end, primary last.
+- Put fields in a `<form>`. Put the actions at the end, the `--black` button last.
 
 ## Checkbox, radio, switch
 
@@ -182,7 +184,7 @@ A status MUST be a chip. A chip MUST NOT be clickable.
       <tr>
         <td><input class="eis-checkbox" type="checkbox" aria-label="Select Billing"></td>
         <th scope="row">Billing</th>
-        <td><span class="eis-chip eis-chip--signal">Overdue</span></td>
+        <td><span class="eis-chip eis-chip--accent">Overdue</span></td>
         <td class="eis-num">13</td>
       </tr>
     </tbody>
@@ -237,7 +239,7 @@ A status MUST be a chip. A chip MUST NOT be clickable.
 ```
 
 - Always `<dl>`. Value in `metric` style, context line in `mono`.
-- Only the metric that is the exception gets a signal mark.
+- Only the metric that is the exception gets a accent mark.
 - The layout of `.eis-metrics` is page CSS today. See `site/elements.html` for the reference.
 
 ## Breadcrumb and link
@@ -250,7 +252,7 @@ A status MUST be a chip. A chip MUST NOT be clickable.
 <p>Read the <a class="eis-link" href="/foundations">foundations</a> first.</p>
 ```
 
-- Breadcrumb is `<nav>` + `<ol>`. The current item has `aria-current="page"` and shows in `--signal-ink`.
+- Breadcrumb is `<nav>` + `<ol>`. The current item has `aria-current="page"` and shows in `--accent-ink`.
 - Links inside text use `.eis-link` (hairline underline).
 
 ## Lists and avatar

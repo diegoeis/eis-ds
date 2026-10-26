@@ -12,7 +12,7 @@ The visual direction of eis-ds, the references it came from and what was taken f
 
 **Minimalist retrofuturism.** The future as imagined from the 60s to the 90s (lab equipment, radio, calculator, home computer, science fiction poster), drawn with today's discipline and cleanliness.
 
-What it **is**: industrial product, screen-printed panel, visible grid, thin line, a single color signal, engineering typography.
+What it **is**: industrial product, screen-printed panel, visible grid, thin line, a single color accent, engineering typography.
 
 What it **is not**: neon, synthwave, glitch, purple and pink gradient, chrome, "cyberpunk". These images appeared in the illustration references and were noted, but they do not define the system (see §5).
 
@@ -34,11 +34,11 @@ The starting point of the inspiration. The brand's product language and graphic 
 | Reference | What it shows |
 |---|---|
 | `vinyl-sinus.png` | Record and sleeve: display typography, thin rules, brackets |
-| `ko2-flat.png` | EP–133 K.O. II from above: key grid, orange as signal, outlined title |
+| `ko2-flat.png` | EP–133 K.O. II from above: key grid, orange as accent, outlined title |
 | `tp7.png` | TP-7 in aluminum: small uppercase labels, red only on the record button |
 | `po80-record-factory.png` | PO-80: orange as surface, an exception to the rule |
 | `op-xy.png` | OP-XY: matte black, keys in a grid, orange LED |
-| `riddim-ting.png` | EP–40 Riddim: dark product green, signals in red |
+| `riddim-ting.png` | EP–40 Riddim: dark product green, accents in red |
 | `tx6.png` | TX-6 on black: large thin typography, small product in the center |
 | `ep-series-lineup.png` | EP family: repeated modules, Japanese as texture, each product with its own color |
 | `op1-field.png` | OP-1 field: aluminum, screen with information blue |
@@ -106,7 +106,7 @@ UI references: sites, dashboards and apps. They define how the system behaves **
 ### 3.1 Teenage Engineering: the system's language
 
 1. **Material before color.** The piece is almost entirely neutral: aluminum, gray and raw plastic, matte black.
-2. **A single accent, orange-red, used as a signal.** It marks a state or calls attention (record, LED, "INPUT", version number), never decorates. It takes up to ~5% of the area. The exception is the PO-80, where it becomes surface: that is a **highlight mode**, not the rule.
+2. **A single accent, orange-red, used as a accent.** It marks a state or calls attention (record, LED, "INPUT", version number), never decorates. It takes up to ~5% of the area. The exception is the PO-80, where it becomes surface: that is a **highlight mode**, not the rule.
 3. **Engineering typography.**
    - Geometric grotesque, thin or regular, often uppercase.
    - Numbers as protagonists (`2.0`, `50`, `1.9.3`, `EP–133`), with a dash instead of a hyphen.
@@ -122,11 +122,11 @@ UI references: sites, dashboards and apps. They define how the system behaves **
 
 ### 3.2 Moodboard: what it adds
 
-- **The "Modern Retro Industrial" palette converges with TE.** The published "Rust Signal" (`#EC4624`) falls within the range measured in TE's orange (`#DD451D`–`#FC6A34`, median `#F15033`). Two independent sources pointing at the same accent reinforce the choice.
-  - Values published on the pin: Iron Core `#222A2A`, Industrial Aqua `#4FBBBC`, Rust Signal `#EC4624`, Heat Marker `#F39120`, Architectural Cream `#E2DAC2`.
+- **The "Modern Retro Industrial" palette converges with TE.** The published "Rust Accent" (`#EC4624`) falls within the range measured in TE's orange (`#DD451D`–`#FC6A34`, median `#F15033`). Two independent sources pointing at the same accent reinforce the choice.
+  - Values published on the pin: Iron Core `#222A2A`, Industrial Aqua `#4FBBBC`, Rust Accent `#EC4624`, Heat Marker `#F39120`, Architectural Cream `#E2DAC2`.
   - **Iron Core** (greenish black) and **Architectural Cream** (warm raw) are natural candidates for the dark background and paper mode.
   - **Industrial Aqua** and **Heat Marker** remain candidates for illustration color, not system color (see §5).
-- **Thin-line scientific diagram** (the two wormholes and "Astral Plane"): 1px white line, perspective grid, a single red dot. It is the same TE rule (thin line as structure, one color signal) applied to illustration. **It is the most direct model for article images.**
+- **Thin-line scientific diagram** (the two wormholes and "Astral Plane"): 1px white line, perspective grid, a single red dot. It is the same TE rule (thin line as structure, one color accent) applied to illustration. **It is the most direct model for article images.**
 - **LUNA poster:** flat color background, iconic 60s object (Ball Chair, spherical TV), lots of empty space, rounded display typography and simple grotesque for information. Model for covers and opening slides.
 - **Black-line illustration with flat color** (Saturn, Amiga, library, city): uniform outline, flat color without gradient, many technical objects. It is a possible language for scene illustration, denser than the system and only for when the piece calls for it.
 
@@ -163,7 +163,7 @@ Drawn mainly from the 4 main references and confirmed by the rest of the board.
    - On more editorial sites, the entire body text in mono (`main-4`, board 60).
 5. **Grotesque at two extremes.** Large thin title in sentence case (`main-1`) or bold uppercase title (`main-4`). The middle ground barely appears.
 6. **Data as a grid of cells.** Bars made of stacked squares (`main-2`), day heatmap (`main-3`), thin vertical bars. It is the same TE key matrix applied to charts.
-7. **Monochrome chart, accent only on the exception.** Black and grays show normal data. Red and orange mark the anomaly (the violations in `main-3`). It is TE's signal rule applied to data.
+7. **Monochrome chart, accent only on the exception.** Black and grays show normal data. Red and orange mark the anomaly (the violations in `main-3`). It is TE's accent rule applied to data.
 8. **Ruled tables and lists.** 1px line between items, no zebra striping, numbered columns (`01`, `02`, `03`) and mono italic for secondary text (`main-4`).
 9. **Accent block as a section.** A single section per page can be entirely orange, with dark-line drawing and a ruled table on top (`main-4`, board 45, 66). It is TE's highlight mode (PO-80) applied to the web: **one block per page**, never two.
 10. **The variant swaps only the color.** Board 17 is the same page as `main-4` with blue instead of orange and white instead of cream. The structure does not change at all, which confirms the variant rule.
@@ -177,8 +177,8 @@ Drawn mainly from the 4 main references and confirmed by the rest of the board.
 
 Draft of the rules that become norms when the tokens are approved:
 
-- **Accent ≤ 5% of the area** and only to signal: state, single highlight, key number. Never to decorate. Highlight mode (accent as background) is a declared exception per piece.
-- **One signal color per piece.** If two things compete for the accent, one of them is not important.
+- **Accent ≤ 5% of the area** and only to accent: state, single highlight, key number. Never to decorate. Highlight mode (accent as background) is a declared exception per piece.
+- **One accent color per piece.** If two things compete for the accent, one of them is not important.
 - **Line before fill.** Separate with a 1px rule before thinking of a box or background.
 - **Grid visible or implicit, never broken.** Alignment is mandatory. Asymmetry comes from composition, not misalignment.
 - **Empty space is material.** A piece with little content and lots of space is right. A full one is wrong.
@@ -238,7 +238,7 @@ Candidates will be compared side by side in HTML before the decision.
 | 2026-10-25 | v0.1 primitives created as tokens (provisional in values, final in structure): cool neutrals, orange `#f15033` + `#b8321a` for text, spacing 8/16/32/64, radius 4/10/full, 1px line | `src/tokens/`, `site/foundations.html` |
 | 2026-10-25 | `neutral.400` (`#bdbdbd`) exists only for the data scale, never surface or text | Task age scale |
 | 2026-10-25 | Canvas `neutral.100` changes from `#e6e6e6` to **`#eaeaea`** | Author's choice |
-| 2026-10-25 | Signal becomes **`#f35919`** (previously `#f15033`). The text version becomes `#b5400c`, same hue | `orange-circles-grid` palette image, exact sampled flat color |
+| 2026-10-25 | Accent becomes **`#f35919`** (previously `#f15033`). The text version becomes `#b5400c`, same hue | `orange-circles-grid` palette image, exact sampled flat color |
 | 2026-10-25 | No `data-*` roles: charts use the neutral primitives directly. Semantic only when it adds meaning | Author's request: less complexity |
 | 2026-10-25 | `neutral.500` (`#858585`) joins the scale: mid gray for icons, placeholders and non-text graphics (3.5:1 on the panel) | Author's request |
 | 2026-10-25 | Button gets a glow on hover, in the variant color. An exception to the no-shadow rule, only as a response to interaction | Author's request |
@@ -246,6 +246,7 @@ Candidates will be compared side by side in HTML before the decision.
 | 2026-10-25 | Labels become **chips** (pill, sentence case, no hover), so they are not confused with buttons. The rectangular "block label" stays only for graphic pieces | Author's request in the dashboard |
 | 2026-10-25 | Table cells always vertically centered | Author's request |
 | 2026-10-25 | Basic elements in `src/css/elements.css`, demonstrated in `site/elements.html` | First version |
+| 2026-10-26 | `signal` renamed **`accent`** everywhere (tokens `--accent`, `--accent-ink`, `--accent-on`; classes `eis-button--accent`, `eis-chip--accent`, `eis-is-accent`). `eis-button--primary` renamed **`eis-button--black`**. Default button gets a white background (`--surface-raised` → `--color-white`) | Use the name the market knows for the brand highlight colour. Breaking change from v0.1.0 |
 | 2026-10-25 | One stylesheet per page: `web/web.css` or `app/app.css` imports shared (fonts included), the scope tokens and the components | Simpler adoption. Cost: chained imports load in sequence, acceptable at this size |
 | 2026-10-25 | Reference images removed from the repository. Pinterest links are the source of record | Keep the repository small (82 MB of images) |
 | 2026-10-25 | Scopes: `src/shared/` (tokens, base, elements, one `shared.css` entry), `src/web/` (sites and docs) and `src/app/` (dashboards). Scope tokens reference shared ones. Prefixes `eis-web-`/`--web-` and `eis-app-`/`--app-`, checked by `scripts/check-css.py` | Several systems in one: same colours and spacing, no conflicts. Copy shared + one scope to start a project |

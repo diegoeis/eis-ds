@@ -3,7 +3,7 @@
 Which variable to use for what. Shared variables come from `src/shared/css/tokens.css`. Scope variables (`--web-*`, `--app-*`) come from `src/<scope>/css/tokens.css`. All are generated — never edit them.
 
 **Two layers.**
-- **Semantic roles** (`--surface-*`, `--ink*`, `--line`, `--signal*`) carry meaning and will change between modes (dark, paper). For backgrounds, text, lines and the signal colour you **MUST** use the role, never the primitive behind it.
+- **Semantic roles** (`--surface-*`, `--ink*`, `--line`, `--accent*`) carry meaning and will change between modes (dark, paper). For backgrounds, text, lines and the accent colour you **MUST** use the role, never the primitive behind it.
 - **Primitives** (`--color-*`, `--space-*`, `--radius-*`, `--border-*`, `--font-*`): use them directly for everything that has no role: spacing, radii, type sizes and weights, and the grey ramp for data.
 
 **No raw values.** You MUST NOT write a hex, rgb, px font size, px spacing or radius in piece CSS. If a value is missing, the token is missing: add it (see `docs/tokens.md`), don't hard-code it. [§8](#8-allowed-raw-values) lists the allowed exceptions.
@@ -15,30 +15,31 @@ Which variable to use for what. Shared variables come from `src/shared/css/token
 | Variable | Value | Use for | MUST NOT |
 |---|---|---|---|
 | `--surface-canvas` | `#eaeaea` | Page background. Hover background of secondary/ghost controls. Background of an open disclosure summary. | Use as a card or panel background. |
+| `--surface-raised` | `#ffffff` | Background of a default button: a control raised above canvas and panel. | Use for panels, cards or page areas. It is not a third surface level. |
 | `--surface-panel` | `#f7f7f7` | Panels, sidebar, inputs, table backgrounds. The second and **last** surface level. | Stack a panel inside a panel to get a third level. Use a line instead. |
-| `--surface-inverse` | `#111111` | Primary button, active nav item, solid chip. | Use for large areas. |
+| `--surface-inverse` | `#111111` | Black button (`eis-button--black`), active nav item, solid chip. | Use for large areas. |
 | `--line` | `#cfcfcf` | **Every** border, divider and hairline: panels, table rows, separators, chip outlines. | Use `--ink` or any darker grey for borders of shapes, panels or cards. |
 | `--ink` | `#111111` | Primary text, headings, numbers, checked controls, focus outline. | — |
 | `--ink-muted` | `#666666` | Secondary text, labels, metadata, placeholders, **outlines of interactive controls** (input, checkbox, radio, switch). 4.8:1 on canvas. | Use for decorative borders (that is `--line`). |
-| `--ink-inverse` | `#f7f7f7` | Text on `--surface-inverse`. | Put on `--signal` (use `--signal-on`). |
-| `--signal` | `#f35919` | **Fills and marks** for the one thing that matters: overdue, conflict, urgent, record. | Use as text on light surfaces (3.1:1, fails). Decorate. Exceed ~5% of the visible area. |
-| `--signal-ink` | `#b5400c` | The signal **as text**: overdue dates, error messages, current breadcrumb item. 4.7:1 on canvas. | Use as a fill. |
-| `--signal-on` | `#111111` | Text and icons placed **on** a `--signal` fill. 5.6:1. | Use white on `--signal` (3.1:1, fails). |
+| `--ink-inverse` | `#f7f7f7` | Text on `--surface-inverse`. | Put on `--accent` (use `--accent-on`). |
+| `--accent` | `#f35919` | **Fills and marks** for the one thing that matters: overdue, conflict, urgent, record. | Use as text on light surfaces (3.1:1, fails). Decorate. Exceed ~5% of the visible area. |
+| `--accent-ink` | `#b5400c` | The accent **as text**: overdue dates, error messages, current breadcrumb item. 4.7:1 on canvas. | Use as a fill. |
+| `--accent-on` | `#111111` | Text and icons placed **on** a `--accent` fill. 5.6:1. | Use white on `--accent` (3.1:1, fails). |
 
-### Signal budget
+### Accent budget
 
-- One signal per piece. If two things compete for it, one of them is not important.
-- Signal covers ≤ 5% of the area. Exception: one "accent block" (a whole section in `--signal`) per page, declared on purpose.
-- Normal data is grey. Signal marks only the exception.
+- One accent per piece. If two things compete for it, one of them is not important.
+- Accent covers ≤ 5% of the area. Exception: one "accent block" (a whole section in `--accent`) per page, declared on purpose.
+- Normal data is grey. Accent marks only the exception.
 
 ### Pairing quick-reference
 
 | Background | Text | Secondary text | Accent text |
 |---|---|---|---|
-| `--surface-canvas` | `--ink` | `--ink-muted` | `--signal-ink` |
-| `--surface-panel` | `--ink` | `--ink-muted` | `--signal-ink` |
+| `--surface-canvas` | `--ink` | `--ink-muted` | `--accent-ink` |
+| `--surface-panel` | `--ink` | `--ink-muted` | `--accent-ink` |
 | `--surface-inverse` | `--ink-inverse` | — | — |
-| `--signal` | `--signal-on` | — | — |
+| `--accent` | `--accent-on` | — | — |
 
 Any other pair MUST be measured (WCAG 2.1: 4.5:1 text, 3:1 large text and UI graphics) before use.
 
@@ -48,6 +49,7 @@ Use the role above whenever one exists. Use these primitives directly **only** f
 
 | Variable | Value | Direct use allowed for |
 |---|---|---|
+| `--color-white` | `#ffffff` | — (use `--surface-raised`) |
 | `--color-neutral-0` | `#f7f7f7` | — (use `--surface-panel` / `--ink-inverse`) |
 | `--color-neutral-100` | `#eaeaea` | — (use `--surface-canvas`) |
 | `--color-neutral-200` | `#dddddd` | Data ramp, lowest step. |
@@ -61,7 +63,7 @@ Use the role above whenever one exists. Use these primitives directly **only** f
 
 Ordinal data (age, volume, intensity) goes from light to dark, low to high:
 
-`--color-neutral-200` → `300` → `400` → `500` → `600` → `900`, and `--signal` for the exception (overdue, anomaly).
+`--color-neutral-200` → `300` → `400` → `500` → `600` → `900`, and `--accent` for the exception (overdue, anomaly).
 
 - Use as many steps as there are buckets, keeping the order. With fewer than 6 buckets, prefer skipping steps so neighbours differ more (e.g. 4 buckets: `200 · 400 · 600 · 900`).
 - `200` and `300` are close (1.15:1). Don't put them next to each other when the difference matters.
@@ -119,7 +121,7 @@ Rules:
 
 ## 6. Mode
 
-Only the light mode exists. Pieces MUST still use roles for surfaces/ink/line/signal so a dark mode can be added by redefining roles only.
+Only the light mode exists. Pieces MUST still use roles for surfaces/ink/line/accent so a dark mode can be added by redefining roles only.
 
 ## 7. Scope tokens
 

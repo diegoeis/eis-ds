@@ -90,17 +90,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </header>
     <div class="eis-panel">
       <div class="eis-demo">
-        <button class="eis-button eis-button--primary" type="button">Save</button>
+        <button class="eis-button eis-button--black" type="button">Save</button>
         <button class="eis-button" type="button">Cancel</button>
         <button class="eis-button eis-button--ghost" type="button">Skip</button>
-        <button class="eis-button eis-button--signal" type="button">Record</button>
+        <button class="eis-button eis-button--accent" type="button">Record</button>
         <button class="eis-button" type="button" disabled>Disabled</button>
       </div>
       <div class="eis-demo">
-        <button class="eis-button eis-button--primary" type="button">+ New task</button>
+        <button class="eis-button eis-button--black" type="button">+ New task</button>
         <a class="eis-button" href="#buttons">Open report →</a>
       </div>
-      <p class="eis-note"><code>.eis-button</code> + <code>--primary</code> · <code>--ghost</code> · <code>--signal</code>. Variants change colour only. One primary per view; <code>--signal</code> only for the action that is itself the signal (record, go live).</p>
+      <p class="eis-note"><code>.eis-button</code> (white) + <code>--black</code> · <code>--ghost</code> · <code>--accent</code>. Variants change colour only. One <code>--black</code> per view; <code>--accent</code> only for the action that is itself the accent (record, go live).</p>
     </div>
   </section>
 
@@ -116,28 +116,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span class="eis-chip">Accepted</span>
           <span class="eis-chip eis-chip--outline">Maybe</span>
           <span class="eis-chip eis-chip--solid">Organizer</span>
-          <span class="eis-chip eis-chip--signal">Conflict</span>
+          <span class="eis-chip eis-chip--accent">Conflict</span>
           <span class="eis-chip eis-chip--hatch">Cancelled</span>
         </div>
         <div class="eis-demo">
           <span class="eis-chip eis-chip--dot">On track</span>
-          <span class="eis-chip eis-chip--signal eis-chip--dot">Urgent</span>
+          <span class="eis-chip eis-chip--accent eis-chip--dot">Urgent</span>
           <span class="eis-chip eis-chip--outline">PLT-204</span>
           <span class="eis-chip eis-chip--outline">Billing</span>
         </div>
-        <p class="eis-note"><code>.eis-chip</code> + <code>--outline</code> · <code>--solid</code> · <code>--signal</code> · <code>--hatch</code> · <code>--dot</code>. Hatch marks what no longer counts (cancelled, blocked). Signal is the only chip with colour.</p>
+        <p class="eis-note"><code>.eis-chip</code> + <code>--outline</code> · <code>--solid</code> · <code>--accent</code> · <code>--hatch</code> · <code>--dot</code>. Hatch marks what no longer counts (cancelled, blocked). Accent is the only chip with colour.</p>
       </div>
       <div class="eis-panel">
         <h3 class="eis-label">Chip vs button</h3>
         <div class="eis-compare">
           <div>
             <p class="eis-label">Button · acts</p>
-            <p class="eis-row"><button class="eis-button" type="button">Filter</button><button class="eis-button eis-button--primary" type="button">Export</button></p>
+            <p class="eis-row"><button class="eis-button" type="button">Filter</button><button class="eis-button eis-button--black" type="button">Export</button></p>
             <p class="eis-mono">Rectangle · 4px radius · UPPERCASE · 40px tall · hover glow</p>
           </div>
           <div>
             <p class="eis-label">Chip · describes</p>
-            <p class="eis-row"><span class="eis-chip">Accepted</span><span class="eis-chip eis-chip--signal">Conflict</span></p>
+            <p class="eis-row"><span class="eis-chip">Accepted</span><span class="eis-chip eis-chip--accent">Conflict</span></p>
             <p class="eis-mono">Pill · full radius · Sentence case · 24px tall · static</p>
           </div>
         </div>
@@ -182,7 +182,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="eis-form__actions">
         <button class="eis-button eis-button--ghost" type="reset">Clear</button>
-        <button class="eis-button eis-button--primary" type="submit">Create task</button>
+        <button class="eis-button eis-button--black" type="submit">Create task</button>
       </div>
     </form>
   </section>
@@ -237,8 +237,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <thead><tr><th scope="col"><span class="eis-visually-hidden">Select</span></th><th scope="col">Stream</th><th scope="col">Status</th><th scope="col" class="eis-num">Open</th><th scope="col" class="eis-num">Overdue</th></tr></thead>
         <tbody>
           <tr><td><input class="eis-checkbox" type="checkbox" aria-label="Select Priority"></td><th scope="row">Priority</th><td><span class="eis-chip">On track</span></td><td class="eis-num">14</td><td class="eis-num">0</td></tr>
-          <tr><td><input class="eis-checkbox" type="checkbox" aria-label="Select Billing"></td><th scope="row">Billing</th><td><span class="eis-chip eis-chip--signal">Overdue</span></td><td class="eis-num">13</td><td class="eis-num">1</td></tr>
-          <tr><td><input class="eis-checkbox" type="checkbox" aria-label="Select Platform" checked></td><th scope="row">Platform</th><td><span class="eis-chip eis-chip--signal">Overdue</span></td><td class="eis-num">15</td><td class="eis-num">3</td></tr>
+          <tr><td><input class="eis-checkbox" type="checkbox" aria-label="Select Billing"></td><th scope="row">Billing</th><td><span class="eis-chip eis-chip--accent">Overdue</span></td><td class="eis-num">13</td><td class="eis-num">1</td></tr>
+          <tr><td><input class="eis-checkbox" type="checkbox" aria-label="Select Platform" checked></td><th scope="row">Platform</th><td><span class="eis-chip eis-chip--accent">Overdue</span></td><td class="eis-num">15</td><td class="eis-num">3</td></tr>
           <tr><td><input class="eis-checkbox" type="checkbox" aria-label="Select Data"></td><th scope="row">Data</th><td><span class="eis-chip">On track</span></td><td class="eis-num">7</td><td class="eis-num">0</td></tr>
         </tbody>
       </table>
@@ -273,7 +273,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section class="eis-web-doc" id="nav" aria-labelledby="nav-h">
     <header>
       <h2 id="nav-h"><small class="eis-label">07</small>Navigation</h2>
-      <p>Breadcrumb in label style, current page in signal ink. Text links underline with a hairline that darkens on hover.</p>
+      <p>Breadcrumb in label style, current page in accent ink. Text links underline with a hairline that darkens on hover.</p>
     </header>
     <div class="eis-panel">
       <div class="eis-demo">
@@ -292,7 +292,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p>Rows separated by hairlines. Avatar is initials in a circle, never a photo frame with colour.</p>
     </header>
     <ul class="eis-panel eis-people">
-      <li><span class="eis-avatar" aria-hidden="true">AN</span><p>Ana<small class="eis-mono">Release plan with the 6 milestones</small></p><span class="eis-chip eis-chip--signal">Overdue</span></li>
+      <li><span class="eis-avatar" aria-hidden="true">AN</span><p>Ana<small class="eis-mono">Release plan with the 6 milestones</small></p><span class="eis-chip eis-chip--accent">Overdue</span></li>
       <li><span class="eis-avatar" aria-hidden="true">BR</span><p>Bruno<small class="eis-mono">Test list for the provider migration</small></p><span class="eis-chip">Waiting</span></li>
       <li><span class="eis-avatar" aria-hidden="true">DV</span><p>Davi<small class="eis-mono">Payment slip in the checkout drawer</small></p><span class="eis-chip eis-chip--outline">In review</span></li>
     </ul>

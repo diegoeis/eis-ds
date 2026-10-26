@@ -20,14 +20,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .eis-mini{background:var(--surface-panel);border:var(--border-width-100) solid var(--line);border-radius:var(--radius-100);padding:var(--space-100);display:grid;gap:calc(var(--space-100)/2);align-content:start;min-width:0}
 .eis-mini i{display:block;height:var(--space-100);background:var(--color-neutral-200);border-radius:var(--radius-full)}
 .eis-mini i.is-dark{background:var(--ink)}
-.eis-mini i.is-signal{background:var(--signal)}
+.eis-mini i.is-accent{background:var(--accent)}
 .eis-mini--ui{grid-template-columns:28% 1fr;gap:var(--space-100)}
 .eis-mini--ui > div{display:grid;gap:calc(var(--space-100)/2);align-content:start;min-width:0}
 .eis-cells{display:grid;grid-template-columns:repeat(8,1fr);gap:2px}
 .eis-cells b{aspect-ratio:1;background:var(--color-neutral-300);border-radius:1px}
 .eis-cells b:nth-child(3n){background:var(--color-neutral-500)}
 .eis-cells b:nth-child(7n){background:var(--ink)}
-.eis-cells b:nth-child(13){background:var(--signal)}
+.eis-cells b:nth-child(13){background:var(--accent)}
 .eis-mini--slide{aspect-ratio:16/9;align-self:center;align-content:end;padding:var(--space-200)}
 .eis-big{font-weight:var(--font-weight-light);font-size:var(--font-size-600);line-height:var(--font-line-height-tight);letter-spacing:var(--font-letter-spacing-tight)}
 .eis-mini--mail{width:70%;justify-self:center}
@@ -35,7 +35,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .eis-mini--image{background:var(--ink);padding:0;overflow:hidden;border-color:var(--ink)}
 .eis-mini--image svg{width:100%;height:100%;display:block}
 .eis-dotmark,.eis-ring,.eis-sq{width:var(--space-200);height:var(--space-200)}
-.eis-dotmark{border-radius:var(--radius-full);background:var(--signal)}
+.eis-dotmark{border-radius:var(--radius-full);background:var(--accent)}
 .eis-ring{border-radius:var(--radius-full);border:var(--border-width-100) solid var(--ink-muted)}
 .eis-sq{border-radius:2px;border:var(--border-width-100) solid var(--line)}
 .eis-sq.is-panel{background:var(--surface-panel)}
@@ -82,7 +82,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="#adopt">Get started</a></li>
       </ul>
     </nav>
-    <p class="eis-web-header__cta"><a class="eis-button eis-button--primary" href="site/foundations.html">Open the manual</a></p>
+    <p class="eis-web-header__cta"><a class="eis-button eis-button--black" href="site/foundations.html">Open the manual</a></p>
   </header>
 
   <main>
@@ -94,12 +94,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div><dt class="eis-label">Format</dt><dd>HTML + CSS</dd></div>
           <div><dt class="eis-label">Tokens</dt><dd>W3C DTCG</dd></div>
           <div><dt class="eis-label">Build</dt><dd>None</dd></div>
-          <div><dt class="eis-label">Signal</dt><dd>One</dd></div>
+          <div><dt class="eis-label">Accent</dt><dd>One</dd></div>
         </dl>
-        <p class="eis-web-hero__lead">A visual design system in plain HTML and CSS. Cool neutrals, thin lines, a mono voice for data and one orange signal for the thing that matters.</p>
+        <p class="eis-web-hero__lead">A visual design system in plain HTML and CSS. Cool neutrals, thin lines, a mono voice for data and one orange accent for the thing that matters.</p>
         <p class="eis-web-hero__sub">Use it for interfaces, slides, email and images. Link one stylesheet and build with native HTML. No framework, no build step.</p>
         <p class="eis-web-hero__actions">
-          <a class="eis-button eis-button--primary" href="#adopt">Get started</a>
+          <a class="eis-button eis-button--black" href="#adopt">Get started</a>
           <a class="eis-button" href="site/foundations.html">See the foundations</a>
         </p>
       </div>
@@ -115,7 +115,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </header>
         <div class="eis-web-section__body">
           <ol class="eis-web-numbered">
-            <li><span>01</span><div><strong>Colour</strong><p>Eight cool neutrals, two surfaces, one signal.</p></div></li>
+            <li><span>01</span><div><strong>Colour</strong><p>Eight cool neutrals, two surfaces, one accent.</p></div></li>
             <li><span>02</span><div><strong>Type</strong><p>A sans for text. A mono for labels and numbers.</p></div></li>
             <li><span>03</span><div><strong>Space</strong><p>Four steps: 8, 16, 32, 64. Each one has a job.</p></div></li>
             <li><span>04</span><div><strong>Shape</strong><p>Three radii and one line weight: 1px.</p></div></li>
@@ -143,11 +143,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div><i style="width:40%"></i><div class="eis-cells"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div><i></i><i style="width:80%"></i></div>
               </div>
             </figure>
-            <div class="eis-web-card__body"><span class="eis-label">Interfaces</span><h3>Dashboards and tools</h3><p>Dense data in grey cells. The signal marks only the exception.</p><a class="eis-web-arrow" href="site/examples/dashboard/tasks-work.html">↘ See an example</a></div>
+            <div class="eis-web-card__body"><span class="eis-label">Interfaces</span><h3>Dashboards and tools</h3><p>Dense data in grey cells. The accent marks only the exception.</p><a class="eis-web-arrow" href="site/examples/dashboard/tasks-work.html">↘ See an example</a></div>
           </li>
           <li class="eis-web-card">
             <figure aria-hidden="true">
-              <div class="eis-mini eis-mini--slide"><span class="eis-label">Q3 · Review</span><span class="eis-big">Fewer, better.</span><i class="is-signal" style="width:18%"></i></div>
+              <div class="eis-mini eis-mini--slide"><span class="eis-label">Q3 · Review</span><span class="eis-big">Fewer, better.</span><i class="is-accent" style="width:18%"></i></div>
             </figure>
             <div class="eis-web-card__body"><span class="eis-label">Slides</span><h3>Decks and talks</h3><p>One idea per slide. Display type, a thin rule, generous space.</p></div>
           </li>
@@ -174,7 +174,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <h2 id="principles-h">Restraint is the feature.</h2>
         </header>
         <ul class="eis-web-principles">
-          <li><div class="eis-web-principles__glyph" aria-hidden="true"><span class="eis-dotmark"></span><span class="eis-ring"></span><span class="eis-ring"></span></div><h3>One signal</h3><p>Orange marks the one thing that matters. Never more than 5% of the area.</p></li>
+          <li><div class="eis-web-principles__glyph" aria-hidden="true"><span class="eis-dotmark"></span><span class="eis-ring"></span><span class="eis-ring"></span></div><h3>One accent</h3><p>Orange marks the one thing that matters. Never more than 5% of the area.</p></li>
           <li><div class="eis-web-principles__glyph" aria-hidden="true"><span class="eis-aa">Aa</span><span class="eis-aa is-mono">01</span></div><h3>Two voices</h3><p>Sans speaks the text. Mono speaks for the instrument: labels, numbers, dates.</p></li>
           <li><div class="eis-web-principles__glyph" aria-hidden="true"><span class="eis-sq is-canvas"></span><span class="eis-sq is-panel"></span></div><h3>Two surfaces</h3><p>Canvas and panel. A third level is a line, not another box.</p></li>
           <li><div class="eis-web-principles__glyph" aria-hidden="true"><span class="eis-hair"></span></div><h3>One line weight</h3><p>Every border and divider is 1px. No shadows at rest.</p></li>
@@ -198,7 +198,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li><figure style="--sw:var(--line)"></figure><code>line</code></li>
             <li><figure style="--sw:var(--ink-muted)"></figure><code>ink-muted</code></li>
             <li><figure style="--sw:var(--ink)"></figure><code>ink</code></li>
-            <li><figure style="--sw:var(--signal)"></figure><code>signal</code></li>
+            <li><figure style="--sw:var(--accent)"></figure><code>accent</code></li>
           </ul>
           <div class="eis-type-card">
             <span class="eis-label">Type</span>
@@ -207,10 +207,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
           <form class="eis-live" onsubmit="return false" aria-label="Live elements">
             <span class="eis-label">Elements</span>
-            <button class="eis-button eis-button--primary" type="button">Save</button>
+            <button class="eis-button eis-button--black" type="button">Save</button>
             <button class="eis-button" type="button">Cancel</button>
             <span class="eis-chip eis-chip--dot">On track</span>
-            <span class="eis-chip eis-chip--signal">Overdue</span>
+            <span class="eis-chip eis-chip--accent">Overdue</span>
             <span class="eis-chip eis-chip--outline">PLT-204</span>
             <label class="eis-choice"><input class="eis-checkbox" type="checkbox" checked> Notify</label>
             <label class="eis-choice"><input class="eis-switch" type="checkbox" role="switch" checked> Compact</label>
@@ -252,7 +252,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 &lt;section class="<span class="s">eis-web-hero</span>"&gt;
   &lt;div class="eis-web-wrap eis-web-grid"&gt;
     &lt;h1&gt;Ship calmer.&lt;/h1&gt;
-    &lt;a class="eis-button eis-button--primary" href="#start"&gt;Get started&lt;/a&gt;
+    &lt;a class="eis-button eis-button--black" href="#start"&gt;Get started&lt;/a&gt;
   &lt;/div&gt;
   &lt;svg class="eis-web-lines" data-eis-web-lines viewBox="0 0 1440 360"
        preserveAspectRatio="none" aria-hidden="true"&gt;&lt;/svg&gt;
@@ -269,8 +269,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   &lt;/aside&gt;
   &lt;main class="eis-app-main"&gt;
     &lt;section class="eis-panel"&gt;
-      &lt;button class="eis-button eis-button--primary"&gt;Save&lt;/button&gt;
-      &lt;span class="eis-chip eis-chip--signal"&gt;Overdue&lt;/span&gt;
+      &lt;button class="eis-button eis-button--black"&gt;Save&lt;/button&gt;
+      &lt;span class="eis-chip eis-chip--accent"&gt;Overdue&lt;/span&gt;
     &lt;/section&gt;
   &lt;/main&gt;
 &lt;/body&gt;</code></pre>
@@ -284,7 +284,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h2 id="cta-h">Start with the foundations.</h2>
       <p class="eis-web-cta__actions">
         <a class="eis-button" href="site/elements.html">Elements</a>
-        <a class="eis-button eis-button--primary" href="site/foundations.html">Foundations</a>
+        <a class="eis-button eis-button--black" href="site/foundations.html">Foundations</a>
       </p>
     </section>
   </main>
@@ -316,7 +316,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   const a = el("svg", { viewBox: "0 0 200 150", preserveAspectRatio: "xMidYMid slice" });
   for (let i = 1; i <= 9; i++) a.appendChild(el("circle", { cx: 100, cy: 75, r: i * 11, fill: "none", stroke: "var(--color-neutral-600)", "stroke-width": .6 }));
   a.appendChild(el("line", { x1: 0, x2: 200, y1: 75, y2: 75, stroke: "var(--color-neutral-500)", "stroke-width": .6 }));
-  a.appendChild(el("circle", { cx: 133, cy: 53, r: 7, fill: "var(--signal)" }));
+  a.appendChild(el("circle", { cx: 133, cy: 53, r: 7, fill: "var(--accent)" }));
   document.getElementById("eis-art").appendChild(a);
 })();
 </script>

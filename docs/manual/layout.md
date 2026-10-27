@@ -163,7 +163,7 @@ Rules:
 | `eis-app-metrics` | Row of metric cells (`<dl>`) |
 | `eis-app-grid` (`--halves`, `--main`), `eis-app-stack` | Panel grids and the side column stack |
 | `eis-app-agenda`, `eis-app-cells`, `eis-app-legend`, `eis-app-bar`, `eis-app-pips` | Agenda list, cell matrix, legend, stacked bar, pips |
-| `eis-app-tasks`, `eis-app-meta`, `eis-app-due` | Task groups with tables, task metadata, due dates |
+| `eis-app-tasks`, `eis-app-task-title`, `eis-app-meta`, `eis-app-due` | Task groups with tables (cells aligned to the top; columns `eis-app-col-check`, `-idx`, `-src`, `-date`, `-due`), the task title when it is not a `<label>`, task metadata, due dates |
 | `eis-app-topics`, `eis-app-people`, `eis-app-done` | Side lists |
 
 ### Add a scope

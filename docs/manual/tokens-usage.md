@@ -84,16 +84,20 @@ Four steps, each double the previous. Each has a job. Pick by job, not by eye.
 | `--space-300` | 32px | **Between blocks**: page padding (desktop), gap between page regions, title ↔ content of a section. |
 | `--space-400` | 64px | **Between sections**: large section gaps on documentation and marketing pages. |
 
-- Use the half step `calc(--space-100 / 2)` (4px) only in dense data: cell grids, segmented control padding, list item gaps.
+- Use the half step `calc(--space-100 / 2)` (4px) only in dense data: cell grids, tabs padding, list item gaps.
 - Mobile page padding drops one step (`--space-300` → `--space-200`).
 
 ## 4. Radius and line
 
 | Variable | Value | Use for |
 |---|---|---|
-| `--radius-100` | 4px | Buttons, inputs, selects, nav items, small boxes. |
+| `--radius-100` | 7px | Buttons, inputs, selects, tabs, nav items, small boxes. |
 | `--radius-200` | 10px | Panels. |
-| `--radius-full` | 999px | Chips, segmented control, switch, avatar, pills. |
+| `--radius-300` | 15px | Large surfaces: a card that stands alone, a dialog. |
+| `--radius-400` | 20px | The largest surfaces: sheets, hero blocks. |
+| `--radius-full` | 999px | Chips, switch, avatar, pills. |
+
+Nested corners: an element inside a rounded box with padding uses the box radius minus the padding, so the curves stay parallel.
 | `--border-width-100` | 1px | **The only line weight.** Every border and divider. |
 
 - Only the focus outline uses 2px.

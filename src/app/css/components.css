@@ -168,7 +168,7 @@
 }
 @media (max-width:420px){
   .eis-app-toolbar{width:100%}
-  .eis-app-toolbar .eis-segmented{flex:1 0 100%}
-  .eis-app-toolbar .eis-segmented label{flex:1;text-align:center}
+  .eis-app-toolbar .eis-tabs{flex:1 0 100%}
+  .eis-app-toolbar .eis-tabs label{flex:1;text-align:center}
   .eis-app-toolbar .eis-button{flex:1}
 }

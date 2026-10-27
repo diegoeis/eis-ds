@@ -1,6 +1,6 @@
 /* eis-ds · shared/elements.css
    Basic elements shared by every scope: panel, button, chip, fields, choices,
-   segmented control, table, breadcrumb, disclosure, avatar.
+   tabs, table, breadcrumb, disclosure, avatar.
    Load after shared/css/base.css.
    Rules: semantic HTML and native controls; every class starts with eis-;
    no raw colours, font sizes or spacing (all from tokens);
@@ -92,18 +92,18 @@
 .eis-choice:has(input:disabled){color:var(--ink-muted);cursor:not-allowed}
 .eis-choices{border:0;display:flex;flex-direction:column;gap:var(--space-100)}
 
-/* segmented control = radio group */
-.eis-segmented{display:inline-flex;border:var(--border-width-100) solid var(--line);border-radius:var(--radius-full);
+/* tabs = radio group that switches the view of the page. Same radius as the other controls */
+.eis-tabs{display:inline-flex;border:var(--border-width-100) solid var(--line);border-radius:var(--radius-100);
   background:var(--surface-panel);padding:calc(var(--space-100) / 2)}
-.eis-segmented legend{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
-.eis-segmented label{position:relative;cursor:pointer}
-.eis-segmented input{position:absolute;opacity:0;inset:0;cursor:pointer}
-.eis-segmented span{display:block;padding:var(--space-100) var(--space-200);border-radius:var(--radius-full);
+.eis-tabs legend{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.eis-tabs label{position:relative;cursor:pointer}
+.eis-tabs input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.eis-tabs span{display:block;padding:var(--space-100) var(--space-200);border-radius:calc(var(--radius-100) - var(--space-100) / 2);
   font-family:var(--font-family-mono);font-size:var(--font-size-200);font-weight:var(--font-weight-medium);
   letter-spacing:var(--font-letter-spacing-wide);line-height:var(--font-line-height-tight);text-transform:uppercase;color:var(--ink-muted)}
-.eis-segmented label:hover span{color:var(--ink)}
-.eis-segmented input:checked + span{background:var(--surface-canvas);color:var(--ink)}
-.eis-segmented input:focus-visible + span{outline:2px solid var(--ink);outline-offset:-2px}
+.eis-tabs label:hover span{color:var(--ink)}
+.eis-tabs input:checked + span{background:var(--surface-canvas);color:var(--ink)}
+.eis-tabs input:focus-visible + span{outline:2px solid var(--ink);outline-offset:-2px}
 
 /* ---------- table ---------- */
 .eis-table th,.eis-table td{text-align:left;vertical-align:middle;padding:var(--space-200);border-top:var(--border-width-100) solid var(--line)}

@@ -24,7 +24,7 @@ Every basic element: when to use it, the HTML to copy, variants, and what is for
 | Pick one of a few options in a form | **Radio** group |
 | Pick one of many options | **Select** |
 | Turn a setting on/off that applies immediately | **Switch** |
-| Switch the view of the current page (Today / Week / All) | **Segmented** control |
+| Switch the view of the current page (Today / Week / All) | **Tabs** |
 | Show rows × columns of data | **Table** |
 | Group content in a container | **Panel** |
 | Content that opens and closes | **Disclosure** (`<details>`) |
@@ -167,10 +167,10 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 - Wrapping the input in `<label class="eis-choice">` makes the whole text clickable and gives the hover.
 - In a table, a checkbox without visible text needs `aria-label` or a `<label for>`.
 
-## Segmented control
+## Tabs
 
 ```html
-<fieldset class="eis-segmented">
+<fieldset class="eis-tabs">
   <legend>Range</legend>
   <label><input type="radio" name="range" value="today" checked><span>Today</span></label>
   <label><input type="radio" name="range" value="week"><span>Week</span></label>
@@ -178,7 +178,8 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 </fieldset>
 ```
 
-- It is a radio group. Use it to switch the **view** of the current page, 2–4 options.
+- It is a radio group (not ARIA tabs). Use it to switch the **view** of the current page, 2–4 options.
+- Radius `--radius-100`, like buttons, inputs and selects. The selected item uses the inner radius (`--radius-100` minus the padding).
 - Not for navigation between pages (use links) and not for form answers (use radio).
 
 ## Table

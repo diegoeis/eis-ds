@@ -24,8 +24,10 @@
   --space-400: 64px;
 
   /* radius */
-  --radius-100: 4px;
+  --radius-100: 7px;
   --radius-200: 10px;
+  --radius-300: 15px;
+  --radius-400: 20px;
   --radius-full: 999px;
 
   /* border */

@@ -35,10 +35,10 @@
     "$type": "dimension",
     "100": {
       "$value": {
-        "value": 4,
+        "value": 7,
         "unit": "px"
       },
-      "$description": "Small controls: buttons, nav items, checkboxes."
+      "$description": "Controls: buttons, inputs, selects, tabs, nav items."
     },
     "200": {
       "$value": {
@@ -46,6 +46,20 @@
         "unit": "px"
       },
       "$description": "Panels."
+    },
+    "300": {
+      "$value": {
+        "value": 15,
+        "unit": "px"
+      },
+      "$description": "Large surfaces: cards that stand alone, dialogs."
+    },
+    "400": {
+      "$value": {
+        "value": 20,
+        "unit": "px"
+      },
+      "$description": "The largest surfaces: sheets, hero blocks."
     },
     "full": {
       "$value": {

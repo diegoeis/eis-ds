@@ -11,7 +11,7 @@
 .eis-app-sidebar{background:var(--surface-panel);border-right:var(--border-width-100) solid var(--line);
   display:flex;flex-direction:column;gap:var(--space-300);padding:var(--space-300) var(--space-200);
   position:sticky;top:0;height:100vh}
-.eis-app-brand{display:flex;align-items:baseline;justify-content:space-between;padding:0 var(--space-100)}
+.eis-app-brand{display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-100);padding:0 var(--space-100)}
 .eis-app-brand a{font-family:var(--font-family-mono);font-size:var(--font-size-300);font-weight:var(--font-weight-semibold);letter-spacing:var(--font-letter-spacing-wide)}
 .eis-app-nav{display:flex;flex-direction:column;gap:var(--space-300)}
 .eis-app-nav__section{display:flex;flex-direction:column;gap:var(--space-100)}
@@ -30,7 +30,12 @@
 
 /* ---------- page ---------- */
 .eis-app-main{padding:var(--space-300);display:flex;flex-direction:column;gap:var(--space-300);min-width:0}
-.eis-app-page-head{display:flex;align-items:flex-end;justify-content:space-between;gap:var(--space-300);flex-wrap:wrap}
+/* page head: the standard top of every app page.
+   Optional meta row first (__meta: context on the left, e.g. today's date; detail on the right,
+   e.g. the source file), then the <h1>, then an optional toolbar on the right of the title. */
+.eis-app-page-head{display:flex;align-items:flex-end;justify-content:space-between;gap:var(--space-100) var(--space-300);flex-wrap:wrap}
+.eis-app-page-head__meta{flex:1 0 100%;display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:var(--space-100) var(--space-200)}
+.eis-app-page-head__meta > :last-child:not(:first-child){margin-left:auto;text-align:right;overflow-wrap:anywhere}
 .eis-app-page-head h1{font-family:var(--type-display-font-family);font-weight:var(--type-display-font-weight);
   letter-spacing:var(--type-display-letter-spacing);line-height:var(--type-display-line-height);
   font-size:clamp(var(--font-size-600),5vw,var(--type-display-font-size));display:flex;align-items:center;flex-wrap:wrap;gap:var(--space-100) var(--space-200)}
@@ -102,7 +107,8 @@
 .eis-app-tasks .eis-table .eis-checkbox{margin-top:2px}
 .eis-app-tasks .eis-table label,.eis-app-task-title{display:block;line-height:20px}
 .eis-app-tasks .eis-table label{cursor:pointer}
-.eis-app-task-title .eis-chip{vertical-align:text-bottom;margin-right:var(--space-100)}
+/* chips sit in the title line, before or after the text, separated by a space */
+.eis-app-task-title .eis-chip{vertical-align:text-bottom}
 .eis-app-tasks .eis-table tr:has(.eis-checkbox:checked) :is(label,.eis-app-task-title){color:var(--ink-muted);text-decoration:line-through}
 .eis-app-meta{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-100);margin-top:var(--space-100)}
 .eis-app-meta em{font-family:var(--font-family-mono);font-size:var(--font-size-200);color:var(--ink-muted)}

@@ -159,12 +159,31 @@ Rules:
 |---|---|
 | `eis-app-shell` | On `<body>`: sidebar + main grid. Becomes a top bar below 1024px |
 | `eis-app-sidebar`, `eis-app-brand`, `eis-app-nav` (`__section`, `__count`) | Sidebar, brand, navigation with counts |
-| `eis-app-main`, `eis-app-page-head`, `eis-app-toolbar` | Main region, page title row, action toolbar |
+| `eis-app-main`, `eis-app-page-head` (`__meta`), `eis-app-toolbar` | Main region, page head, action toolbar. See "Page head" below |
 | `eis-app-metrics` | Row of metric cells (`<dl>`) |
 | `eis-app-grid` (`--halves`, `--main`), `eis-app-stack` | Panel grids and the side column stack |
 | `eis-app-agenda`, `eis-app-cells`, `eis-app-legend`, `eis-app-bar`, `eis-app-pips` | Agenda list, cell matrix, legend, stacked bar, pips |
 | `eis-app-tasks`, `eis-app-task-title`, `eis-app-meta`, `eis-app-due` | Task groups with tables (cells aligned to the top; columns `eis-app-col-check`, `-idx`, `-src`, `-date`, `-due`), the task title when it is not a `<label>`, task metadata, due dates |
 | `eis-app-topics`, `eis-app-people`, `eis-app-done` | Side lists |
+
+### Page head
+
+Every app page starts with `eis-app-page-head`. It sets one standard top for all pages:
+
+```html
+<header class="eis-app-page-head">
+  <p class="eis-app-page-head__meta">
+    <time class="eis-label" datetime="2026-10-26">Monday, 26 October 2026</time>
+    <span class="eis-mono">daily/2026-10/2026-10-26.md</span>
+  </p>
+  <h1>Daily</h1>
+  <form class="eis-app-toolbar">…</form>
+</header>
+```
+
+- `__meta` is optional. It is a full-width row above the title: the first child sits on the left (the page context, e.g. today's date), the last child on the right (a detail, e.g. the source file or the last update). One child only: it stays on the left.
+- The `<h1>` is required. The toolbar is optional and sits on the right of the title.
+- Don't put a breadcrumb and a meta row in the same head. Don't build a page head with helper classes or page CSS: use this component.
 
 ### Add a scope
 

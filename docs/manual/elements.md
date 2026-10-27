@@ -7,6 +7,7 @@ Every basic element: when to use it, the HTML to copy, variants, and what is for
 - MUST use the native HTML element that carries the meaning. A `div` or `span` never pretends to be a button, checkbox, table, list or form.
 - Every class starts with `eis-`. Naming: block `eis-panel`, part `eis-panel__head`, variant `eis-chip--accent`, state `eis-is-accent`.
 - A **variant changes colour only** (through the local `--bg`, `--fg`, `--bd`, `--glow`). Never size, padding, radius, structure or behaviour.
+- A **size** (`--sm`, `--lg`) changes size only: height, padding, gap and font size, all from the spacing and type tokens. Never colour. Combine one size with any variant. No size class = medium.
 - A piece MUST NOT restyle an element from `elements.css`. If it needs something different, change the element in the system (and on `elements.html`).
 - Every control is keyboard-reachable and has a visible focus (`:focus-visible`, 2px `--ink` outline — already global).
 
@@ -71,6 +72,12 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 - Disabled: the `disabled` attribute, never a class.
 - Order in a group: secondary/ghost first, the `--black` button last (rightmost).
 
+| Size | Height | Padding | Font | Use for |
+|---|---|---|---|---|
+| `--sm` | `--space-300` (32px) | 1.5 × `--space-100` | `--font-size-100` | Actions inside a row, a table or a dense toolbar. |
+| *(default)* | 40px | `--space-200` | `--font-size-200` | Forms and page toolbars. |
+| `--lg` | 1.5 × `--space-300` (48px) | `--space-300` | `--font-size-300` | The single main action of an empty state or landing view. |
+
 ## Chip
 
 ```html
@@ -91,6 +98,12 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 | `--success` | A positive state: done, sent, saved. |
 | `--hatch` | What no longer counts: cancelled, blocked. |
 | `--dot` | Adds a status dot. Combine it with any variant. |
+
+| Size | Height | Padding | Font | Use for |
+|---|---|---|---|---|
+| `--sm` | `--space-200` (16px) | 0.75 × `--space-100` | `--font-size-100` | Inline with a line of text: a task title, a table cell. |
+| *(default)* | 24px | 10px | `--font-size-200` | Meta rows, lists, panel heads. |
+| `--lg` | `--space-300` (32px) | 1.5 × `--space-100` | `--font-size-300` | A status that leads a section or a page head. |
 
 - Text in sentence case (`Overdue`, not `OVERDUE`).
 - Never wrap a chip in `<a>` or `<button>`.
@@ -198,6 +211,7 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 - Every table has a `<caption>` (visually hidden if the panel already has a title).
 - Cells are vertically centred (`th`, `td`: `vertical-align: middle`). Don't override.
 - Numbers: `.eis-num` (mono, tabular, right-aligned), including the header cell.
+- Header row (`thead th`): `--surface-inverse` background, `--ink-inverse` text, label type, inner padding. A scope may change the inline padding of the header to align it with its cells. It never changes the colours.
 - Rows separated by `--line`. No zebra stripes, no vertical lines.
 - On narrow screens a table MAY reflow into cards with CSS (`display:block/grid` on `tr`), keeping the HTML a table. If it can't reflow, wrap it in a horizontally scrollable container — the page itself MUST NOT scroll sideways.
 
@@ -255,7 +269,10 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 ```
 
 - Breadcrumb is `<nav>` + `<ol>`. The current item has `aria-current="page"` and shows in `--accent-ink`.
-- Links inside text use `.eis-link` (hairline underline).
+- Every `<a>` is underlined and turns `--accent-ink` on hover. This is the base style: you get it with no class. Never remove the underline from a link in text.
+- `.eis-link` makes a link in running text quieter: `--ink` text with a `--line` underline. On hover the text and the underline turn `--accent-ink`.
+- Use `--accent-ink`, not `--accent`, for link text: `--accent` fails contrast as text (3.1:1 on `--surface-panel`).
+- Exceptions, set by the component: `.eis-button` links look like buttons, and navigation menus (`.eis-app-nav`, the web header and doc nav) have no underline because the whole item is the target.
 
 ## Lists and avatar
 

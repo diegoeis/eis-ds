@@ -6,7 +6,7 @@
    an element or another scope. scripts/check-css.py enforces this. */
 
 .eis-app-shell{display:grid;grid-template-columns:var(--app-size-sidebar) minmax(0,1fr);min-height:100vh}
-.eis-app-shell a{text-decoration:none}
+.eis-app-brand a,.eis-app-nav a{text-decoration:none}
 /* ---------- sidebar ---------- */
 .eis-app-sidebar{background:var(--surface-panel);border-right:var(--border-width-100) solid var(--line);
   display:flex;flex-direction:column;gap:var(--space-300);padding:var(--space-300) var(--space-200);
@@ -92,14 +92,18 @@
 .eis-app-tasks .eis-table .eis-app-col-check{width:48px}
 .eis-app-tasks .eis-table .eis-app-col-idx{width:44px}
 .eis-app-tasks .eis-table .eis-app-col-src{width:184px}
-.eis-app-tasks .eis-table .eis-app-col-due{width:88px}
-.eis-app-tasks .eis-table th{text-align:left;padding:0 var(--space-200) var(--space-100) 0;font-weight:inherit}
+.eis-app-tasks .eis-table .eis-app-col-due,.eis-app-tasks .eis-table .eis-app-col-date{width:88px}
+.eis-app-tasks .eis-table th{text-align:left;padding-inline:0 var(--space-200);font-weight:inherit}
 .eis-app-tasks .eis-table th:first-child,.eis-app-tasks .eis-table td:first-child{padding-left:var(--space-200)}
 .eis-app-tasks .eis-table th:last-child,.eis-app-tasks .eis-table td:last-child{padding-right:var(--space-200);text-align:right}
-.eis-app-tasks .eis-table td{vertical-align:middle;padding:var(--space-200) var(--space-200) var(--space-200) 0;border-top:var(--border-width-100) solid var(--line)}
+/* rows grow with notes: every cell aligns to the top, the checkbox to the first text line */
+.eis-app-tasks .eis-table td{vertical-align:top;padding:var(--space-200) var(--space-200) var(--space-200) 0;border-top:var(--border-width-100) solid var(--line)}
 .eis-app-tasks .eis-table td.eis-mono{line-height:20px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.eis-app-tasks .eis-table label{display:block;line-height:20px;cursor:pointer}
-.eis-app-tasks .eis-table tr:has(.eis-checkbox:checked) label{color:var(--ink-muted);text-decoration:line-through}
+.eis-app-tasks .eis-table .eis-checkbox{margin-top:2px}
+.eis-app-tasks .eis-table label,.eis-app-task-title{display:block;line-height:20px}
+.eis-app-tasks .eis-table label{cursor:pointer}
+.eis-app-task-title .eis-chip{vertical-align:text-bottom;margin-right:var(--space-100)}
+.eis-app-tasks .eis-table tr:has(.eis-checkbox:checked) :is(label,.eis-app-task-title){color:var(--ink-muted);text-decoration:line-through}
 .eis-app-meta{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-100);margin-top:var(--space-100)}
 .eis-app-meta em{font-family:var(--font-family-mono);font-size:var(--font-size-200);color:var(--ink-muted)}
 .eis-app-due--over,.eis-app-meta .eis-app-over,.eis-app-over{color:var(--accent-ink);font-weight:var(--font-weight-medium)}
@@ -151,6 +155,7 @@
   .eis-app-tasks .eis-table td:nth-child(3){grid-column:2;grid-row:1}
   .eis-app-tasks .eis-table td:nth-child(4){grid-column:2;grid-row:2;margin-top:var(--space-100)}
   .eis-app-tasks .eis-table td:nth-child(5){grid-column:3;grid-row:1}
+  .eis-app-tasks .eis-table td:nth-child(6){grid-column:3;grid-row:2;margin-top:var(--space-100)}
   .eis-app-agenda li{grid-template-columns:minmax(0,1fr) auto;row-gap:calc(var(--space-100) / 2)}
   .eis-app-agenda time{grid-column:1/-1}
   .eis-app-cells{grid-template-columns:repeat(12,1fr)}

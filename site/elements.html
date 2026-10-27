@@ -101,7 +101,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <button class="eis-button eis-button--black" type="button">+ New task</button>
         <a class="eis-button" href="#buttons">Open report →</a>
       </div>
-      <p class="eis-note"><code>.eis-button</code> (white) + <code>--black</code> · <code>--ghost</code> · <code>--accent</code> · <code>--success</code>. Variants change colour only. One <code>--black</code> per view; <code>--accent</code> only for the action that is itself the accent (record, go live).</p>
+      <div class="eis-demo">
+        <button class="eis-button eis-button--sm" type="button">Small</button>
+        <button class="eis-button" type="button">Medium</button>
+        <button class="eis-button eis-button--lg" type="button">Large</button>
+        <button class="eis-button eis-button--black eis-button--sm" type="button">+ Note</button>
+        <button class="eis-button eis-button--black eis-button--lg" type="button">Start</button>
+      </div>
+      <p class="eis-note"><code>.eis-button</code> (white) + <code>--black</code> · <code>--ghost</code> · <code>--accent</code> · <code>--success</code>. Variants change colour only. Sizes: <code>--sm</code> · default · <code>--lg</code>. One <code>--black</code> per view; <code>--accent</code> only for the action that is itself the accent (record, go live).</p>
     </div>
   </section>
 
@@ -127,7 +134,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span class="eis-chip eis-chip--outline">PLT-204</span>
           <span class="eis-chip eis-chip--outline">Billing</span>
         </div>
-        <p class="eis-note"><code>.eis-chip</code> + <code>--outline</code> · <code>--solid</code> · <code>--accent</code> · <code>--success</code> · <code>--hatch</code> · <code>--dot</code>. Hatch marks what no longer counts (cancelled, blocked). Accent is the only chip with colour.</p>
+        <div class="eis-demo">
+          <span class="eis-chip eis-chip--sm eis-chip--solid">Small</span>
+          <span class="eis-chip eis-chip--solid">Medium</span>
+          <span class="eis-chip eis-chip--lg eis-chip--solid">Large</span>
+          <span class="eis-chip eis-chip--sm eis-chip--accent eis-chip--dot">Urgent</span>
+          <span class="eis-chip eis-chip--lg eis-chip--outline">PLT-204</span>
+        </div>
+        <p class="eis-note"><code>.eis-chip</code> + <code>--outline</code> · <code>--solid</code> · <code>--accent</code> · <code>--success</code> · <code>--hatch</code> · <code>--dot</code>. Sizes: <code>--sm</code> · default · <code>--lg</code>. Hatch marks what no longer counts (cancelled, blocked). Accent is the only chip with colour.</p>
       </div>
       <div class="eis-panel">
         <h3 class="eis-label">Chip vs button</h3>
@@ -275,7 +289,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section class="eis-web-doc" id="nav" aria-labelledby="nav-h">
     <header>
       <h2 id="nav-h"><small class="eis-label">07</small>Navigation</h2>
-      <p>Breadcrumb in label style, current page in accent ink. Text links underline with a hairline that darkens on hover.</p>
+      <p>Breadcrumb in label style, current page in accent ink. Every link is underlined and turns accent ink on hover.</p>
     </header>
     <div class="eis-panel">
       <div class="eis-demo">

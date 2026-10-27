@@ -58,7 +58,7 @@ A project needs `src/shared/` and one scope. `site/` and `docs/` document the sy
 - Every class starts with `eis-`. Scope classes start with `eis-<scope>-` and live only in that scope. Scopes never use each other.
 - No raw values in CSS. All values come from the tokens.
 - A piece does not restyle a basic element. If it needs a change, change the element in the system.
-- A variant changes colour only.
+- A variant changes colour only. A size (`--sm`, `--lg`) changes size only, from the spacing and type tokens.
 - Examples use fictional data only.
 - No frameworks (React, Tailwind and similar).
 - Show a visual decision in HTML before it becomes a token.

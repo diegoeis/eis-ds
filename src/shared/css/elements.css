@@ -4,7 +4,8 @@
    Load after shared/css/base.css.
    Rules: semantic HTML and native controls; every class starts with eis-;
    no raw colours, font sizes or spacing (all from tokens);
-   a variant changes colour only, through the local --bg / --fg / --bd / --glow. */
+   a variant changes colour only, through the local --bg / --fg / --bd / --glow;
+   a size (--sm, --lg) changes size only: height, padding, gap, font size. */
 
 /* ---------- panel ---------- */
 .eis-panel{background:var(--surface-panel);border:var(--border-width-100) solid var(--line);border-radius:var(--radius-200);overflow:hidden}
@@ -29,6 +30,8 @@
 .eis-button--success{--bg:var(--success);--fg:var(--success-on);--bd:var(--success);
   --bg-hover:color-mix(in srgb,var(--success) 85%,var(--surface-panel));--bd-hover:var(--bg-hover);--glow:var(--success)}
 .eis-button--ghost{--bg:transparent;--bd:transparent;--bg-hover:var(--surface-canvas);--bd-hover:transparent}
+.eis-button--sm{min-height:var(--space-300);padding:0 calc(var(--space-100) * 1.5);font-size:var(--font-size-100)}
+.eis-button--lg{min-height:calc(var(--space-300) * 1.5);padding:0 var(--space-300);font-size:var(--font-size-300)}
 .eis-button:disabled{opacity:.4;cursor:not-allowed}
 .eis-button:disabled:hover{background:var(--bg);border-color:var(--bd);box-shadow:none}
 .eis-button--ghost:hover{box-shadow:none}
@@ -39,6 +42,8 @@
   border:var(--border-width-100) solid var(--bd);border-radius:var(--radius-full);background:var(--bg);color:var(--fg);
   font-family:var(--font-family-mono);font-size:var(--font-size-200);font-weight:var(--font-weight-regular);
   line-height:var(--font-line-height-tight);white-space:nowrap;cursor:default}
+.eis-chip--sm{min-height:var(--space-200);padding:0 calc(var(--space-100) * .75);gap:calc(var(--space-100) / 2);font-size:var(--font-size-100)}
+.eis-chip--lg{min-height:var(--space-300);padding:0 calc(var(--space-100) * 1.5);gap:var(--space-100);font-size:var(--font-size-300)}
 .eis-chip--outline{--bg:transparent;--bd:var(--line)}
 .eis-chip--solid{--bg:var(--surface-inverse);--fg:var(--ink-inverse)}
 .eis-chip--accent{--bg:var(--accent);--fg:var(--accent-on)}
@@ -102,16 +107,14 @@
 
 /* ---------- table ---------- */
 .eis-table th,.eis-table td{text-align:left;vertical-align:middle;padding:var(--space-200);border-top:var(--border-width-100) solid var(--line)}
-.eis-table thead th{border-top:0;padding-block:var(--space-100);font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);
-  font-weight:var(--type-label-font-weight);letter-spacing:var(--type-label-letter-spacing);text-transform:uppercase;color:var(--ink-muted)}
+.eis-table thead th{border-top:0;padding-block:calc(var(--space-100) * 1.5);background:var(--surface-inverse);font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);
+  font-weight:var(--type-label-font-weight);letter-spacing:var(--type-label-letter-spacing);text-transform:uppercase;color:var(--ink-inverse)}
 .eis-table .eis-checkbox,.eis-table .eis-radio{margin-top:0;display:grid}
 .eis-table .eis-num{text-align:right;font-family:var(--font-family-mono);font-variant-numeric:tabular-nums}
 
 /* ---------- navigation bits ---------- */
 .eis-breadcrumb ol{display:flex;flex-wrap:wrap;gap:var(--space-100)}
 .eis-breadcrumb li + li::before{content:"/";margin-right:var(--space-100)}
-.eis-breadcrumb a{text-decoration:none}
-.eis-breadcrumb a:hover{color:var(--ink)}
 .eis-breadcrumb [aria-current]{color:var(--accent-ink)}
 
 /* ---------- disclosure ---------- */

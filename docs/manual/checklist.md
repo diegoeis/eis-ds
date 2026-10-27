@@ -4,7 +4,7 @@ Run this before calling a piece, element or token done. Every box must be true.
 
 ## Files and CSS
 
-- [ ] Links one scope entry (`web/web.css` or `app/app.css`), then only its own layout CSS. No separate font link.
+- [ ] Links one scope entry (`web/web.css` or `app/app.css`, or `dist/eis-web.min.css` or `dist/eis-app.min.css`), then only its own layout CSS. No separate font link.
 - [ ] Uses only shared classes and the classes of its own scope.
 - [ ] Scope CSS changed? `python3 scripts/check-css.py` passes.
 - [ ] No raw colours, font sizes, spacing or radii (only the exceptions in `tokens-usage.md` §8).

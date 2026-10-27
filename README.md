@@ -24,20 +24,22 @@ Site: https://diegoeis.github.io/eis-ds/
 
 No package and no build step.
 
-1. Copy `src/shared/` and one scope (`src/web/` or `src/app/`) into your project.
-2. Link one file. It imports the fonts, shared and the scope:
+1. Link one file. Each scope has one minified file in `dist/` with shared, the scope tokens and the components. Only the fonts load from Google Fonts.
+
+| Scope | File |
+|---|---|
+| Web | `dist/eis-web.min.css` |
+| App | `dist/eis-app.min.css` |
+
+Copy the file into your project, or link it from the published site or from a release tag (replace `<tag>`, for example `v0.4.0`):
 
 ```html
-<link rel="stylesheet" href="eis-ds/app/app.css">
+<link rel="stylesheet" href="eis-ds/eis-app.min.css">
+<link rel="stylesheet" href="https://diegoeis.github.io/eis-ds/dist/eis-app.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/diegoeis/eis-ds@<tag>/dist/eis-app.min.css">
 ```
 
-Keep `shared/` next to the scope folder: the scope file imports `../shared/shared.css`.
-
-Or link it from the published site, with no copy:
-
-```html
-<link rel="stylesheet" href="https://diegoeis.github.io/eis-ds/src/app/app.css">
-```
+To read or change the source, copy `src/shared/` and one scope (`src/web/` or `src/app/`) and link `app/app.css` or `web/web.css`. These files import the others, so keep `shared/` next to the scope folder. The web line art script stays in `src/web/js/lines.js`.
 
 3. Build with native HTML: shared classes (`eis-button`, `eis-chip`, `eis-panel`…) and the classes of your scope (`eis-app-*` or `eis-web-*`). Your own CSS holds layout only.
 4. Check the piece against `docs/manual/checklist.md`.
@@ -57,6 +59,9 @@ Tokens are the source of truth, in `src/<scope>/tokens/*.tokens.json`. Never edi
 ```sh
 python3 scripts/build-tokens.py   # validate the tokens of every scope and write each tokens.css
 python3 scripts/check-css.py      # check that scopes never use each other's classes or variables
+python3 scripts/build-css.py      # write dist/eis-<scope>.min.css. Run it after every CSS change and commit dist/
 ```
+
+`python3 scripts/build-css.py --check` fails if `dist/` is not up to date. Run it before you create a release tag.
 
 Both scripts use the Python standard library only. Contributor and agent rules are in `AGENTS.md`.

@@ -129,7 +129,7 @@
   .eis-app-stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));align-items:start}
 }
 @media (max-width:1024px){
-  .eis-app-shell{grid-template-columns:minmax(0,1fr)}
+  .eis-app-shell{grid-template-columns:minmax(0,1fr);grid-template-rows:auto 1fr} /* short pages: the top bar keeps its height */
   .eis-app-sidebar{position:sticky;top:0;z-index:10;height:auto;flex-direction:row;align-items:center;gap:var(--space-200);
     padding:var(--space-100) var(--space-200);border-right:0;border-bottom:var(--border-width-100) solid var(--line);overflow-x:auto}
   .eis-app-sidebar__foot,.eis-app-nav__section > .eis-label{display:none}

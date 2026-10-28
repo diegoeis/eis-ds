@@ -4,11 +4,11 @@ A visual design system in plain HTML and CSS. Minimal retrofuturism: cool neutra
 
 It is several design systems in one. They share the same base and never conflict:
 
-| Folder | For | Link |
+| Folder | For | Link (compiled, one file) |
 |---|---|---|
 | `src/shared/` | Every project: fonts, tokens, base, elements | Imported by each scope |
-| `src/web/` | Websites, landing pages, documentation | `web/web.css`, optional `web/js/lines.js` |
-| `src/app/` | Dashboards, tools, system screens | `app/app.css` |
+| `src/web/` | Websites, landing pages, documentation | `dist/eis-web.min.css`, optional `src/web/js/lines.js` |
+| `src/app/` | Dashboards, tools, system screens | `dist/eis-app.min.css` |
 
 More scopes (slides, email) will follow the same pattern.
 

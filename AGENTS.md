@@ -21,6 +21,7 @@ src/                     the design system. Copy shared/ + one scope into a proj
     css/tokens.css       GENERATED. Never edit by hand
     css/base.css         reset, body type, focus, text helpers
     css/elements.css     basic elements: button, chip, fields, table, panel…
+    brand/               favicon.svg and apple-touch-icon.png (180×180), linked by every page
   web/                   scope: websites, landing pages, docs
     web.css              entry a page links: imports shared, tokens, components
     tokens/  css/tokens.css (GENERATED)  css/components.css  js/lines.js

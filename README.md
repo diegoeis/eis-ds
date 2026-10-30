@@ -41,6 +41,8 @@ Copy the file into your project, or link it from the published site or from a re
 
 To read or change the source, copy `src/shared/` and one scope (`src/web/` or `src/app/`) and link `app/app.css` or `web/web.css`. These files import the others, so keep `shared/` next to the scope folder. The web line art script stays in `src/web/js/lines.js`.
 
+2. Optional: link the favicon. Copy `src/shared/brand/favicon.svg` and `src/shared/brand/apple-touch-icon.png` into your project and link them with `<link rel="icon" href="favicon.svg" type="image/svg+xml">` and `<link rel="apple-touch-icon" href="apple-touch-icon.png">`.
+
 3. Build with native HTML: shared classes (`eis-button`, `eis-chip`, `eis-panel`…) and the classes of your scope (`eis-app-*` or `eis-web-*`). Your own CSS holds layout only.
 4. Check the piece against `docs/manual/checklist.md`.
 

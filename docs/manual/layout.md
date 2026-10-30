@@ -9,6 +9,8 @@ A piece is a standalone HTML file. It links one stylesheet:
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" href="<src>/shared/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="<src>/shared/brand/apple-touch-icon.png">
 <link rel="stylesheet" href="<src>/<scope>/<scope>.css">
 <style>/* this piece's layout only */</style>
 ```
@@ -20,6 +22,7 @@ A piece is a standalone HTML file. It links one stylesheet:
 - `shared.css` imports the fonts, the shared tokens, the base and the elements. The base already sets box-sizing, margins, body type, canvas background and focus. Don't repeat it.
 - The piece's `<style>` contains **layout only**: grids, regions, positions, page-specific arrangements. It MUST NOT redefine buttons, chips, fields, tables, panels or any shared element.
 - No frameworks or libraries (React, Tailwind, Bootstrap, icon fonts).
+- The favicon is in `src/shared/brand/`: `favicon.svg` (browser tab) and `apple-touch-icon.png` (180×180, home screen). It is the same in every scope. In a project outside this repository, copy both files next to the page and link the copies. A project with its own brand can use its own favicon.
 
 ## 2. Page skeleton
 

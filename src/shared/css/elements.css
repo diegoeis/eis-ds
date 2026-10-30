@@ -8,9 +8,20 @@
    a size (--sm, --lg) changes size only: height, padding, gap, font size. */
 
 /* ---------- panel ---------- */
-.eis-panel{background:var(--surface-panel);border:var(--border-width-100) solid var(--line);border-radius:var(--radius-200);overflow:hidden}
+.eis-panel{background:var(--surface-panel);border:var(--border-width-100) solid var(--line);border-radius:var(--radius-100);overflow:hidden}
 .eis-panel__head{display:flex;justify-content:space-between;align-items:center;gap:var(--space-200);
-  padding:var(--space-200);border-bottom:var(--border-width-100) solid var(--line)}
+  padding:var(--space-200);border-bottom:var(--border-width-100) solid var(--line);background:var(--surface-head);color:var(--ink)}
+/* the panel's title: label type, in ink (it names the panel, it is not a muted label) */
+.eis-panel__title{margin:0;font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);font-weight:var(--type-label-font-weight);
+  letter-spacing:var(--type-label-letter-spacing);line-height:var(--type-label-line-height);text-transform:uppercase;color:var(--ink)}
+.eis-panel__body{display:flex;flex-direction:column;gap:var(--space-200);min-width:0;padding:var(--space-200)}
+.eis-panel__footer{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-100);padding:var(--space-200)}
+.eis-panel__body + .eis-panel__footer{padding-top:0} /* body and footer share one gap, no double padding */
+/* helper: a child of the body that touches the panel edges (no side padding; none above it
+   when first, none below it when last). For a quoted block, a strip, an image */
+.eis-panel__body > .eis-bleed{margin-inline:calc(var(--space-200) * -1)}
+.eis-panel__body > .eis-bleed:first-child{margin-top:calc(var(--space-200) * -1)}
+.eis-panel__body > .eis-bleed:last-child{margin-bottom:calc(var(--space-200) * -1)}
 
 /* ---------- button: rectangle, uppercase mono. Acts. ---------- */
 .eis-button{--bg:var(--surface-raised);--fg:var(--ink);--bd:var(--line);
@@ -23,12 +34,17 @@
   transition:background-color .12s linear,border-color .12s linear,box-shadow .12s linear}
 .eis-button:hover{background:var(--bg-hover);border-color:var(--bd-hover);
   box-shadow:0 0 0 3px color-mix(in srgb,var(--glow) 28%,transparent),0 4px 15px color-mix(in srgb,var(--glow) 64%,transparent)}
-.eis-button--black{--bg:var(--surface-inverse);--fg:var(--ink-inverse);--bd:var(--surface-inverse);
+/* primary = the main action of a view or of a panel (each Save of a settings page). Ink fill */
+.eis-button--primary,.eis-button--black{--bg:var(--surface-inverse);--fg:var(--ink-inverse);--bd:var(--surface-inverse);
   --bg-hover:color-mix(in srgb,var(--surface-inverse) 80%,var(--surface-panel));--bd-hover:var(--bg-hover);--glow:var(--surface-inverse)}
 .eis-button--accent{--bg:var(--accent);--fg:var(--accent-on);--bd:var(--accent);
   --bg-hover:color-mix(in srgb,var(--accent) 85%,var(--surface-panel));--bd-hover:var(--bg-hover);--glow:var(--accent)}
 .eis-button--success{--bg:var(--success);--fg:var(--success-on);--bd:var(--success);
   --bg-hover:color-mix(in srgb,var(--success) 85%,var(--surface-panel));--bd-hover:var(--bg-hover);--glow:var(--success)}
+/* danger: a ghost with a red line and red text; on hover it fills red. For Remove, Delete */
+.eis-button--danger{--bg:transparent;--fg:var(--danger-ink);--bd:var(--danger-ink);
+  --bg-hover:var(--danger);--bd-hover:var(--danger);--glow:var(--danger)}
+.eis-button--danger:hover{color:var(--danger-on)}
 .eis-button--ghost{--bg:transparent;--bd:transparent;--bg-hover:var(--surface-canvas);--bd-hover:transparent}
 .eis-button--sm{min-height:var(--space-300);padding:0 calc(var(--space-100) * 1.5);font-size:var(--font-size-100)}
 .eis-button--lg{min-height:calc(var(--space-300) * 1.5);padding:0 var(--space-300);font-size:var(--font-size-300)}
@@ -54,7 +70,7 @@
 /* ---------- form fields ---------- */
 .eis-field{display:flex;flex-direction:column;gap:var(--space-100);min-width:0}
 .eis-field > label,.eis-field > legend{font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);
-  font-weight:var(--type-label-font-weight);letter-spacing:var(--type-label-letter-spacing);text-transform:uppercase;color:var(--ink-muted)}
+  font-weight:var(--type-label-font-weight);letter-spacing:var(--type-label-letter-spacing);text-transform:uppercase;color:var(--ink)}
 .eis-field__hint{font-family:var(--font-family-mono);font-size:var(--font-size-200);color:var(--ink-muted)}
 .eis-field__error{font-family:var(--font-family-mono);font-size:var(--font-size-200);color:var(--accent-ink)}
 

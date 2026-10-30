@@ -8,7 +8,7 @@
 .eis-app-shell{display:grid;grid-template-columns:var(--app-size-sidebar) minmax(0,1fr);min-height:100vh}
 .eis-app-brand a,.eis-app-nav a{text-decoration:none}
 /* ---------- sidebar ---------- */
-.eis-app-sidebar{background:var(--surface-raised);border-right:var(--border-width-100) solid var(--line);
+.eis-app-sidebar{background:var(--surface-panel);border-right:var(--border-width-100) solid var(--line);
   display:flex;flex-direction:column;gap:var(--space-300);padding:var(--space-300) var(--space-200) var(--space-200);
   position:sticky;top:0;height:100vh}
 .eis-app-brand{display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-100);padding:0 var(--space-100)}
@@ -77,7 +77,8 @@
 .eis-app-toolbar{display:flex;gap:var(--space-100);align-items:center;flex-wrap:wrap}
 
 /* metrics */
-.eis-app-metrics{display:grid;grid-template-columns:repeat(4,1fr)}
+/* one column per cell: two cells make two columns, four make four */
+.eis-app-metrics{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr)}
 .eis-app-metrics > div{display:flex;flex-direction:column;padding:var(--space-200);min-height:var(--app-size-metric)}
 .eis-app-metrics > div + div{border-left:var(--border-width-100) solid var(--line)}
 .eis-app-metrics dt{margin-bottom:auto;padding-bottom:var(--space-300)}
@@ -162,6 +163,85 @@
 .eis-app-done li{display:flex;gap:var(--space-200);color:var(--ink-muted)}
 .eis-app-done li::before{content:"✓";font-family:var(--font-family-mono);color:var(--ink)}
 
+/* ---------- filters: view tabs on the left, labelled fields on the right ---------- */
+.eis-app-filters{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:var(--space-200)}
+.eis-app-filters__fields{display:flex;flex-wrap:wrap;gap:var(--space-200);margin-left:auto}
+.eis-app-filters__fields > .eis-field{inline-size:var(--app-size-filter-field)}
+.eis-app-filters__fields > .eis-app-filters__search{inline-size:var(--app-size-filter-search)}
+
+/* notice: one status line (role="status"). Sticky, so it shows when the user is down a long list */
+.eis-app-notice{position:sticky;top:var(--space-200);z-index:1;padding:var(--space-200);background:var(--surface-panel);
+  border:var(--border-width-100) solid var(--accent);border-radius:var(--radius-100);
+  font-family:var(--font-family-mono);font-size:var(--font-size-200);color:var(--ink)}
+
+/* code: a generated file shown as text (JSON, markdown), inside a panel. Scrolls inside itself */
+.eis-app-code{padding:var(--space-200);max-block-size:60vh;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;
+  font-family:var(--font-family-mono);font-size:var(--font-size-200);line-height:var(--font-line-height-normal)}
+
+/* ---------- messages: a list grouped by day, one panel per message ---------- */
+.eis-app-messages{display:flex;flex-direction:column;gap:var(--space-300)}
+.eis-app-messages > section{display:flex;flex-direction:column;gap:var(--space-200)}
+.eis-app-messages__head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:var(--space-100) var(--space-200);
+  padding-bottom:var(--space-100);border-bottom:var(--border-width-100) solid var(--line)}
+/* message: <article class="eis-panel eis-app-message">: head (eis-panel__title, chips, meta), body (the quote
+   as an eis-bleed first child, the reply, notes), footer */
+.eis-app-message__head{flex-wrap:wrap;justify-content:flex-start;gap:var(--space-100)}
+.eis-app-message__meta{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-100) var(--space-200);margin-left:auto;
+  font-family:var(--font-family-mono);font-size:var(--font-size-200);color:var(--ink)}
+.eis-app-message__meta a{color:var(--ink)}
+.eis-app-message__meta img{display:block}
+/* the quote: the other person's text, square, with an optional score on its top right, out of the flow */
+.eis-app-message__quote{position:relative;padding:var(--space-200) var(--space-400) var(--space-200) var(--space-200);
+  background:var(--surface-canvas);border-bottom:var(--border-width-100) solid var(--line);
+  line-height:var(--font-line-height-normal);white-space:pre-wrap;overflow-wrap:anywhere}
+.eis-app-message__score{position:absolute;top:var(--space-100);right:var(--space-200);
+  font-family:var(--font-family-mono);font-size:var(--font-size-200);color:var(--ink-muted)}
+/* bar: a label row (label, hint, then the last child on the right) */
+.eis-app-message__bar{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-100)}
+.eis-app-message__bar > :last-child:not(:first-child){margin-left:auto}
+/* notes: a short collapsible list (sources, missing facts). --accent for what needs the user */
+.eis-app-message__notes summary{display:inline-flex;align-items:center;gap:var(--space-100);cursor:pointer;list-style:none}
+.eis-app-message__notes summary::-webkit-details-marker{display:none}
+.eis-app-message__notes summary::before{content:"+";font-family:var(--font-family-mono)}
+.eis-app-message__notes[open] summary::before{content:"\2212"}
+.eis-app-message__notes ul{display:flex;flex-direction:column;gap:var(--space-100);margin-top:var(--space-100);padding-left:var(--space-300);
+  list-style:disc;color:var(--ink-muted);overflow-wrap:anywhere}
+.eis-app-message__notes a{color:var(--ink)}
+.eis-app-message__notes--accent summary,.eis-app-message__notes--accent ul{color:var(--accent-ink)}
+/* what was sent, on a handled message */
+.eis-app-message__sent{padding-left:var(--space-200);border-left:var(--border-width-100) solid var(--line);color:var(--ink-muted);white-space:pre-wrap}
+/* state: the mono text at the end of the footer row; task: a form that takes its own row in the footer */
+.eis-app-message__state{margin-left:auto;font-family:var(--font-family-mono);font-size:var(--font-size-200);color:var(--ink-muted)}
+.eis-app-message__task{flex:1 0 100%;display:flex;flex-direction:column;gap:var(--space-200);
+  margin-top:var(--space-100);padding-top:var(--space-200);border-top:var(--border-width-100) solid var(--line)}
+.eis-app-message--handled .eis-app-message__quote{color:var(--ink-muted)}
+.eis-app-message--marked{outline:var(--border-width-100) solid var(--accent)}
+
+/* menu: a button that opens a small row of choices (role="menu", items menuitemradio).
+   The list opens above the row, at the left of the nearest positioned container, so it never
+   leaves the screen on a narrow card. The message footer is that container */
+.eis-app-menu{display:inline-flex}
+.eis-app-message .eis-panel__footer{position:relative}
+.eis-app-menu__list{position:absolute;bottom:calc(100% - var(--space-100));left:var(--space-200);z-index:2;display:flex;flex-wrap:wrap;
+  max-inline-size:calc(100% - var(--space-200) * 2);gap:calc(var(--space-100) / 2);
+  padding:var(--space-100);background:var(--surface-panel);border:var(--border-width-100) solid var(--line);border-radius:var(--radius-100)}
+.eis-app-menu__list button{padding:var(--space-100);border:0;border-radius:var(--radius-100);background:none;cursor:pointer;
+  font-size:var(--font-size-400);line-height:var(--font-line-height-tight)}
+.eis-app-menu__list button:hover{background:var(--surface-canvas)}
+.eis-app-menu__list [aria-checked="true"]{background:var(--accent)}
+
+/* ---------- settings forms ---------- */
+/* row: fields side by side, as many as fit; text: a short explanation; inline: a field and its buttons on one line */
+.eis-app-form-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(var(--app-size-form-field),100%),1fr));gap:var(--space-200)}
+.eis-app-form-text{max-inline-size:80ch;color:var(--ink-muted)}
+.eis-app-inline{display:flex;gap:var(--space-100);min-width:0}
+.eis-app-inline > .eis-input{flex:1;min-inline-size:0}
+/* items: a list of saved entries, each a row with its text and small buttons */
+.eis-app-items{display:flex;flex-direction:column;gap:var(--space-100)}
+.eis-app-items li{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-100) var(--space-200);padding:var(--space-100) var(--space-200);
+  border:var(--border-width-100) solid var(--line);border-radius:var(--radius-100)}
+.eis-app-items__text{flex:1;min-inline-size:0;font-family:var(--font-family-mono);font-size:var(--font-size-200);overflow-wrap:anywhere}
+
 /* ---------- responsive ---------- */
 @media (max-width:1280px){
   .eis-app-grid--main{grid-template-columns:minmax(0,1fr)}
@@ -178,7 +258,7 @@
   .eis-app-grid--halves{grid-template-columns:minmax(0,1fr)}
 }
 @media (max-width:760px){
-  .eis-app-metrics{grid-template-columns:repeat(2,1fr)}
+  .eis-app-metrics{grid-auto-flow:row;grid-template-columns:repeat(2,minmax(0,1fr))}
   .eis-app-metrics > div{min-height:112px}
   .eis-app-metrics dt{padding-bottom:var(--space-200)}
   .eis-app-metrics > div:nth-child(3){border-left:0}
@@ -204,4 +284,7 @@
   .eis-app-toolbar .eis-tabs{flex:1 0 100%}
   .eis-app-toolbar .eis-tabs label{flex:1;text-align:center}
   .eis-app-toolbar .eis-button{flex:1}
+  .eis-app-filters__fields,.eis-app-filters__fields > .eis-field{inline-size:100%}
+  .eis-app-inline{flex-wrap:wrap}
+  .eis-app-inline > .eis-input{flex-basis:100%}
 }

@@ -12,7 +12,7 @@
         ],
         "hex": "#ffffff"
       },
-      "$description": "Pure white. Only for surface.raised (controls that sit on top of a surface). Not a third page surface."
+      "$description": "Pure white. For surface.panel (panels, sidebar) and surface.raised (controls). Not a third page surface."
     },
     "neutral": {
       "$description": "Cool neutral ramp. Kept deliberately small; no two steps within ~4 hex points.",
@@ -195,6 +195,33 @@
           "hex": "#16753f"
         },
         "$description": "Success when it has to BE text on light surfaces. Same hue as green.500, darkened. 4.8:1 on neutral.100, 5.4:1 on neutral.0."
+      }
+    },
+    "red": {
+      "$description": "Status colour for danger: an action that removes or breaks something. Only on request, never decoration.",
+      "500": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.898,
+            0.282,
+            0.302
+          ],
+          "hex": "#e5484d"
+        },
+        "$description": "Danger fill (hover of a danger button). Put neutral.900 on it (4.8:1), never white (3.9:1)."
+      },
+      "700": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.706,
+            0.137,
+            0.094
+          ],
+          "hex": "#b42318"
+        },
+        "$description": "Danger when it has to BE text or a line on light surfaces. 6.6:1 on white, 6.1:1 on neutral.0."
       }
     }
   }

@@ -28,7 +28,7 @@ Run this before calling a piece, element or token done. Every box must be true.
 ## Visual rules
 
 - [ ] Accent used once per piece, ≤ 5% of the area (or one declared accent block).
-- [ ] Statuses are chips. Actions are buttons. One `eis-button--black` per view.
+- [ ] Statuses are chips. Actions are buttons. The main action is `eis-button--primary` (one per view, or one per panel that saves on its own). Remove/delete is `eis-button--danger`.
 - [ ] Every border and divider is `--line`, 1px.
 - [ ] Numbers are mono and tabular. Labels use the label style. Running text is in sentence case.
 - [ ] Two surface levels only: canvas and panel. No panel inside a panel.

@@ -170,6 +170,16 @@ Rules:
 | `eis-app-agenda`, `eis-app-cells`, `eis-app-legend`, `eis-app-bar`, `eis-app-pips` | Agenda list, cell matrix, legend, stacked bar, pips |
 | `eis-app-tasks`, `eis-app-task-title`, `eis-app-meta`, `eis-app-due` | Task groups with tables (cells aligned to the top; columns `eis-app-col-check`, `-idx`, `-src`, `-date`, `-due`), the task title when it is not a `<label>`, task metadata, due dates |
 | `eis-app-topics`, `eis-app-people`, `eis-app-done` | Side lists |
+| `eis-app-filters` (`__fields`, `__search`) | Filter bar above a list: `eis-tabs` on the left, labelled fields on the right. Fields take the full width below 420px |
+| `eis-app-notice` | One status line (`role="status"`), sticky at the top while the user scrolls a long list |
+| `eis-app-code` | A generated file shown as text (JSON, markdown) inside a panel. Scrolls inside itself |
+| `eis-app-messages` (`__head`) | Messages grouped by day: one `<section>` per day, a day heading, then one message panel per message |
+| `eis-app-message` (`__head`, `__meta`, `__quote`, `__score`, `__bar`, `__notes`, `__notes--accent`, `__sent`, `__state`, `__task`, `--marked`, `--handled`) | One message on an `<article class="eis-panel">`: head strip (`eis-panel__title` with number and sender, chips, then time, source link and app logo on the right), then `eis-panel__body`: the quote as it arrived first, as an `eis-bleed` (square, touches the edges, optional score on its top right, out of the flow), the reply, collapsible notes and `eis-panel__footer` (action buttons, state text at the right end, optional inline form). `--marked`: accent outline. `--handled`: quote in muted ink |
+| `eis-app-menu` (`__list`) | A button that opens a small row of choices (`role="menu"`, items `menuitemradio`). The list opens above the row, at the left of the nearest positioned container |
+| `eis-app-form-row`, `eis-app-form-text`, `eis-app-inline` | Settings forms in `eis-panel__body`: fields side by side (as many as fit), a short explanation in muted ink, a field with its buttons on one line |
+| `eis-app-items` (`__text`) | A list of saved entries: each row has its text in mono and small buttons |
+
+`eis-app-metrics` takes one column per cell: two cells make two columns, four make four. Below 760px it is two columns.
 
 ### Sidebar collapse
 

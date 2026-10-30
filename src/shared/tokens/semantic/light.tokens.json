@@ -2,16 +2,20 @@
   "surface": {
     "$type": "color",
     "canvas": {
-      "$value": "{color.neutral.100}",
+      "$value": "{color.neutral.0}",
       "$description": "Page background. Solid; no grid."
     },
     "panel": {
-      "$value": "{color.neutral.0}",
-      "$description": "Panels and sidebar. The second and last surface level."
+      "$value": "{color.white}",
+      "$description": "Panels and sidebar: white. The second and last surface level."
+    },
+    "head": {
+      "$value": "{color.neutral.200}",
+      "$description": "Head strip of a panel (eis-panel__head). Text on it is --ink: --ink-muted fails there (4.2:1). Not a page surface."
     },
     "raised": {
       "$value": "{color.white}",
-      "$description": "Background of a default button: a control raised above canvas and panel. Not for panels or page areas."
+      "$description": "Background of a default button: a control raised above the canvas. Not for page areas."
     },
     "inverse": {
       "$value": "{color.neutral.900}",
@@ -68,6 +72,21 @@
     "on": {
       "$value": "{color.neutral.900}",
       "$description": "Text placed on a success fill."
+    }
+  },
+  "danger": {
+    "$type": "color",
+    "$root": {
+      "$value": "{color.red.500}",
+      "$description": "Fill for a destructive action on hover (eis-button--danger). Never decoration."
+    },
+    "ink": {
+      "$value": "{color.red.700}",
+      "$description": "Danger as text and as the border of a danger button."
+    },
+    "on": {
+      "$value": "{color.neutral.900}",
+      "$description": "Text placed on a danger fill."
     }
   }
 }

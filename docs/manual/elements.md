@@ -44,14 +44,14 @@ Every basic element: when to use it, the HTML to copy, variants, and what is for
 
 A status MUST be a chip. A chip MUST NOT be clickable.
 
-Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--accent`), the market name for the brand highlight colour. The solid dark button is **black** (`eis-button--black`). Plain `eis-button` is the default (white).
+Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--accent`), the market name for the brand highlight colour. The main action is **primary** (`eis-button--primary`, ink fill). `eis-button--black` is the same ink fill as a colour, for a dark button that is not the main action (a pressed choice). A remove or delete action is **danger** (`eis-button--danger`). Plain `eis-button` is the default (white).
 
 ---
 
 ## Button
 
 ```html
-<button class="eis-button eis-button--black" type="button">Save</button>
+<button class="eis-button eis-button--primary" type="button">Save</button>
 <button class="eis-button" type="button">Cancel</button>
 <button class="eis-button eis-button--ghost" type="button">Skip</button>
 <button class="eis-button eis-button--accent" type="button">Record</button>
@@ -61,16 +61,18 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 
 | Variant | Use for | Limit |
 |---|---|---|
-| `--black` | The main action of the view. | **One** per view. |
+| `--primary` | The main action of a view, or of a panel that saves on its own (each Save on a settings page). | Use for a secondary action. |
+| `--black` | Ink fill as a colour: a pressed choice, a dark button that is not the main action. | Use for the main action (use `--primary`). |
+| `--danger` | Remove, delete: an action that loses data. A ghost with a red line and red text (`--danger-ink`); on hover it fills `--danger` with dark text. | Use for anything that does not remove or break. |
 | *(default)* | Secondary actions. White background (`--surface-raised`), line border. | — |
 | `--ghost` | Low-emphasis actions next to others (Skip, Clear). | No glow on hover. |
 | `--accent` | Only when the action **is** the accent: record, go live, publish. | Rare. Never "Save" or "Delete". |
-| `--success` | Save, when the page asks for a positive action in green. | One per view. Not together with a `--black` button for the same action. |
+| `--success` | Save, when the page asks for a positive action in green. | Not together with a `--primary` button for the same action. |
 
 - `type="button"` unless it submits a form (`type="submit"`) or resets (`type="reset"`).
 - Hover: background shifts and a glow in the variant's colour appears (built in). Don't add your own shadow.
 - Disabled: the `disabled` attribute, never a class.
-- Order in a group: secondary/ghost first, the `--black` button last (rightmost).
+- Order in a group: secondary/ghost first, the `--primary` button last (rightmost).
 
 | Size | Height | Padding | Font | Use for |
 |---|---|---|---|---|
@@ -140,7 +142,7 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 - Use the right `type`: `email`, `date`, `number`, `search`, `url`…
 - Error: `aria-invalid="true"` on the control + `aria-describedby` pointing to `.eis-field__error`. Never colour alone.
 - Hint and error sit below the control.
-- Put fields in a `<form>`. Put the actions at the end, the `--black` button last.
+- Put fields in a `<form>`. Put the actions at the end, the `--primary` button last.
 
 ## Checkbox, radio, switch
 
@@ -223,17 +225,29 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 ```html
 <section class="eis-panel" aria-labelledby="agenda-h">
   <header class="eis-panel__head">
-    <h2 class="eis-label" id="agenda-h">Today's agenda</h2>
+    <h2 class="eis-panel__title" id="agenda-h">Today's agenda</h2>
     <span class="eis-mono">10:30 — 17:15</span>
   </header>
   <!-- content -->
 </section>
 ```
 
-- The only container. `--surface-panel`, 1px `--line`, `--radius-200`, no shadow.
-- Head: label-style title on the left, mono meta (count, range) on the right.
+- The only container. `--surface-panel`, 1px `--line`, `--radius-100`, no shadow.
+- Head: `--surface-head` background, text in `--ink`. The title is `eis-panel__title` (label type, ink: it names the panel, it is not a muted label) on the left, mono meta (count, range) on the right.
 - MUST NOT nest a panel inside a panel. Separate inside with hairlines.
 - Content padding: `--space-200`.
+
+```html
+<section class="eis-panel" aria-labelledby="run-h">
+  <header class="eis-panel__head">…</header>
+  <div class="eis-panel__body"><!-- fields, text --></div>
+  <footer class="eis-panel__footer"><button class="eis-button" type="button">Save</button></footer>
+</section>
+```
+
+- `eis-panel__body`: the padded content area under the head. Its children stack with a `--space-200` gap. Use it for any panel that holds fields or text, not for a panel that holds a table or a metric row.
+- `eis-bleed` (helper): a direct child of `eis-panel__body` that touches the panel edges: no side padding, none above it when it is first, none below it when it is last. Use it for a quoted block or a strip, never to remove the body padding of fields.
+- `eis-panel__footer`: the bottom area for actions. Same padding, buttons in one row that wraps. No line above it. After a body it drops its top padding, so body and footer share one gap.
 
 ## Disclosure
 

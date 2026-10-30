@@ -58,6 +58,27 @@
           "unit": "px"
         },
         "$description": "Avatar size in lists."
+      },
+      "filter-field": {
+        "$value": {
+          "value": 192,
+          "unit": "px"
+        },
+        "$description": "Width of a labelled field in a filter bar (select, date)."
+      },
+      "filter-search": {
+        "$value": {
+          "value": 224,
+          "unit": "px"
+        },
+        "$description": "Width of the search field in a filter bar."
+      },
+      "form-field": {
+        "$value": {
+          "value": 256,
+          "unit": "px"
+        },
+        "$description": "Min width of a column in a form row; columns wrap below it."
       }
     }
   }

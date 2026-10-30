@@ -14,10 +14,10 @@ Which variable to use for what. Shared variables come from `src/shared/css/token
 
 | Variable | Value | Use for | MUST NOT |
 |---|---|---|---|
-| `--surface-canvas` | `#eaeaea` | Page background. Hover background of secondary/ghost controls. Background of an open disclosure summary. | Use as a card or panel background. |
-| `--surface-raised` | `#ffffff` | Background of a default button: a control raised above canvas and panel. Also the app sidebar. | Use for panels, cards or other page areas. It is not a third surface level. |
-| `--surface-panel` | `#f7f7f7` | Panels, inputs, table backgrounds. The second and **last** surface level. | Stack a panel inside a panel to get a third level. Use a line instead. |
-| `--surface-inverse` | `#111111` | Black button (`eis-button--black`), active nav item, solid chip. | Use for large areas. |
+| `--surface-canvas` | `#f7f7f7` | Page background. Hover background of secondary/ghost controls. Background of an open disclosure summary. | Use as a card or panel background. |
+| `--surface-raised` | `#ffffff` | Background of a default button: a control raised above the canvas. | Use for panels, cards or other page areas. It is not a third surface level. |
+| `--surface-panel` | `#ffffff` | Panels, the app sidebar, inputs, table backgrounds. The second and **last** surface level. | Stack a panel inside a panel to get a third level. Use a line instead. |
+| `--surface-inverse` | `#111111` | Primary and black buttons (`eis-button--primary`, `--black`), active nav item, solid chip. | Use for large areas. |
 | `--line` | `#cfcfcf` | **Every** border, divider and hairline: panels, table rows, separators, chip outlines. | Use `--ink` or any darker grey for borders of shapes, panels or cards. |
 | `--ink` | `#111111` | Primary text, headings, numbers, checked controls, focus outline. | — |
 | `--ink-muted` | `#666666` | Secondary text, labels, metadata, placeholders, **outlines of interactive controls** (input, checkbox, radio, switch). 4.8:1 on canvas. | Use for decorative borders (that is `--line`). |
@@ -28,6 +28,10 @@ Which variable to use for what. Shared variables come from `src/shared/css/token
 | `--success` | `#2a9d5c` | **Fills** for a positive state: done, saved, sent. Also the save button when the page needs one (`eis-button--success`). | Use as text on light surfaces (2.9:1, fails). Use it to decorate or to compete with the accent. |
 | `--success-ink` | `#16753f` | Success **as text**: "Saved", "Sent". 4.8:1 on canvas. | Use as a fill. |
 | `--success-on` | `#111111` | Text and icons **on** a `--success` fill. 5.5:1. | Use white on `--success` (3.5:1, fails). |
+| `--danger` | `#e5484d` | **Fill** of a danger button on hover. | Use as text (use `--danger-ink`), or to decorate. |
+| `--danger-ink` | `#b42318` | Danger **as text** and the line of a danger button. 6.6:1 on white. | Use as a fill. |
+| `--danger-on` | `#111111` | Text **on** a `--danger` fill. 4.8:1. | Use white on `--danger` (3.9:1, fails). |
+| `--surface-head` | `#dddddd` | Head strip of a panel. Text on it is `--ink` (13.9:1). | Put `--ink-muted` on it (4.2:1, fails). Use as a page area. |
 
 ### Accent budget
 
@@ -53,9 +57,9 @@ Use the role above whenever one exists. Use these primitives directly **only** f
 
 | Variable | Value | Direct use allowed for |
 |---|---|---|
-| `--color-white` | `#ffffff` | — (use `--surface-raised`) |
-| `--color-neutral-0` | `#f7f7f7` | — (use `--surface-panel` / `--ink-inverse`) |
-| `--color-neutral-100` | `#eaeaea` | — (use `--surface-canvas`) |
+| `--color-white` | `#ffffff` | — (use `--surface-panel` / `--surface-raised`) |
+| `--color-neutral-0` | `#f7f7f7` | — (use `--surface-canvas` / `--ink-inverse`) |
+| `--color-neutral-100` | `#eaeaea` | — |
 | `--color-neutral-200` | `#dddddd` | Data ramp, lowest step. |
 | `--color-neutral-300` | `#cfcfcf` | Data ramp. (As a border, use `--line`.) |
 | `--color-neutral-400` | `#a3a3a3` | Data ramp. |
@@ -71,7 +75,7 @@ Ordinal data (age, volume, intensity) goes from light to dark, low to high:
 
 - Use as many steps as there are buckets, keeping the order. With fewer than 6 buckets, prefer skipping steps so neighbours differ more (e.g. 4 buckets: `200 · 400 · 600 · 900`).
 - `200` and `300` are close (1.15:1). Don't put them next to each other when the difference matters.
-- No hues for data. The only status colour is `--success` (green), for a positive state. There is no red: the accent marks problems.
+- No hues for data. Status colours: `--success` (green) for a positive state, `--danger` (red) only on a remove/delete button. The accent still marks problems.
 
 ## 3. Space
 
@@ -151,6 +155,9 @@ Use a scope token only inside that scope.
 | `--app-size-row` | 44px | Min height of a list row. |
 | `--app-size-metric` | 136px | Min height of a metric cell. |
 | `--app-size-avatar` | 28px | Avatar size in lists. |
+| `--app-size-filter-field` | 192px | Width of a labelled field in a filter bar (`eis-app-filters`). |
+| `--app-size-filter-search` | 224px | Width of the search field in a filter bar. |
+| `--app-size-form-field` | 256px | Min width of a column in a form row (`eis-app-form-row`). Columns wrap below it. |
 
 ## 8. Allowed raw values
 

@@ -127,8 +127,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <section class="eis-panel" aria-labelledby="prim-h">
         <h3 class="eis-label" id="prim-h">Primitives</h3>
         <ul class="eis-swatches">
-          <li><div class="eis-swatch" style="--c:var(--color-neutral-0)"></div><dl><dt>neutral.0</dt><dd>--color-neutral-0</dd><dd data-var="--color-neutral-0"></dd><dd class="eis-desc">Panels</dd></dl></li>
-          <li><div class="eis-swatch" style="--c:var(--color-neutral-100)"></div><dl><dt>neutral.100</dt><dd>--color-neutral-100</dd><dd data-var="--color-neutral-100"></dd><dd class="eis-desc">Canvas</dd></dl></li>
+          <li><div class="eis-swatch" style="--c:var(--color-neutral-0)"></div><dl><dt>neutral.0</dt><dd>--color-neutral-0</dd><dd data-var="--color-neutral-0"></dd><dd class="eis-desc">Canvas, inverse text</dd></dl></li>
+          <li><div class="eis-swatch" style="--c:var(--color-neutral-100)"></div><dl><dt>neutral.100</dt><dd>--color-neutral-100</dd><dd data-var="--color-neutral-100"></dd><dd class="eis-desc">Hover tint</dd></dl></li>
           <li><div class="eis-swatch" style="--c:var(--color-neutral-200)"></div><dl><dt>neutral.200</dt><dd>--color-neutral-200</dd><dd data-var="--color-neutral-200"></dd><dd class="eis-desc">Data only</dd></dl></li>
           <li><div class="eis-swatch" style="--c:var(--color-neutral-300)"></div><dl><dt>neutral.300</dt><dd>--color-neutral-300</dd><dd data-var="--color-neutral-300"></dd><dd class="eis-desc">Lines</dd></dl></li>
           <li><div class="eis-swatch" style="--c:var(--color-neutral-400)"></div><dl><dt>neutral.400</dt><dd>--color-neutral-400</dd><dd data-var="--color-neutral-400"></dd><dd class="eis-desc">Data only</dd></dl></li>
@@ -146,9 +146,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <table class="eis-web-spec">
             <thead class="eis-label"><tr><th scope="col">Role</th><th scope="col">Variable</th><th scope="col">Points to</th><th scope="col">Use</th></tr></thead>
             <tbody>
-              <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--surface-canvas)"></span></th><td><code>--surface-canvas</code></td><td class="eis-mono">neutral.100</td><td>Page background. Solid, no grid.</td></tr>
-              <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--surface-panel)"></span></th><td><code>--surface-panel</code></td><td class="eis-mono">neutral.0</td><td>Panels. The second and last surface level.</td></tr>
-              <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--surface-raised)"></span></th><td><code>--surface-raised</code></td><td class="eis-mono">white</td><td>Default button background and the app sidebar. Not a surface level.</td></tr>
+              <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--surface-canvas)"></span></th><td><code>--surface-canvas</code></td><td class="eis-mono">neutral.0</td><td>Page background. Solid, no grid.</td></tr>
+              <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--surface-panel)"></span></th><td><code>--surface-panel</code></td><td class="eis-mono">white</td><td>Panels and the app sidebar. The second and last surface level.</td></tr>
+              <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--surface-raised)"></span></th><td><code>--surface-raised</code></td><td class="eis-mono">white</td><td>Default button background. Not a surface level.</td></tr>
+              <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--surface-head)"></span></th><td><code>--surface-head</code></td><td class="eis-mono">neutral.200</td><td>Panel head strip. Ink text on it.</td></tr>
               <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--surface-inverse)"></span></th><td><code>--surface-inverse</code></td><td class="eis-mono">neutral.900</td><td>Active nav, primary button, solid tag.</td></tr>
               <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--line)"></span></th><td><code>--line</code></td><td class="eis-mono">neutral.300</td><td>Every separator and border.</td></tr>
               <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--surface-panel);--fg:var(--ink)">Aa</span></th><td><code>--ink</code></td><td class="eis-mono">neutral.900</td><td>Primary text.</td></tr>
@@ -158,6 +159,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--surface-panel);--fg:var(--accent-ink)">Aa</span></th><td><code>--accent-ink</code></td><td class="eis-mono">orange.700</td><td>Accent when it has to be text.</td></tr>
               <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--success);--fg:var(--success-on)">Aa</span></th><td><code>--success</code> · <code>--success-on</code></td><td class="eis-mono">green.500 · neutral.900</td><td>Done, saved, sent. Dark text on it, never white.</td></tr>
               <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--surface-panel);--fg:var(--success-ink)">Aa</span></th><td><code>--success-ink</code></td><td class="eis-mono">green.700</td><td>Success when it has to be text.</td></tr>
+              <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--danger);--fg:var(--danger-on)">Aa</span></th><td><code>--danger</code> · <code>--danger-on</code></td><td class="eis-mono">red.500 · neutral.900</td><td>Danger button on hover. Dark text on it, never white.</td></tr>
+              <tr><th scope="row"><span class="eis-web-pair" style="--bg:var(--surface-panel);--fg:var(--danger-ink)">Aa</span></th><td><code>--danger-ink</code></td><td class="eis-mono">red.700</td><td>Danger as text and as the line of a danger button.</td></tr>
               <tr><th scope="row"><span class="eis-web-pair" style="--bg:linear-gradient(90deg,var(--color-neutral-200) 25%,var(--color-neutral-400) 25% 50%,var(--color-neutral-600) 50% 75%,var(--color-neutral-900) 75%)"></span></th><td><code>--color-neutral-200 · 400 · 600 · 900</code></td><td class="eis-mono">primitives, used directly</td><td>Charts: low to high in grey. Accent marks the exception. No semantic layer: it would only rename the neutrals.</td></tr>
             </tbody>
           </table>

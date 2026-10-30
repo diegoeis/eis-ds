@@ -92,23 +92,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </header>
     <div class="eis-panel">
       <div class="eis-demo">
-        <button class="eis-button eis-button--black" type="button">Save</button>
+        <button class="eis-button eis-button--primary" type="button">Save</button>
         <button class="eis-button" type="button">Cancel</button>
         <button class="eis-button eis-button--ghost" type="button">Skip</button>
         <button class="eis-button eis-button--accent" type="button">Record</button>
         <button class="eis-button eis-button--success" type="button">Save</button>
+        <button class="eis-button eis-button--black" type="button">Pressed</button>
+        <button class="eis-button eis-button--danger" type="button">Remove</button>
         <button class="eis-button" type="button" disabled>Disabled</button>
       </div>
       <div class="eis-demo">
-        <button class="eis-button eis-button--black" type="button">+ New task</button>
+        <button class="eis-button eis-button--primary" type="button">+ New task</button>
         <a class="eis-button" href="#buttons">Open report →</a>
       </div>
       <div class="eis-demo">
         <button class="eis-button eis-button--sm" type="button">Small</button>
         <button class="eis-button" type="button">Medium</button>
         <button class="eis-button eis-button--lg" type="button">Large</button>
-        <button class="eis-button eis-button--black eis-button--sm" type="button">+ Note</button>
-        <button class="eis-button eis-button--black eis-button--lg" type="button">Start</button>
+        <button class="eis-button eis-button--primary eis-button--sm" type="button">+ Note</button>
+        <button class="eis-button eis-button--primary eis-button--lg" type="button">Start</button>
       </div>
       <p class="eis-note"><code>.eis-button</code> (white) + <code>--black</code> · <code>--ghost</code> · <code>--accent</code> · <code>--success</code>. Variants change colour only. Sizes: <code>--sm</code> · default · <code>--lg</code>. One <code>--black</code> per view; <code>--accent</code> only for the action that is itself the accent (record, go live).</p>
     </div>
@@ -150,7 +152,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="eis-compare">
           <div>
             <p class="eis-label">Button · acts</p>
-            <p class="eis-row"><button class="eis-button" type="button">Filter</button><button class="eis-button eis-button--black" type="button">Export</button></p>
+            <p class="eis-row"><button class="eis-button" type="button">Filter</button><button class="eis-button eis-button--primary" type="button">Export</button></p>
             <p class="eis-mono">Rectangle · 4px radius · UPPERCASE · 40px tall · hover glow</p>
           </div>
           <div>
@@ -200,7 +202,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="eis-form__actions">
         <button class="eis-button eis-button--ghost" type="reset">Clear</button>
-        <button class="eis-button eis-button--black" type="submit">Create task</button>
+        <button class="eis-button eis-button--primary" type="submit">Create task</button>
       </div>
     </form>
   </section>
@@ -267,16 +269,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section class="eis-web-doc" id="panel" aria-labelledby="panel-h">
     <header>
       <h2 id="panel-h"><small class="eis-label">06</small>Panel</h2>
-      <p>The one container. Second surface level, 1px line, 10px radius, no shadow. Head with a label on the left and a mono count on the right.</p>
+      <p>The one container. Second surface level, 1px line, 10px radius, no shadow. Head with a label on the left and a mono count on the right. Optional body (padded stack) and footer (actions).</p>
     </header>
     <div>
       <section class="eis-panel" aria-labelledby="p-h">
-        <header class="eis-panel__head"><h3 class="eis-label" id="p-h">Summary</h3><span class="eis-mono">today</span></header>
+        <header class="eis-panel__head"><h3 class="eis-panel__title" id="p-h">Summary</h3><span class="eis-mono">today</span></header>
         <dl class="eis-metrics">
           <div><dt class="eis-label">Open</dt><dd>84</dd><dd class="eis-mono">11 streams</dd></div>
           <div><dt class="eis-label">New today</dt><dd>16</dd><dd class="eis-mono">6 in one stream</dd></div>
           <div><dt class="eis-label">Overdue</dt><dd>06</dd><dd class="eis-mono">3 in Platform</dd></div>
         </dl>
+      </section>
+      <section class="eis-panel" aria-labelledby="pb-h">
+        <header class="eis-panel__head"><h3 class="eis-panel__title" id="pb-h">Body and footer</h3><span class="eis-mono">eis-panel__body · __footer</span></header>
+        <div class="eis-panel__body">
+          <div class="eis-field"><label for="pb-name">Name</label><input class="eis-input" id="pb-name" type="text" value="Lia Moreno"></div>
+          <p class="eis-field__hint"><code>eis-panel__body</code> stacks its content. <code>eis-panel__footer</code> holds the actions.</p>
+        </div>
+        <footer class="eis-panel__footer"><button class="eis-button" type="button">Save</button><button class="eis-button eis-button--ghost" type="button">Cancel</button></footer>
       </section>
       <section class="eis-panel">
         <details class="eis-disclosure">

@@ -16,6 +16,8 @@
   --color-orange-700: #b5400c;
   --color-green-500: #2a9d5c;
   --color-green-700: #16753f;
+  --color-red-500: #e5484d;
+  --color-red-700: #b42318;
 
   /* space */
   --space-100: 8px;
@@ -56,8 +58,9 @@
   --font-letter-spacing-wide: 0.88px;
 
   /* surface */
-  --surface-canvas: var(--color-neutral-100);
-  --surface-panel: var(--color-neutral-0);
+  --surface-canvas: var(--color-neutral-0);
+  --surface-panel: var(--color-white);
+  --surface-head: var(--color-neutral-200);
   --surface-raised: var(--color-white);
   --surface-inverse: var(--color-neutral-900);
 
@@ -78,6 +81,11 @@
   --success: var(--color-green-500);
   --success-ink: var(--color-green-700);
   --success-on: var(--color-neutral-900);
+
+  /* danger */
+  --danger: var(--color-red-500);
+  --danger-ink: var(--color-red-700);
+  --danger-on: var(--color-neutral-900);
 
   /* type */
   --type-display-font-family: var(--font-family-sans);

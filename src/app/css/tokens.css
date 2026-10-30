@@ -12,4 +12,7 @@
   --app-size-row: 44px;
   --app-size-metric: 136px;
   --app-size-avatar: 28px;
+  --app-size-filter-field: 192px;
+  --app-size-filter-search: 224px;
+  --app-size-form-field: 256px;
 }

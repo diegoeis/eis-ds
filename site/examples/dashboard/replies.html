@@ -1,0 +1,765 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWLTJ7HD');</script>
+<!-- End Google Tag Manager -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Replies — eis</title>
+<link rel="icon" href="../../../src/shared/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../../src/shared/brand/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../../../src/app/app.css">
+</head>
+<body class="eis-app-shell">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWLTJ7HD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<aside class="eis-app-sidebar" id="sidebar" aria-label="Sidebar">
+  <p class="eis-app-brand"><a href="#replies">EIS-ANSWER</a> <span class="eis-mono">v0.5.0</span></p>
+  <nav class="eis-app-nav" aria-label="Main">
+    <section class="eis-app-nav__section" aria-labelledby="nav-replies">
+      <h2 class="eis-label" id="nav-replies">Messages</h2>
+      <ul>
+        <li><a href="#replies" data-view-link="replies">Replies <span class="eis-app-nav__count" id="nav-count"></span></a></li>
+        <li><a href="#settings" data-view-link="settings">Settings</a></li>
+      </ul>
+    </section>
+  </nav>
+  <footer class="eis-app-sidebar__foot">
+    <button class="eis-app-sidebar__toggle" type="button" aria-controls="sidebar" aria-expanded="true" aria-label="Sidebar" data-eis-app-sidebar-toggle></button>
+  </footer>
+</aside>
+
+<main class="eis-app-main" id="view-replies" data-view="replies">
+  <header class="eis-app-page-head">
+    <p class="eis-app-page-head__meta"><time class="eis-label" id="today"></time><span class="eis-mono" id="scan-at"></span></p>
+    <h1>Replies</h1>
+    <!-- RUN: right of the title, under the date and data.js line. No server: it records the
+         request in decisions.js for the next pass of the script. -->
+    <button class="eis-button" type="button" id="run" title="Scan for new messages, draft replies and apply your decisions">Run</button>
+  </header>
+
+  <p class="eis-app-notice" id="notice" role="status" hidden></p>
+
+  <section class="eis-panel" aria-label="Summary">
+    <dl class="eis-app-metrics" id="metrics"></dl>
+  </section>
+
+  <form class="eis-app-filters" id="toolbar" action="#" aria-label="Filters">
+    <fieldset class="eis-tabs">
+      <legend>Decision</legend>
+      <label><input type="radio" name="tab" value="pending" checked><span>Pending</span></label>
+      <label><input type="radio" name="tab" value="send"><span>Send</span></label>
+      <label><input type="radio" name="tab" value="discard"><span>Discard</span></label>
+      <label><input type="radio" name="tab" value="all"><span>All</span></label>
+    </fieldset>
+    <div class="eis-app-filters__fields">
+      <div class="eis-field eis-app-filters__search">
+        <label for="search">Search</label>
+        <input class="eis-input" type="search" id="search" autocomplete="off" placeholder="Words in the message or reply">
+      </div>
+      <div class="eis-field">
+        <label for="filter-kind">Source</label>
+        <select class="eis-select" id="filter-kind">
+          <option value="">All sources</option>
+          <option value="dm">Direct messages</option>
+          <option value="group">Groups</option>
+          <option value="mention">Channel mentions</option>
+        </select>
+      </div>
+      <div class="eis-field">
+        <label for="filter-day">Day</label>
+        <select class="eis-select" id="filter-day"></select>
+      </div>
+    </div>
+  </form>
+
+  <div class="eis-app-messages" id="items" aria-label="Messages by day" aria-live="polite"></div>
+
+  <section class="eis-panel">
+    <details class="eis-disclosure">
+      <summary><h2 class="eis-label">Decisions</h2><span class="eis-mono">what the page writes to decisions.js · applied on the next run</span></summary>
+      <pre class="eis-app-code" id="state"></pre>
+    </details>
+  </section>
+</main>
+
+<main class="eis-app-main" id="view-settings" data-view="settings" hidden>
+  <header class="eis-app-page-head">
+    <p class="eis-app-page-head__meta"><time class="eis-label" id="settings-today"></time><span class="eis-mono">settings.json · Doctor: all checks ok</span></p>
+    <h1>Settings</h1>
+  </header>
+  <section class="eis-panel" aria-labelledby="folder-h">
+    <header class="eis-panel__head"><h2 class="eis-panel__title" id="folder-h">Folder</h2><span class="eis-mono">eis-answer-assistant</span></header>
+    <div class="eis-panel__body">
+      <div class="eis-field">
+        <label for="folder">Workspace folder</label>
+        <div class="eis-app-inline">
+          <input class="eis-input" id="folder" type="text" readonly value="eis-ops/answer-assistant" aria-describedby="folder-hint">
+          <button class="eis-button" type="button" id="pick-folder">Choose folder</button>
+        </div>
+        <p class="eis-field__hint" id="folder-hint">The folder of <code>paths.workspace</code>. The page reads <code>data.js</code> there and writes your decisions to <code>decisions.js</code>. The browser asks once for permission to write.</p>
+        <p class="eis-field__error" id="folder-error" role="status"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="eis-panel" aria-labelledby="run-h">
+    <header class="eis-panel__head"><h2 class="eis-panel__title" id="run-h">Run</h2><span class="eis-mono">drafting and schedule</span></header>
+    <div class="eis-panel__body">
+      <p class="eis-app-form-text">No server: the script runs when you press Run (the next pass picks it up), when you ask the assistant, or on a schedule.</p>
+      <div class="eis-app-form-row">
+        <div class="eis-field">
+          <label for="s-model">Drafting model</label>
+          <select class="eis-select" id="s-model"><option selected>Opus 5.5</option><option>Sonnet 5.5</option></select>
+          <p class="eis-field__hint">Passed to the assistant as --model when it drafts.</p>
+        </div>
+        <div class="eis-field">
+          <label for="s-sched">Schedule</label>
+          <select class="eis-select" id="s-sched"><option>Off (manual)</option><option>Every 15 minutes</option><option selected>Every hour</option><option>Twice a day</option></select>
+          <p class="eis-field__hint">How often the script scans and applies your decisions. Drafting runs only on Run.</p>
+        </div>
+      </div>
+    </div>
+    <footer class="eis-panel__footer"><button class="eis-button eis-button--primary" type="button" data-save>Save</button></footer>
+  </section>
+
+  <section class="eis-panel" aria-labelledby="ch-h">
+    <header class="eis-panel__head"><h2 class="eis-panel__title" id="ch-h">Channel · slack</h2><span class="eis-mono">token present · SLACK_USER_TOKEN</span></header>
+    <div class="eis-panel__body">
+      <div class="eis-app-form-row">
+        <div class="eis-field">
+          <label for="s-days">Scan days</label>
+          <input class="eis-input" id="s-days" type="number" value="5">
+          <p class="eis-field__hint">How far back the scan looks for pending messages.</p>
+        </div>
+        <div class="eis-field">
+          <label for="s-unread">What counts as pending</label>
+          <select class="eis-select" id="s-unread"><option selected>Only unread</option><option>Every conversation waiting on me</option></select>
+          <p class="eis-field__hint">Unread = newer than your read marker.</p>
+        </div>
+        <div class="eis-field">
+          <label for="s-test">Test channel id</label>
+          <input class="eis-input" id="s-test" type="text" value="" placeholder="C0…">
+          <p class="eis-field__hint">Your own private channel: the only place test posts may go.</p>
+        </div>
+      </div>
+      <div class="eis-app-form-row">
+        <div class="eis-field">
+          <label for="s-dm">1:1 DMs</label>
+          <select class="eis-select" id="s-dm"><option selected>On</option><option>Off</option></select>
+          <p class="eis-field__hint">Last message is the other person's, with no reply or reaction from you.</p>
+        </div>
+        <div class="eis-field">
+          <label for="s-gr">Groups</label>
+          <select class="eis-select" id="s-gr"><option selected>On</option><option>Off</option></select>
+          <p class="eis-field__hint">Group DMs up to the size limit.</p>
+        </div>
+        <div class="eis-field">
+          <label for="s-chn">Channels</label>
+          <select class="eis-select" id="s-chn"><option selected>On</option><option>Off</option></select>
+          <p class="eis-field__hint">Only with a mention.</p>
+        </div>
+      </div>
+      <div class="eis-app-form-row">
+        <div class="eis-field">
+          <label for="s-men">Groups: which messages</label>
+          <select class="eis-select" id="s-men"><option selected>Mentions</option><option>All</option></select>
+          <p class="eis-field__hint">1:1 DMs are not affected.</p>
+        </div>
+        <div class="eis-field">
+          <label for="s-max">Size limit (people, you included)</label>
+          <input class="eis-input" id="s-max" type="number" value="6">
+          <p class="eis-field__hint">For groups and for @here / @channel.</p>
+        </div>
+        <div class="eis-field">
+          <label for="s-ack">Auto-react to acknowledgements</label>
+          <select class="eis-select" id="s-ack"><option selected>On (no approval)</option><option>Off</option></select>
+          <p class="eis-field__hint">“ok”, “valeu”, an emoji right after your message gets 👍 (👊 for thanks).</p>
+        </div>
+      </div>
+        <div class="eis-field">
+          <label for="s-agenda">Agenda note (one per day)</label>
+          <input class="eis-input" id="s-agenda" type="text" value="~/notes/daily/{YYYY}-{MM}/{YYYY}-{MM}-{DD}.md">
+          <p class="eis-field__hint">Lines that start with a time range are meetings. A short “are you joining?” inside one is closed as a meeting nudge.</p>
+        </div>
+    </div>
+    <footer class="eis-panel__footer"><button class="eis-button eis-button--primary" type="button" data-save>Save</button></footer>
+  </section>
+
+  <section class="eis-panel" aria-labelledby="tr-h">
+    <header class="eis-panel__head"><h2 class="eis-panel__title" id="tr-h">Triage</h2><span class="eis-mono">decision model</span></header>
+    <div class="eis-panel__body">
+      <p class="eis-app-form-text">A decision model gives each new message a probability of needing your reply (the number on the card). Below the skip line it is closed as “Skipped by triage”; at or above the draft line it goes straight to a draft; in between the assistant decides. Text leaves anonymized.</p>
+      <div class="eis-app-form-row">
+        <div class="eis-field">
+          <label for="s-tr">Triage</label>
+          <select class="eis-select" id="s-tr"><option selected>On</option><option>Off (the assistant triages everything)</option></select>
+          <p class="eis-field__hint">Model <code>perplexity/pplx-decider-v1.1-27b</code> · key <code>OPENROUTER_API_KEY</code></p>
+        </div>
+        <div class="eis-field">
+          <label for="s-skip">Skip below</label>
+          <input class="eis-input" id="s-skip" type="number" value="0.15">
+          <p class="eis-field__hint">0 to 1. Lower = fewer skips, fewer misses.</p>
+        </div>
+        <div class="eis-field">
+          <label for="s-draft">Draft at or above</label>
+          <input class="eis-input" id="s-draft" type="number" value="0.6">
+          <p class="eis-field__hint">0 to 1.</p>
+        </div>
+      </div>
+        <div class="eis-field">
+          <label for="s-terms">Private terms</label>
+          <textarea class="eis-textarea" id="s-terms" rows="4" placeholder="One per line: client or company names to hide before anything is sent">Cliente Exemplo
+Empresa Fictícia</textarea>
+          <p class="eis-field__hint">Replaced by [organização] in what goes to the model. People's names are hidden without being listed here.</p>
+        </div>
+    </div>
+    <footer class="eis-panel__footer"><button class="eis-button eis-button--primary" type="button" data-save>Save</button></footer>
+  </section>
+
+  <section class="eis-panel" aria-labelledby="ky-h">
+    <header class="eis-panel__head"><h2 class="eis-panel__title" id="ky-h">Keys</h2><span class="eis-mono">.env (mode 600)</span></header>
+    <div class="eis-panel__body">
+      <p class="eis-app-form-text">Secrets the plugin reads, one NAME=value per line in <code>eis-ops/answer-assistant/.env</code>. A variable with the same name in the environment wins over the file.</p>
+      <div class="eis-field">
+        <label for="k-slack_user_token"><code>SLACK_USER_TOKEN</code></label>
+        <div class="eis-app-inline">
+          <input class="eis-input" id="k-slack_user_token" type="password" value="xxxxxxxxxxxxxxxx" autocomplete="off"><button class="eis-button eis-button--ghost" type="button" aria-label="Show value" aria-pressed="false" data-eye="k-slack_user_token"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg></button>
+          <button class="eis-button eis-button--primary" type="button">Save</button>
+          <button class="eis-button eis-button--danger" type="button">Remove</button>
+        </div>
+        <p class="eis-field__hint">Slack user token · set in the file</p>
+      </div>
+      <div class="eis-field">
+        <label for="k-openrouter_api_key"><code>OPENROUTER_API_KEY</code></label>
+        <div class="eis-app-inline">
+          <input class="eis-input" id="k-openrouter_api_key" type="password" value="xxxxxxxxxxxxxxxx" autocomplete="off"><button class="eis-button eis-button--ghost" type="button" aria-label="Show value" aria-pressed="false" data-eye="k-openrouter_api_key"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg></button>
+          <button class="eis-button eis-button--primary" type="button">Save</button>
+          <button class="eis-button eis-button--danger" type="button">Remove</button>
+        </div>
+        <p class="eis-field__hint">Triage model · set in the file</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="eis-panel" aria-labelledby="pf-h">
+    <header class="eis-panel__head"><h2 class="eis-panel__title" id="pf-h">Profile</h2><span class="eis-mono">who the drafts are written as</span></header>
+    <div class="eis-panel__body">
+      <p class="eis-app-form-text">The assistant writes as this person, in the first person.</p>
+      <div class="eis-app-form-row">
+        <div class="eis-field">
+          <label for="s-name">Name</label>
+          <input class="eis-input" id="s-name" type="text" value="Ana Exemplo">
+        </div>
+        <div class="eis-field">
+          <label for="s-title">Title</label>
+          <input class="eis-input" id="s-title" type="text" value="Head of Product">
+        </div>
+      </div>
+      <div class="eis-app-form-row">
+        <div class="eis-field">
+          <label for="s-comp">Current company</label>
+          <input class="eis-input" id="s-comp" type="text" value="Empresa Exemplo">
+        </div>
+        <div class="eis-field">
+          <label for="s-li">LinkedIn</label>
+          <input class="eis-input" id="s-li" type="url" value="https://linkedin.com/in/exemplo">
+          <p class="eis-field__hint">Read once by setup; never opened while drafting.</p>
+        </div>
+      </div>
+    </div>
+    <footer class="eis-panel__footer"><button class="eis-button eis-button--primary" type="button" data-save>Save</button></footer>
+  </section>
+
+  <section class="eis-panel" aria-labelledby="so-h">
+    <header class="eis-panel__head"><h2 class="eis-panel__title" id="so-h">Knowledge sources</h2><span class="eis-mono">3 sources</span></header>
+    <div class="eis-panel__body">
+      <div class="eis-app-form-row">
+        <div class="eis-field">
+          <label for="s-stype">Type</label>
+          <select class="eis-select" id="s-stype"><option selected>Folder</option><option>File</option><option>URL</option></select>
+        </div>
+        <div class="eis-field">
+          <label for="s-spath">Path or URL</label>
+          <input class="eis-input" id="s-spath" type="text" value="" placeholder="/absolute/path or https://…">
+        </div>
+      </div>
+      <div class="eis-app-form-row">
+        <div class="eis-field">
+          <label for="s-sdesc">Description</label>
+          <input class="eis-input" id="s-sdesc" type="text" value="" placeholder="Description (needed for URLs)">
+        </div>
+        <div class="eis-field">
+          <label for="s-sprim">Primary (your main vault)</label>
+          <select class="eis-select" id="s-sprim"><option selected>No, last resort</option><option>Yes, right after Slack</option></select>
+        </div>
+      </div>
+      <p><button class="eis-button eis-button--primary" type="button">Add source</button></p>
+      <ul class="eis-app-items">
+        <li><span class="eis-label">folder · primary</span><span class="eis-app-items__text">~/notes — Main vault</span><button class="eis-button eis-button--sm" type="button">Unmark primary</button><button class="eis-button eis-button--sm eis-button--danger" type="button">Remove</button></li>
+        <li><span class="eis-label">folder</span><span class="eis-app-items__text">~/work/docs — Team docs</span><button class="eis-button eis-button--sm" type="button">Make primary</button><button class="eis-button eis-button--sm eis-button--danger" type="button">Remove</button></li>
+        <li><span class="eis-label">folder · primary</span><span class="eis-app-items__text">~/notes/transcripts — Meeting transcripts</span><button class="eis-button eis-button--sm" type="button">Unmark primary</button><button class="eis-button eis-button--sm eis-button--danger" type="button">Remove</button></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="eis-panel" aria-labelledby="nv-h">
+    <header class="eis-panel__head"><h2 class="eis-panel__title" id="nv-h">Notes &amp; vault</h2><span class="eis-mono">filters by tag or property</span></header>
+    <div class="eis-panel__body">
+      <p class="eis-app-form-text">Which notes the assistant reads. Exclude drops a note that matches any line; Include keeps only notes that match every line. A tag also matches its subtags. One property per line, values comma-separated; * means the property is set.</p>
+      <h3 class="eis-label">Every source</h3>
+      <div class="eis-app-form-row">
+        <div class="eis-field">
+          <label for="s-xt">Exclude tags</label>
+          <textarea class="eis-textarea" id="s-xt" rows="2">private
+health</textarea>
+        </div>
+        <div class="eis-field">
+          <label for="s-xp">Exclude properties</label>
+          <textarea class="eis-textarea" id="s-xp" rows="2">type: 1on1</textarea>
+        </div>
+      </div>
+      <h3 class="eis-label">Primary · ~/notes</h3>
+      <div class="eis-app-form-row">
+        <div class="eis-field">
+          <label for="s-it">Include tags</label>
+          <textarea class="eis-textarea" id="s-it" rows="2"></textarea>
+        </div>
+        <div class="eis-field">
+          <label for="s-ip">Include properties</label>
+          <textarea class="eis-textarea" id="s-ip" rows="2"></textarea>
+        </div>
+      </div>
+    </div>
+    <footer class="eis-panel__footer"><button class="eis-button eis-button--primary" type="button" data-save>Save</button></footer>
+  </section>
+
+  <section class="eis-panel" aria-labelledby="me-h">
+    <header class="eis-panel__head"><h2 class="eis-panel__title" id="me-h">Meetings</h2><span class="eis-mono">the meetings rung of the context search</span></header>
+    <div class="eis-panel__body">
+      <div class="eis-app-form-row">
+        <div class="eis-field">
+          <label for="s-prov">Provider</label>
+          <select class="eis-select" id="s-prov"><option>None</option><option>Tactiq</option><option selected>Granola</option><option>Gemini (Google Drive)</option><option>Other (local folder)</option></select>
+          <p class="eis-field__hint">Which tool the assistant uses for meetings.</p>
+        </div>
+        <div class="eis-field">
+          <label for="s-mf">Transcripts folder (provider Other)</label>
+          <input class="eis-input" id="s-mf" type="text" value="">
+          <p class="eis-field__hint">Add it as a knowledge source too, so it is searched.</p>
+        </div>
+      </div>
+    </div>
+    <footer class="eis-panel__footer"><button class="eis-button eis-button--primary" type="button" data-save>Save</button></footer>
+  </section>
+
+  <section class="eis-panel" aria-labelledby="vo-h">
+    <header class="eis-panel__head"><h2 class="eis-panel__title" id="vo-h">Voice</h2><span class="eis-mono">preset efficient</span></header>
+    <div class="eis-panel__body">
+        <div class="eis-field">
+          <label for="s-preset">Preset</label>
+          <select class="eis-select" id="s-preset"><option selected>Efficient</option><option>Professional</option><option>Custom (learn from your texts)</option></select>
+          <p class="eis-field__hint">Saving regenerates the workspace AGENTS.md; <code>voice/style.md</code> is kept if it exists.</p>
+        </div>
+      <div class="eis-field" data-custom hidden>
+        <label for="s-ctext">Your texts</label>
+        <textarea class="eis-textarea" id="s-ctext" rows="6" placeholder="Paste a few messages, emails or posts you wrote. Style reference only."></textarea>
+        <p class="eis-field__hint">Saved to <code>voice/custom.md</code>.</p>
+      </div>
+      <div class="eis-field" data-custom hidden>
+        <label for="s-cpath">Add style file</label>
+        <input class="eis-input" id="s-cpath" type="text" value="" placeholder="/absolute/path/to/your-texts.md">
+        <p class="eis-field__hint">Files with your own texts, used only as a style reference.</p>
+      </div>
+    </div>
+    <footer class="eis-panel__footer"><button class="eis-button eis-button--primary" type="button" data-save>Save</button></footer>
+  </section>
+
+  <section class="eis-panel" aria-labelledby="tm-h">
+    <header class="eis-panel__head"><h2 class="eis-panel__title" id="tm-h">Task manager</h2><span class="eis-mono">eis-ops/task-manager</span></header>
+    <div class="eis-panel__body">
+      <p class="eis-field__hint" id="tm-status"></p>
+    </div>
+  </section>
+</main>
+
+<script>
+/* MOCK: fictional data in the shape the script will write to <workspace>/data.js.
+   The real file is written by the Python script on each run; the page never writes it. */
+window.AA_DATA = {
+  "version": "0.5.0",
+  "generated_at": "2026-10-30T07:31:00-03:00",
+  "channel_kind": "slack",
+  "reactions": ["👊", "🫠", "👍", "👀", "✅"],
+  "task_manager": { "found": true, "folder": "eis-ops/task-manager", "note": "daily/2026-10/2026-10-30.md",
+                    "groups": ["Produto", "Time", "Clientes", "Pessoal"] },
+  "items": [
+    { "key": "D01:1", "date": "2026-10-30", "kind": "dm", "from": "Ana Ribeiro", "where": "DM", "time": "2026-10-30T07:12:00-03:00",
+      "permalink": "https://example.slack.com/archives/D01/p1", "priority": true, "triage": 0.91, "voice_basis": "person",
+      "message": "Consegue me mandar o link do dashboard de uso que você comentou ontem? Quero levar na reunião das 10h.",
+      "draft": "Mando sim, segue: https://example.com/dash/uso. Os números de outubro fecham na segunda.",
+      "sources": ["Thread de ontem no #produto, onde o link foi compartilhado: https://example.slack.com/archives/C09/p9"], "gaps": [], "status": "pendente" },
+    { "key": "C02:2", "date": "2026-10-30", "kind": "mention", "from": "Bruno Tavares", "where": "#produto-rotas", "time": "2026-10-30T06:58:00-03:00",
+      "permalink": "https://example.slack.com/archives/C02/p2", "priority": false, "triage": 0.74, "voice_basis": "generic",
+      "message": "@lia subimos o ajuste do filtro de datas em homologação, pode dar uma olhada quando der?",
+      "draft": "", "sources": [], "gaps": [], "status": "pendente" },
+    { "key": "G03:3", "date": "2026-10-30", "kind": "group", "from": "Carla Nunes", "where": "Carla, Davi, você", "time": "2026-10-30T06:40:00-03:00",
+      "permalink": "https://example.slack.com/archives/G03/p3", "priority": false, "triage": 0.66, "voice_basis": "person",
+      "message": "Fechamos então a apresentação para quinta? Preciso confirmar a sala.",
+      "draft": "Fechado, quinta às 14h. Pode confirmar a sala.",
+      "sources": ["Mensagem sua de terça neste grupo: \"quinta à tarde funciona\""], "gaps": ["Não achei o horário exato combinado; confirme as 14h"], "status": "pendente" },
+    { "key": "C04:4", "date": "2026-10-29", "kind": "mention", "from": "Davi Moura", "where": "#time-dados", "time": "2026-10-29T17:20:00-03:00",
+      "permalink": "https://example.slack.com/archives/C04/p4", "priority": false, "triage": 0.58, "voice_basis": "generic",
+      "message": "@lia qual é a prioridade entre o relatório de vendas e a exportação em lote?",
+      "draft": "Relatório de vendas primeiro: é o que a gente prometeu para o fechamento do mês. Exportação entra logo depois.",
+      "sources": ["Nota da reunião de planejamento de 27/10: obs-notes/meetings/2026-10-27-planejamento.md", "Sua mensagem no #time-dados em 20/10: https://example.slack.com/archives/C04/p20"], "gaps": [], "status": "pendente" },
+    { "key": "D05:5", "date": "2026-10-29", "kind": "dm", "from": "Elisa Prado", "where": "DM", "time": "2026-10-29T15:02:00-03:00",
+      "permalink": "https://example.slack.com/archives/D05/p5", "priority": false, "triage": null, "voice_basis": "person",
+      "message": "Valeu pela ajuda com o acesso!", "draft": "", "sources": [], "gaps": [], "status": "reagido", "reaction": "👊", "closed_at": "2026-10-29T15:40:00-03:00" },
+    { "key": "C06:6", "date": "2026-10-29", "kind": "mention", "from": "Fábio Lima", "where": "#suporte", "time": "2026-10-29T11:15:00-03:00",
+      "permalink": "https://example.slack.com/archives/C06/p6", "priority": false, "triage": 0.81, "voice_basis": "person",
+      "message": "@lia o cliente perguntou se o recibo sai por e-mail automático. Sai?",
+      "draft": "", "sources": [], "gaps": [], "status": "enviado", "sent_text": "Sai sim, no dia seguinte ao pagamento.", "reaction": "👍", "closed_at": "2026-10-29T11:30:00-03:00" },
+    { "key": "C07:7", "date": "2026-10-28", "kind": "mention", "from": "Gabi Souza", "where": "#geral", "time": "2026-10-28T09:00:00-03:00",
+      "permalink": "https://example.slack.com/archives/C07/p7", "priority": false, "triage": 0.08, "voice_basis": "generic",
+      "message": "@here lembrete: café da equipe às 16h!", "draft": "", "sources": [], "gaps": [], "status": "pulado", "closed_by": "triage" }
+  ],
+  "decisions": {
+    "C04:4": { "action": "send", "text": "Relatório de vendas primeiro: é o que a gente prometeu para o fechamento do mês. Exportação entra logo depois.", "reaction": "👀" }
+  }
+};
+</script>
+<script>
+/* replies.js — the replies view. Reads window.AA_DATA (data.js, written by the script) and
+   keeps the user's decisions (send / react / discard / pending, the edited text, the reaction).
+   MOCK: decisions live in memory and show in the "Decisions" panel; the real page writes them
+   to decisions.js through the File System Access API, and the next run applies them. */
+(function () {
+  "use strict";
+  var D = window.AA_DATA || { items: [], decisions: {}, reactions: [] };
+  var ITEMS = D.items || [];
+  var REACTIONS = D.reactions || [];
+  var decisions = JSON.parse(JSON.stringify(D.decisions || {}));
+  var runRequested = null;
+  var tasks = {};                         // key -> {text, group, due}: tasks to add to the task manager's note
+  var TM = D.task_manager || { found: false };
+  var state = { tab: "pending", q: "", kind: "", day: "", openMenu: null, taskForm: null };
+  var today = (D.generated_at || new Date().toISOString()).slice(0, 10);
+  var $ = function (id) { return document.getElementById(id); };
+  var KIND = { dm: "DM", group: "Group", mention: "Mention" };
+
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  function shortDate(iso) { return iso ? iso.slice(8, 10) + "/" + iso.slice(5, 7) : "—"; }
+  function clock(iso) { return iso ? iso.slice(11, 16) : ""; }
+  function dayName(iso) {
+    var d = new Date(iso + "T12:00:00");
+    return d.toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long" });
+  }
+  function daysAgo(iso) { return Math.round((new Date(today + "T12:00:00") - new Date(iso.slice(0, 10) + "T12:00:00")) / 864e5); }
+  function dec(key) { return decisions[key] || { action: "pending" }; }
+  /* Tabs: Pending, Send, Discard, All. Send holds what is marked to send or react and what
+     already went out (sent, reacted); Discard holds what is marked to discard and what was
+     discarded or skipped. */
+  function tabOf(it) {
+    if (it.status === "enviado" || it.status === "reagido") return "send";
+    if (it.status !== "pendente") return "discard";
+    var a = dec(it.key).action;
+    return a === "react" ? "send" : a;
+  }
+  var URL_RE = /https?:\/\/[^\s<>()"']+[^\s<>()"'.,;:!?]/g;
+  function linkify(text) {
+    return esc(text).replace(URL_RE, function (u) { return '<a href="' + u + '" target="_blank" rel="noopener">' + u + "</a>"; });
+  }
+
+  /* ---- metrics ---- */
+  function metric(label, value, sub, accent) {
+    return "<div" + (accent ? ' class="eis-is-accent"' : "") + '><dt class="eis-label">' + esc(label) + "</dt><dd>" + pad(value) + "</dd><dd>" + esc(sub) + "</dd></div>";
+  }
+  function renderMetrics() {
+    var pend = ITEMS.filter(function (i) { return i.status === "pendente"; });
+    var undrafted = pend.filter(function (i) { return !(i.draft || "").trim(); }).length;
+    var oldest = pend.reduce(function (m, i) { return Math.max(m, daysAgo(i.date)); }, 0);
+    var waiting = pend.filter(function (i) { return daysAgo(i.date) > 0; }).length;
+    $("metrics").innerHTML =
+      metric("Pending", pend.length, undrafted ? undrafted + " without a draft" : "all drafted") +
+      metric("Waiting", waiting, waiting ? "the oldest for " + oldest + (oldest === 1 ? " day" : " days") : "none from before today", waiting > 0);
+    $("nav-count").textContent = pend.length;
+  }
+
+  /* ---- toolbar ---- */
+  function renderDays() {
+    var days = {};
+    ITEMS.forEach(function (i) { days[i.date] = (days[i.date] || 0) + (i.status === "pendente" ? 1 : 0); });
+    $("filter-day").innerHTML = '<option value="">All days</option>' + Object.keys(days).sort().reverse().map(function (d) {
+      return '<option value="' + d + '">' + shortDate(d) + (d === today ? " · today" : "") + " [" + pad(days[d]) + "]</option>";
+    }).join("");
+    $("filter-day").value = state.day;
+  }
+
+  function visible(it) {
+    if (state.tab !== "all" && tabOf(it) !== state.tab) return false;
+    if (state.kind && it.kind !== state.kind) return false;
+    if (state.day && it.date !== state.day) return false;
+    if (state.q) {
+      var hay = [it.from, it.where, it.message, it.draft, dec(it.key).text, it.sent_text].join(" ").toLowerCase();
+      if (!state.q.split(/\s+/).every(function (w) { return hay.indexOf(w) >= 0; })) return false;
+    }
+    return true;
+  }
+
+  /* ---- rows ---- */
+  function chip(cls, text) { return ' <span class="eis-chip eis-chip--sm ' + cls + '">' + esc(text) + "</span>"; }
+
+  function actions(it) {
+    var d = dec(it.key);
+    var btn = function (action, label) {
+      var on = d.action === action;
+      return '<button class="eis-button eis-button--sm' + (on ? (action === "send" ? " eis-button--accent" : " eis-button--black") : "") +
+        '" type="button" aria-pressed="' + on + '" data-act="' + action + '" data-key="' + esc(it.key) + '">' + label + "</button>";
+    };
+    var open = state.openMenu === it.key;
+    var menu = REACTIONS.map(function (r) {
+      return '<button type="button" role="menuitemradio" aria-checked="' + (d.reaction === r) + '" data-react="' + r + '" data-key="' + esc(it.key) + '">' + r + "</button>";
+    }).join("");
+    return btn("send", "Send") + btn("discard", "Discard") + btn("pending", "Keep") +
+      '<span class="eis-app-menu"><button class="eis-button eis-button--sm" type="button" aria-haspopup="true" aria-expanded="' + open +
+      '" aria-pressed="' + !!d.reaction + '" data-menu="' + esc(it.key) + '" title="React to the message">' + (d.reaction || "☺") + "</button>" +
+      '<span class="eis-app-menu__list" role="menu"' + (open ? "" : " hidden") + ">" + menu + "</span></span>" +
+      (TM.found ? taskButton(it) : "") +
+      '<span class="eis-app-message__state">' + esc(stateText(it)) + "</span>";
+  }
+  function stateText(it) {
+    var d = dec(it.key);
+    if (d.action === "react") return "react " + d.reaction + " · no text";
+    if (d.action === "send") return "send" + (d.reaction ? " + " + d.reaction : "");
+    if (d.action === "discard") return "discard";
+    return "pending";
+  }
+
+  /* Missing facts and sources: closed lists, like the review page. Missing opens by itself. */
+  var openNotes = {};                     // "key|title" -> open, kept across re-renders
+  function notes(title, list, cls, open, key) {
+    if (!list || !list.length) return "";
+    var id = key + "|" + title;
+    if (openNotes[id] != null) open = openNotes[id];
+    return '<details class="eis-app-message__notes ' + cls + '" data-notes="' + esc(id) + '"' + (open ? " open" : "") + '><summary class="eis-label">' + esc(title) +
+      ' <span class="eis-mono">[' + pad(list.length) + "]</span></summary><ul>" +
+      list.map(function (x) { return "<li>" + linkify(x) + "</li>"; }).join("") + "</ul></details>";
+  }
+
+  /* Task manager found in eis-ops: the message can become a task in its daily note. */
+  function taskButton(it) {
+    var t = (D.tasks || {})[it.key] || tasks[it.key];
+    if (t) return '<span class="eis-chip eis-chip--sm eis-chip--success" title="In ' + esc(TM.note) + '">Task added</span>';
+    return '<button class="eis-button eis-button--sm" type="button" data-task-open="' + esc(it.key) + '" title="Add a task to the daily note of the task manager">+ Task</button>';
+  }
+  function taskForm(it) {
+    if (state.taskForm !== it.key) return "";
+    var text = "Responder " + it.from + ": " + it.message.slice(0, 90) + (it.message.length > 90 ? "…" : "");
+    return '<form class="eis-app-message__task" data-task-form="' + esc(it.key) + '">' +
+      '<p class="eis-app-message__bar"><span class="eis-label">New task</span> <span class="eis-mono">in ' + esc(TM.note) + "</span></p>" +
+      '<div class="eis-app-form-row"><div class="eis-field"><label for="task-text">Task</label><input class="eis-input" id="task-text" name="text" required value="' + esc(text) + '"></div>' +
+      '<div class="eis-field"><label for="task-group">Group</label><select class="eis-select" id="task-group" name="group">' +
+      TM.groups.map(function (g) { return "<option>" + esc(g) + "</option>"; }).join("") + "</select></div>" +
+      '<div class="eis-field"><label for="task-due">Due</label><input class="eis-input" id="task-due" name="due" type="date" min="' + today + '"></div>' +
+      "</div>" + '<p class="eis-app-message__bar"><button class="eis-button eis-button--primary" type="submit">Add task</button>' +
+      '<button class="eis-button" type="button" data-task-cancel>Cancel</button></p></form>';
+  }
+
+  function pendingBody(it) {
+    var d = dec(it.key);
+    var text = typeof d.text === "string" ? d.text : (it.draft || "");
+    var edited = typeof d.text === "string" && d.text !== (it.draft || "");
+    var id = "reply-" + it.key.replace(/[^A-Za-z0-9]/g, "_");
+    return notes("Missing", it.gaps, "eis-app-message__notes--accent", true, it.key) +
+      '<div class="eis-field"><p class="eis-app-message__bar"><label class="eis-label" for="' + id + '">Reply</label>' +
+      (edited ? '<span class="eis-mono eis-app-over">edited by you</span>' : "") +
+      '<button class="eis-button eis-button--sm" type="button" title="Ask the assistant to write this reply again">Rewrite</button></p>' +
+      '<textarea class="eis-textarea" id="' + id + '" rows="4" data-key="' + esc(it.key) + '" placeholder="No draft yet. Write your reply here, or ask the assistant to draft it.">' + esc(text) + "</textarea></div>" +
+      notes("Sources", it.sources, "", false, it.key);
+  }
+
+  function handledBody(it) {
+    if (!it.sent_text) return "";
+    return '<div class="eis-field"><p class="eis-label">Sent' + (it.closed_at ? " · " + shortDate(it.closed_at) + " " + clock(it.closed_at) : "") +
+      '</p><blockquote class="eis-app-message__sent">' + esc(it.sent_text) + "</blockquote></div>";
+  }
+
+  function handledLabel(it) {
+    return it.status === "enviado" ? "Sent" + (it.reaction ? " · " + it.reaction : "")
+      : it.status === "reagido" ? "Reacted " + (it.reaction || "")
+      : it.status === "pulado" ? (it.closed_by === "triage" ? "Skipped by triage" : "Skipped") : "Discarded";
+  }
+
+  /* One card per message, like the review page: a header strip (who, chips, when, where,
+     triage, number), the message as it arrived, the reply, sources, the actions. */
+  function card(it, n) {
+    var pend = it.status === "pendente";
+    var app = D.channel_kind || "slack";
+    var head = '<header class="eis-panel__head eis-app-message__head">' +
+      '<h3 class="eis-panel__title">' + pad(n) + " " + esc(it.from) + "</h3>" +
+      (it.priority ? chip("eis-chip--solid", "Priority") : "") +
+      (pend && it.voice_basis === "generic" ? chip("eis-chip--outline", "Generic tone") : "") +
+      (!pend ? chip(it.status === "enviado" || it.status === "reagido" ? "eis-chip--success" : "eis-chip--outline", handledLabel(it)) : "") +
+      /* right side: when, where it came from, the messenger's logo (opens the message) */
+      '<p class="eis-app-message__meta"><time datetime="' + esc(it.time) + '">' + shortDate(it.date) + " " + clock(it.time) + "</time>" +
+      '<a href="' + esc(it.permalink) + '" target="_blank" rel="noopener" title="Open the message">' + esc(it.where) + "</a>" +
+      (KIND[it.kind] !== it.where ? "<span>" + KIND[it.kind] + "</span>" : "") +
+      '<a href="' + esc(it.permalink) + '" target="_blank" rel="noopener" aria-label="Open in ' + esc(app) + '"><img src="replies-' + esc(app) + '.png" alt="" width="18" height="18"></a>' +
+      "</p></header>";
+    /* The message as it arrived, first in the body and touching the panel edges (eis-bleed);
+       the triage score sits on its top right, out of the flow. */
+    var msg = '<blockquote class="eis-app-message__quote eis-bleed">' +
+      (it.triage == null ? "" : '<span class="eis-app-message__score" title="Probability, by the triage model, that the message needs your reply">' + Number(it.triage).toFixed(2) + "</span>") +
+      esc(it.message) + "</blockquote>";
+    var a = pend ? dec(it.key).action : "";
+    var body = pend ? pendingBody(it) : handledBody(it);
+    return '<article class="eis-panel eis-app-message' + (pend ? "" : " eis-app-message--handled") +
+      (a === "send" || a === "react" ? " eis-app-message--marked" : "") + '" data-key="' + esc(it.key) + '">' + head +
+      '<div class="eis-panel__body">' + msg + (body || "") + "</div>" +
+      (pend ? '<footer class="eis-panel__footer">' + actions(it) + taskForm(it) + "</footer>" : "") + "</article>";
+  }
+
+  /* Marking a card never moves it, as on the review page: the cards on screen are fixed when
+     the tab, search or filters change (state.shown); a click only repaints them. */
+  function renderItems(keep) {
+    if (!keep || !state.shown) state.shown = ITEMS.filter(visible).map(function (it) { return it.key; });
+    var byDay = {};
+    ITEMS.filter(function (it) { return state.shown.indexOf(it.key) >= 0; }).forEach(function (it) { (byDay[it.date] = byDay[it.date] || []).push(it); });
+    var days = Object.keys(byDay).sort().reverse();
+    if (!days.length) { $("items").innerHTML = '<p class="eis-mono">Nothing here.</p>'; return; }
+    var n = 0;
+    $("items").innerHTML = days.map(function (d) {
+      var list = byDay[d].sort(function (a, b) { return (b.priority - a.priority) || (a.time < b.time ? 1 : -1); });
+      var late = d < today && list.some(function (i) { return i.status === "pendente"; });
+      return '<section aria-label="' + esc(dayName(d)) + '"><h2 class="eis-label eis-app-messages__head"><span>' + esc(dayName(d)) + (d === today ? " · today" : "") + "</span>" +
+        '<span class="eis-mono">' + (late ? '<span class="eis-app-over">waiting since ' + shortDate(d) + "</span> · " : "") + pad(list.length) + "</span></h2>" +
+        list.map(function (it) { return card(it, ++n); }).join("") + "</section>";
+    }).join("");
+  }
+
+  function renderState() {
+    var pend = {};
+    Object.keys(decisions).forEach(function (k) { if (decisions[k].action !== "pending") pend[k] = decisions[k]; });
+    $("state").textContent = "window.AA_DECISIONS = " + JSON.stringify({ run_requested_at: runRequested, decisions: pend, tasks: tasks }, null, 2) + ";";
+  }
+
+  function render(keep) { renderMetrics(); renderItems(keep); renderState(); }
+
+  var noticeTimer;
+  function saved() {
+    var n = $("notice");
+    n.textContent = "Mock: saved in memory only. The real page writes decisions.js; the next run sends and reacts.";
+    n.hidden = false;
+    clearTimeout(noticeTimer); noticeTimer = setTimeout(function () { n.hidden = true; }, 3500);
+  }
+
+  /* ---- events ---- */
+  document.addEventListener("click", function (e) {
+    var t = e.target.closest("button"); if (!t) { if (state.openMenu) { state.openMenu = null; renderItems(true); } return; }
+    var key = t.dataset.key, d;
+    if (t.dataset.taskOpen) { state.taskForm = t.dataset.taskOpen; renderItems(true); var f = document.getElementById("task-text"); if (f) f.focus(); return; }
+    if (t.hasAttribute("data-task-cancel")) { state.taskForm = null; renderItems(true); return; }
+    if (t.type === "submit") return;
+    if (t.dataset.menu) { state.openMenu = state.openMenu === t.dataset.menu ? null : t.dataset.menu; renderItems(true); return; }
+    if (t.dataset.act) {
+      d = dec(key);
+      decisions[key] = { action: t.dataset.act, text: d.text, reaction: t.dataset.act === "send" ? d.reaction : null };
+    } else if (t.dataset.react) {
+      d = dec(key);
+      var r = t.dataset.react;
+      if (d.reaction === r) decisions[key] = { action: d.action === "react" ? "pending" : d.action, text: d.text, reaction: null };
+      else decisions[key] = { action: d.action === "send" ? "send" : "react", text: d.text, reaction: r };
+      state.openMenu = null;
+    } else return;
+    render(true); saved();
+  });
+  document.addEventListener("toggle", function (e) {
+    if (e.target.dataset && e.target.dataset.notes) openNotes[e.target.dataset.notes] = e.target.open;
+  }, true);
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && state.openMenu) { state.openMenu = null; renderItems(true); } });
+  document.addEventListener("input", function (e) {
+    var ta = e.target.closest("textarea[data-key]"); if (!ta) return;
+    var d = dec(ta.dataset.key);
+    decisions[ta.dataset.key] = { action: d.action, text: ta.value, reaction: d.reaction || null };
+    renderMetrics(); renderState();
+  });
+  document.querySelectorAll('#toolbar input[name="tab"]').forEach(function (r) {
+    r.addEventListener("change", function () { state.tab = r.value; renderItems(); });
+  });
+  $("search").addEventListener("input", function () { state.q = $("search").value.trim().toLowerCase(); renderItems(); });
+  $("filter-kind").addEventListener("change", function () { state.kind = $("filter-kind").value; renderItems(); });
+  $("filter-day").addEventListener("change", function () { state.day = $("filter-day").value; renderItems(); });
+  $("toolbar").addEventListener("submit", function (e) { e.preventDefault(); });
+  document.addEventListener("submit", function (e) {
+    var f = e.target.closest("form[data-task-form]"); if (!f) return;
+    e.preventDefault();
+    tasks[f.dataset.taskForm] = { text: f.text.value.trim(), group: f.group.value, due: f.due.value || null };
+    state.taskForm = null; render(true);
+    var n = $("notice");
+    n.textContent = "Mock: task kept in memory. The real page adds it to " + TM.note + " (task manager).";
+    n.hidden = false; clearTimeout(noticeTimer); noticeTimer = setTimeout(function () { n.hidden = true; }, 3500);
+  });
+
+  var now = new Date(today + "T12:00:00").toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+  $("today").textContent = now; $("settings-today").textContent = now;
+  $("scan-at").textContent = "data.js · " + shortDate(D.generated_at) + " " + clock(D.generated_at);
+  $("tm-status").textContent = TM.found ? "Found in " + TM.folder + ". Each message gets a \u201c+ Task\u201d button that adds a task to " + TM.note + "." : "Not found in eis-ops.";
+  /* RUN: no server, so the page cannot start the script. It records the request in
+     decisions.js; the next pass of the script (scheduled, or asked to an agent) runs right away. */
+  $("run").addEventListener("click", function () {
+    var b = $("run"); b.disabled = true; b.textContent = "Requested";
+    runRequested = new Date().toISOString(); renderState();
+    var n = $("notice");
+    n.textContent = "Mock: run requested at " + runRequested.slice(11, 16) + ". The next pass of the script scans, drafts and applies your decisions.";
+    n.hidden = false; clearTimeout(noticeTimer); noticeTimer = setTimeout(function () { n.hidden = true; }, 4000);
+  });
+  /* settings mock: the eye shows a key; the Custom preset shows its fields */
+  document.addEventListener("click", function (e) {
+    var eye = e.target.closest("[data-eye]"); if (!eye) return;
+    var i = document.getElementById(eye.dataset.eye), show = i.type === "password";
+    i.type = show ? "text" : "password"; eye.setAttribute("aria-pressed", show ? "true" : "false");
+  });
+  $("s-preset").addEventListener("change", function () {
+    var custom = /Custom/.test($("s-preset").value);
+    document.querySelectorAll("[data-custom]").forEach(function (f) { f.hidden = !custom; });
+  });
+  renderDays(); render();
+})();
+</script>
+<script>
+/* app.js — one page, one view per area (<main data-view>), switched by the #hash, as the
+   eis-task-manager page. Default view: replies. */
+(function () {
+  "use strict";
+  var TITLES = { replies: "Replies", settings: "Settings" };
+  var views = document.querySelectorAll("main[data-view]");
+  var links = document.querySelectorAll("[data-view-link]");
+  function show() {
+    var name = location.hash.slice(1);
+    if (!TITLES[name]) name = "replies";
+    views.forEach(function (v) { v.hidden = v.dataset.view !== name; });
+    links.forEach(function (a) {
+      if (a.dataset.viewLink === name) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
+    });
+    document.title = TITLES[name] + " — Answer assistant";
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener("hashchange", show);
+  show();
+})();
+</script>
+<script src="../../../src/app/js/sidebar.js"></script>
+</body>
+</html>

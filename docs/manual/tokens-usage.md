@@ -15,8 +15,8 @@ Which variable to use for what. Shared variables come from `src/shared/css/token
 | Variable | Value | Use for | MUST NOT |
 |---|---|---|---|
 | `--surface-canvas` | `#eaeaea` | Page background. Hover background of secondary/ghost controls. Background of an open disclosure summary. | Use as a card or panel background. |
-| `--surface-raised` | `#ffffff` | Background of a default button: a control raised above canvas and panel. | Use for panels, cards or page areas. It is not a third surface level. |
-| `--surface-panel` | `#f7f7f7` | Panels, sidebar, inputs, table backgrounds. The second and **last** surface level. | Stack a panel inside a panel to get a third level. Use a line instead. |
+| `--surface-raised` | `#ffffff` | Background of a default button: a control raised above canvas and panel. Also the app sidebar. | Use for panels, cards or other page areas. It is not a third surface level. |
+| `--surface-panel` | `#f7f7f7` | Panels, inputs, table backgrounds. The second and **last** surface level. | Stack a panel inside a panel to get a third level. Use a line instead. |
 | `--surface-inverse` | `#111111` | Black button (`eis-button--black`), active nav item, solid chip. | Use for large areas. |
 | `--line` | `#cfcfcf` | **Every** border, divider and hairline: panels, table rows, separators, chip outlines. | Use `--ink` or any darker grey for borders of shapes, panels or cards. |
 | `--ink` | `#111111` | Primary text, headings, numbers, checked controls, focus outline. | — |
@@ -144,6 +144,8 @@ Use a scope token only inside that scope.
 | `--web-font-size-section` | = `--font-size-800` | Landing section titles. |
 | `--web-font-size-specimen` | 90px | Large type specimen. |
 | `--app-size-sidebar` | 248px | Sidebar width. |
+| `--app-size-sidebar-collapsed` | 64px | Collapsed sidebar width: the toggle plus the side padding. |
+| `--app-size-main` | 1200px | Max width of the main content, without its padding. |
 | `--app-size-aside` | 360px | Side column width. |
 | `--app-size-nav-item` | 32px | Min height of a navigation item. |
 | `--app-size-row` | 44px | Min height of a list row. |

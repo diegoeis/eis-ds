@@ -23,7 +23,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<aside class="eis-app-sidebar" aria-label="Sidebar">
+<aside class="eis-app-sidebar" id="sidebar" aria-label="Sidebar">
   <p class="eis-app-brand"><a href="#">EIS/OS</a> <span class="eis-mono">v0.1</span></p>
   <nav class="eis-app-nav" aria-label="Main">
     <section class="eis-app-nav__section" aria-labelledby="nav-tasks">
@@ -48,6 +48,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </ul>
     </section>
   </nav>
+  <button class="eis-app-sidebar__toggle" type="button" aria-controls="sidebar" aria-expanded="true" aria-label="Sidebar" data-eis-app-sidebar-toggle></button>
   <footer class="eis-app-sidebar__foot">
     <dl>
       <dt class="eis-label">Today</dt><dd class="eis-mono"><time datetime="2026-10-23">FRI 23.10</time></dd>
@@ -255,5 +256,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 </main>
+<script src="../../../src/app/js/sidebar.js"></script>
 </body>
 </html>

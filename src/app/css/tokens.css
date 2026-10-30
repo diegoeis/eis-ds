@@ -5,6 +5,8 @@
 
   /* app */
   --app-size-sidebar: 248px;
+  --app-size-sidebar-collapsed: 64px;
+  --app-size-main: 1200px;
   --app-size-aside: 360px;
   --app-size-nav-item: 32px;
   --app-size-row: 44px;

@@ -128,7 +128,7 @@ eis-ds is several design systems in one. They share the same base and never conf
 |---|---|---|---|---|
 | `src/shared/` | Every scope | Imported by each scope entry | `eis-` | `--color-`, `--space-`, `--ink`… |
 | `src/web/` | Websites, landing pages, marketing pages, documentation | `web/web.css` or `dist/eis-web.min.css`, optional `web/js/lines.js` | `eis-web-` | `--web-` |
-| `src/app/` | Dashboards, tools, system screens | `app/app.css` or `dist/eis-app.min.css` | `eis-app-` | `--app-` |
+| `src/app/` | Dashboards, tools, system screens | `app/app.css` or `dist/eis-app.min.css`, optional `app/js/sidebar.js` | `eis-app-` | `--app-` |
 
 To build a website, copy `src/shared/` and `src/web/`. To build a dashboard, copy `src/shared/` and `src/app/`. More scopes (slides, email, docs) follow the same pattern.
 
@@ -163,12 +163,27 @@ Rules:
 |---|---|
 | `eis-app-shell` | On `<body>`: sidebar + main grid. Becomes a top bar below 1024px |
 | `eis-app-sidebar`, `eis-app-brand`, `eis-app-nav` (`__section`, `__count`) | Sidebar, brand, navigation with counts |
-| `eis-app-main`, `eis-app-page-head` (`__meta`), `eis-app-toolbar` | Main region, page head, action toolbar. See "Page head" below |
+| `eis-app-sidebar__toggle` + `data-eis-app-sidebar-toggle` | Collapse button at the bottom left of the sidebar, right before `eis-app-sidebar__foot` (last if there is no footer). Driven by `app/js/sidebar.js`. Collapsed, the sidebar keeps only the button. Above 1024px only. See "Sidebar collapse" below |
+| `eis-app-main`, `eis-app-page-head` (`__meta`), `eis-app-toolbar` | Main region (content max `--app-size-main`, in the centre of the free space), page head, action toolbar. See "Page head" below |
 | `eis-app-metrics` | Row of metric cells (`<dl>`) |
 | `eis-app-grid` (`--halves`, `--main`), `eis-app-stack` | Panel grids and the side column stack |
 | `eis-app-agenda`, `eis-app-cells`, `eis-app-legend`, `eis-app-bar`, `eis-app-pips` | Agenda list, cell matrix, legend, stacked bar, pips |
 | `eis-app-tasks`, `eis-app-task-title`, `eis-app-meta`, `eis-app-due` | Task groups with tables (cells aligned to the top; columns `eis-app-col-check`, `-idx`, `-src`, `-date`, `-due`), the task title when it is not a `<label>`, task metadata, due dates |
 | `eis-app-topics`, `eis-app-people`, `eis-app-done` | Side lists |
+
+### Sidebar collapse
+
+The sidebar can collapse to a narrow strip (`--app-size-sidebar-collapsed`). Collapsed, it shows only the toggle. The toggle does not move. Only its arrow turns.
+
+1. Give the sidebar an `id`.
+2. Put the toggle right before the sidebar footer (last in the sidebar if there is no footer):
+   ```html
+   <button class="eis-app-sidebar__toggle" type="button" aria-controls="sidebar"
+           aria-expanded="true" aria-label="Sidebar" data-eis-app-sidebar-toggle></button>
+   ```
+3. Load `app/js/sidebar.js` at the end of `<body>`.
+
+The script sets `aria-expanded`. The CSS reads it. The script keeps the choice in `localStorage` (key `eis-app-sidebar`, change it with `data-key`). The main content then fills the free space, up to `--app-size-main` (1200px). Below 1024px the sidebar is a top bar, the toggle is hidden and the collapse has no effect.
 
 ### Page head
 

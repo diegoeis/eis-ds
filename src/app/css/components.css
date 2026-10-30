@@ -8,8 +8,8 @@
 .eis-app-shell{display:grid;grid-template-columns:var(--app-size-sidebar) minmax(0,1fr);min-height:100vh}
 .eis-app-brand a,.eis-app-nav a{text-decoration:none}
 /* ---------- sidebar ---------- */
-.eis-app-sidebar{background:var(--surface-panel);border-right:var(--border-width-100) solid var(--line);
-  display:flex;flex-direction:column;gap:var(--space-300);padding:var(--space-300) var(--space-200);
+.eis-app-sidebar{background:var(--surface-raised);border-right:var(--border-width-100) solid var(--line);
+  display:flex;flex-direction:column;gap:var(--space-300);padding:var(--space-300) var(--space-200) var(--space-200);
   position:sticky;top:0;height:100vh}
 .eis-app-brand{display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-100);padding:0 var(--space-100)}
 .eis-app-brand a{font-family:var(--font-family-mono);font-size:var(--font-size-300);font-weight:var(--font-weight-semibold);letter-spacing:var(--font-letter-spacing-wide)}
@@ -24,12 +24,42 @@
 .eis-app-nav a[aria-current="page"]{--bg:var(--surface-inverse);--fg:var(--ink-inverse)}
 .eis-app-nav__count{margin-left:auto;font-family:var(--font-family-mono);font-size:var(--font-size-200);opacity:.7}
 .eis-app-nav__count--accent{opacity:1;background:var(--accent);color:var(--accent-on);padding:2px var(--space-100);border-radius:2px;font-weight:var(--font-weight-medium)}
-.eis-app-sidebar__foot{margin-top:auto;padding:var(--space-200) var(--space-100) 0;border-top:var(--border-width-100) solid var(--line)}
+.eis-app-sidebar__foot{margin-top:auto;padding:var(--space-200) 0 0;border-top:var(--border-width-100) solid var(--line)}
 .eis-app-sidebar__foot dl{display:grid;grid-template-columns:auto 1fr;gap:var(--space-100) var(--space-200)}
 .eis-app-sidebar__foot dd{text-align:right}
+/* collapse: a toggle at the bottom left of the sidebar, right above the footer (js/sidebar.js sets aria-expanded).
+   Collapsed, the sidebar keeps only the toggle. The toggle never moves: only its arrow turns.
+   Wide screens only. Below 1024px the sidebar is a top bar and the toggle is hidden. */
+.eis-app-sidebar__toggle{display:none}
+@media (min-width:1025px){
+  .eis-app-shell[data-eis-app-animate]{transition:grid-template-columns .2s ease}
+  .eis-app-shell:has(.eis-app-sidebar__toggle[aria-expanded="false"]){grid-template-columns:var(--app-size-sidebar-collapsed) minmax(0,1fr)}
+  .eis-app-sidebar{overflow-x:clip}
+  .eis-app-sidebar > :not(.eis-app-sidebar__toggle){min-inline-size:calc(var(--app-size-sidebar) - var(--space-200) * 2);transition:opacity .2s ease}
+  .eis-app-sidebar:has(.eis-app-sidebar__toggle[aria-expanded="false"]) > :not(.eis-app-sidebar__toggle){opacity:0;visibility:hidden;
+    transition:opacity .2s ease,visibility 0s linear .2s}
+  /* the arrow lines up with the text of the nav items (their side padding) */
+  .eis-app-sidebar__toggle{--bg:transparent;display:flex;align-items:center;justify-content:flex-start;flex:none;align-self:flex-start;
+    margin-top:auto;inline-size:var(--app-size-nav-item);block-size:var(--app-size-nav-item);padding:0 0 0 var(--space-100);
+    border:0;border-radius:var(--radius-100);background:var(--bg);color:var(--ink);cursor:pointer}
+  .eis-app-sidebar__toggle ~ .eis-app-sidebar__foot{margin-top:0}
+  .eis-app-sidebar__toggle:hover{--bg:var(--surface-canvas)}
+  /* the arrow: points left (collapse), turns to point right (expand) */
+  .eis-app-sidebar__toggle::before{content:"";inline-size:8px;block-size:8px;translate:2px 0;rotate:45deg;
+    border-left:1.5px solid currentColor;border-bottom:1.5px solid currentColor}
+  .eis-app-shell[data-eis-app-animate] .eis-app-sidebar__toggle::before{transition:rotate .2s ease,translate .2s ease}
+  .eis-app-sidebar__toggle[aria-expanded="false"]::before{rotate:225deg;translate:-2px 0}
+}
+@media (min-width:1025px) and (prefers-reduced-motion:reduce){
+  .eis-app-shell[data-eis-app-animate],.eis-app-shell[data-eis-app-animate] .eis-app-sidebar__toggle::before,
+  .eis-app-sidebar > :not(.eis-app-sidebar__toggle){transition:none}
+}
 
 /* ---------- page ---------- */
-.eis-app-main{padding:var(--space-300);display:flex;flex-direction:column;gap:var(--space-300);min-width:0}
+/* the content is never wider than --app-size-main. It fills the free space up to that width
+   (more when the sidebar collapses) and stays in the centre of its column */
+.eis-app-main{padding:var(--space-300);display:flex;flex-direction:column;gap:var(--space-300);min-width:0;
+  inline-size:100%;max-inline-size:calc(var(--app-size-main) + var(--space-300) * 2);margin-inline:auto}
 /* page head: the standard top of every app page.
    Optional meta row first (__meta: context on the left, e.g. today's date; detail on the right,
    e.g. the source file), then the <h1>, then an optional toolbar on the right of the title. */
@@ -141,7 +171,7 @@
   .eis-app-sidebar__foot,.eis-app-nav__section > .eis-label{display:none}
   .eis-app-nav,.eis-app-nav ul{flex-direction:row;gap:var(--space-100)}
   .eis-app-nav a{white-space:nowrap}
-  .eis-app-main{padding:var(--space-200)}
+  .eis-app-main{padding:var(--space-200);max-inline-size:calc(var(--app-size-main) + var(--space-200) * 2)}
   .eis-app-grid--halves{grid-template-columns:minmax(0,1fr)}
 }
 @media (max-width:760px){

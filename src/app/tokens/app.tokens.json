@@ -10,6 +10,20 @@
         },
         "$description": "Width of the sidebar on wide screens."
       },
+      "sidebar-collapsed": {
+        "$value": {
+          "value": 64,
+          "unit": "px"
+        },
+        "$description": "Width of the collapsed sidebar: the toggle (nav-item) plus the side padding."
+      },
+      "main": {
+        "$value": {
+          "value": 1200,
+          "unit": "px"
+        },
+        "$description": "Max width of the main content, without its padding. Extra space stays empty on both sides."
+      },
       "aside": {
         "$value": {
           "value": 360,

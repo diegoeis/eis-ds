@@ -180,6 +180,7 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 
 - It is a radio group (not ARIA tabs). Use it to switch the **view** of the current page, 2–4 options.
 - Height 40px, like the default button, input and select: in a toolbar, put tabs next to a default-size button (not `--sm`), and they line up.
+- When the options do not fit the width (narrow screens), they wrap to more rows and each row fills the width. There is never a horizontal scroll.
 - Radius `--radius-100`, like buttons, inputs and selects. The selected item uses the inner radius (`--radius-100` minus the padding).
 - Not for navigation between pages (use links) and not for form answers (use radio).
 

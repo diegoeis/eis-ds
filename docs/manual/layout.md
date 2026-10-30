@@ -163,7 +163,7 @@ Rules:
 |---|---|
 | `eis-app-shell` | On `<body>`: sidebar + main grid. Becomes a top bar below 1024px |
 | `eis-app-sidebar`, `eis-app-brand`, `eis-app-nav` (`__section`, `__count`) | Sidebar, brand, navigation with counts |
-| `eis-app-sidebar__toggle` + `data-eis-app-sidebar-toggle` | Collapse button at the bottom left of the sidebar, right before `eis-app-sidebar__foot` (last if there is no footer). Driven by `app/js/sidebar.js`. Collapsed, the sidebar keeps only the button. Above 1024px only. See "Sidebar collapse" below |
+| `eis-app-sidebar__toggle` + `data-eis-app-sidebar-toggle` | Collapse button at the bottom left of the sidebar, last in `eis-app-sidebar__foot`. Driven by `app/js/sidebar.js`. Collapsed, the sidebar keeps only the button. Above 1024px only. See "Sidebar collapse" below |
 | `eis-app-main`, `eis-app-page-head` (`__meta`), `eis-app-toolbar` | Main region (content max `--app-size-main`, in the centre of the free space), page head, action toolbar. See "Page head" below |
 | `eis-app-metrics` | Row of metric cells (`<dl>`) |
 | `eis-app-grid` (`--halves`, `--main`), `eis-app-stack` | Panel grids and the side column stack |
@@ -176,10 +176,12 @@ Rules:
 The sidebar can collapse to a narrow strip (`--app-size-sidebar-collapsed`). Collapsed, it shows only the toggle. The toggle does not move. Only its arrow turns.
 
 1. Give the sidebar an `id`.
-2. Put the toggle right before the sidebar footer (last in the sidebar if there is no footer):
+2. Put the toggle last in the sidebar footer. Put links such as Settings in the main nav, not in the footer:
    ```html
-   <button class="eis-app-sidebar__toggle" type="button" aria-controls="sidebar"
-           aria-expanded="true" aria-label="Sidebar" data-eis-app-sidebar-toggle></button>
+   <footer class="eis-app-sidebar__foot">
+     <button class="eis-app-sidebar__toggle" type="button" aria-controls="sidebar"
+             aria-expanded="true" aria-label="Sidebar" data-eis-app-sidebar-toggle></button>
+   </footer>
    ```
 3. Load `app/js/sidebar.js` at the end of `<body>`.
 

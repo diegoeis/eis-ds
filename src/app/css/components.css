@@ -27,7 +27,7 @@
 .eis-app-sidebar__foot{margin-top:auto;padding:var(--space-200) 0 0;border-top:var(--border-width-100) solid var(--line)}
 .eis-app-sidebar__foot dl{display:grid;grid-template-columns:auto 1fr;gap:var(--space-100) var(--space-200)}
 .eis-app-sidebar__foot dd{text-align:right}
-/* collapse: a toggle at the bottom left of the sidebar, right above the footer (js/sidebar.js sets aria-expanded).
+/* collapse: a toggle in the sidebar footer, last, at the bottom left (js/sidebar.js sets aria-expanded).
    Collapsed, the sidebar keeps only the toggle. The toggle never moves: only its arrow turns.
    Wide screens only. Below 1024px the sidebar is a top bar and the toggle is hidden. */
 .eis-app-sidebar__toggle{display:none}
@@ -35,14 +35,17 @@
   .eis-app-shell[data-eis-app-animate]{transition:grid-template-columns .2s ease}
   .eis-app-shell:has(.eis-app-sidebar__toggle[aria-expanded="false"]){grid-template-columns:var(--app-size-sidebar-collapsed) minmax(0,1fr)}
   .eis-app-sidebar{overflow-x:clip}
-  .eis-app-sidebar > :not(.eis-app-sidebar__toggle){min-inline-size:calc(var(--app-size-sidebar) - var(--space-200) * 2);transition:opacity .2s ease}
-  .eis-app-sidebar:has(.eis-app-sidebar__toggle[aria-expanded="false"]) > :not(.eis-app-sidebar__toggle){opacity:0;visibility:hidden;
-    transition:opacity .2s ease,visibility 0s linear .2s}
+  .eis-app-sidebar > :not(.eis-app-sidebar__foot),.eis-app-sidebar__foot > :not(.eis-app-sidebar__toggle){
+    min-inline-size:calc(var(--app-size-sidebar) - var(--space-200) * 2);transition:opacity .2s ease}
+  .eis-app-sidebar:has(.eis-app-sidebar__toggle[aria-expanded="false"]) > :not(.eis-app-sidebar__foot),
+  .eis-app-sidebar:has(.eis-app-sidebar__toggle[aria-expanded="false"]) .eis-app-sidebar__foot > :not(.eis-app-sidebar__toggle){
+    opacity:0;visibility:hidden;transition:opacity .2s ease,visibility 0s linear .2s}
+  .eis-app-sidebar:has(.eis-app-sidebar__toggle[aria-expanded="false"]) .eis-app-sidebar__foot{border-top-color:transparent}
   /* the arrow lines up with the text of the nav items (their side padding) */
-  .eis-app-sidebar__toggle{--bg:transparent;display:flex;align-items:center;justify-content:flex-start;flex:none;align-self:flex-start;
-    margin-top:auto;inline-size:var(--app-size-nav-item);block-size:var(--app-size-nav-item);padding:0 0 0 var(--space-100);
+  .eis-app-sidebar__toggle{--bg:transparent;display:flex;align-items:center;justify-content:flex-start;
+    inline-size:var(--app-size-nav-item);block-size:var(--app-size-nav-item);padding:var(--space-100);
     border:0;border-radius:var(--radius-100);background:var(--bg);color:var(--ink);cursor:pointer}
-  .eis-app-sidebar__toggle ~ .eis-app-sidebar__foot{margin-top:0}
+  .eis-app-sidebar__foot > * + .eis-app-sidebar__toggle{margin-top:var(--space-200)}
   .eis-app-sidebar__toggle:hover{--bg:var(--surface-canvas)}
   /* the arrow: points left (collapse), turns to point right (expand) */
   .eis-app-sidebar__toggle::before{content:"";inline-size:8px;block-size:8px;translate:2px 0;rotate:45deg;
@@ -52,7 +55,7 @@
 }
 @media (min-width:1025px) and (prefers-reduced-motion:reduce){
   .eis-app-shell[data-eis-app-animate],.eis-app-shell[data-eis-app-animate] .eis-app-sidebar__toggle::before,
-  .eis-app-sidebar > :not(.eis-app-sidebar__toggle){transition:none}
+  .eis-app-sidebar > :not(.eis-app-sidebar__foot),.eis-app-sidebar__foot > :not(.eis-app-sidebar__toggle){transition:none}
 }
 
 /* ---------- page ---------- */

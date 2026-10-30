@@ -130,7 +130,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
     </div>
-    <footer class="eis-panel__footer"><button class="eis-button eis-button--primary" type="button" data-save>Save</button></footer>
+    <footer class="eis-panel__footer"><button class="eis-button eis-button--primary" type="button" data-save>Save</button><span class="eis-app-flash" role="status"></span></footer>
   </section>
 
   <section class="eis-panel" aria-labelledby="ch-h">
@@ -193,7 +193,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p class="eis-field__hint">Lines that start with a time range are meetings. A short “are you joining?” inside one is closed as a meeting nudge.</p>
         </div>
     </div>
-    <footer class="eis-panel__footer"><button class="eis-button eis-button--primary" type="button" data-save>Save</button></footer>
+    <footer class="eis-panel__footer"><button class="eis-button eis-button--primary" type="button" data-save>Save</button><span class="eis-app-flash" role="status"></span></footer>
   </section>
 
   <section class="eis-panel" aria-labelledby="tr-h">
@@ -224,7 +224,7 @@ Empresa Fictícia</textarea>
           <p class="eis-field__hint">Replaced by [organização] in what goes to the model. People's names are hidden without being listed here.</p>
         </div>
     </div>
-    <footer class="eis-panel__footer"><button class="eis-button eis-button--primary" type="button" data-save>Save</button></footer>
+    <footer class="eis-panel__footer"><button class="eis-button eis-button--primary" type="button" data-save>Save</button><span class="eis-app-flash" role="status"></span></footer>
   </section>
 
   <section class="eis-panel" aria-labelledby="ky-h">
@@ -278,7 +278,7 @@ Empresa Fictícia</textarea>
         </div>
       </div>
     </div>
-    <footer class="eis-panel__footer"><button class="eis-button eis-button--primary" type="button" data-save>Save</button></footer>
+    <footer class="eis-panel__footer"><button class="eis-button eis-button--primary" type="button" data-save>Save</button><span class="eis-app-flash" role="status"></span></footer>
   </section>
 
   <section class="eis-panel" aria-labelledby="so-h">
@@ -341,7 +341,7 @@ health</textarea>
         </div>
       </div>
     </div>
-    <footer class="eis-panel__footer"><button class="eis-button eis-button--primary" type="button" data-save>Save</button></footer>
+    <footer class="eis-panel__footer"><button class="eis-button eis-button--primary" type="button" data-save>Save</button><span class="eis-app-flash" role="status"></span></footer>
   </section>
 
   <section class="eis-panel" aria-labelledby="me-h">
@@ -360,7 +360,7 @@ health</textarea>
         </div>
       </div>
     </div>
-    <footer class="eis-panel__footer"><button class="eis-button eis-button--primary" type="button" data-save>Save</button></footer>
+    <footer class="eis-panel__footer"><button class="eis-button eis-button--primary" type="button" data-save>Save</button><span class="eis-app-flash" role="status"></span></footer>
   </section>
 
   <section class="eis-panel" aria-labelledby="vo-h">
@@ -382,7 +382,7 @@ health</textarea>
         <p class="eis-field__hint">Files with your own texts, used only as a style reference.</p>
       </div>
     </div>
-    <footer class="eis-panel__footer"><button class="eis-button eis-button--primary" type="button" data-save>Save</button></footer>
+    <footer class="eis-panel__footer"><button class="eis-button eis-button--primary" type="button" data-save>Save</button><span class="eis-app-flash" role="status"></span></footer>
   </section>
 
   <section class="eis-panel" aria-labelledby="tm-h">
@@ -759,6 +759,16 @@ window.AA_DATA = {
   window.addEventListener("hashchange", show);
   show();
 })();
+</script>
+<script>
+/* Save feedback (eis-app-flash): the text appears beside the button, then fades out. */
+document.addEventListener("click", function (e) {
+  var b = e.target.closest("[data-save]"); if (!b) return;
+  var f = b.parentNode.querySelector(".eis-app-flash"); if (!f) return;
+  f.removeAttribute("data-fade"); f.dataset.state = "ok"; f.textContent = "Saved";
+  void f.offsetWidth; f.setAttribute("data-fade", "");
+  clearTimeout(f._t); f._t = setTimeout(function () { f.textContent = ""; f.removeAttribute("data-fade"); }, 2600);
+});
 </script>
 <script src="../../../src/app/js/sidebar.js"></script>
 </body>

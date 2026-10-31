@@ -316,7 +316,7 @@ Empresa Fictícia</textarea>
   <section class="eis-panel" aria-labelledby="nv-h">
     <header class="eis-panel__head"><h2 class="eis-panel__title" id="nv-h">Notes &amp; vault</h2><span class="eis-mono">filters by tag or property</span></header>
     <div class="eis-panel__body">
-      <p class="eis-app-form-text">Which notes the assistant reads. Exclude drops a note that matches any line; Include keeps only notes that match every line. A tag also matches its subtags. One property per line, values comma-separated; * means the property is set.</p>
+      <p class="eis-app-form-text">Which notes the assistant reads. Exclude drops a note that matches any line. Include (primary source only) keeps only the notes that have at least one of the tags and every property listed; the rest is left out. A tag matches only itself: <code>jussi</code> does not reach <code>jussi/bileto</code>. Between slashes it is a regular expression, found anywhere, case ignored: <code>/jussi/</code> → <code>jussi</code>, <code>work/jussi</code>, <code>jussi/bileto</code>; <code>/^jussi(\/|$)/</code> → <code>jussi</code> and its subtags; also as a value, <code>type: /^(1on1|meeting)$/</code>; a regex sees a <code>[[link]]</code> value without the brackets: <code>company: /^(zig|sympla|olx)$/</code>. One entry per line; a property line is <code>property: value</code>, repeat the property for more values; <code>*</code> as the value means the property is set.</p>
       <h3 class="eis-label">Every source</h3>
       <div class="eis-app-form-row">
         <div class="eis-field">
@@ -325,7 +325,7 @@ Empresa Fictícia</textarea>
 health</textarea>
         </div>
         <div class="eis-field">
-          <label for="s-xp">Exclude properties</label>
+          <label for="s-xp">Exclude property: value</label>
           <textarea class="eis-textarea" id="s-xp" rows="2">type: 1on1</textarea>
         </div>
       </div>
@@ -336,7 +336,7 @@ health</textarea>
           <textarea class="eis-textarea" id="s-it" rows="2"></textarea>
         </div>
         <div class="eis-field">
-          <label for="s-ip">Include properties</label>
+          <label for="s-ip">Include property: value</label>
           <textarea class="eis-textarea" id="s-ip" rows="2"></textarea>
         </div>
       </div>

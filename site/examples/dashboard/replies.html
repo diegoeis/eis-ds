@@ -282,12 +282,12 @@ Empresa Fictícia</textarea>
   </section>
 
   <section class="eis-panel" aria-labelledby="so-h">
-    <header class="eis-panel__head"><h2 class="eis-panel__title" id="so-h">Knowledge sources</h2><span class="eis-mono">3 sources</span></header>
+    <header class="eis-panel__head"><h2 class="eis-panel__title" id="so-h">Knowledge sources</h2><span class="eis-mono">4 sources</span></header>
     <div class="eis-panel__body">
-      <p class="eis-app-form-text">Where the assistant looks for facts, in this order: the conversation, your earlier replies, then the <strong>primary</strong> sources (all of them, read together), then meetings, and the other sources only as a last resort. Primary is about that order, not about filters: the Notes &amp; vault filters apply to every source.</p>
+      <p class="eis-app-form-text">Where the assistant looks for facts. After the conversation and your earlier replies, it searches the sources whose <strong>type</strong> best fits the question first, and the other types only when those find nothing: a question about what was agreed in a call goes to <em>Transcripts &amp; meetings</em>, one about how the billing flow works goes to <em>Specs &amp; docs</em> and <em>Notes &amp; knowledge</em>. <em>1-0-1</em> sources are searched only when the question is about that person. The type steers the order, not the filters: the Filter for markdown files applies to every source.</p>
       <div class="eis-app-form-row">
         <div class="eis-field">
-          <label for="s-stype">Type</label>
+          <label for="s-stype">Location</label>
           <select class="eis-select" id="s-stype"><option selected>Folder</option><option>File</option><option>URL</option></select>
         </div>
         <div class="eis-field">
@@ -301,23 +301,24 @@ Empresa Fictícia</textarea>
           <input class="eis-input" id="s-sdesc" type="text" value="" placeholder="Description (needed for URLs)">
         </div>
         <div class="eis-field">
-          <label for="s-sprim">Primary (your main vault)</label>
-          <select class="eis-select" id="s-sprim"><option selected>No, last resort</option><option>Yes, right after Slack</option></select>
+          <label for="s-scat">Type</label>
+          <select class="eis-select" id="s-scat"><option>Transcripts &amp; meetings</option><option selected>Notes &amp; knowledge</option><option>1-0-1</option><option>Specs &amp; docs</option></select>
         </div>
       </div>
-      <p><button class="eis-button eis-button--primary" type="button">Add source</button></p>
+      <p class="eis-app-inline"><button class="eis-button eis-button--primary" type="button">Add source</button><span class="eis-app-flash" role="status"></span></p>
       <ul class="eis-app-items">
-        <li><span class="eis-label">folder · primary</span><span class="eis-app-items__text">~/notes — Main vault</span><button class="eis-button eis-button--sm" type="button">Unmark primary</button><button class="eis-button eis-button--sm eis-button--danger" type="button">Remove</button></li>
-        <li><span class="eis-label">folder</span><span class="eis-app-items__text">~/work/docs — Team docs</span><button class="eis-button eis-button--sm" type="button">Make primary</button><button class="eis-button eis-button--sm eis-button--danger" type="button">Remove</button></li>
-        <li><span class="eis-label">folder · primary</span><span class="eis-app-items__text">~/notes/transcripts — Meeting transcripts</span><button class="eis-button eis-button--sm" type="button">Unmark primary</button><button class="eis-button eis-button--sm eis-button--danger" type="button">Remove</button></li>
+        <li><span class="eis-label">folder · Notes &amp; knowledge</span><span class="eis-app-items__text">~/notes — Main vault</span><span class="eis-app-inline"><select class="eis-select" aria-label="Type"><option value="transcripts">Transcripts &amp; meetings</option><option value="notes" selected>Notes &amp; knowledge</option><option value="one-on-one">1-0-1</option><option value="specs">Specs &amp; docs</option></select><button class="eis-button eis-button--sm eis-button--danger" type="button">Remove</button></span></li>
+        <li><span class="eis-label">folder · Specs &amp; docs</span><span class="eis-app-items__text">~/work/docs — Team docs</span><span class="eis-app-inline"><select class="eis-select" aria-label="Type"><option value="transcripts">Transcripts &amp; meetings</option><option value="notes">Notes &amp; knowledge</option><option value="one-on-one">1-0-1</option><option value="specs" selected>Specs &amp; docs</option></select><button class="eis-button eis-button--sm eis-button--danger" type="button">Remove</button></span></li>
+        <li><span class="eis-label">folder · Transcripts &amp; meetings</span><span class="eis-app-items__text">~/notes/transcripts — Meeting transcripts</span><span class="eis-app-inline"><select class="eis-select" aria-label="Type"><option value="transcripts" selected>Transcripts &amp; meetings</option><option value="notes">Notes &amp; knowledge</option><option value="one-on-one">1-0-1</option><option value="specs">Specs &amp; docs</option></select><button class="eis-button eis-button--sm eis-button--danger" type="button">Remove</button></span></li>
+        <li><span class="eis-label">folder · 1-0-1</span><span class="eis-app-items__text">~/notes/one-on-ones — Weekly 1-0-1s</span><span class="eis-app-inline"><select class="eis-select" aria-label="Type"><option value="transcripts">Transcripts &amp; meetings</option><option value="notes">Notes &amp; knowledge</option><option value="one-on-one" selected>1-0-1</option><option value="specs">Specs &amp; docs</option></select><button class="eis-button eis-button--sm eis-button--danger" type="button">Remove</button></span></li>
       </ul>
     </div>
   </section>
 
   <section class="eis-panel" aria-labelledby="nv-h">
-    <header class="eis-panel__head"><h2 class="eis-panel__title" id="nv-h">Notes &amp; vault</h2><span class="eis-mono">filters by tag or property</span></header>
+    <header class="eis-panel__head"><h2 class="eis-panel__title" id="nv-h">Filter for markdown files</h2><span class="eis-mono">filters by tag or property</span></header>
     <div class="eis-panel__body">
-      <p class="eis-app-form-text">Which notes the assistant reads, in <strong>every</strong> source. Exclude drops a note that matches any line. Include, when filled, keeps only the notes that have at least one of the tags and every property listed; the rest is left out. Exclude wins over Include. A tag matches only itself: <code>acme</code> does not reach <code>acme/billing</code>. Between slashes it is a regular expression, found anywhere, case ignored: <code>/acme/</code> → <code>acme</code>, <code>work/acme</code>, <code>acme/billing</code>; <code>/^acme(\/|$)/</code> → <code>acme</code> and its subtags; also as a value, <code>type: /^(1on1|meeting)$/</code>; a regex sees a <code>[[link]]</code> value without the brackets: <code>company: /^(acme|globex|initech)$/</code>. One entry per line; a property line is <code>property: value</code>, repeat the property for more values; <code>*</code> as the value means the property is set.</p>
+      <p class="eis-app-form-text">Which notes the assistant reads, in <strong>every</strong> folder and file source (there are no per-source filters). Exclude drops a note that matches any line. Include, when filled, keeps only the notes that have at least one of the tags and every property listed; the rest is left out. Exclude wins over Include. A tag matches only itself: <code>acme</code> does not reach <code>acme/billing</code>. Between slashes it is a regular expression, found anywhere, case ignored: <code>/acme/</code> → <code>acme</code>, <code>work/acme</code>, <code>acme/billing</code>; <code>/^acme(\/|$)/</code> → <code>acme</code> and its subtags; also as a value, <code>type: /^(1on1|meeting)$/</code>; a regex sees a <code>[[link]]</code> value without the brackets: <code>company: /^(acme|globex|initech)$/</code>. One entry per line; a property line is <code>property: value</code>, repeat the property for more values; <code>*</code> as the value means the property is set.</p>
       <div class="eis-app-form-row">
         <div class="eis-field">
           <label for="s-xt">Exclude tags</label>

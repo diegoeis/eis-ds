@@ -284,6 +284,7 @@ Empresa Fictícia</textarea>
   <section class="eis-panel" aria-labelledby="so-h">
     <header class="eis-panel__head"><h2 class="eis-panel__title" id="so-h">Knowledge sources</h2><span class="eis-mono">3 sources</span></header>
     <div class="eis-panel__body">
+      <p class="eis-app-form-text">Where the assistant looks for facts, in this order: the conversation, your earlier replies, then the <strong>primary</strong> sources (all of them, read together), then meetings, and the other sources only as a last resort. Primary is about that order, not about filters: the Notes &amp; vault filters apply to every source.</p>
       <div class="eis-app-form-row">
         <div class="eis-field">
           <label for="s-stype">Type</label>
@@ -316,8 +317,7 @@ Empresa Fictícia</textarea>
   <section class="eis-panel" aria-labelledby="nv-h">
     <header class="eis-panel__head"><h2 class="eis-panel__title" id="nv-h">Notes &amp; vault</h2><span class="eis-mono">filters by tag or property</span></header>
     <div class="eis-panel__body">
-      <p class="eis-app-form-text">Which notes the assistant reads. Exclude drops a note that matches any line. Include (primary source only) keeps only the notes that have at least one of the tags and every property listed; the rest is left out. A tag matches only itself: <code>acme</code> does not reach <code>acme/billing</code>. Between slashes it is a regular expression, found anywhere, case ignored: <code>/acme/</code> → <code>acme</code>, <code>work/acme</code>, <code>acme/billing</code>; <code>/^acme(\/|$)/</code> → <code>acme</code> and its subtags; also as a value, <code>type: /^(1on1|meeting)$/</code>; a regex sees a <code>[[link]]</code> value without the brackets: <code>company: /^(acme|globex|initech)$/</code>. One entry per line; a property line is <code>property: value</code>, repeat the property for more values; <code>*</code> as the value means the property is set.</p>
-      <h3 class="eis-label">Every source</h3>
+      <p class="eis-app-form-text">Which notes the assistant reads, in <strong>every</strong> source. Exclude drops a note that matches any line. Include, when filled, keeps only the notes that have at least one of the tags and every property listed; the rest is left out. Exclude wins over Include. A tag matches only itself: <code>acme</code> does not reach <code>acme/billing</code>. Between slashes it is a regular expression, found anywhere, case ignored: <code>/acme/</code> → <code>acme</code>, <code>work/acme</code>, <code>acme/billing</code>; <code>/^acme(\/|$)/</code> → <code>acme</code> and its subtags; also as a value, <code>type: /^(1on1|meeting)$/</code>; a regex sees a <code>[[link]]</code> value without the brackets: <code>company: /^(acme|globex|initech)$/</code>. One entry per line; a property line is <code>property: value</code>, repeat the property for more values; <code>*</code> as the value means the property is set.</p>
       <div class="eis-app-form-row">
         <div class="eis-field">
           <label for="s-xt">Exclude tags</label>
@@ -329,7 +329,6 @@ health</textarea>
           <textarea class="eis-textarea" id="s-xp" rows="2">type: 1on1</textarea>
         </div>
       </div>
-      <h3 class="eis-label">Primary · ~/notes</h3>
       <div class="eis-app-form-row">
         <div class="eis-field">
           <label for="s-it">Include tags</label>

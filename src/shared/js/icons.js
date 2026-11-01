@@ -2,7 +2,7 @@
    Draws the icons. Each icon is an <i data-lucide="name" class="eis-icon" aria-hidden="true"></i>.
    Lucide (https://lucide.dev, ISC licence) replaces it with an inline <svg> and keeps the class.
    Load Lucide first, then this file, at the end of <body>:
-     <script src="https://unpkg.com/lucide@latest"></script>
+     <script src="https://unpkg.com/lucide@1.66.0/dist/umd/lucide.min.js"></script>
      <script src="<src>/shared/js/icons.js"></script>
    The script draws the icons on load and again every time the page adds new ones,
    so a page that renders with JavaScript needs no extra call. Without Lucide (offline)

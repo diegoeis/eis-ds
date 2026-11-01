@@ -191,10 +191,12 @@ The sidebar can collapse to a narrow strip (`--app-size-sidebar-collapsed`). Col
    ```html
    <footer class="eis-app-sidebar__foot">
      <button class="eis-app-sidebar__toggle" type="button" aria-controls="sidebar"
-             aria-expanded="true" aria-label="Sidebar" data-eis-app-sidebar-toggle></button>
+             aria-expanded="true" aria-label="Sidebar" data-eis-app-sidebar-toggle>
+       <i data-lucide="chevron-left" class="eis-icon" aria-hidden="true"></i>
+     </button>
    </footer>
    ```
-3. Load `app/js/sidebar.js` at the end of `<body>`.
+3. Load `app/js/sidebar.js` at the end of `<body>`, after the icon scripts (elements.md, "Icons").
 
 The script sets `aria-expanded`. The CSS reads it. The script keeps the choice in `localStorage` (key `eis-app-sidebar`, change it with `data-key`). The main content then fills the free space, up to `--app-size-main` (1200px). Below 1024px the sidebar is a top bar, the toggle is hidden and the collapse has no effect.
 

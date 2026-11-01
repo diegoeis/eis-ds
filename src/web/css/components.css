@@ -116,8 +116,9 @@
 .eis-web-footer nav ul{list-style:none;display:grid;gap:calc(var(--space-100)/2)}
 .eis-web-footer nav a{text-decoration:none;color:var(--ink)}
 .eis-web-footer nav a:hover{color:var(--accent-ink)}
-.eis-web-footer__up{grid-column:span 2;justify-self:end;align-self:start;font-size:var(--font-size-500);text-decoration:none;color:var(--ink)}
-.eis-web-arrow{justify-self:start;font-family:var(--font-family-mono);font-size:var(--font-size-200);text-decoration:none;color:var(--ink);border-bottom:var(--border-width-100) solid var(--line);padding-bottom:2px;margin-top:var(--space-100)}
+.eis-web-footer__up{grid-column:span 2;justify-self:end;align-self:start;display:flex;text-decoration:none;color:var(--ink)}
+.eis-web-footer__up > .eis-icon{inline-size:calc(var(--space-100) * 3);block-size:calc(var(--space-100) * 3)}
+.eis-web-arrow{justify-self:start;display:inline-flex;align-items:center;gap:var(--space-100);font-family:var(--font-family-mono);font-size:var(--font-size-200);text-decoration:none;color:var(--ink);border-bottom:var(--border-width-100) solid var(--line);padding-bottom:2px;margin-top:var(--space-100)}
 .eis-web-arrow:hover{border-color:var(--ink)}
 @media (max-width:1024px){
   .eis-web-brand{grid-column:span 6}

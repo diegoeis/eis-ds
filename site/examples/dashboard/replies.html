@@ -35,7 +35,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </section>
   </nav>
   <footer class="eis-app-sidebar__foot">
-    <button class="eis-app-sidebar__toggle" type="button" aria-controls="sidebar" aria-expanded="true" aria-label="Sidebar" data-eis-app-sidebar-toggle></button>
+    <button class="eis-app-sidebar__toggle" type="button" aria-controls="sidebar" aria-expanded="true" aria-label="Sidebar" data-eis-app-sidebar-toggle><i data-lucide="chevron-left" class="eis-icon" aria-hidden="true"></i></button>
   </footer>
 </aside>
 
@@ -87,7 +87,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <section class="eis-panel">
     <details class="eis-disclosure">
-      <summary><h2 class="eis-label">Decisions</h2><span class="eis-mono">what the page writes to decisions.js · applied on the next run</span></summary>
+      <summary><h2 class="eis-label">Decisions</h2><span class="eis-mono">what the page writes to decisions.js · applied on the next run</span><i data-lucide="plus" class="eis-icon eis-if-closed" aria-hidden="true"></i><i data-lucide="minus" class="eis-icon eis-if-open" aria-hidden="true"></i></summary>
       <pre class="eis-app-code" id="state"></pre>
     </details>
   </section>
@@ -533,8 +533,9 @@ window.AA_DATA = {
       return '<button type="button" role="menuitemradio" aria-checked="' + (d.reaction === r) + '" data-react="' + r + '" data-key="' + esc(it.key) + '">' + r + "</button>";
     }).join("");
     return btn("send", "Send") + btn("discard", "Discard") + btn("pending", "Keep") +
-      '<span class="eis-app-menu"><button class="eis-button eis-button--sm" type="button" aria-haspopup="true" aria-expanded="' + open +
-      '" aria-pressed="' + !!d.reaction + '" data-menu="' + esc(it.key) + '" title="React to the message">' + (d.reaction || "☺") + "</button>" +
+      '<span class="eis-app-menu"><button class="eis-button eis-button--icon eis-button--sm" type="button" aria-haspopup="true" aria-expanded="' + open +
+      '" aria-pressed="' + !!d.reaction + '" data-menu="' + esc(it.key) + '" aria-label="React to the message" title="React to the message">' +
+      (d.reaction || '<i data-lucide="smile-plus" class="eis-icon" aria-hidden="true"></i>') + "</button>" +
       '<span class="eis-app-menu__list" role="menu"' + (open ? "" : " hidden") + ">" + menu + "</span></span>" +
       (TM.found ? taskButton(it) : "") +
       '<span class="eis-app-message__state">' + esc(stateText(it)) + "</span>";
@@ -553,7 +554,7 @@ window.AA_DATA = {
     if (!list || !list.length) return "";
     var id = key + "|" + title;
     if (openNotes[id] != null) open = openNotes[id];
-    return '<details class="eis-app-message__notes ' + cls + '" data-notes="' + esc(id) + '"' + (open ? " open" : "") + '><summary class="eis-label">' + esc(title) +
+    return '<details class="eis-app-message__notes ' + cls + '" data-notes="' + esc(id) + '"' + (open ? " open" : "") + '><summary class="eis-label"><i data-lucide="plus" class="eis-icon eis-if-closed" aria-hidden="true"></i><i data-lucide="minus" class="eis-icon eis-if-open" aria-hidden="true"></i>' + esc(title) +
       ' <span class="eis-mono">[' + pad(list.length) + "]</span></summary><ul>" +
       list.map(function (x) { return "<li>" + linkify(x) + "</li>"; }).join("") + "</ul></details>";
   }
@@ -562,7 +563,7 @@ window.AA_DATA = {
   function taskButton(it) {
     var t = (D.tasks || {})[it.key] || tasks[it.key];
     if (t) return '<span class="eis-chip eis-chip--sm eis-chip--success" title="In ' + esc(TM.note) + '">Task added</span>';
-    return '<button class="eis-button eis-button--sm" type="button" data-task-open="' + esc(it.key) + '" title="Add a task to the daily note of the task manager">+ Task</button>';
+    return '<button class="eis-button eis-button--sm" type="button" data-task-open="' + esc(it.key) + '" title="Add a task to the daily note of the task manager"><i data-lucide="plus" class="eis-icon" aria-hidden="true"></i>Task</button>';
   }
   function taskForm(it) {
     if (state.taskForm !== it.key) return "";
@@ -715,7 +716,7 @@ window.AA_DATA = {
   var now = new Date(today + "T12:00:00").toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
   $("today").textContent = now; $("settings-today").textContent = now;
   $("scan-at").textContent = "data.js · " + shortDate(D.generated_at) + " " + clock(D.generated_at);
-  $("tm-status").textContent = TM.found ? "Found in " + TM.folder + ". Each message gets a \u201c+ Task\u201d button that adds a task to " + TM.note + "." : "Not found in eis-ops.";
+  $("tm-status").textContent = TM.found ? "Found in " + TM.folder + ". Each message gets a \u201cTask\u201d button that adds a task to " + TM.note + "." : "Not found in eis-ops.";
   /* RUN: no server, so the page cannot start the script. It records the request in
      decisions.js; the next pass of the script (scheduled, or asked to an agent) runs right away. */
   $("run").addEventListener("click", function () {
@@ -771,5 +772,7 @@ document.addEventListener("click", function (e) {
 });
 </script>
 <script src="../../../src/app/js/sidebar.js"></script>
+<script src="https://unpkg.com/lucide@1.66.0/dist/umd/lucide.min.js"></script>
+<script src="../../../src/shared/js/icons.js"></script>
 </body>
 </html>

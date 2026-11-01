@@ -265,13 +265,17 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 
 ```html
 <details class="eis-disclosure" open>
-  <summary><h3 class="eis-label">Payments</h3><span class="eis-mono">13</span></summary>
+  <summary>
+    <h3 class="eis-label">Payments</h3><span class="eis-mono">13</span>
+    <i data-lucide="plus" class="eis-icon eis-if-closed" aria-hidden="true"></i>
+    <i data-lucide="minus" class="eis-icon eis-if-open" aria-hidden="true"></i>
+  </summary>
   <!-- content -->
 </details>
 ```
 
-- Native `<details>`/`<summary>`. No JS needed.
-- `+` closed, `−` open (built in). When open, the summary gets `--surface-canvas` background.
+- Native `<details>`/`<summary>`. It opens and closes without JS.
+- The state icons go last in the summary: `plus` with `eis-if-closed`, `minus` with `eis-if-open`. They go to the right. When open, the summary gets `--surface-canvas` background.
 - A `--line` separates stacked disclosures.
 
 ## Metrics (label–value)
@@ -323,16 +327,19 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 Load at the end of `<body>`, Lucide first:
 
 ```html
-<script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://unpkg.com/lucide@1.66.0/dist/umd/lucide.min.js"></script>
 <script src="<src>/shared/js/icons.js"></script>
 ```
 
+- Load a fixed Lucide version, never `@latest`. A new version can remove or rename an icon. Change the version on purpose and check the pages after the change.
 - The set is [Lucide](https://lucide.dev/icons) (ISC licence): line icons with a 2px stroke, the same weight as the system lines. Use the Lucide name in `data-lucide`.
 - `eis-icon` is 16px (`--space-200`) and takes the text colour (`currentColor`). Never colour an icon on its own. It follows the button or text it sits in.
 - `shared/js/icons.js` draws the icons on load and again when the page adds new ones. A page that renders with JavaScript does not call Lucide itself.
 - An icon is `aria-hidden="true"`. The text or the `aria-label` of the control carries the meaning.
 - Without the network the icon is empty. So an icon never is the only way to know what a control does: the control has text, or `aria-label` plus `title`.
 - Inside a button, see "Button with an icon".
+- An icon that shows the state of a `<details>` goes in its `<summary>`, one icon per state: `eis-if-closed` shows only while the `<details>` is closed, `eis-if-open` only while it is open.
+- Never type a character as an icon (`+`, `−`, `→`, `×`, `✓`), in HTML or in CSS `content`.
 
 ## Labels and helpers
 

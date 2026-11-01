@@ -7,7 +7,9 @@
        …nav…
        <footer class="eis-app-sidebar__foot">
          <button class="eis-app-sidebar__toggle" type="button" aria-controls="sidebar"
-                 aria-expanded="true" aria-label="Sidebar" data-eis-app-sidebar-toggle></button>
+                 aria-expanded="true" aria-label="Sidebar" data-eis-app-sidebar-toggle>
+           <i data-lucide="chevron-left" class="eis-icon" aria-hidden="true"></i>
+         </button>
        </footer>
      </aside>
      <script src="src/app/js/sidebar.js"></script>

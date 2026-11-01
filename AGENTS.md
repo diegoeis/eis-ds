@@ -30,6 +30,8 @@ src/                     the design system. Copy shared/ + one scope into a proj
     tokens/  css/tokens.css (GENERATED)  css/components.css
 dist/                    GENERATED. One minified file per scope: eis-web.min.css, eis-app.min.css. Committed
 index.html               landing page: what the system is, for whom, how to start
+llms.txt                 index of the manual for LLMs (llmstxt.org format). Written by hand, except the rules block
+llms-full.txt            GENERATED from llms.txt + docs/manual/. The full manual in one file. Committed
 site/                    the visual manual for humans (web scope). foundations.html is the home
   foundations.html, elements.html, examples.html
   examples/<kind>/       pages built with the system
@@ -40,6 +42,8 @@ docs/
 scripts/build-tokens.py  validates the tokens of every scope and generates each tokens.css
 scripts/check-css.py     checks that scopes never use each other's classes or variables
 scripts/build-css.py     bundles each scope entry into dist/eis-<scope>.min.css (--check: fail if stale)
+scripts/build-llms.py    copies the manual rules into llms.txt and generates llms-full.txt (--check: fail if stale)
+.github/workflows/       check.yml: on every push and pull request, fails if a generated file is stale
 ```
 
 A project needs `src/shared/` and one scope. `site/` and `docs/` document the system and never hold tokens or CSS. Scope rules: `docs/manual/layout.md` §7.
@@ -49,10 +53,12 @@ A project needs `src/shared/` and one scope. `site/` and `docs/` document the sy
 1. Token: edit the `.tokens.json` file of `shared` or of one scope. Run `python3 scripts/build-tokens.py`. If it fails, do not use the result.
 2. Element: change it in `src/shared/css/elements.css`, show it on `elements.html` and document it in `docs/manual/elements.md`. Scope component: change it in `src/<scope>/css/components.css` and list it in `docs/manual/layout.md` §7. Then run `python3 scripts/check-css.py`.
    After every change in `src/` (tokens or CSS), run `python3 scripts/build-css.py` and commit `dist/` with the change. Never edit `dist/` by hand.
-   Before a release tag, run `python3 scripts/build-css.py --check`. The tag must contain an up-to-date `dist/`.
+   Before a release tag, run `python3 scripts/build-css.py --check` and `python3 scripts/build-llms.py --check`. The tag must contain an up-to-date `dist/` and `llms-full.txt`.
 3. New example: put it in `site/examples/<kind>/`. Add a card on `examples.html` with a 1440×900 PNG screenshot next to the page (`<name>.png`), never a live iframe.
 4. New scope (slides, email…): follow `docs/manual/layout.md` §7, "Add a scope".
-5. New reference: pin it on Pinterest and add the link to the source table in `visual-guidance.md`. Do not commit image files.
+5. Manual: after every change in `docs/manual/` or `llms.txt`, run `python3 scripts/build-llms.py` and commit `llms.txt` and `llms-full.txt` with the change. Never edit `llms-full.txt` by hand. The rules in `llms.txt` come from "Rules with no exceptions" in `docs/manual/AGENTS.md`: change them there. A new file in `docs/manual/` needs a link in `llms.txt`, or the script fails.
+   The GitHub Action `check.yml` runs every `--check` on each push and pull request. A red check means a generated file is stale: run the script and commit the result.
+6. New reference: pin it on Pinterest and add the link to the source table in `visual-guidance.md`. Do not commit image files.
 
 ## Rules
 

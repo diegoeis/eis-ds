@@ -1,0 +1,37 @@
+# eis-ds
+
+> eis-ds is a visual design system in plain HTML and CSS: tokens (colour, type, space, shape), basic elements and scope components. A page links one CSS file and builds with native HTML and `eis-` classes. Light mode only.
+
+This file is for LLMs and agents that build pages with eis-ds. Read the manual before you write HTML or CSS, and apply it literally. For the full manual in one file, read [llms-full.txt](https://diegoeis.github.io/eis-ds/llms-full.txt). To match a pinned release, read the same file from the tag: `https://cdn.jsdelivr.net/gh/diegoeis/eis-ds@<tag>/llms-full.txt`.
+
+Load one scope. Do not load a separate font link:
+
+- Web scope (websites, landing pages, documentation): `https://diegoeis.github.io/eis-ds/dist/eis-web.min.css`
+- App scope (dashboards, tools, system screens): `https://diegoeis.github.io/eis-ds/dist/eis-app.min.css`
+
+Rules that have no exceptions:
+
+- Use only the shared classes and the classes of your scope (`eis-web-*` or `eis-app-*`). Never mix scopes.
+- Your own CSS holds layout only. Do not restyle an eis-ds element. Do not write CSS that eis-ds already covers.
+- Use no raw values for colour, type, space or radius. Use the tokens. The manual lists the few allowed exceptions.
+- Use semantic HTML and native controls: `table`, `button`, `a`, `input`, `select`, `details`, `fieldset`. Never make a control or a table from `div` or `span`.
+- A variant changes colour only. A size (`--sm`, `--lg`) changes size only.
+- Use the accent once per piece, on 5% of the area or less.
+- Every piece works from 360px to wide screens, with no horizontal scroll.
+- Before you finish, check the piece against the checklist.
+
+## Manual
+
+- [Manual overview](https://diegoeis.github.io/eis-ds/docs/manual/AGENTS.md): reading order and the conventions of the manual (MUST, MUST NOT, Prefer).
+- [Tokens: usage](https://diegoeis.github.io/eis-ds/docs/manual/tokens-usage.md): which variable to use for each colour, space, radius, line and text style, and the allowed raw values.
+- [Elements](https://diegoeis.github.io/eis-ds/docs/manual/elements.md): which element to use, with copy-ready HTML and the variants and sizes of each element.
+- [Layout](https://diegoeis.github.io/eis-ds/docs/manual/layout.md): files to load, page skeleton, spacing, grids, responsiveness, data visualisation, scopes and their components.
+- [Checklist](https://diegoeis.github.io/eis-ds/docs/manual/checklist.md): what must be true before you call a piece done.
+
+## Optional
+
+- [Token format](https://diegoeis.github.io/eis-ds/docs/tokens.md): the format of the token files (W3C DTCG). Only to change the system.
+- [Visual guidance](https://diegoeis.github.io/eis-ds/docs/visual-guidance/visual-guidance.md): visual direction, references and the decision log. Read it to understand why.
+- [Foundations](https://diegoeis.github.io/eis-ds/site/foundations.html): the tokens, rendered live.
+- [Elements page](https://diegoeis.github.io/eis-ds/site/elements.html): every element, rendered live.
+- [Examples](https://diegoeis.github.io/eis-ds/site/examples.html): pages built with eis-ds.

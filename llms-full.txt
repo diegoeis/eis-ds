@@ -1,0 +1,910 @@
+# eis-ds
+
+> eis-ds is a visual design system in plain HTML and CSS: tokens (colour, type, space, shape), basic elements and scope components. A page links one CSS file and builds with native HTML and `eis-` classes. Light mode only.
+
+This file is for LLMs and agents that build pages with eis-ds. Read the manual before you write HTML or CSS, and apply it literally. For the full manual in one file, read [llms-full.txt](https://diegoeis.github.io/eis-ds/llms-full.txt). To match a pinned release, read the same file from the tag: `https://cdn.jsdelivr.net/gh/diegoeis/eis-ds@<tag>/llms-full.txt`.
+
+Load one scope. Do not load a separate font link:
+
+- Web scope (websites, landing pages, documentation): `https://diegoeis.github.io/eis-ds/dist/eis-web.min.css`
+- App scope (dashboards, tools, system screens): `https://diegoeis.github.io/eis-ds/dist/eis-app.min.css`
+
+Rules that have no exceptions:
+
+- Use only the shared classes and the classes of your scope (`eis-web-*` or `eis-app-*`). Never mix scopes.
+- Your own CSS holds layout only. Do not restyle an eis-ds element. Do not write CSS that eis-ds already covers.
+- Use no raw values for colour, type, space or radius. Use the tokens. The manual lists the few allowed exceptions.
+- Use semantic HTML and native controls: `table`, `button`, `a`, `input`, `select`, `details`, `fieldset`. Never make a control or a table from `div` or `span`.
+- A variant changes colour only. A size (`--sm`, `--lg`) changes size only.
+- Use the accent once per piece, on 5% of the area or less.
+- Every piece works from 360px to wide screens, with no horizontal scroll.
+- Before you finish, check the piece against the checklist.
+
+## Manual
+
+### Manual overview
+
+Source: https://diegoeis.github.io/eis-ds/docs/manual/AGENTS.md
+
+#### eis-ds manual
+
+The usage manual of the design system. Written to be applied literally by people and by LLMs: every rule is a "use / don't use", every element has HTML to copy.
+
+Read these files in this order before you build anything:
+
+| File | Answers |
+|---|---|
+| [`tokens-usage.md`](https://diegoeis.github.io/eis-ds/docs/manual/tokens-usage.md) | Which variable do I use for this colour, size, space, radius or line? |
+| [`elements.md`](https://diegoeis.github.io/eis-ds/docs/manual/elements.md) | What HTML and classes make a button, chip, field, table, panel…? Which variant? |
+| [`layout.md`](https://diegoeis.github.io/eis-ds/docs/manual/layout.md) | How do I set up a page: files to load, page skeleton, grids, responsiveness, scopes (shared, web, app)? |
+| [`checklist.md`](https://diegoeis.github.io/eis-ds/docs/manual/checklist.md) | What must be true before a piece is done? |
+
+Related, not part of the manual:
+
+- `docs/tokens.md` — how tokens are **written** (W3C DTCG format). Read it only when adding or changing a token.
+- `docs/visual-guidance/visual-guidance.md` — where the visual direction came from, and the decision log. Read it to understand *why*. This manual says *what*.
+- `site/` (at the repository root) — the visual manual for humans: this manual applied and rendered. Start at `site/foundations.html`. The tokens and the CSS live in `src/`: `shared/`, `web/` and `app/` (see `layout.md` §7). When the manual and the CSS disagree, the CSS in `src/css/` wins. Then fix the manual.
+
+For LLMs outside this repository, the site publishes the manual as one file: https://diegoeis.github.io/eis-ds/llms-full.txt. `scripts/build-llms.py` generates it from this folder and `llms.txt`. A new file in this folder needs a link in `llms.txt`. The script also copies the section "Rules with no exceptions" below into `llms.txt`. Change the rules here, never in `llms.txt`.
+
+##### Rules with no exceptions
+
+The other files of this manual give the details of each rule.
+
+- Use only the shared classes and the classes of your scope (`eis-web-*` or `eis-app-*`). Never mix scopes.
+- Your own CSS holds layout only. Do not restyle an eis-ds element. Do not write CSS that eis-ds already covers.
+- Use no raw values for colour, type, space or radius. Use the tokens. The manual lists the few allowed exceptions.
+- Use semantic HTML and native controls: `table`, `button`, `a`, `input`, `select`, `details`, `fieldset`. Never make a control or a table from `div` or `span`.
+- A variant changes colour only. A size (`--sm`, `--lg`) changes size only.
+- Use the accent once per piece, on 5% of the area or less.
+- Every piece works from 360px to wide screens, with no horizontal scroll.
+- Before you finish, check the piece against the checklist.
+
+##### Conventions used in this manual
+
+- **MUST / MUST NOT** — no exceptions.
+- **Prefer** — the default. Deviate only for a reason you can state.
+- Code blocks are copy-ready. Replace only the text and the `id`/`for` values.
+- This manual writes variable names without `var()`: `--ink` means `var(--ink)`.
+
+---
+
+### Tokens: usage
+
+Source: https://diegoeis.github.io/eis-ds/docs/manual/tokens-usage.md
+
+#### Tokens: usage
+
+Which variable to use for what. Shared variables come from `src/shared/css/tokens.css`. Scope variables (`--web-*`, `--app-*`) come from `src/<scope>/css/tokens.css`. All are generated — never edit them.
+
+**Two layers.**
+- **Semantic roles** (`--surface-*`, `--ink*`, `--line`, `--accent*`) carry meaning and will change between modes (dark, paper). For backgrounds, text, lines and the accent colour you **MUST** use the role, never the primitive behind it.
+- **Primitives** (`--color-*`, `--space-*`, `--radius-*`, `--border-*`, `--font-*`): use them directly for everything that has no role: spacing, radii, type sizes and weights, and the grey ramp for data.
+
+**No raw values.** You MUST NOT write a hex, rgb, px font size, px spacing or radius in piece CSS. If a value is missing, the token is missing: add it (see `docs/tokens.md`), don't hard-code it. [§8](#8-allowed-raw-values) lists the allowed exceptions.
+
+---
+
+##### 1. Colour roles
+
+| Variable | Value | Use for | MUST NOT |
+|---|---|---|---|
+| `--surface-canvas` | `#f7f7f7` | Page background. Hover background of secondary/ghost controls. Background of an open disclosure summary. | Use as a card or panel background. |
+| `--surface-raised` | `#ffffff` | Background of a default button: a control raised above the canvas. | Use for panels, cards or other page areas. It is not a third surface level. |
+| `--surface-panel` | `#ffffff` | Panels, the app sidebar, inputs, table backgrounds. The second and **last** surface level. | Stack a panel inside a panel to get a third level. Use a line instead. |
+| `--surface-inverse` | `#111111` | Primary and black buttons (`eis-button--primary`, `--black`), active nav item, solid chip. | Use for large areas. |
+| `--line` | `#cfcfcf` | **Every** border, divider and hairline: panels, table rows, separators, chip outlines. | Use `--ink` or any darker grey for borders of shapes, panels or cards. |
+| `--ink` | `#111111` | Primary text, headings, numbers, checked controls, focus outline. | — |
+| `--ink-muted` | `#666666` | Secondary text, labels, metadata, placeholders, **outlines of interactive controls** (input, checkbox, radio, switch). 4.8:1 on canvas. | Use for decorative borders (that is `--line`). |
+| `--ink-inverse` | `#f7f7f7` | Text on `--surface-inverse`. | Put on `--accent` (use `--accent-on`). |
+| `--accent` | `#f35919` | **Fills and marks** for the one thing that matters: overdue, conflict, urgent, record. | Use as text on light surfaces (3.1:1, fails). Decorate. Exceed ~5% of the visible area. |
+| `--accent-ink` | `#b5400c` | The accent **as text**: overdue dates, error messages, current breadcrumb item. 4.7:1 on canvas. | Use as a fill. |
+| `--accent-on` | `#111111` | Text and icons placed **on** a `--accent` fill. 5.6:1. | Use white on `--accent` (3.1:1, fails). |
+| `--success` | `#2a9d5c` | **Fills** for a positive state: done, saved, sent. Also the save button when the page needs one (`eis-button--success`). | Use as text on light surfaces (2.9:1, fails). Use it to decorate or to compete with the accent. |
+| `--success-ink` | `#16753f` | Success **as text**: "Saved", "Sent". 4.8:1 on canvas. | Use as a fill. |
+| `--success-on` | `#111111` | Text and icons **on** a `--success` fill. 5.5:1. | Use white on `--success` (3.5:1, fails). |
+| `--danger` | `#e5484d` | **Fill** of a danger button on hover. | Use as text (use `--danger-ink`), or to decorate. |
+| `--danger-ink` | `#b42318` | Danger **as text** and the line of a danger button. 6.6:1 on white. | Use as a fill. |
+| `--danger-on` | `#111111` | Text **on** a `--danger` fill. 4.8:1. | Use white on `--danger` (3.9:1, fails). |
+| `--surface-head` | `#dddddd` | Head strip of a panel. Text on it is `--ink` (13.9:1). | Put `--ink-muted` on it (4.2:1, fails). Use as a page area. |
+
+###### Accent budget
+
+- One accent per piece. If two things compete for it, one of them is not important.
+- Accent covers ≤ 5% of the area. Exception: one "accent block" (a whole section in `--accent`) per page, declared on purpose.
+- Normal data is grey. Accent marks only the exception.
+
+###### Pairing quick-reference
+
+| Background | Text | Secondary text | Accent text |
+|---|---|---|---|
+| `--surface-canvas` | `--ink` | `--ink-muted` | `--accent-ink` |
+| `--surface-panel` | `--ink` | `--ink-muted` | `--accent-ink` |
+| `--surface-inverse` | `--ink-inverse` | — | — |
+| `--accent` | `--accent-on` | — | — |
+| `--success` | `--success-on` | — | — |
+
+Any other pair MUST be measured (WCAG 2.1: 4.5:1 text, 3:1 large text and UI graphics) before use.
+
+##### 2. Neutral primitives
+
+Use the role above whenever one exists. Use these primitives directly **only** for data visualisation and the cases listed.
+
+| Variable | Value | Direct use allowed for |
+|---|---|---|
+| `--color-white` | `#ffffff` | — (use `--surface-panel` / `--surface-raised`) |
+| `--color-neutral-0` | `#f7f7f7` | — (use `--surface-canvas` / `--ink-inverse`) |
+| `--color-neutral-100` | `#eaeaea` | — |
+| `--color-neutral-200` | `#dddddd` | Data ramp, lowest step. |
+| `--color-neutral-300` | `#cfcfcf` | Data ramp. (As a border, use `--line`.) |
+| `--color-neutral-400` | `#a3a3a3` | Data ramp. |
+| `--color-neutral-500` | `#858585` | Data ramp. Icons and non-text graphics (3.4:1 on panel). Never body text. |
+| `--color-neutral-600` | `#666666` | Data ramp. (As text, use `--ink-muted`.) |
+| `--color-neutral-900` | `#111111` | Data ramp, highest step. (As text, use `--ink`.) |
+
+###### Data ramp
+
+Ordinal data (age, volume, intensity) goes from light to dark, low to high:
+
+`--color-neutral-200` → `300` → `400` → `500` → `600` → `900`, and `--accent` for the exception (overdue, anomaly).
+
+- Use as many steps as there are buckets, keeping the order. With fewer than 6 buckets, prefer skipping steps so neighbours differ more (e.g. 4 buckets: `200 · 400 · 600 · 900`).
+- `200` and `300` are close (1.15:1). Don't put them next to each other when the difference matters.
+- No hues for data. Status colours: `--success` (green) for a positive state, `--danger` (red) only on a remove/delete button. The accent still marks problems.
+
+##### 3. Space
+
+Four steps, each double the previous. Each has a job. Pick by job, not by eye.
+
+| Variable | Value | Job |
+|---|---|---|
+| `--space-100` | 8px | **Inside a component**: icon ↔ label, gap between chips, label ↔ field, field ↔ hint. |
+| `--space-200` | 16px | **Between siblings**: panel padding, table cell padding, list rows, gap between panels in a grid. |
+| `--space-300` | 32px | **Between blocks**: page padding (desktop), gap between page regions, title ↔ content of a section. |
+| `--space-400` | 64px | **Between sections**: large section gaps on documentation and marketing pages. |
+
+- Use the half step `calc(--space-100 / 2)` (4px) only in dense data: cell grids, tabs padding, list item gaps.
+- Mobile page padding drops one step (`--space-300` → `--space-200`).
+
+##### 4. Radius and line
+
+| Variable | Value | Use for |
+|---|---|---|
+| `--radius-100` | 7px | Buttons, inputs, selects, tabs, nav items, small boxes. |
+| `--radius-200` | 10px | Panels. |
+| `--radius-300` | 15px | Large surfaces: a card that stands alone, a dialog. |
+| `--radius-400` | 20px | The largest surfaces: sheets, hero blocks. |
+| `--radius-full` | 999px | Chips, switch, avatar, pills. |
+
+Nested corners: an element inside a rounded box with padding uses the box radius minus the padding, so the curves stay parallel.
+| `--border-width-100` | 1px | **The only line weight.** Every border and divider. |
+
+- Only the focus outline uses 2px.
+- No shadows. The only exception is the button hover glow (defined in `elements.css`), never at rest.
+
+##### 5. Type
+
+Two voices. **Sans** (`--font-family-sans`, Geist) speaks text. **Mono** (`--font-family-mono`, Geist Mono) speaks for the instrument: labels, numbers, dates, codes, sources, navigation, buttons.
+
+###### Text styles — prefer these
+
+Apply with the class (`.eis-type-*`) or the per-property variables (`--type-<style>-font-size`, `-font-family`, `-font-weight`, `-letter-spacing`, `-line-height`).
+
+| Style | Spec | Use for |
+|---|---|---|
+| `display` | sans 56 / 300 / −1.5 / 1 | Page title (`h1`). One per page. Use `clamp(--font-size-600, 5vw, --font-size-800)` for responsiveness. |
+| `heading` | sans 24 / 400 / 1.25 | Section titles in documents and pages. |
+| `lead` | sans 18 / 400 / 1.45 | Intro paragraph under a title. |
+| `body` | sans 14 / 400 / 1.45 | Body text, UI text, task text, table text. The default on `<body>`. |
+| `metric` | mono 48 / 300 / −1.5 / 1 | Big numbers in panels and summaries. `--font-size-600` on mobile. |
+| `mono` | mono 12 / 400 | Dates, times, sources, metadata, counts, codes. Also `.eis-mono`. |
+| `label` | mono 11 / 500 / +0.88 / UPPERCASE | Panel titles, table headers, field labels, nav section titles. Also `.eis-label`. |
+
+Rules:
+- Numbers that line up (tables, metrics, counts) MUST be mono with `font-variant-numeric: tabular-nums` (`.eis-mono` and `.eis-num` already do it).
+- UPPERCASE is only for `label` style and buttons. Running text MUST be sentence case.
+- Weights: 300 for display/metric, 400 for text, 500 for labels and emphasis, 600 only for the brand mark. No bold (700).
+- Don't invent sizes. Use `--font-size-100…800`.
+
+##### 6. Mode
+
+Only the light mode exists. Pieces MUST still use roles for surfaces/ink/line/accent so a dark mode can be added by redefining roles only.
+
+##### 7. Scope tokens
+
+Use a scope token only inside that scope.
+
+| Variable | Value | Use for |
+|---|---|---|
+| `--web-size-sheet` | 1440px | Max width of the landing sheet. |
+| `--web-size-page` | 1280px | Max width of a documentation page. |
+| `--web-font-size-hero` | 134px | Hero title. Use `clamp(--font-size-700, 9vw, --web-font-size-hero)`. |
+| `--web-font-size-cta` | 100px | Closing call-to-action title. |
+| `--web-font-size-section` | = `--font-size-800` | Landing section titles. |
+| `--web-font-size-specimen` | 90px | Large type specimen. |
+| `--app-size-sidebar` | 248px | Sidebar width. |
+| `--app-size-sidebar-collapsed` | 64px | Collapsed sidebar width: the toggle plus the side padding. |
+| `--app-size-main` | 1200px | Max width of the main content, without its padding. |
+| `--app-size-aside` | 360px | Side column width. |
+| `--app-size-nav-item` | 32px | Min height of a navigation item. |
+| `--app-size-row` | 44px | Min height of a list row. |
+| `--app-size-metric` | 136px | Min height of a metric cell. |
+| `--app-size-avatar` | 28px | Avatar size in lists. |
+| `--app-size-filter-field` | 192px | Width of a labelled field in a filter bar (`eis-app-filters`). |
+| `--app-size-filter-search` | 224px | Width of the search field in a filter bar. |
+| `--app-size-form-field` | 256px | Min width of a column in a form row (`eis-app-form-row`). Columns wrap below it. |
+
+##### 8. Allowed raw values
+
+The only places a literal number is acceptable in piece CSS:
+- Component dimensions: control heights (40px, 24px chips), icon and avatar sizes, checkbox 16px, fixed sidebar width, column widths in a table.
+- `calc(--space-100 / 2)` in dense data.
+- `0`, `100%`, `1fr`, `auto`, percentages and viewport/container units in layout.
+- Breakpoints in `@media`.
+- Opacity `.4` for disabled.
+
+---
+
+### Elements
+
+Source: https://diegoeis.github.io/eis-ds/docs/manual/elements.md
+
+#### Elements
+
+Every basic element: when to use it, the HTML to copy, variants, and what is forbidden. Styles live in `src/shared/css/elements.css`. Elements are shared by every scope. The rendered versions are on `site/elements.html`.
+
+**General rules for all elements**
+
+- MUST use the native HTML element that carries the meaning. A `div` or `span` never pretends to be a button, checkbox, table, list or form.
+- Every class starts with `eis-`. Naming: block `eis-panel`, part `eis-panel__head`, variant `eis-chip--accent`, state `eis-is-accent`.
+- A **variant changes colour only** (through the local `--bg`, `--fg`, `--bd`, `--glow`). Never size, padding, radius, structure or behaviour.
+- A **size** (`--sm`, `--lg`) changes size only: height, padding, gap and font size, all from the spacing and type tokens. Never colour. Combine one size with any variant. No size class = medium.
+- A piece MUST NOT restyle an element from `elements.css`. If it needs something different, change the element in the system (and on `elements.html`).
+- Every control is keyboard-reachable and has a visible focus (`:focus-visible`, 2px `--ink` outline — already global).
+
+---
+
+##### Decision table: which element?
+
+| You need to… | Use |
+|---|---|
+| Trigger an action (save, filter, export, create) | **Button** `<button class="eis-button">` |
+| Go to another page | **Link** `<a>` — styled as button (`<a class="eis-button">`) only if it's a call to action |
+| Show a status, category, tag, code, count | **Chip** `<span class="eis-chip">` |
+| Pick several independent options | **Checkbox** |
+| Pick one of a few options in a form | **Radio** group |
+| Pick one of many options | **Select** |
+| Turn a setting on/off that applies immediately | **Switch** |
+| Switch the view of the current page (Today / Week / All) | **Tabs** |
+| Show rows × columns of data | **Table** |
+| Group content in a container | **Panel** |
+| Content that opens and closes | **Disclosure** (`<details>`) |
+| Label–value pairs (metrics, metadata) | `<dl>` |
+
+**Button vs chip** — the most common mistake:
+
+| | Button | Chip |
+|---|---|---|
+| Meaning | Acts | Describes |
+| Shape | Rectangle, `--radius-100` | Pill, `--radius-full` |
+| Text | MONO UPPERCASE, tracked | Mono sentence case |
+| Height | 40px | 24px |
+| Cursor | pointer | default |
+| Hover | Background change + glow | None |
+| Element | `<button>` / `<a>` | `<span>` |
+
+A status MUST be a chip. A chip MUST NOT be clickable.
+
+Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--accent`), the market name for the brand highlight colour. The main action is **primary** (`eis-button--primary`, ink fill). `eis-button--black` is the same ink fill as a colour, for a dark button that is not the main action (a pressed choice). A remove or delete action is **danger** (`eis-button--danger`). Plain `eis-button` is the default (white).
+
+---
+
+##### Button
+
+```html
+<button class="eis-button eis-button--primary" type="button">Save</button>
+<button class="eis-button" type="button">Cancel</button>
+<button class="eis-button eis-button--ghost" type="button">Skip</button>
+<button class="eis-button eis-button--accent" type="button">Record</button>
+<button class="eis-button" type="button" disabled>Disabled</button>
+```
+
+| Variant | Use for | Limit |
+|---|---|---|
+| `--primary` | The main action of a view, or of a panel that saves on its own (each Save on a settings page). | Use for a secondary action. |
+| `--black` | Ink fill as a colour: a pressed choice, a dark button that is not the main action. | Use for the main action (use `--primary`). |
+| `--danger` | Remove, delete: an action that loses data. A ghost with a red line and red text (`--danger-ink`); on hover it fills `--danger` with dark text. | Use for anything that does not remove or break. |
+| *(default)* | Secondary actions. White background (`--surface-raised`), line border. | — |
+| `--ghost` | Low-emphasis actions next to others (Skip, Clear). | No glow on hover. |
+| `--accent` | Only when the action **is** the accent: record, go live, publish. | Rare. Never "Save" or "Delete". |
+| `--success` | Save, when the page asks for a positive action in green. | Not together with a `--primary` button for the same action. |
+
+- `type="button"` unless it submits a form (`type="submit"`) or resets (`type="reset"`).
+- Hover: background shifts and a glow in the variant's colour appears (built in). Don't add your own shadow.
+- Disabled: the `disabled` attribute, never a class.
+- Order in a group: secondary/ghost first, the `--primary` button last (rightmost).
+
+###### Button with an icon
+
+```html
+<button class="eis-button eis-button--primary" type="button"><i data-lucide="plus" class="eis-icon" aria-hidden="true"></i>New topic</button>
+<a class="eis-button" href="/report">Open report<i data-lucide="arrow-right" class="eis-icon" aria-hidden="true"></i></a>
+<button class="eis-button eis-button--icon eis-button--sm" type="button" aria-label="Edit topic" title="Edit topic"><i data-lucide="pencil" class="eis-icon" aria-hidden="true"></i></button>
+```
+
+- The icon goes before the text (left) or after it (right). The button gap spaces it. Left is the default. Use right only for a direction: next, open, external.
+- `eis-button--icon`: a square button with only an icon. It MUST have `aria-label` and `title` with the action. Combine it with any variant and size. Use it for repeated actions in a row or a table (edit, remove, archive), where a text button does not fit.
+- One icon per button. Never an icon only for decoration in a text button that is clear without it.
+- Never type a character as an icon (`+`, `→`, `×`, `✓`). Use the Lucide icon.
+
+| Size | Height | Padding | Font | Use for |
+|---|---|---|---|---|
+| `--sm` | `--space-300` (32px) | 1.5 × `--space-100` | `--font-size-100` | Actions inside a row, a table or a dense toolbar. |
+| *(default)* | 40px | `--space-200` | `--font-size-200` | Forms and page toolbars. |
+| `--lg` | 1.5 × `--space-300` (48px) | `--space-300` | `--font-size-300` | The single main action of an empty state or landing view. |
+
+##### Chip
+
+```html
+<span class="eis-chip">Accepted</span>
+<span class="eis-chip eis-chip--outline">PLT-204</span>
+<span class="eis-chip eis-chip--solid">Organizer</span>
+<span class="eis-chip eis-chip--accent">Overdue</span>
+<span class="eis-chip eis-chip--hatch">Cancelled</span>
+<span class="eis-chip eis-chip--dot">On track</span>
+```
+
+| Variant | Use for |
+|---|---|
+| *(default)* | Neutral status: accepted, waiting, on track. |
+| `--outline` | Identifiers and categories: ticket codes, stream names. |
+| `--solid` | Strong neutral status: new, organizer, problem. |
+| `--accent` | The exception: overdue, conflict, urgent. Counts toward the accent budget. |
+| `--success` | A positive state: done, sent, saved. |
+| `--hatch` | What no longer counts: cancelled, blocked. |
+| `--dot` | Adds a status dot. Combine it with any variant. |
+
+| Size | Height | Padding | Font | Use for |
+|---|---|---|---|---|
+| `--sm` | `--space-200` (16px) | 0.75 × `--space-100` | `--font-size-100` | Inline with a line of text: a task title, a table cell. |
+| *(default)* | 24px | 10px | `--font-size-200` | Meta rows, lists, panel heads. |
+| `--lg` | `--space-300` (32px) | 1.5 × `--space-100` | `--font-size-300` | A status that leads a section or a page head. |
+
+- Text in sentence case (`Overdue`, not `OVERDUE`).
+- Never wrap a chip in `<a>` or `<button>`.
+
+##### Fields
+
+```html
+<div class="eis-field">
+  <label for="title">Title</label>
+  <input class="eis-input" id="title" name="title" type="text" placeholder="What needs to be done" aria-describedby="title-hint">
+  <p class="eis-field__hint" id="title-hint">Start with a verb.</p>
+</div>
+
+<div class="eis-field">
+  <label for="stream">Stream</label>
+  <select class="eis-select" id="stream" name="stream">
+    <option>Priority</option><option>Billing</option>
+  </select>
+</div>
+
+<div class="eis-field">
+  <label for="owner">Owner</label>
+  <input class="eis-input" id="owner" name="owner" type="email" aria-invalid="true" aria-describedby="owner-err">
+  <p class="eis-field__error" id="owner-err">Enter a valid email.</p>
+</div>
+
+<div class="eis-field">
+  <label for="notes">Notes</label>
+  <textarea class="eis-textarea" id="notes" name="notes"></textarea>
+</div>
+```
+
+- Label always above the control, always present, linked with `for`/`id`. A placeholder is not a label.
+- Use the right `type`: `email`, `date`, `number`, `search`, `url`…
+- Error: `aria-invalid="true"` on the control + `aria-describedby` pointing to `.eis-field__error`. Never colour alone.
+- Hint and error sit below the control.
+- Put fields in a `<form>`. Put the actions at the end, the `--primary` button last.
+
+##### Checkbox, radio, switch
+
+```html
+<fieldset class="eis-field eis-choices">
+  <legend>Show</legend>
+  <label class="eis-choice"><input class="eis-checkbox" type="checkbox" checked> Overdue</label>
+  <label class="eis-choice"><input class="eis-checkbox" type="checkbox"> New today</label>
+</fieldset>
+
+<fieldset class="eis-field eis-choices">
+  <legend>Sort by</legend>
+  <label class="eis-choice"><input class="eis-radio" type="radio" name="sort" checked> Due date</label>
+  <label class="eis-choice"><input class="eis-radio" type="radio" name="sort"> Age</label>
+</fieldset>
+
+<label class="eis-choice"><input class="eis-switch" type="checkbox" role="switch"> Compact rows</label>
+```
+
+- Always use a real `<input>`. Restyle it with `appearance:none`. Never replace it with a `span`.
+- Groups of related options go in `<fieldset>` + `<legend>`.
+- Radios in one group share `name`.
+- Switch = checkbox + `role="switch"`, only for settings that apply immediately (no Save button).
+- Wrapping the input in `<label class="eis-choice">` makes the whole text clickable and gives the hover.
+- In a table, a checkbox without visible text needs `aria-label` or a `<label for>`.
+
+##### Tabs
+
+```html
+<fieldset class="eis-tabs">
+  <legend>Range</legend>
+  <label><input type="radio" name="range" value="today" checked><span>Today</span></label>
+  <label><input type="radio" name="range" value="week"><span>Week</span></label>
+  <label><input type="radio" name="range" value="all"><span>All</span></label>
+</fieldset>
+```
+
+- It is a radio group (not ARIA tabs). Use it to switch the **view** of the current page, 2–4 options.
+- Height 40px, like the default button, input and select: in a toolbar, put tabs next to a default-size button (not `--sm`), and they line up.
+- When the options do not fit the width (narrow screens), they wrap to more rows and each row fills the width. There is never a horizontal scroll.
+- Radius `--radius-100`, like buttons, inputs and selects. The selected item uses the inner radius (`--radius-100` minus the padding).
+- Not for navigation between pages (use links) and not for form answers (use radio).
+
+##### Table
+
+```html
+<div class="eis-panel">
+  <table class="eis-table">
+    <caption class="eis-visually-hidden">Open tasks by stream</caption>
+    <thead>
+      <tr>
+        <th scope="col"><span class="eis-visually-hidden">Select</span></th>
+        <th scope="col">Stream</th>
+        <th scope="col">Status</th>
+        <th scope="col" class="eis-num">Open</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><input class="eis-checkbox" type="checkbox" aria-label="Select Billing"></td>
+        <th scope="row">Billing</th>
+        <td><span class="eis-chip eis-chip--accent">Overdue</span></td>
+        <td class="eis-num">13</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+```
+
+- Tabular data MUST be `<table>` with `<thead>`, `<tbody>`, `<th scope>`. Never a grid of `div`s.
+- Every table has a `<caption>` (visually hidden if the panel already has a title).
+- Cells are vertically centred (`th`, `td`: `vertical-align: middle`). Don't override.
+- Numbers: `.eis-num` (mono, tabular, right-aligned), including the header cell.
+- Header row (`thead th`): `--surface-inverse` background, `--ink-inverse` text, label type, inner padding. A scope may change the inline padding of the header to align it with its cells. It never changes the colours.
+- Rows separated by `--line`. No zebra stripes, no vertical lines.
+- On narrow screens a table MAY reflow into cards with CSS (`display:block/grid` on `tr`), keeping the HTML a table. If it can't reflow, wrap it in a horizontally scrollable container — the page itself MUST NOT scroll sideways.
+
+##### Panel
+
+```html
+<section class="eis-panel" aria-labelledby="agenda-h">
+  <header class="eis-panel__head">
+    <h2 class="eis-panel__title" id="agenda-h">Today's agenda</h2>
+    <span class="eis-mono">10:30 — 17:15</span>
+  </header>
+  <!-- content -->
+</section>
+```
+
+- The only container. `--surface-panel`, 1px `--line`, `--radius-100`, no shadow.
+- Head: `--surface-head` background, text in `--ink`. The title is `eis-panel__title` (label type, ink: it names the panel, it is not a muted label) on the left, mono meta (count, range) on the right.
+- MUST NOT nest a panel inside a panel. Separate inside with hairlines.
+- Content padding: `--space-200`.
+
+```html
+<section class="eis-panel" aria-labelledby="run-h">
+  <header class="eis-panel__head">…</header>
+  <div class="eis-panel__body"><!-- fields, text --></div>
+  <footer class="eis-panel__footer"><button class="eis-button" type="button">Save</button></footer>
+</section>
+```
+
+- `eis-panel__body`: the padded content area under the head. Its children stack with a `--space-200` gap. Use it for any panel that holds fields or text, not for a panel that holds a table or a metric row.
+- `eis-bleed` (helper): a direct child of `eis-panel__body` that touches the panel edges: no side padding, none above it when it is first, none below it when it is last. Use it for a quoted block or a strip, never to remove the body padding of fields.
+- `eis-panel__footer`: the bottom area for actions. Same padding, buttons in one row that wraps. No line above it. After a body it drops its top padding, so body and footer share one gap.
+
+##### Disclosure
+
+```html
+<details class="eis-disclosure" open>
+  <summary><h3 class="eis-label">Payments</h3><span class="eis-mono">13</span></summary>
+  <!-- content -->
+</details>
+```
+
+- Native `<details>`/`<summary>`. No JS needed.
+- `+` closed, `−` open (built in). When open, the summary gets `--surface-canvas` background.
+- A `--line` separates stacked disclosures.
+
+##### Metrics (label–value)
+
+```html
+<dl class="eis-metrics">
+  <div><dt class="eis-label">Open</dt><dd>84</dd><dd class="eis-mono">11 streams</dd></div>
+  <div><dt class="eis-label">Overdue</dt><dd>06</dd><dd class="eis-mono">3 in Platform</dd></div>
+</dl>
+```
+
+- Always `<dl>`. Value in `metric` style, context line in `mono`.
+- Only the metric that is the exception gets a accent mark.
+- The layout of `.eis-metrics` is page CSS today. See `site/elements.html` for the reference.
+
+##### Breadcrumb and link
+
+```html
+<nav class="eis-breadcrumb eis-label" aria-label="Breadcrumb">
+  <ol><li><a href="/tasks">Tasks</a></li><li aria-current="page">Work</li></ol>
+</nav>
+
+<p>Read the <a class="eis-link" href="/foundations">foundations</a> first.</p>
+```
+
+- Breadcrumb is `<nav>` + `<ol>`. The current item has `aria-current="page"` and shows in `--accent-ink`.
+- Every `<a>` is underlined and turns `--accent-ink` on hover. This is the base style: you get it with no class. Never remove the underline from a link in text.
+- `.eis-link` makes a link in running text quieter: `--ink` text with a `--line` underline. On hover the text and the underline turn `--accent-ink`.
+- Use `--accent-ink`, not `--accent`, for link text: `--accent` fails contrast as text (3.1:1 on `--surface-panel`).
+- Exceptions, set by the component: `.eis-button` links look like buttons, and navigation menus (`.eis-app-nav`, the web header and doc nav) have no underline because the whole item is the target.
+
+##### Lists and avatar
+
+```html
+<ul class="eis-panel">
+  <li><span class="eis-avatar" aria-hidden="true">AN</span><p>Ana<small class="eis-mono">Release plan</small></p><span class="eis-chip">Waiting</span></li>
+</ul>
+```
+
+- Lists are `<ul>`/`<ol>`. A `--line` separates the rows.
+- Avatar: initials in a circle, `aria-hidden` (the name is in the text). No photos, no colour fills.
+
+##### Icons
+
+```html
+<i data-lucide="pencil" class="eis-icon" aria-hidden="true"></i>
+```
+
+Load at the end of `<body>`, Lucide first:
+
+```html
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="<src>/shared/js/icons.js"></script>
+```
+
+- The set is [Lucide](https://lucide.dev/icons) (ISC licence): line icons with a 2px stroke, the same weight as the system lines. Use the Lucide name in `data-lucide`.
+- `eis-icon` is 16px (`--space-200`) and takes the text colour (`currentColor`). Never colour an icon on its own. It follows the button or text it sits in.
+- `shared/js/icons.js` draws the icons on load and again when the page adds new ones. A page that renders with JavaScript does not call Lucide itself.
+- An icon is `aria-hidden="true"`. The text or the `aria-label` of the control carries the meaning.
+- Without the network the icon is empty. So an icon never is the only way to know what a control does: the control has text, or `aria-label` plus `title`.
+- Inside a button, see "Button with an icon".
+
+##### Labels and helpers
+
+- `.eis-label` — label text style (mono, 11, uppercase, `--ink-muted`). For panel titles, table heads, nav section titles.
+- `.eis-mono` — mono metadata (12, `--ink-muted`, tabular numbers).
+- `.eis-visually-hidden` — hidden on screen, read by screen readers. For captions, legends and labels the design doesn't show.
+
+##### Not yet in the system
+
+Dialog, popover/menu, tooltip, tabs, toast, pagination. Until they exist, use the native element (`<dialog>`, `popover` attribute, `title`) and style it only with tokens. Propose the element for the system. Do not design it inside a piece.
+
+---
+
+### Layout
+
+Source: https://diegoeis.github.io/eis-ds/docs/manual/layout.md
+
+#### Layout
+
+How to set up a page or piece built with the system.
+
+##### 1. Files to load
+
+A piece is a standalone HTML file. It links one stylesheet:
+
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" href="<src>/shared/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="<src>/shared/brand/apple-touch-icon.png">
+<link rel="stylesheet" href="<src>/<scope>/<scope>.css">
+<style>/* this piece's layout only */</style>
+```
+
+- `<src>` is the relative path to the `src/` folder at the repository root. From `site/examples/<kind>/` it is `../../../src`.
+- `<scope>` is `web` (websites, landing pages, docs) or `app` (dashboards, tools). See §7.
+- In a project outside this repository, link `dist/eis-<scope>.min.css` instead: one minified file with the same content and no chained imports. It is generated by `scripts/build-css.py`.
+- `<scope>.css` is the only stylesheet to link. It imports `../shared/shared.css` (fonts, shared tokens, base, elements), then the scope tokens and components. Keep `shared/` next to the scope folder. The preconnect lines are optional: they make the fonts load faster.
+- `shared.css` imports the fonts, the shared tokens, the base and the elements. The base already sets box-sizing, margins, body type, canvas background and focus. Don't repeat it.
+- The piece's `<style>` contains **layout only**: grids, regions, positions, page-specific arrangements. It MUST NOT redefine buttons, chips, fields, tables, panels or any shared element.
+- No frameworks or libraries (React, Tailwind, Bootstrap, icon fonts). One exception: Lucide draws the SVG icons (`elements.md`, "Icons"). Load it with `shared/js/icons.js` only when the page has icons.
+- The favicon is in `src/shared/brand/`: `favicon.svg` (browser tab) and `apple-touch-icon.png` (180×180, home screen). It is the same in every scope. In a project outside this repository, copy both files next to the page and link the copies. A project with its own brand can use its own favicon.
+
+##### 2. Page skeleton
+
+```html
+<!doctype html>
+<html lang="en">
+<head>…files above…</head>
+<body class="eis-app-shell">
+  <aside class="eis-app-sidebar" aria-label="Sidebar">
+    <nav class="eis-app-nav" aria-label="Main">…</nav>
+  </aside>
+  <main class="eis-app-main">
+    <header>
+      <nav class="eis-breadcrumb eis-label" aria-label="Breadcrumb">…</nav>
+      <h1>Page title</h1>
+    </header>
+    <section class="eis-panel" aria-labelledby="…">…</section>
+  </main>
+</body>
+</html>
+```
+
+A web page (website, landing, docs) uses the web scope instead:
+
+```html
+<body>
+  <div class="eis-web-sheet">
+    <header class="eis-web-wrap eis-web-grid eis-web-header">…</header>
+    <main>
+      <section class="eis-web-hero" aria-labelledby="hero-h">…</section>
+      <section class="eis-web-section" aria-labelledby="…">…</section>
+    </main>
+    <footer class="eis-web-wrap eis-web-grid eis-web-footer">…</footer>
+  </div>
+</body>
+```
+
+Element roles:
+
+| Region | Element |
+|---|---|
+| Sidebar / side navigation | `<aside aria-label="…">` — also when it becomes a top bar on mobile |
+| Navigation lists | `<nav aria-label="…">` + `<ul>` |
+| Page or section heading area | `<header>` (never for the sidebar) |
+| Main content | `<main>`, one per page |
+| Content blocks | `<section aria-labelledby>` (has a heading) or `<article>` (stands alone) |
+| Footer of page, panel or sidebar | `<footer>` |
+| Dates and times | `<time datetime="…">` |
+
+- Headings in order, one `<h1>` per page. Panel titles are `h2`/`h3` with the `eis-label` class — the visual size doesn't decide the level.
+- Interface text and file names in **English**. Example content is **fictional**: invented first names, invented codes like `PLT-204`. Never use real people, clients or data.
+
+##### 3. Spacing the page
+
+| Where | Space |
+|---|---|
+| Page padding | `--space-300` desktop, `--space-200` below 1024px |
+| Gap between page regions (header, metric row, panel grid) | `--space-300` |
+| Gap between panels in a grid | `--space-200` |
+| Panel padding, row padding | `--space-200` |
+| Inside components | `--space-100` |
+
+Surfaces: page on `--surface-canvas`, content in `--surface-panel` panels. Nothing else. No background grid, no gradients, no shadows.
+
+##### 4. Grids and responsiveness
+
+Every piece MUST work from 360px to wide screens with **no horizontal scroll**, no clipped text and no overlap.
+
+- Fluid first: `grid`, `flex`, `minmax`, `clamp()`. Breakpoints only where the composition breaks.
+- Auto grids MUST use `minmax(min(<px>, 100%), 1fr)`:
+  ```css
+  grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+  ```
+  A bare `minmax(250px, 1fr)` overflows when the container is narrower than 250px.
+- Grid and flex children that contain text: `min-width: 0` (or `minmax(0, 1fr)` columns) so long text wraps instead of pushing the layout.
+- Display titles: `font-size: clamp(--font-size-600, 5vw, --font-size-800)`.
+- Typical breakpoints so far:
+  - 1280px: the side column drops below.
+  - 1024px: the sidebar becomes a top bar.
+  - 760px: tables reflow, metrics go 2 × 2.
+  - 420px: toolbar buttons stretch.
+- A horizontal nav that can't fit scrolls **inside itself** (`overflow-x: auto` on the nav), never the page.
+- Tables: reflow to cards with CSS, or scroll inside a wrapper.
+
+##### 5. Slides and fixed-ratio pieces
+
+- Each slide is a container. Set `container-type: inline-size` and `aspect-ratio: 16/9`.
+- Size everything inside in container units (`cqw`), so the slide scales as one object.
+- Use the same tokens for colour, line and type families. Sizes in `cqw` are the allowed exception to px tokens.
+
+##### 6. Data visualisation
+
+- Data as a matrix of equal cells (like device keys) or thin bars. No pie charts, no 3D, no gradients.
+- Grey ramp for normal values, `--accent` only for the exception (see `tokens-usage.md` §2).
+- Every chart has `role="img"` and an `aria-label` that states the numbers.
+- Legends are lists (`<ul>`), `aria-hidden` if the `aria-label` already carries the data.
+
+##### 7. Scopes: shared, web and app
+
+eis-ds is several design systems in one. They share the same base and never conflict.
+
+| Folder | Use for | Load | Class prefix | Variable prefix |
+|---|---|---|---|---|
+| `src/shared/` | Every scope | Imported by each scope entry. Optional `shared/js/icons.js` (with Lucide) for icons | `eis-` | `--color-`, `--space-`, `--ink`… |
+| `src/web/` | Websites, landing pages, marketing pages, documentation | `web/web.css` or `dist/eis-web.min.css`, optional `web/js/lines.js` | `eis-web-` | `--web-` |
+| `src/app/` | Dashboards, tools, system screens | `app/app.css` or `dist/eis-app.min.css`, optional `app/js/sidebar.js` | `eis-app-` | `--app-` |
+
+To build a website, copy `src/shared/` and `src/web/`. To build a dashboard, copy `src/shared/` and `src/app/`. More scopes (slides, email, docs) follow the same pattern.
+
+Rules:
+- `shared` never depends on a scope. Shared elements (button, chip, fields, table, panel) and, later, icons live there.
+- A scope's tokens live under its own group (`web.*`, `app.*`) and MAY reference shared tokens: `"{font.size.800}"`. A colour change in shared reaches every scope.
+- A scope MUST NOT reference another scope's tokens, variables or classes.
+- Every selector in `<scope>/css/components.css` starts with `.eis-<scope>-`. A scope never styles bare HTML or shared classes on their own. It MAY place a shared element in its own context (`.eis-app-tasks .eis-table`) for layout only.
+- `scripts/build-tokens.py` validates the token rules. `scripts/check-css.py` validates the CSS rules. Both MUST pass.
+- A pattern used on two or more pages goes into the scope CSS. A pattern used on one page only stays in that page's `<style>`.
+
+###### Web components
+
+| Class | What it is |
+|---|---|
+| `eis-web-docnav` | Top bar of documentation pages |
+| `eis-web-page`, `eis-web-intro`, `eis-web-toc` | Documentation page shell, intro with title and facts, table of contents |
+| `eis-web-doc` | Documentation section: title column + content column |
+| `eis-web-spec`, `eis-web-pair`, `eis-web-scroll` | Specification table, contrast pair sample, horizontal scroll wrapper |
+| `eis-web-docfoot` | Footer of documentation pages |
+| `eis-web-sheet`, `eis-web-wrap`, `eis-web-grid` | Landing sheet on the canvas (always 32px from the window edge, 24px up to 760px), side padding, 12-column grid |
+| `eis-web-header`, `eis-web-brand` | Landing top bar and brand mark |
+| `eis-web-hero` (`__index`, `__meta`, `__lead`, `__sub`, `__actions`) | Hero block |
+| `eis-web-lines` + `data-eis-web-lines` | Line art drawn by `web/js/lines.js`. Options: `data-seed`, `data-step` |
+| `eis-web-section` (`__head`, `__body`, `__aside`) | Landing section: numbered label, title, body column |
+| `eis-web-numbered`, `eis-web-cards`/`eis-web-card`, `eis-web-principles`, `eis-web-steps` | Numbered list, cards with a figure, principles grid, step timeline |
+| `eis-web-code`, `eis-web-cta`, `eis-web-footer`, `eis-web-arrow` | Code block, closing call to action, landing footer, arrow link |
+
+###### App components
+
+| Class | What it is |
+|---|---|
+| `eis-app-shell` | On `<body>`: sidebar + main grid. Becomes a top bar below 1024px |
+| `eis-app-sidebar`, `eis-app-brand`, `eis-app-nav` (`__section`, `__count`) | Sidebar, brand, navigation with counts |
+| `eis-app-sidebar__toggle` + `data-eis-app-sidebar-toggle` | Collapse button at the bottom left of the sidebar, last in `eis-app-sidebar__foot`. Driven by `app/js/sidebar.js`. Collapsed, the sidebar keeps only the button. Above 1024px only. See "Sidebar collapse" below |
+| `eis-app-main`, `eis-app-page-head` (`__meta`), `eis-app-toolbar` | Main region (content max `--app-size-main`, in the centre of the free space), page head, action toolbar. See "Page head" below |
+| `eis-app-metrics` | Row of metric cells (`<dl>`) |
+| `eis-app-grid` (`--halves`, `--main`), `eis-app-stack` | Panel grids and the side column stack |
+| `eis-app-agenda`, `eis-app-cells`, `eis-app-legend`, `eis-app-bar`, `eis-app-pips` | Agenda list, cell matrix, legend, stacked bar, pips |
+| `eis-app-tasks`, `eis-app-task-title`, `eis-app-meta`, `eis-app-due` | Task groups with tables (cells aligned to the top; columns `eis-app-col-check`, `-idx`, `-src`, `-date`, `-due`), the task title when it is not a `<label>`, task metadata, due dates |
+| `eis-app-topics`, `eis-app-people`, `eis-app-done` | Side lists |
+| `eis-app-filters` (`__fields`, `__search`) | Filter bar above a list: `eis-tabs` on the left, labelled fields on the right. Fields take the full width below 420px |
+| `eis-app-notice` | One status line (`role="status"`), sticky at the top while the user scrolls a long list |
+| `eis-app-flash` | The result of one button, right next to it (`role="status"`): "Saved" beside Save. `data-state="ok"` (success ink) fades out by itself once the page adds `data-fade`; `data-state="error"` (danger ink) stays. Empty = hidden. Use it when the result belongs to that button; use `eis-app-notice` for the page |
+| `eis-app-code` | A generated file shown as text (JSON, markdown) inside a panel. Scrolls inside itself |
+| `eis-app-messages` (`__head`) | Messages grouped by day: one `<section>` per day, a day heading, then one message panel per message |
+| `eis-app-message` (`__head`, `__meta`, `__quote`, `__score`, `__bar`, `__notes`, `__notes--accent`, `__sent`, `__state`, `__task`, `--marked`, `--handled`) | One message on an `<article class="eis-panel">`: head strip (`eis-panel__title` with number and sender, chips, then time, source link and app logo on the right), then `eis-panel__body`: the quote as it arrived first, as an `eis-bleed` (square, touches the edges, optional score on its top right, out of the flow), the reply, collapsible notes and `eis-panel__footer` (action buttons, state text at the right end, optional inline form). `--marked`: accent outline. `--handled`: quote in muted ink |
+| `eis-app-menu` (`__list`) | A button that opens a small row of choices (`role="menu"`, items `menuitemradio`). The list opens above the row, at the left of the nearest positioned container |
+| `eis-app-form-row`, `eis-app-form-text`, `eis-app-inline` | Settings forms in `eis-panel__body`: fields side by side (as many as fit), a short explanation in muted ink, a field with its buttons on one line |
+| `eis-app-items` (`__text`) | A list of saved entries: each row has its text in mono and small buttons |
+
+`eis-app-metrics` takes one column per cell: two cells make two columns, four make four. Below 760px it is two columns.
+
+###### Sidebar collapse
+
+The sidebar can collapse to a narrow strip (`--app-size-sidebar-collapsed`). Collapsed, it shows only the toggle. The toggle does not move. Only its arrow turns.
+
+1. Give the sidebar an `id`.
+2. Put the toggle last in the sidebar footer. Put links such as Settings in the main nav, not in the footer:
+   ```html
+   <footer class="eis-app-sidebar__foot">
+     <button class="eis-app-sidebar__toggle" type="button" aria-controls="sidebar"
+             aria-expanded="true" aria-label="Sidebar" data-eis-app-sidebar-toggle></button>
+   </footer>
+   ```
+3. Load `app/js/sidebar.js` at the end of `<body>`.
+
+The script sets `aria-expanded`. The CSS reads it. The script keeps the choice in `localStorage` (key `eis-app-sidebar`, change it with `data-key`). The main content then fills the free space, up to `--app-size-main` (1200px). Below 1024px the sidebar is a top bar, the toggle is hidden and the collapse has no effect.
+
+###### Page head
+
+Every app page starts with `eis-app-page-head`. It sets one standard top for all pages:
+
+```html
+<header class="eis-app-page-head">
+  <p class="eis-app-page-head__meta">
+    <time class="eis-label" datetime="2026-10-26">Monday, 26 October 2026</time>
+    <span class="eis-mono">daily/2026-10/2026-10-26.md</span>
+  </p>
+  <h1>Daily</h1>
+  <form class="eis-app-toolbar">…</form>
+</header>
+```
+
+- `__meta` is optional. It is a full-width row above the title: the first child sits on the left (the page context, e.g. today's date), the last child on the right (a detail, e.g. the source file or the last update). One child only: it stays on the left.
+- The `<h1>` is required. The toolbar is optional and sits on the right of the title.
+- Don't put a breadcrumb and a meta row in the same head. Don't build a page head with helper classes or page CSS: use this component.
+
+###### Add a scope
+
+1. Create `src/<scope>/tokens/<scope>.tokens.json`. Put every token under the group `<scope>`. Reference shared tokens where a value already exists.
+2. Create `src/<scope>/tokens/<scope>.resolver.json`. Copy `src/web/tokens/web.resolver.json` and change the names.
+3. Run `python3 scripts/build-tokens.py`. It finds the new scope and writes `src/<scope>/css/tokens.css`.
+4. Create `src/<scope>/css/components.css`. Every selector starts with `.eis-<scope>-`. Then create the entry `src/<scope>/<scope>.css`: copy `src/web/web.css` and change the names.
+5. Run `python3 scripts/check-css.py`. Then run `python3 scripts/build-css.py`. It finds the new scope and writes `dist/eis-<scope>.min.css`.
+6. Add the scope to the table at the top of this section, to `README.md` and to `AGENTS.md`. Add its tokens to `tokens-usage.md` §7.
+7. Add an example in `site/examples/<kind>/` and a card on `examples.html`.
+
+---
+
+### Checklist
+
+Source: https://diegoeis.github.io/eis-ds/docs/manual/checklist.md
+
+#### Checklist
+
+Run this before calling a piece, element or token done. Every box must be true.
+
+##### Files and CSS
+
+- [ ] Links one scope entry (`web/web.css` or `app/app.css`, or `dist/eis-web.min.css` or `dist/eis-app.min.css`), then only its own layout CSS. No separate font link.
+- [ ] Uses only shared classes and the classes of its own scope.
+- [ ] Scope CSS changed? `python3 scripts/check-css.py` passes.
+- [ ] No raw colours, font sizes, spacing or radii (only the exceptions in `tokens-usage.md` §8).
+- [ ] Backgrounds, text, lines and accent use roles (`--surface-*`, `--ink*`, `--line`, `--accent*`), not primitives.
+- [ ] Does not restyle any element from `elements.css`.
+- [ ] Every class starts with `eis-`.
+- [ ] Variants change colour only.
+- [ ] No shadows (except the built-in button hover glow), no gradients, no glow, no background grid.
+
+##### HTML
+
+- [ ] Semantic regions: `aside` for the sidebar, `main`, `header`, `nav`, `section`, `footer`.
+- [ ] One `h1`. Headings in order.
+- [ ] Tabular data in `<table>` with `thead`, `tbody`, `th scope`, `caption`.
+- [ ] Controls are native: `button`, `a`, `input` (checkbox / radio / switch), `select`, `textarea`, `details`, `form`, `fieldset` + `legend`. No `div`/`span` pretending.
+- [ ] Every control has a label. Invalid fields have `aria-invalid` + `aria-describedby`.
+- [ ] Visual-only elements are `aria-hidden`. Charts have `role="img"` + a data `aria-label`.
+- [ ] Dates and times in `<time datetime>`.
+- [ ] Interface text is in English. Example data is fictional.
+
+##### Visual rules
+
+- [ ] Accent used once per piece, ≤ 5% of the area (or one declared accent block).
+- [ ] Statuses are chips. Actions are buttons. The main action is `eis-button--primary` (one per view, or one per panel that saves on its own). Remove/delete is `eis-button--danger`.
+- [ ] Every border and divider is `--line`, 1px.
+- [ ] Numbers are mono and tabular. Labels use the label style. Running text is in sentence case.
+- [ ] Two surface levels only: canvas and panel. No panel inside a panel.
+
+##### Contrast
+
+- [ ] You measured every text/background pair that is not in the pairing table (`tokens-usage.md` §1): ≥ 4.5:1 text, ≥ 3:1 large text and UI graphics.
+- [ ] No white or `--ink-inverse` on `--accent`. No `--accent` as text.
+
+##### Responsive
+
+- [ ] Rendered and looked at in **375px, 768px and 1440px**.
+- [ ] You dragged the window between them. `scrollWidth ≤ clientWidth` at every width from ~280px up.
+- [ ] Auto grids use `minmax(min(<px>, 100%), 1fr)`.
+- [ ] Nothing is clipped or overlaps. Tables reflow or scroll inside a wrapper.
+
+##### Keyboard
+
+- [ ] Every interactive element reachable with Tab, in a sensible order.
+- [ ] Focus visible on all of them.
+
+##### When adding to the system
+
+- [ ] New token: in `src/shared/tokens/` (shared) or `src/<scope>/tokens/` (one scope), `python3 scripts/build-tokens.py` passes, shown on `foundations.html`, usage added to `tokens-usage.md`.
+- [ ] New or changed element: in `src/shared/css/elements.css`, shown on `elements.html`, documented in `elements.md`.
+- [ ] New or changed scope component: in `src/<scope>/css/components.css`, listed in `layout.md` §7, `check-css.py` passes.
+- [ ] New scope: steps in `layout.md` §7, "Add a scope".
+- [ ] New page in this repository: Google Tag Manager snippet first in `<head>` and first in `<body>` (copy from `index.html`).
+- [ ] New example: in `site/examples/<kind>/`, card on `examples.html` with a 1440×900 PNG screenshot (`<name>.png`) and a descriptive `alt`. No live iframe.
+- [ ] Manual or `llms.txt` changed: `python3 scripts/build-llms.py` passes. Commit `llms.txt` and `llms-full.txt` with the change.
+- [ ] Decision recorded in `docs/visual-guidance/visual-guidance.md` §7.
+
+---
+
+## Optional
+
+- [Token format](https://diegoeis.github.io/eis-ds/docs/tokens.md): the format of the token files (W3C DTCG). Only to change the system.
+- [Visual guidance](https://diegoeis.github.io/eis-ds/docs/visual-guidance/visual-guidance.md): visual direction, references and the decision log. Read it to understand why.
+- [Foundations](https://diegoeis.github.io/eis-ds/site/foundations.html): the tokens, rendered live.
+- [Elements page](https://diegoeis.github.io/eis-ds/site/elements.html): every element, rendered live.
+- [Examples](https://diegoeis.github.io/eis-ds/site/examples.html): pages built with eis-ds.

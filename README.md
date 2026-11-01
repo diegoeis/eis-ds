@@ -46,11 +46,27 @@ To read or change the source, copy `src/shared/` and one scope (`src/web/` or `s
 3. Build with native HTML: shared classes (`eis-button`, `eis-chip`, `eis-panel`…) and the classes of your scope (`eis-app-*` or `eis-web-*`). Your own CSS holds layout only.
 4. Check the piece against `docs/manual/checklist.md`.
 
+### Use it with an AI agent
+
+The site publishes the manual for LLMs in the [llms.txt](https://llmstxt.org/) format:
+
+- `https://diegoeis.github.io/eis-ds/llms.txt` — index: how to load, the rules with no exceptions, links to each manual file.
+- `https://diegoeis.github.io/eis-ds/llms-full.txt` — the full manual in one file.
+
+Add this block to the `AGENTS.md` (or `CLAUDE.md`) of your project. Replace `<tag>` with the tag of the CSS file you load, so the rules match your CSS:
+
+```md
+## UI: eis-ds
+Before you create or change any UI, read https://cdn.jsdelivr.net/gh/diegoeis/eis-ds@<tag>/llms-full.txt and apply it literally.
+Use only eis- classes and tokens. Do not write CSS that eis-ds already covers. Check the piece against the checklist before you finish.
+```
+
 ## Documentation
 
 - `index.html` — landing page.
 - `site/foundations.html`, `site/elements.html`, `site/examples.html` — the visual manual: tokens, elements and examples, running live.
 - `docs/manual/` — the written rules: which token, which element, page layout, scopes, checklist. Written to be applied literally by people and LLMs.
+- `llms.txt`, `llms-full.txt` — the manual for LLMs: an index and the full text in one file. `scripts/build-llms.py` generates `llms-full.txt`.
 - `docs/tokens.md` — the token format (W3C Design Tokens Format Module 2025.10).
 - `docs/visual-guidance/visual-guidance.md` — visual direction, Pinterest references and the decision log.
 
@@ -62,8 +78,9 @@ Tokens are the source of truth, in `src/<scope>/tokens/*.tokens.json`. Never edi
 python3 scripts/build-tokens.py   # validate the tokens of every scope and write each tokens.css
 python3 scripts/check-css.py      # check that scopes never use each other's classes or variables
 python3 scripts/build-css.py      # write dist/eis-<scope>.min.css. Run it after every CSS change and commit dist/
+python3 scripts/build-llms.py     # copy the manual rules into llms.txt and write llms-full.txt. Run it after every change in docs/manual/ or llms.txt
 ```
 
-`python3 scripts/build-css.py --check` fails if `dist/` is not up to date. Run it before you create a release tag.
+`python3 scripts/build-css.py --check` fails if `dist/` is not up to date. `python3 scripts/build-llms.py --check` does the same for `llms-full.txt`. Run both before you create a release tag. The GitHub Action `.github/workflows/check.yml` runs these checks on every push and pull request.
 
-Both scripts use the Python standard library only. Contributor and agent rules are in `AGENTS.md`.
+The scripts use the Python standard library only. Contributor and agent rules are in `AGENTS.md`.

@@ -58,4 +58,5 @@ Run this before calling a piece, element or token done. Every box must be true.
 - [ ] New scope: steps in `layout.md` §7, "Add a scope".
 - [ ] New page in this repository: Google Tag Manager snippet first in `<head>` and first in `<body>` (copy from `index.html`).
 - [ ] New example: in `site/examples/<kind>/`, card on `examples.html` with a 1440×900 PNG screenshot (`<name>.png`) and a descriptive `alt`. No live iframe.
+- [ ] Manual or `llms.txt` changed: `python3 scripts/build-llms.py` passes. Commit `llms.txt` and `llms-full.txt` with the change.
 - [ ] Decision recorded in `docs/visual-guidance/visual-guidance.md` §7.

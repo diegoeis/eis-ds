@@ -116,15 +116,15 @@
 .eis-app-legend li::before{content:"";width:10px;height:10px;border-radius:2px;background:var(--swatch)}
 
 /* task groups: details + real tables */
-.eis-app-tasks details + details{border-top:var(--border-width-100) solid var(--line)}
-.eis-app-tasks summary{display:flex;align-items:baseline;gap:var(--space-200);cursor:pointer;list-style:none;
+.eis-app-tasks > details + details{border-top:var(--border-width-100) solid var(--line)}
+.eis-app-tasks > details > summary{display:flex;align-items:baseline;gap:var(--space-200);cursor:pointer;list-style:none;
   padding:var(--space-300) var(--space-200) var(--space-200)}
-.eis-app-tasks summary::-webkit-details-marker{display:none}
-.eis-app-tasks summary::after{content:"−";margin-left:auto;font-family:var(--font-family-mono);color:var(--ink-muted)}
-.eis-app-tasks details[open] > summary{background:var(--surface-canvas)}
-.eis-app-tasks details:first-child > summary{padding-top:var(--space-200)}
-.eis-app-tasks details:not([open]) summary{padding-block:var(--space-200)}
-.eis-app-tasks details:not([open]) summary::after{content:"+"}
+.eis-app-tasks > details > summary::-webkit-details-marker{display:none}
+.eis-app-tasks > details > summary::after{content:"−";margin-left:auto;font-family:var(--font-family-mono);color:var(--ink-muted)}
+.eis-app-tasks > details[open] > summary{background:var(--surface-canvas)}
+.eis-app-tasks > details:first-child > summary{padding-top:var(--space-200)}
+.eis-app-tasks > details:not([open]) > summary{padding-block:var(--space-200)}
+.eis-app-tasks > details:not([open]) > summary::after{content:"+"}
 .eis-app-tasks summary h2{font-family:var(--type-label-font-family);font-size:var(--font-size-200);font-weight:var(--font-weight-medium);
   letter-spacing:var(--type-label-letter-spacing);line-height:var(--type-label-line-height);text-transform:uppercase}
 .eis-app-tasks .eis-table{table-layout:fixed}

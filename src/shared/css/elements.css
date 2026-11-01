@@ -48,6 +48,9 @@
 .eis-button--ghost{--bg:transparent;--bd:transparent;--bg-hover:var(--surface-canvas);--bd-hover:transparent}
 .eis-button--sm{min-height:var(--space-300);padding:0 calc(var(--space-100) * 1.5);font-size:var(--font-size-100)}
 .eis-button--lg{min-height:calc(var(--space-300) * 1.5);padding:0 var(--space-300);font-size:var(--font-size-300)}
+.eis-button--icon{min-width:40px;padding:0}
+.eis-button--icon.eis-button--sm{min-width:var(--space-300)}
+.eis-button--icon.eis-button--lg{min-width:calc(var(--space-300) * 1.5)}
 .eis-button:disabled{opacity:.4;cursor:not-allowed}
 .eis-button:disabled:hover{background:var(--bg);border-color:var(--bd);box-shadow:none}
 .eis-button--ghost:hover{box-shadow:none}
@@ -146,3 +149,7 @@
 /* ---------- avatar ---------- */
 .eis-avatar{width:28px;height:28px;flex:none;border-radius:50%;border:var(--border-width-100) solid var(--line);display:grid;place-items:center;
   font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);font-weight:var(--type-label-font-weight);color:var(--ink-muted)}
+
+/* ---------- icon: a Lucide SVG (shared/js/icons.js), drawn in the text colour ---------- */
+.eis-icon{display:inline-block;flex:none;inline-size:var(--space-200);block-size:var(--space-200);vertical-align:middle;
+  stroke:currentColor;stroke-width:2;fill:none}

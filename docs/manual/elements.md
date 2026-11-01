@@ -56,7 +56,6 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 <button class="eis-button eis-button--ghost" type="button">Skip</button>
 <button class="eis-button eis-button--accent" type="button">Record</button>
 <button class="eis-button" type="button" disabled>Disabled</button>
-<a class="eis-button" href="/report">Open report →</a>
 ```
 
 | Variant | Use for | Limit |
@@ -73,6 +72,19 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 - Hover: background shifts and a glow in the variant's colour appears (built in). Don't add your own shadow.
 - Disabled: the `disabled` attribute, never a class.
 - Order in a group: secondary/ghost first, the `--primary` button last (rightmost).
+
+### Button with an icon
+
+```html
+<button class="eis-button eis-button--primary" type="button"><i data-lucide="plus" class="eis-icon" aria-hidden="true"></i>New topic</button>
+<a class="eis-button" href="/report">Open report<i data-lucide="arrow-right" class="eis-icon" aria-hidden="true"></i></a>
+<button class="eis-button eis-button--icon eis-button--sm" type="button" aria-label="Edit topic" title="Edit topic"><i data-lucide="pencil" class="eis-icon" aria-hidden="true"></i></button>
+```
+
+- The icon goes before the text (left) or after it (right). The button gap spaces it. Left is the default. Use right only for a direction: next, open, external.
+- `eis-button--icon`: a square button with only an icon. It MUST have `aria-label` and `title` with the action. Combine it with any variant and size. Use it for repeated actions in a row or a table (edit, remove, archive), where a text button does not fit.
+- One icon per button. Never an icon only for decoration in a text button that is clear without it.
+- Never type a character as an icon (`+`, `→`, `×`, `✓`). Use the Lucide icon.
 
 | Size | Height | Padding | Font | Use for |
 |---|---|---|---|---|
@@ -302,6 +314,26 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 - Lists are `<ul>`/`<ol>`. A `--line` separates the rows.
 - Avatar: initials in a circle, `aria-hidden` (the name is in the text). No photos, no colour fills.
 
+## Icons
+
+```html
+<i data-lucide="pencil" class="eis-icon" aria-hidden="true"></i>
+```
+
+Load at the end of `<body>`, Lucide first:
+
+```html
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="<src>/shared/js/icons.js"></script>
+```
+
+- The set is [Lucide](https://lucide.dev/icons) (ISC licence): line icons with a 2px stroke, the same weight as the system lines. Use the Lucide name in `data-lucide`.
+- `eis-icon` is 16px (`--space-200`) and takes the text colour (`currentColor`). Never colour an icon on its own. It follows the button or text it sits in.
+- `shared/js/icons.js` draws the icons on load and again when the page adds new ones. A page that renders with JavaScript does not call Lucide itself.
+- An icon is `aria-hidden="true"`. The text or the `aria-label` of the control carries the meaning.
+- Without the network the icon is empty. So an icon never is the only way to know what a control does: the control has text, or `aria-label` plus `title`.
+- Inside a button, see "Button with an icon".
+
 ## Labels and helpers
 
 - `.eis-label` — label text style (mono, 11, uppercase, `--ink-muted`). For panel titles, table heads, nav section titles.
@@ -310,4 +342,4 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 
 ## Not yet in the system
 
-Dialog, popover/menu, tooltip, tabs, toast, pagination, icons. Until they exist, use the native element (`<dialog>`, `popover` attribute, `title`) and style it only with tokens. Propose the element for the system. Do not design it inside a piece.
+Dialog, popover/menu, tooltip, tabs, toast, pagination. Until they exist, use the native element (`<dialog>`, `popover` attribute, `title`) and style it only with tokens. Propose the element for the system. Do not design it inside a piece.

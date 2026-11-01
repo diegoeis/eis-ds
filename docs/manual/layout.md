@@ -21,7 +21,7 @@ A piece is a standalone HTML file. It links one stylesheet:
 - `<scope>.css` is the only stylesheet to link. It imports `../shared/shared.css` (fonts, shared tokens, base, elements), then the scope tokens and components. Keep `shared/` next to the scope folder. The preconnect lines are optional: they make the fonts load faster.
 - `shared.css` imports the fonts, the shared tokens, the base and the elements. The base already sets box-sizing, margins, body type, canvas background and focus. Don't repeat it.
 - The piece's `<style>` contains **layout only**: grids, regions, positions, page-specific arrangements. It MUST NOT redefine buttons, chips, fields, tables, panels or any shared element.
-- No frameworks or libraries (React, Tailwind, Bootstrap, icon fonts).
+- No frameworks or libraries (React, Tailwind, Bootstrap, icon fonts). One exception: Lucide draws the SVG icons (`elements.md`, "Icons"). Load it with `shared/js/icons.js` only when the page has icons.
 - The favicon is in `src/shared/brand/`: `favicon.svg` (browser tab) and `apple-touch-icon.png` (180×180, home screen). It is the same in every scope. In a project outside this repository, copy both files next to the page and link the copies. A project with its own brand can use its own favicon.
 
 ## 2. Page skeleton
@@ -126,7 +126,7 @@ eis-ds is several design systems in one. They share the same base and never conf
 
 | Folder | Use for | Load | Class prefix | Variable prefix |
 |---|---|---|---|---|
-| `src/shared/` | Every scope | Imported by each scope entry | `eis-` | `--color-`, `--space-`, `--ink`… |
+| `src/shared/` | Every scope | Imported by each scope entry. Optional `shared/js/icons.js` (with Lucide) for icons | `eis-` | `--color-`, `--space-`, `--ink`… |
 | `src/web/` | Websites, landing pages, marketing pages, documentation | `web/web.css` or `dist/eis-web.min.css`, optional `web/js/lines.js` | `eis-web-` | `--web-` |
 | `src/app/` | Dashboards, tools, system screens | `app/app.css` or `dist/eis-app.min.css`, optional `app/js/sidebar.js` | `eis-app-` | `--app-` |
 

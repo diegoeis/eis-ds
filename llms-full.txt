@@ -221,6 +221,7 @@ Use a scope token only inside that scope.
 | `--web-font-size-hero` | 134px | Hero title. Use `clamp(--font-size-700, 9vw, --web-font-size-hero)`. |
 | `--web-font-size-cta` | 100px | Closing call-to-action title. |
 | `--web-font-size-section` | = `--font-size-800` | Landing section titles. |
+| `--web-font-size-sub` | 16px | Hero sub-paragraph (`eis-web-hero__sub`). |
 | `--web-font-size-specimen` | 90px | Large type specimen. |
 | `--app-size-sidebar` | 248px | Sidebar width. |
 | `--app-size-sidebar-collapsed` | 64px | Collapsed sidebar width: the toggle plus the side padding. |
@@ -763,8 +764,8 @@ Rules:
 | `eis-web-header`, `eis-web-brand` | Landing top bar and brand mark |
 | `eis-web-hero` (`__index`, `__meta`, `__lead`, `__sub`, `__actions`) | Hero block |
 | `eis-web-lines` + `data-eis-web-lines` | Line art drawn by `web/js/lines.js`. Options: `data-seed`, `data-step` |
-| `eis-web-section` (`__head`, `__body`, `__aside`) | Landing section: numbered label, title, body column |
-| `eis-web-numbered`, `eis-web-cards`/`eis-web-card`, `eis-web-principles`, `eis-web-steps` | Numbered list, cards with a figure, principles grid, step timeline |
+| `eis-web-section` (`__head`, `__body`) | Landing section. `__head` holds the label, the `h2` and an optional `p`. The label and the title use the left five columns. The `p` goes to the right six columns, level with the bottom of the title. Do not put a class on the `p` and do not move it out of `__head`. Without a `p`, `__head` uses the left five columns and `__body` sits next to it. With a `p`, `__body` goes below it in the right column |
+| `eis-web-numbered`, `eis-web-cards`/`eis-web-card`, `eis-web-principles`, `eis-web-steps` | Numbered list, cards with a figure, principles grid, step timeline. A chip at the end of `eis-web-card__body` keeps its own width (for example `Future` on a surface that is not available yet) |
 | `eis-web-code`, `eis-web-cta`, `eis-web-footer`, `eis-web-arrow` | Code block, closing call to action, landing footer, arrow link |
 
 ###### App components

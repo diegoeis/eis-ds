@@ -146,6 +146,7 @@ Use a scope token only inside that scope.
 | `--web-font-size-hero` | 134px | Hero title. Use `clamp(--font-size-700, 9vw, --web-font-size-hero)`. |
 | `--web-font-size-cta` | 100px | Closing call-to-action title. |
 | `--web-font-size-section` | = `--font-size-800` | Landing section titles. |
+| `--web-font-size-sub` | 16px | Hero sub-paragraph (`eis-web-hero__sub`). |
 | `--web-font-size-specimen` | 90px | Large type specimen. |
 | `--app-size-sidebar` | 248px | Sidebar width. |
 | `--app-size-sidebar-collapsed` | 64px | Collapsed sidebar width: the toggle plus the side padding. |

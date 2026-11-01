@@ -153,8 +153,8 @@ Rules:
 | `eis-web-header`, `eis-web-brand` | Landing top bar and brand mark |
 | `eis-web-hero` (`__index`, `__meta`, `__lead`, `__sub`, `__actions`) | Hero block |
 | `eis-web-lines` + `data-eis-web-lines` | Line art drawn by `web/js/lines.js`. Options: `data-seed`, `data-step` |
-| `eis-web-section` (`__head`, `__body`, `__aside`) | Landing section: numbered label, title, body column |
-| `eis-web-numbered`, `eis-web-cards`/`eis-web-card`, `eis-web-principles`, `eis-web-steps` | Numbered list, cards with a figure, principles grid, step timeline |
+| `eis-web-section` (`__head`, `__body`) | Landing section. `__head` holds the label, the `h2` and an optional `p`. The label and the title use the left five columns. The `p` goes to the right six columns, level with the bottom of the title. Do not put a class on the `p` and do not move it out of `__head`. Without a `p`, `__head` uses the left five columns and `__body` sits next to it. With a `p`, `__body` goes below it in the right column |
+| `eis-web-numbered`, `eis-web-cards`/`eis-web-card`, `eis-web-principles`, `eis-web-steps` | Numbered list, cards with a figure, principles grid, step timeline. A chip at the end of `eis-web-card__body` keeps its own width (for example `Future` on a surface that is not available yet) |
 | `eis-web-code`, `eis-web-cta`, `eis-web-footer`, `eis-web-arrow` | Code block, closing call to action, landing footer, arrow link |
 
 ### App components

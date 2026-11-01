@@ -9,5 +9,6 @@
   --web-font-size-hero: 134px;
   --web-font-size-cta: 100px;
   --web-font-size-section: var(--font-size-800);
+  --web-font-size-sub: 16px;
   --web-font-size-specimen: 90px;
 }

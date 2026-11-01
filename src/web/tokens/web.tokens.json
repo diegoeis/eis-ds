@@ -38,6 +38,13 @@
         "$value": "{font.size.800}",
         "$description": "Section titles on landing pages."
       },
+      "sub": {
+        "$value": {
+          "value": 16,
+          "unit": "px"
+        },
+        "$description": "Hero sub-paragraph on landing pages. Sits between font.size.300 (body) and font.size.400 (lead)."
+      },
       "specimen": {
         "$value": {
           "value": 90,

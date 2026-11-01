@@ -13,6 +13,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <title>eis-ds — a visual system for interfaces, slides, email and images</title>
 <link rel="icon" href="src/shared/brand/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="src/shared/brand/apple-touch-icon.png">
+<link rel="describedby" type="text/markdown" href="llms.txt" title="eis-ds manual for LLMs">
 <meta name="description" content="eis-ds is a visual design system in plain HTML and CSS. Tokens in the W3C DTCG format, native elements, no build step.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -74,13 +75,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="eis-web-sheet">
 
   <header class="eis-web-wrap eis-web-grid eis-web-header">
-    <a class="eis-web-brand" href="index.html">eis-ds<sup>v0.1</sup></a>
+    <a class="eis-web-brand" href="index.html">eis-ds<sup>v0.6.0</sup></a>
     <p class="eis-web-header__meta"><span>Release</span><span>Draft · light mode</span></p>
     <nav aria-label="Main">
       <ul>
         <li><a href="site/foundations.html">Foundations</a></li>
         <li><a href="site/elements.html">Elements</a></li>
         <li><a href="site/examples.html">Examples</a></li>
+        <li><a href="#llms">For LLMs</a></li>
         <li><a href="#adopt">Get started</a></li>
       </ul>
     </nav>
@@ -90,8 +92,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <main>
     <section class="eis-web-hero" aria-labelledby="hero-h">
       <div class="eis-web-wrap eis-web-grid">
-        <p class="eis-web-hero__index" aria-hidden="true">/00</p>
-        <h1 id="hero-h">Design that reads like an&nbsp;instrument.</h1>
+        <p class="eis-web-hero__index">v0.6.0</p>
+        <h1 id="hero-h">Raw, simple, AI&nbsp;ready Design System.</h1>
         <dl class="eis-web-hero__meta">
           <div><dt class="eis-label">Format</dt><dd>HTML + CSS</dd></div>
           <div><dt class="eis-label">Tokens</dt><dd>W3C DTCG</dd></div>
@@ -130,13 +132,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <section class="eis-web-section" aria-labelledby="uses-h">
       <div class="eis-web-wrap">
-        <div class="eis-web-grid">
-          <header class="eis-web-section__head">
-            <span class="eis-label">/02 · Where it goes</span>
-            <h2 id="uses-h">One look. Every surface.</h2>
-          </header>
-          <p class="eis-web-section__aside">The same tokens drive a dashboard, a deck, a newsletter and an article image. A reader recognises the voice before they read a word.</p>
-        </div>
+        <header class="eis-web-section__head">
+          <span class="eis-label">/02 · Where it goes</span>
+          <h2 id="uses-h">One look. Every surface.</h2>
+          <p>The same tokens drive a dashboard, a deck, a newsletter and an article image. A reader recognises the voice before they read a word.</p>
+        </header>
         <ul class="eis-web-cards">
           <li class="eis-web-card">
             <figure aria-hidden="true">
@@ -151,19 +151,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <figure aria-hidden="true">
               <div class="eis-mini eis-mini--slide"><span class="eis-label">Q3 · Review</span><span class="eis-big">Fewer, better.</span><i class="is-accent" style="width:18%"></i></div>
             </figure>
-            <div class="eis-web-card__body"><span class="eis-label">Slides</span><h3>Decks and talks</h3><p>One idea per slide. Display type, a thin rule, generous space.</p></div>
+            <div class="eis-web-card__body"><span class="eis-label">Slides</span><h3>Decks and talks</h3><p>One idea per slide. Display type, a thin rule, generous space.</p><span class="eis-chip eis-chip--outline">Future</span></div>
           </li>
           <li class="eis-web-card">
             <figure aria-hidden="true">
               <div class="eis-mini eis-mini--mail"><i style="width:30%" class="is-dark"></i><i></i><i></i><i style="width:70%"></i><div class="eis-mailbtn"></div></div>
             </figure>
-            <div class="eis-web-card__body"><span class="eis-label">Email</span><h3>Newsletters and notices</h3><p>Two surfaces and one column survive every mail client.</p></div>
+            <div class="eis-web-card__body"><span class="eis-label">Email</span><h3>Newsletters and notices</h3><p>Two surfaces and one column survive every mail client.</p><span class="eis-chip eis-chip--outline">Future</span></div>
           </li>
           <li class="eis-web-card">
             <figure aria-hidden="true">
               <div class="eis-mini eis-mini--image" id="eis-art"></div>
             </figure>
-            <div class="eis-web-card__body"><span class="eis-label">Images</span><h3>Covers and illustrations</h3><p>Line, grid and a single warm mark, at any ratio.</p></div>
+            <div class="eis-web-card__body"><span class="eis-label">Images</span><h3>Covers and illustrations</h3><p>Line, grid and a single warm mark, at any ratio.</p><span class="eis-chip eis-chip--outline">Future</span></div>
           </li>
         </ul>
       </div>
@@ -227,15 +227,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </section>
 
+    <section class="eis-web-section" id="llms" aria-labelledby="llms-h">
+      <div class="eis-web-wrap">
+        <header class="eis-web-section__head">
+          <span class="eis-label">/05 · For LLMs</span>
+          <h2 id="llms-h">Rules an agent can read.</h2>
+          <p>The manual is plain Markdown with use and don't-use rules and copy-ready HTML. An agent reads it from one URL and builds pages that stay on the system.</p>
+        </header>
+        <ol class="eis-web-numbered">
+          <li><span>01</span><div><strong><a class="eis-link" href="llms.txt">llms.txt</a></strong><p>The index: how to load the system, the rules with no exceptions and a link to each file of the manual.</p></div></li>
+          <li><span>02</span><div><strong><a class="eis-link" href="llms-full.txt">llms-full.txt</a></strong><p>The full manual in one file. One request gives the agent every rule.</p></div></li>
+          <li><span>03</span><div><strong>Same version as your CSS</strong><p>Read the file from the release tag you link. The rules then match the classes you load.</p></div></li>
+          <li><span>04</span><div><strong>Checked on every push</strong><p>A script builds both files from the manual. A check fails when they are out of date.</p></div></li>
+        </ol>
+        <pre class="eis-web-code"><code><span class="c">&lt;!-- add to AGENTS.md or CLAUDE.md in your project --&gt;</span>
+## UI: eis-ds
+Before you create or change any UI, read
+https://cdn.jsdelivr.net/gh/diegoeis/eis-ds@<span class="s">&lt;tag&gt;</span>/llms-full.txt
+and apply it literally. Use only eis- classes and tokens.
+Do not write CSS that eis-ds already covers.
+Check the piece against the checklist before you finish.</code></pre>
+      </div>
+    </section>
+
     <section class="eis-web-section" id="adopt" aria-labelledby="adopt-h">
       <div class="eis-web-wrap">
-        <div class="eis-web-grid">
-          <header class="eis-web-section__head">
-            <span class="eis-label">/05 · Get started</span>
-            <h2 id="adopt-h">From files to a page in five steps.</h2>
-          </header>
-          <p class="eis-web-section__aside">No package and no build. Copy one file from <code>dist/</code> into your project. <code>web</code> is for websites and docs. <code>app</code> is for dashboards and tools.</p>
-        </div>
+        <header class="eis-web-section__head">
+          <span class="eis-label">/06 · Get started</span>
+          <h2 id="adopt-h">From files to a page in five steps.</h2>
+          <p>No package and no build. Copy one file from <code>dist/</code> into your project. <code>web</code> is for websites and docs. <code>app</code> is for dashboards and tools.</p>
+        </header>
         <ol class="eis-web-steps">
           <li><strong>Copy</strong><p>One file from <code>dist/</code>. To change the source, copy <code>src/shared/</code> plus <code>src/web/</code> or <code>src/app/</code>.</p></li>
           <li><strong>Link</strong><p>One file: <code>dist/eis-web.min.css</code> or <code>dist/eis-app.min.css</code>. It brings the fonts, the shared tokens and elements, and the scope.</p></li>
@@ -293,7 +314,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <footer class="eis-web-wrap eis-web-grid eis-web-footer">
     <dl>
-      <dt>V</dt><dd>0.1 · draft · light mode</dd>
+      <dt>V</dt><dd>0.6.0 · draft · light mode</dd>
       <dt>F</dt><dd>HTML + CSS custom properties</dd>
       <dt>T</dt><dd>W3C Design Tokens Format 2025.10</dd>
     </dl>
@@ -303,6 +324,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="site/foundations.html">Foundations</a></li>
         <li><a href="site/elements.html">Elements</a></li>
         <li><a href="site/examples.html">Examples</a></li>
+        <li><a href="llms.txt">llms.txt</a></li>
       </ul>
     </nav>
     <a class="eis-web-footer__up" href="#hero-h" aria-label="Back to top"><i data-lucide="arrow-up" class="eis-icon" aria-hidden="true"></i></a>

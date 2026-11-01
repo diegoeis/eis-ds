@@ -2,7 +2,7 @@
 
 A visual design system in plain HTML and CSS. It contains primitives (colour, type, space, shape) and basic elements. Uses: slides, websites, email, illustrations and images.
 
-Version 0.1, draft. Only the light mode exists.
+Version 0.6.0, draft. Only the light mode exists.
 
 ## Read before you change anything
 1. `README.md` — what the system is and how a project uses it.
@@ -53,7 +53,7 @@ A project needs `src/shared/` and one scope. `site/` and `docs/` document the sy
 1. Token: edit the `.tokens.json` file of `shared` or of one scope. Run `python3 scripts/build-tokens.py`. If it fails, do not use the result.
 2. Element: change it in `src/shared/css/elements.css`, show it on `elements.html` and document it in `docs/manual/elements.md`. Scope component: change it in `src/<scope>/css/components.css` and list it in `docs/manual/layout.md` §7. Then run `python3 scripts/check-css.py`.
    After every change in `src/` (tokens or CSS), run `python3 scripts/build-css.py` and commit `dist/` with the change. Never edit `dist/` by hand.
-   Before a release tag, run `python3 scripts/build-css.py --check` and `python3 scripts/build-llms.py --check`. The tag must contain an up-to-date `dist/` and `llms-full.txt`.
+   Before a release tag, set the new version in `index.html` (hero index, brand, footer), in the `site/` pages, in `README.md` and in this file. Then run `python3 scripts/build-css.py --check` and `python3 scripts/build-llms.py --check`. The tag must contain an up-to-date `dist/` and `llms-full.txt`.
 3. New example: put it in `site/examples/<kind>/`. Add a card on `examples.html` with a 1440×900 PNG screenshot next to the page (`<name>.png`), never a live iframe.
 4. New scope (slides, email…): follow `docs/manual/layout.md` §7, "Add a scope".
 5. Manual: after every change in `docs/manual/` or `llms.txt`, run `python3 scripts/build-llms.py` and commit `llms.txt` and `llms-full.txt` with the change. Never edit `llms-full.txt` by hand. The rules in `llms.txt` come from "Rules with no exceptions" in `docs/manual/AGENTS.md`: change them there. A new file in `docs/manual/` needs a link in `llms.txt`, or the script fails.

@@ -1,5 +1,5 @@
 # Fails when a generated file is not up to date with its source.
-# Generated files: src/*/css/tokens.css, dist/, llms.txt (rules block), llms-full.txt.
+# Generated files: src/*/css/tokens.css, src/shared/css/icons.css, dist/, llms.txt (rules block), llms-full.txt.
 name: Check generated files
 
 on:
@@ -29,6 +29,9 @@ jobs:
 
       - name: Scopes stay isolated
         run: python3 scripts/check-css.py
+
+      - name: icons.css is up to date with the Lucide list
+        run: python3 scripts/build-icons.py --check
 
       - name: dist/ is up to date
         run: python3 scripts/build-css.py --check

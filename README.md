@@ -81,6 +81,6 @@ python3 scripts/build-css.py      # write dist/eis-<scope>.min.css. Run it after
 python3 scripts/build-llms.py     # copy the manual rules into llms.txt and write llms-full.txt. Run it after every change in docs/manual/ or llms.txt
 ```
 
-`python3 scripts/build-css.py --check` fails if `dist/` is not up to date. `python3 scripts/build-llms.py --check` does the same for `llms-full.txt`. Run both before you create a release tag. The GitHub Action `.github/workflows/check.yml` runs these checks on every push and pull request.
+`python3 scripts/build-css.py --check` fails if `dist/` is not up to date. `python3 scripts/build-llms.py --check` does the same for `llms-full.txt`, and `python3 scripts/build-icons.py --check` for `src/shared/css/icons.css` (it needs the network). Run all three before you create a release tag. The GitHub Action `.github/workflows/check.yml` runs these checks on every push and pull request.
 
 The scripts use the Python standard library only. Contributor and agent rules are in `AGENTS.md`.

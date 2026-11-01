@@ -864,6 +864,7 @@ Run this before calling a piece, element or token done. Every box must be true.
 - [ ] Controls are native: `button`, `a`, `input` (checkbox / radio / switch), `select`, `textarea`, `details`, `form`, `fieldset` + `legend`. No `div`/`span` pretending.
 - [ ] Every control has a label. Invalid fields have `aria-invalid` + `aria-describedby`.
 - [ ] Visual-only elements are `aria-hidden`. Charts have `role="img"` + a data `aria-label`.
+- [ ] Icons are Lucide: `<i data-lucide="name" class="eis-icon"></i>` in content, no typed character as an icon. Write no icon for a disclosure, a task group, notes, a done list or the sidebar toggle: the CSS draws it.
 - [ ] Dates and times in `<time datetime>`.
 - [ ] Interface text is in English. Example data is fictional.
 

@@ -142,7 +142,9 @@
 /* ---------- disclosure ---------- */
 .eis-disclosure summary{display:flex;align-items:baseline;gap:var(--space-200);cursor:pointer;list-style:none;padding:var(--space-200)}
 .eis-disclosure summary::-webkit-details-marker{display:none}
-.eis-disclosure summary > .eis-icon{margin-left:auto;align-self:center}
+/* the open/closed marker: Lucide plus/minus from icons.css, drawn by the CSS */
+.eis-disclosure summary::after{content:"";flex:none;inline-size:var(--space-200);block-size:var(--space-200);background:currentColor;mask:var(--icon-plus) center / contain no-repeat;margin-left:auto;align-self:center}
+.eis-disclosure[open] > summary::after{mask-image:var(--icon-minus)}
 .eis-disclosure[open] > summary{background:var(--surface-canvas);border-bottom:var(--border-width-100) solid var(--line)}
 
 /* ---------- avatar ---------- */
@@ -152,5 +154,3 @@
 /* ---------- icon: a Lucide SVG (shared/js/icons.js), drawn in the text colour ---------- */
 .eis-icon{display:inline-block;flex:none;inline-size:var(--space-200);block-size:var(--space-200);vertical-align:middle;
   stroke:currentColor;stroke-width:2;fill:none}
-/* state icons in a <summary>: eis-if-closed shows while the <details> is closed, eis-if-open while it is open */
-details:not([open]) > summary .eis-if-open,details[open] > summary .eis-if-closed{display:none}

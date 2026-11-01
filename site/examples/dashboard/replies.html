@@ -35,7 +35,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </section>
   </nav>
   <footer class="eis-app-sidebar__foot">
-    <button class="eis-app-sidebar__toggle" type="button" aria-controls="sidebar" aria-expanded="true" aria-label="Sidebar" data-eis-app-sidebar-toggle><i data-lucide="chevron-left" class="eis-icon" aria-hidden="true"></i></button>
+    <button class="eis-app-sidebar__toggle" type="button" aria-controls="sidebar" aria-expanded="true" aria-label="Sidebar" data-eis-app-sidebar-toggle></button>
   </footer>
 </aside>
 
@@ -87,7 +87,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <section class="eis-panel">
     <details class="eis-disclosure">
-      <summary><h2 class="eis-label">Decisions</h2><span class="eis-mono">what the page writes to decisions.js · applied on the next run</span><i data-lucide="plus" class="eis-icon eis-if-closed" aria-hidden="true"></i><i data-lucide="minus" class="eis-icon eis-if-open" aria-hidden="true"></i></summary>
+      <summary><h2 class="eis-label">Decisions</h2><span class="eis-mono">what the page writes to decisions.js · applied on the next run</span></summary>
       <pre class="eis-app-code" id="state"></pre>
     </details>
   </section>
@@ -535,7 +535,7 @@ window.AA_DATA = {
     return btn("send", "Send") + btn("discard", "Discard") + btn("pending", "Keep") +
       '<span class="eis-app-menu"><button class="eis-button eis-button--icon eis-button--sm" type="button" aria-haspopup="true" aria-expanded="' + open +
       '" aria-pressed="' + !!d.reaction + '" data-menu="' + esc(it.key) + '" aria-label="React to the message" title="React to the message">' +
-      (d.reaction || '<i data-lucide="smile-plus" class="eis-icon" aria-hidden="true"></i>') + "</button>" +
+      (d.reaction || '<i data-lucide="smile-plus" class="eis-icon"></i>') + "</button>" +
       '<span class="eis-app-menu__list" role="menu"' + (open ? "" : " hidden") + ">" + menu + "</span></span>" +
       (TM.found ? taskButton(it) : "") +
       '<span class="eis-app-message__state">' + esc(stateText(it)) + "</span>";
@@ -554,7 +554,7 @@ window.AA_DATA = {
     if (!list || !list.length) return "";
     var id = key + "|" + title;
     if (openNotes[id] != null) open = openNotes[id];
-    return '<details class="eis-app-message__notes ' + cls + '" data-notes="' + esc(id) + '"' + (open ? " open" : "") + '><summary class="eis-label"><i data-lucide="plus" class="eis-icon eis-if-closed" aria-hidden="true"></i><i data-lucide="minus" class="eis-icon eis-if-open" aria-hidden="true"></i>' + esc(title) +
+    return '<details class="eis-app-message__notes ' + cls + '" data-notes="' + esc(id) + '"' + (open ? " open" : "") + '><summary class="eis-label">' + esc(title) +
       ' <span class="eis-mono">[' + pad(list.length) + "]</span></summary><ul>" +
       list.map(function (x) { return "<li>" + linkify(x) + "</li>"; }).join("") + "</ul></details>";
   }
@@ -563,7 +563,7 @@ window.AA_DATA = {
   function taskButton(it) {
     var t = (D.tasks || {})[it.key] || tasks[it.key];
     if (t) return '<span class="eis-chip eis-chip--sm eis-chip--success" title="In ' + esc(TM.note) + '">Task added</span>';
-    return '<button class="eis-button eis-button--sm" type="button" data-task-open="' + esc(it.key) + '" title="Add a task to the daily note of the task manager"><i data-lucide="plus" class="eis-icon" aria-hidden="true"></i>Task</button>';
+    return '<button class="eis-button eis-button--sm" type="button" data-task-open="' + esc(it.key) + '" title="Add a task to the daily note of the task manager"><i data-lucide="plus" class="eis-icon"></i>Task</button>';
   }
   function taskForm(it) {
     if (state.taskForm !== it.key) return "";

@@ -2,7 +2,7 @@
 
 > eis-ds is a visual design system in plain HTML and CSS: tokens (colour, type, space, shape), basic elements and scope components. A page links one CSS file and builds with native HTML and `eis-` classes. Light mode only.
 
-This file is for LLMs and agents that build pages with eis-ds. Read the manual before you write HTML or CSS, and apply it literally. For the full manual in one file, read [llms-full.txt](https://diegoeis.github.io/eis-ds/llms-full.txt). To match a pinned release, read the same file from the tag: `https://cdn.jsdelivr.net/gh/diegoeis/eis-ds@<tag>/llms-full.txt`.
+This file is for LLMs and agents that build pages with eis-ds. Read the manual before you write HTML or CSS, and apply it literally. For the full manual in one file, read [llms-full.txt](https://diegoeis.github.io/eis-ds/llms-full.txt). To match a pinned release, read the same file from the tag: `https://raw.githubusercontent.com/diegoeis/eis-ds/<tag>/llms-full.txt`.
 
 Load one scope. Do not load a separate font link:
 

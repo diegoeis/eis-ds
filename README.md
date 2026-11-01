@@ -53,11 +53,11 @@ The site publishes the manual for LLMs in the [llms.txt](https://llmstxt.org/) f
 - `https://diegoeis.github.io/eis-ds/llms.txt` — index: how to load, the rules with no exceptions, links to each manual file.
 - `https://diegoeis.github.io/eis-ds/llms-full.txt` — the full manual in one file.
 
-Add this block to the `AGENTS.md` (or `CLAUDE.md`) of your project. Replace `<tag>` with the tag of the CSS file you load, so the rules match your CSS:
+Add this block to the `AGENTS.md` (or `CLAUDE.md`) of your project. Replace `<tag>` with the tag of the CSS file you load, so the rules match your CSS. The text file comes straight from GitHub. The CSS comes from jsDelivr, because GitHub serves files as `text/plain` and a browser does not apply that as a stylesheet:
 
 ```md
 ## UI: eis-ds
-Before you create or change any UI, read https://cdn.jsdelivr.net/gh/diegoeis/eis-ds@<tag>/llms-full.txt and apply it literally.
+Before you create or change any UI, read https://raw.githubusercontent.com/diegoeis/eis-ds/<tag>/llms-full.txt and apply it literally.
 Use only eis- classes and tokens. Do not write CSS that eis-ds already covers. Check the piece against the checklist before you finish.
 ```
 

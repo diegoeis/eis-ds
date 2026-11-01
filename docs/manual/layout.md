@@ -191,7 +191,9 @@ The sidebar can collapse to a narrow strip (`--app-size-sidebar-collapsed`). Col
    ```html
    <footer class="eis-app-sidebar__foot">
      <button class="eis-app-sidebar__toggle" type="button" aria-controls="sidebar"
-             aria-expanded="true" aria-label="Sidebar" data-eis-app-sidebar-toggle></button>
+             aria-expanded="true" aria-label="Sidebar" data-eis-app-sidebar-toggle>
+       <i data-lucide="chevron-left" class="eis-icon" aria-hidden="true"></i>
+     </button>
    </footer>
    ```
 3. Load `app/js/sidebar.js` at the end of `<body>`, after the icon scripts (elements.md, "Icons").

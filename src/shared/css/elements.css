@@ -76,8 +76,12 @@
   font-weight:var(--type-label-font-weight);letter-spacing:var(--type-label-letter-spacing);text-transform:uppercase;color:var(--ink)}
 .eis-field__hint{font-family:var(--font-family-mono);font-size:var(--font-size-200);color:var(--ink-muted)}
 .eis-field__error{font-family:var(--font-family-mono);font-size:var(--font-size-200);color:var(--accent-ink)}
+/* an empty hint or error takes no room (scripts fill them on demand) */
+.eis-field__hint:empty,.eis-field__error:empty{display:none}
 
+/* fields always use body type, even inside a label-styled container (a panel title being edited) */
 .eis-input,.eis-select,.eis-textarea{--bd:var(--ink-muted);
+  font-family:var(--type-body-font-family);font-weight:var(--type-body-font-weight);letter-spacing:var(--type-body-letter-spacing);text-transform:none;
   width:100%;min-height:40px;padding:0 var(--space-200);background:var(--surface-panel);
   border:var(--border-width-100) solid var(--bd);border-radius:var(--radius-100);font-size:var(--font-size-300)}
 .eis-textarea{padding:var(--space-100) var(--space-200);min-height:96px;resize:vertical;line-height:var(--font-line-height-normal)}

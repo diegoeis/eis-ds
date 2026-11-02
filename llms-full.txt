@@ -405,7 +405,8 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 - Label always above the control, always present, linked with `for`/`id`. A placeholder is not a label.
 - Use the right `type`: `email`, `date`, `number`, `search`, `url`…
 - Error: `aria-invalid="true"` on the control + `aria-describedby` pointing to `.eis-field__error`. Never colour alone.
-- Hint and error sit below the control.
+- Hint and error sit below the control. An empty hint or error takes no room, so a script can keep the `<p>` and fill it on demand.
+- Fields always use body type, also inside a label-styled container (a panel title being edited).
 - Put fields in a `<form>`. Put the actions at the end, the `--primary` button last.
 
 ##### Checkbox, radio, switch
@@ -784,7 +785,8 @@ Rules:
 | `eis-app-messages` (`__head`) | Messages grouped by day: one `<section>` per day, a day heading, then one message panel per message |
 | `eis-app-message` (`__head`, `__meta`, `__quote`, `__score`, `__bar`, `__notes`, `__notes--accent`, `__sent`, `__state`, `__task`, `--marked`, `--handled`) | One message on an `<article class="eis-panel">`: head strip (`eis-panel__title` with number and sender, chips, then time, source link and app logo on the right), then `eis-panel__body`: the quote as it arrived first, as an `eis-bleed` (square, touches the edges, optional score on its top right, out of the flow), the reply, collapsible notes and `eis-panel__footer` (action buttons, state text at the right end, optional inline form). `--marked`: accent outline. `--handled`: quote in muted ink |
 | `eis-app-menu` (`__list`) | A button that opens a small row of choices (`role="menu"`, items `menuitemradio`). The list opens above the row, at the left of the nearest positioned container |
-| `eis-app-form-row`, `eis-app-form-text`, `eis-app-inline` | Settings forms in `eis-panel__body`: fields side by side (as many as fit), a short explanation in muted ink, a field with its buttons on one line |
+| `eis-app-form-row` (`--2`), `eis-app-form-text`, `eis-app-inline` | Settings forms in `eis-panel__body`: fields side by side (as many as fit; `--2` exactly two columns for long fields such as textareas, one column at ≤760px), a short explanation in muted ink, a field (input or textarea) with its buttons on one line; the buttons keep their natural height, centred on an input and at the top of a textarea |
+| `eis-app-message__head` title edited in place | Put the inline field (`<form class="eis-field">` with an `eis-app-inline` inside) in the `eis-panel__title`, after the number: the title grows and the field takes its room on the same line |
 | `eis-app-items` (`__text`) | A list of saved entries: each row has its text in mono and small buttons |
 
 `eis-app-metrics` takes one column per cell: two cells make two columns, four make four. Below 760px it is two columns.

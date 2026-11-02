@@ -153,7 +153,8 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 - Label always above the control, always present, linked with `for`/`id`. A placeholder is not a label.
 - Use the right `type`: `email`, `date`, `number`, `search`, `url`…
 - Error: `aria-invalid="true"` on the control + `aria-describedby` pointing to `.eis-field__error`. Never colour alone.
-- Hint and error sit below the control.
+- Hint and error sit below the control. An empty hint or error takes no room, so a script can keep the `<p>` and fill it on demand.
+- Fields always use body type, also inside a label-styled container (a panel title being edited).
 - Put fields in a `<form>`. Put the actions at the end, the `--primary` button last.
 
 ## Checkbox, radio, switch

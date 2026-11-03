@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWLTJ7HD');</script>
+<!-- End Google Tag Manager -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily — eis</title>
+<link rel="icon" href="../../../src/shared/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../../src/shared/brand/apple-touch-icon.png">
+<link rel="describedby" type="text/markdown" href="../../../llms.txt" title="eis-ds manual for LLMs">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../../../src/app/app.css">
+</head>
+<body class="eis-app-shell">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWLTJ7HD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<aside class="eis-app-sidebar" id="sidebar" aria-label="Sidebar">
+  <p class="eis-app-brand"><a href="#">TASK MANAGER</a> <span class="eis-mono">v0.1</span></p>
+  <nav class="eis-app-nav" aria-label="Main">
+    <section class="eis-app-nav__section" aria-labelledby="nav-tasks">
+      <h2 class="eis-label" id="nav-tasks">Tasks</h2>
+      <ul>
+        <li><a href="#" aria-current="page">Daily <span class="eis-app-nav__count">19</span></a></li>
+        <li><a href="#">Settings</a></li>
+      </ul>
+    </section>
+    <section class="eis-app-nav__section" aria-labelledby="nav-pages">
+      <h2 class="eis-label" id="nav-pages">Other pages</h2>
+      <ul>
+        <li><a href="replies.html">Replies</a></li>
+        <li><a href="tasks-work.html">Work</a></li>
+      </ul>
+    </section>
+  </nav>
+  <footer class="eis-app-sidebar__foot">
+    <button class="eis-app-sidebar__toggle" type="button" aria-controls="sidebar" aria-expanded="true" aria-label="Sidebar" data-eis-app-sidebar-toggle></button>
+  </footer>
+</aside>
+
+<main class="eis-app-main">
+  <header class="eis-app-page-head">
+    <p class="eis-app-page-head__meta"><time class="eis-label" datetime="2026-11-03">Tuesday, 3 November 2026</time><span class="eis-mono">daily/2026-11/2026-11-03.md</span></p>
+    <h1>Daily</h1>
+    <button class="eis-button eis-button--primary" type="button"><i data-lucide="plus" class="eis-icon"></i>Task</button>
+  </header>
+
+  <section class="eis-panel" aria-label="Summary">
+    <dl class="eis-app-metrics">
+      <div><dt class="eis-label">Open</dt><dd>19</dd><dd>in 5 groups</dd></div>
+      <div><dt class="eis-label">New this week</dt><dd>09</dd><dd>last 7 days · 9 open</dd></div>
+      <div><dt class="eis-label">Due today</dt><dd>03</dd><dd>2 more in the next 7 days</dd></div>
+      <div class="eis-is-accent"><dt class="eis-label">Overdue</dt><dd>03</dd><dd>2 in Platform</dd></div>
+    </dl>
+  </section>
+
+  <form class="eis-app-filters" action="#" onsubmit="return false" aria-label="Task filters">
+    <fieldset class="eis-tabs">
+      <legend>Status</legend>
+      <label><input type="radio" name="status" value="open" checked><span>Open</span></label>
+      <label><input type="radio" name="status" value="today"><span>Today</span></label>
+      <label><input type="radio" name="status" value="done"><span>Done</span></label>
+      <label><input type="radio" name="status" value="all"><span>All</span></label>
+    </fieldset>
+    <div class="eis-app-filters__fields">
+      <div class="eis-field eis-app-filters__search">
+        <label for="search">Search</label>
+        <input class="eis-input" type="search" id="search" name="search" autocomplete="off" placeholder="Filter tasks">
+      </div>
+      <div class="eis-field">
+        <label for="filter-group">Group</label>
+        <select class="eis-select" id="filter-group" name="group">
+          <option>All groups</option><option>No groups</option><option>Needs to be done</option><option>Billing</option><option>Platform</option><option>Data</option><option>Team management</option>
+        </select>
+      </div>
+      <div class="eis-field">
+        <label for="sort">Sort by</label>
+        <select class="eis-select" id="sort" name="sort">
+          <option>Note order</option><option>Due date</option><option>Priority</option><option>Oldest</option><option>Newest</option>
+        </select>
+      </div>
+    </div>
+  </form>
+
+  <section class="eis-panel" aria-label="Tasks by group">
+      <details class="eis-disclosure" open>
+        <summary><h2>Needs to be done</h2><span class="eis-mono">06</span></summary>
+        <table class="eis-table eis-app-task-table">
+          <colgroup><col class="eis-app-col-check"><col class="eis-app-col-idx"><col><col class="eis-app-col-act"></colgroup>
+          <thead class="eis-visually-hidden"><tr><th scope="col">Done</th><th scope="col">#</th><th scope="col">Task</th><th scope="col">Actions</th></tr></thead>
+          <tbody>
+            <tr><td><input class="eis-checkbox" type="checkbox" id="t1"></td><td class="eis-mono">01</td>
+              <td><label for="t1">Release the new invoices screen to every account through the feature flag</label>
+                <dl class="eis-app-task-meta"><div><dt>Source</dt><dd>—</dd></div><div><dt>Created</dt><dd><time datetime="2026-10-31">31/10/2026</time></dd></div><div><dt>Due</dt><dd>—</dd></div></dl>
+                <ul class="eis-app-notes"><li><time datetime="2026-11-03">03/11/2026</time><div>You told support on 31/10 it ships on Monday and took on turning the flag on. The flag link is in the DM — <a href="#">Slack DM</a></div></li></ul>
+                <p class="eis-app-meta"><button class="eis-button eis-button--ghost eis-button--sm" type="button"><i data-lucide="plus" class="eis-icon"></i>Comment</button></p></td>
+              <td><button class="eis-button eis-button--ghost eis-button--icon eis-button--sm" type="button" title="Cancel task" aria-label="Cancel task"><i data-lucide="ban" class="eis-icon"></i></button></td></tr>
+            <tr><td><input class="eis-checkbox" type="checkbox" id="t2"></td><td class="eis-mono">02</td>
+              <td><label for="t2">Build the platform strategy deck: how it connects to the business and what changes in the product</label>
+                <p class="eis-app-meta"><span class="eis-chip eis-chip--sm eis-chip--accent">High</span></p>
+                <dl class="eis-app-task-meta"><div><dt>Source</dt><dd>—</dd></div><div><dt>Created</dt><dd><time datetime="2026-10-22">22/10/2026</time></dd></div><div><dt>Due</dt><dd><time datetime="2026-11-23">23/11/2026</time></dd></div></dl>
+                <p class="eis-app-meta"><button class="eis-button eis-button--ghost eis-button--sm" type="button"><i data-lucide="plus" class="eis-icon"></i>Comment</button></p></td>
+              <td><button class="eis-button eis-button--ghost eis-button--icon eis-button--sm" type="button" title="Cancel task" aria-label="Cancel task"><i data-lucide="ban" class="eis-icon"></i></button></td></tr>
+            <tr><td><input class="eis-checkbox" type="checkbox" id="t3"></td><td class="eis-mono">03</td>
+              <td><label for="t3">Reply to Bruno whether the talk invite and details arrived by e-mail</label>
+                <p class="eis-app-meta"><span class="eis-chip eis-chip--sm eis-chip--solid">New</span></p>
+                <dl class="eis-app-task-meta"><div><dt>Source</dt><dd><a href="#">Slack DM</a></dd></div><div><dt>Created</dt><dd><time datetime="2026-11-02">02/11/2026</time></dd></div><div><dt>Due</dt><dd>—</dd></div></dl>
+                <p class="eis-app-meta"><button class="eis-button eis-button--ghost eis-button--sm" type="button"><i data-lucide="plus" class="eis-icon"></i>Comment</button></p></td>
+              <td><button class="eis-button eis-button--ghost eis-button--icon eis-button--sm" type="button" title="Cancel task" aria-label="Cancel task"><i data-lucide="ban" class="eis-icon"></i></button></td></tr>
+            <tr><td><input class="eis-checkbox" type="checkbox" id="t4"></td><td class="eis-mono">04</td>
+              <td><label for="t4">Fill in the config file and test the slide generator Carla sent</label>
+                <dl class="eis-app-task-meta"><div><dt>Source</dt><dd><a href="#">Slack DM</a></dd></div><div><dt>Created</dt><dd><time datetime="2026-10-14">14/10/2026</time></dd></div><div><dt>Due</dt><dd>—</dd></div></dl>
+                <ul class="eis-app-notes"><li><time datetime="2026-10-22">22/10/2026</time><div>Carla asked about the test and you replied “testing it today” — <a href="#">Slack DM</a></div></li><li><time datetime="2026-10-28">28/10/2026</time><div>Not tested yet. I need the team's environment variables.</div></li></ul>
+                <p class="eis-app-meta"><button class="eis-button eis-button--ghost eis-button--sm" type="button"><i data-lucide="plus" class="eis-icon"></i>Comment</button></p></td>
+              <td><button class="eis-button eis-button--ghost eis-button--icon eis-button--sm" type="button" title="Cancel task" aria-label="Cancel task"><i data-lucide="ban" class="eis-icon"></i></button></td></tr>
+            <tr><td><input class="eis-checkbox" type="checkbox" id="t5"></td><td class="eis-mono">05</td>
+              <td><label for="t5">Create a status deck template for deliveries and OKRs for the whole team</label>
+                <p class="eis-app-meta"><span class="eis-chip eis-chip--sm eis-chip--outline">Low</span></p>
+                <dl class="eis-app-task-meta"><div><dt>Source</dt><dd>—</dd></div><div><dt>Created</dt><dd><time datetime="2026-10-10">10/10/2026</time></dd></div><div><dt>Due</dt><dd>—</dd></div></dl>
+                <ul class="eis-app-notes"><li><time datetime="2026-10-20">20/10/2026</time><div>Hand the new template to the team. You told Ana “it will change” — <a href="#">Slack #product</a></div></li><li><time datetime="2026-10-21">21/10/2026</time><div>Still missing the outline and a routine that updates the deck by itself.</div></li></ul>
+                <p class="eis-app-meta"><button class="eis-button eis-button--ghost eis-button--sm" type="button"><i data-lucide="plus" class="eis-icon"></i>Comment</button></p></td>
+              <td><button class="eis-button eis-button--ghost eis-button--icon eis-button--sm" type="button" title="Cancel task" aria-label="Cancel task"><i data-lucide="ban" class="eis-icon"></i></button></td></tr>
+            <tr><td><input class="eis-checkbox" type="checkbox" id="t6"></td><td class="eis-mono">06</td>
+              <td><label for="t6">Spec the service status indicator in the header</label>
+                <p class="eis-app-meta"><span class="eis-chip eis-chip--sm eis-chip--solid">New</span></p>
+                <dl class="eis-app-task-meta"><div><dt>Source</dt><dd>Monthly 1:1</dd></div><div><dt>Created</dt><dd><time datetime="2026-11-01">01/11/2026</time></dd></div><div><dt>Due</dt><dd class="eis-app-due--today"><time datetime="2026-11-03">03/11/2026</time></dd></div></dl>
+                <p class="eis-app-meta"><button class="eis-button eis-button--ghost eis-button--sm" type="button"><i data-lucide="plus" class="eis-icon"></i>Comment</button></p></td>
+              <td><button class="eis-button eis-button--ghost eis-button--icon eis-button--sm" type="button" title="Cancel task" aria-label="Cancel task"><i data-lucide="ban" class="eis-icon"></i></button></td></tr>
+          </tbody>
+        </table>
+      </details>
+      <details class="eis-disclosure" open>
+        <summary><h2>Billing</h2><span class="eis-mono"><span class="eis-app-over">1 overdue</span> · 03</span></summary>
+        <table class="eis-table eis-app-task-table">
+          <colgroup><col class="eis-app-col-check"><col class="eis-app-col-idx"><col><col class="eis-app-col-act"></colgroup>
+          <thead class="eis-visually-hidden"><tr><th scope="col">Done</th><th scope="col">#</th><th scope="col">Task</th><th scope="col">Actions</th></tr></thead>
+          <tbody>
+            <tr><td><input class="eis-checkbox" type="checkbox" id="t7"></td><td class="eis-mono">01</td>
+              <td><label for="t7">Approve API access with the new payments provider</label>
+                <dl class="eis-app-task-meta"><div><dt>Source</dt><dd>Billing planning</dd></div><div><dt>Created</dt><dd><time datetime="2026-10-10">10/10/2026</time></dd></div><div><dt>Due</dt><dd class="eis-app-due--over"><time datetime="2026-10-17">17/10/2026</time></dd></div></dl>
+                <ul class="eis-app-notes"><li><time datetime="2026-10-24">24/10/2026</time><div>The provider asked for the digital certificate again. Sent.</div></li></ul>
+                <p class="eis-app-meta"><button class="eis-button eis-button--ghost eis-button--sm" type="button"><i data-lucide="plus" class="eis-icon"></i>Comment</button></p></td>
+              <td><button class="eis-button eis-button--ghost eis-button--icon eis-button--sm" type="button" title="Cancel task" aria-label="Cancel task"><i data-lucide="ban" class="eis-icon"></i></button></td></tr>
+            <tr><td><input class="eis-checkbox" type="checkbox" id="t8"></td><td class="eis-mono">02</td>
+              <td><label for="t8">Review the billing stories and take them to technical spec</label>
+                <p class="eis-app-meta"><span class="eis-chip eis-chip--sm eis-chip--solid">New</span></p>
+                <dl class="eis-app-task-meta"><div><dt>Source</dt><dd>Billing daily</dd></div><div><dt>Created</dt><dd><time datetime="2026-10-30">30/10/2026</time></dd></div><div><dt>Due</dt><dd class="eis-app-due--today"><time datetime="2026-11-03">03/11/2026</time></dd></div></dl>
+                <p class="eis-app-meta"><button class="eis-button eis-button--ghost eis-button--sm" type="button"><i data-lucide="plus" class="eis-icon"></i>Comment</button></p></td>
+              <td><button class="eis-button eis-button--ghost eis-button--icon eis-button--sm" type="button" title="Cancel task" aria-label="Cancel task"><i data-lucide="ban" class="eis-icon"></i></button></td></tr>
+            <tr><td><input class="eis-checkbox" type="checkbox" id="t9"></td><td class="eis-mono">03</td>
+              <td><label for="t9">Decide how to release the invoices screen: gradually or to selected accounts</label>
+                <p class="eis-app-meta"><span class="eis-chip eis-chip--sm eis-chip--solid">New</span></p>
+                <dl class="eis-app-task-meta"><div><dt>Source</dt><dd>Billing daily</dd></div><div><dt>Created</dt><dd><time datetime="2026-10-30">30/10/2026</time></dd></div><div><dt>Due</dt><dd>—</dd></div></dl>
+                <p class="eis-app-meta"><button class="eis-button eis-button--ghost eis-button--sm" type="button"><i data-lucide="plus" class="eis-icon"></i>Comment</button></p></td>
+              <td><button class="eis-button eis-button--ghost eis-button--icon eis-button--sm" type="button" title="Cancel task" aria-label="Cancel task"><i data-lucide="ban" class="eis-icon"></i></button></td></tr>
+          </tbody>
+        </table>
+      </details>
+      <details class="eis-disclosure" open>
+        <summary><h2>Platform</h2><span class="eis-mono"><span class="eis-app-over">2 overdue</span> · 04</span></summary>
+        <table class="eis-table eis-app-task-table">
+          <colgroup><col class="eis-app-col-check"><col class="eis-app-col-idx"><col><col class="eis-app-col-act"></colgroup>
+          <thead class="eis-visually-hidden"><tr><th scope="col">Done</th><th scope="col">#</th><th scope="col">Task</th><th scope="col">Actions</th></tr></thead>
+          <tbody>
+            <tr><td><input class="eis-checkbox" type="checkbox" id="t10"></td><td class="eis-mono">01</td>
+              <td><label for="t10">Prioritize the services left to migrate and agree on the cutover pace</label>
+                <dl class="eis-app-task-meta"><div><dt>Source</dt><dd>Platform sync</dd></div><div><dt>Created</dt><dd><time datetime="2026-10-08">08/10/2026</time></dd></div><div><dt>Due</dt><dd class="eis-app-due--over"><time datetime="2026-10-15">15/10/2026</time></dd></div></dl>
+                <p class="eis-app-meta"><button class="eis-button eis-button--ghost eis-button--sm" type="button"><i data-lucide="plus" class="eis-icon"></i>Comment</button></p></td>
+              <td><button class="eis-button eis-button--ghost eis-button--icon eis-button--sm" type="button" title="Cancel task" aria-label="Cancel task"><i data-lucide="ban" class="eis-icon"></i></button></td></tr>
+            <tr><td><input class="eis-checkbox" type="checkbox" id="t11"></td><td class="eis-mono">02</td>
+              <td><label for="t11">Book 30 min on the app&#x27;s long-term vision</label>
+                <dl class="eis-app-task-meta"><div><dt>Source</dt><dd>Felipe</dd></div><div><dt>Created</dt><dd><time datetime="2026-10-14">14/10/2026</time></dd></div><div><dt>Due</dt><dd class="eis-app-due--over"><time datetime="2026-10-20">20/10/2026</time></dd></div></dl>
+                <p class="eis-app-meta"><button class="eis-button eis-button--ghost eis-button--sm" type="button"><i data-lucide="plus" class="eis-icon"></i>Comment</button></p></td>
+              <td><button class="eis-button eis-button--ghost eis-button--icon eis-button--sm" type="button" title="Cancel task" aria-label="Cancel task"><i data-lucide="ban" class="eis-icon"></i></button></td></tr>
+            <tr><td><input class="eis-checkbox" type="checkbox" id="t12"></td><td class="eis-mono">03</td>
+              <td><label for="t12">Define who owns each front in the platform squad</label>
+                <p class="eis-app-meta"><span class="eis-chip eis-chip--sm eis-chip--accent">High</span></p>
+                <dl class="eis-app-task-meta"><div><dt>Source</dt><dd>1:1 Felipe</dd></div><div><dt>Created</dt><dd><time datetime="2026-10-09">09/10/2026</time></dd></div><div><dt>Due</dt><dd>—</dd></div></dl>
+                <p class="eis-app-meta"><button class="eis-button eis-button--ghost eis-button--sm" type="button"><i data-lucide="plus" class="eis-icon"></i>Comment</button></p></td>
+              <td><button class="eis-button eis-button--ghost eis-button--icon eis-button--sm" type="button" title="Cancel task" aria-label="Cancel task"><i data-lucide="ban" class="eis-icon"></i></button></td></tr>
+            <tr><td><input class="eis-checkbox" type="checkbox" id="t13"></td><td class="eis-mono">04</td>
+              <td><label for="t13">Review the database migration plan before the maintenance window</label>
+                <p class="eis-app-meta"><span class="eis-chip eis-chip--sm eis-chip--solid">New</span></p>
+                <dl class="eis-app-task-meta"><div><dt>Source</dt><dd><a href="#">Slack #platform</a></dd></div><div><dt>Created</dt><dd><time datetime="2026-11-03">03/11/2026</time></dd></div><div><dt>Due</dt><dd><time datetime="2026-11-05">05/11/2026</time></dd></div></dl>
+                <p class="eis-app-meta"><button class="eis-button eis-button--ghost eis-button--sm" type="button"><i data-lucide="plus" class="eis-icon"></i>Comment</button></p></td>
+              <td><button class="eis-button eis-button--ghost eis-button--icon eis-button--sm" type="button" title="Cancel task" aria-label="Cancel task"><i data-lucide="ban" class="eis-icon"></i></button></td></tr>
+          </tbody>
+        </table>
+      </details>
+      <details class="eis-disclosure" open>
+        <summary><h2>Data</h2><span class="eis-mono">03</span></summary>
+        <table class="eis-table eis-app-task-table">
+          <colgroup><col class="eis-app-col-check"><col class="eis-app-col-idx"><col><col class="eis-app-col-act"></colgroup>
+          <thead class="eis-visually-hidden"><tr><th scope="col">Done</th><th scope="col">#</th><th scope="col">Task</th><th scope="col">Actions</th></tr></thead>
+          <tbody>
+            <tr><td><input class="eis-checkbox" type="checkbox" id="t14"></td><td class="eis-mono">01</td>
+              <td><label for="t14">Check the new active-accounts metric with Gabi before publishing it on the dashboard</label>
+                <dl class="eis-app-task-meta"><div><dt>Source</dt><dd><a href="#">Slack DM</a></dd></div><div><dt>Created</dt><dd><time datetime="2026-10-29">29/10/2026</time></dd></div><div><dt>Due</dt><dd class="eis-app-due--today"><time datetime="2026-11-03">03/11/2026</time></dd></div></dl>
+                <ul class="eis-app-notes"><li><time datetime="2026-11-01">01/11/2026</time><div>Gabi sent the first version of the query. Cancellations still need checking.</div></li></ul>
+                <p class="eis-app-meta"><button class="eis-button eis-button--ghost eis-button--sm" type="button"><i data-lucide="plus" class="eis-icon"></i>Comment</button></p></td>
+              <td><button class="eis-button eis-button--ghost eis-button--icon eis-button--sm" type="button" title="Cancel task" aria-label="Cancel task"><i data-lucide="ban" class="eis-icon"></i></button></td></tr>
+            <tr><td><input class="eis-checkbox" type="checkbox" id="t15"></td><td class="eis-mono">02</td>
+              <td><label for="t15">Document the active-customer definition in the data glossary</label>
+                <dl class="eis-app-task-meta"><div><dt>Source</dt><dd>—</dd></div><div><dt>Created</dt><dd><time datetime="2026-10-25">25/10/2026</time></dd></div><div><dt>Due</dt><dd>—</dd></div></dl>
+                <p class="eis-app-meta"><button class="eis-button eis-button--ghost eis-button--sm" type="button"><i data-lucide="plus" class="eis-icon"></i>Comment</button></p></td>
+              <td><button class="eis-button eis-button--ghost eis-button--icon eis-button--sm" type="button" title="Cancel task" aria-label="Cancel task"><i data-lucide="ban" class="eis-icon"></i></button></td></tr>
+            <tr><td><input class="eis-checkbox" type="checkbox" id="t16"></td><td class="eis-mono">03</td>
+              <td><label for="t16">Ask for read access to the production database for the data team</label>
+                <p class="eis-app-meta"><span class="eis-chip eis-chip--sm eis-chip--solid">New</span></p>
+                <dl class="eis-app-task-meta"><div><dt>Source</dt><dd>Data daily</dd></div><div><dt>Created</dt><dd><time datetime="2026-11-02">02/11/2026</time></dd></div><div><dt>Due</dt><dd>—</dd></div></dl>
+                <p class="eis-app-meta"><button class="eis-button eis-button--ghost eis-button--sm" type="button"><i data-lucide="plus" class="eis-icon"></i>Comment</button></p></td>
+              <td><button class="eis-button eis-button--ghost eis-button--icon eis-button--sm" type="button" title="Cancel task" aria-label="Cancel task"><i data-lucide="ban" class="eis-icon"></i></button></td></tr>
+          </tbody>
+        </table>
+      </details>
+      <details class="eis-disclosure" open>
+        <summary><h2>Team management</h2><span class="eis-mono">03</span></summary>
+        <table class="eis-table eis-app-task-table">
+          <colgroup><col class="eis-app-col-check"><col class="eis-app-col-idx"><col><col class="eis-app-col-act"></colgroup>
+          <thead class="eis-visually-hidden"><tr><th scope="col">Done</th><th scope="col">#</th><th scope="col">Task</th><th scope="col">Actions</th></tr></thead>
+          <tbody>
+            <tr><td><input class="eis-checkbox" type="checkbox" id="t17"></td><td class="eis-mono">01</td>
+              <td><label for="t17">Prepare the cycle feedback for Henrique</label>
+                <dl class="eis-app-task-meta"><div><dt>Source</dt><dd>1:1 Henrique</dd></div><div><dt>Created</dt><dd><time datetime="2026-10-19">19/10/2026</time></dd></div><div><dt>Due</dt><dd><time datetime="2026-11-08">08/11/2026</time></dd></div></dl>
+                <p class="eis-app-meta"><button class="eis-button eis-button--ghost eis-button--sm" type="button"><i data-lucide="plus" class="eis-icon"></i>Comment</button></p></td>
+              <td><button class="eis-button eis-button--ghost eis-button--icon eis-button--sm" type="button" title="Cancel task" aria-label="Cancel task"><i data-lucide="ban" class="eis-icon"></i></button></td></tr>
+            <tr><td><input class="eis-checkbox" type="checkbox" id="t18"></td><td class="eis-mono">02</td>
+              <td><label for="t18">Compile the last months&#x27; deliveries, including what was asked and not delivered, with the reasons</label>
+                <p class="eis-app-meta"><span class="eis-chip eis-chip--sm eis-chip--outline">Low</span></p>
+                <dl class="eis-app-task-meta"><div><dt>Source</dt><dd>—</dd></div><div><dt>Created</dt><dd><time datetime="2026-09-27">27/09/2026</time></dd></div><div><dt>Due</dt><dd>—</dd></div></dl>
+                <p class="eis-app-meta"><button class="eis-button eis-button--ghost eis-button--sm" type="button"><i data-lucide="plus" class="eis-icon"></i>Comment</button></p></td>
+              <td><button class="eis-button eis-button--ghost eis-button--icon eis-button--sm" type="button" title="Cancel task" aria-label="Cancel task"><i data-lucide="ban" class="eis-icon"></i></button></td></tr>
+            <tr><td><input class="eis-checkbox" type="checkbox" id="t19"></td><td class="eis-mono">03</td>
+              <td><label for="t19">Open the product designer position</label>
+                <p class="eis-app-meta"><span class="eis-chip eis-chip--sm eis-chip--solid">New</span></p>
+                <dl class="eis-app-task-meta"><div><dt>Source</dt><dd>Leadership meeting</dd></div><div><dt>Created</dt><dd><time datetime="2026-11-02">02/11/2026</time></dd></div><div><dt>Due</dt><dd><time datetime="2026-11-10">10/11/2026</time></dd></div></dl>
+                <p class="eis-app-meta"><button class="eis-button eis-button--ghost eis-button--sm" type="button"><i data-lucide="plus" class="eis-icon"></i>Comment</button></p></td>
+              <td><button class="eis-button eis-button--ghost eis-button--icon eis-button--sm" type="button" title="Cancel task" aria-label="Cancel task"><i data-lucide="ban" class="eis-icon"></i></button></td></tr>
+          </tbody>
+        </table>
+      </details>
+  </section>
+
+  <section class="eis-panel">
+    <details class="eis-disclosure">
+      <summary><h2 class="eis-label">Note markdown</h2><span class="eis-mono">what the page writes to the file</span></summary>
+      <pre class="eis-app-code"># 2026-11-03
+
+## Tasks
+
+**Needs to be done**
+- [ ] Release the new invoices screen to every account through the feature flag ➕ 2026-10-31
+    - 2026-11-03 - You told support on 31/10 it ships on Monday and took on turning the flag on. The flag link is in the DM — Slack DM
+- [ ] Build the platform strategy deck: how it connects to the business and what changes in the product ⏫ ➕ 2026-10-22 📅 2026-11-23
+- [ ] new - Reply to Bruno whether the talk invite and details arrived by e-mail ➕ 2026-11-02
+- [ ] Fill in the config file and test the slide generator Carla sent ➕ 2026-10-14
+    - 2026-10-22 - Carla asked about the test and you replied “testing it today” — Slack DM
+    - 2026-10-28 - Not tested yet. I need the team&#x27;s environment variables.
+- [ ] Create a status deck template for deliveries and OKRs for the whole team ⬇️ ➕ 2026-10-10
+    - 2026-10-20 - Hand the new template to the team. You told Ana “it will change” — Slack #product
+    - 2026-10-21 - Still missing the outline and a routine that updates the deck by itself.
+- [ ] new - Spec the service status indicator in the header ➕ 2026-11-01 📅 2026-11-03
+
+**Billing**
+- [ ] Approve API access with the new payments provider ➕ 2026-10-10 📅 2026-10-17
+    - 2026-10-24 - The provider asked for the digital certificate again. Sent.
+- [ ] new - Review the billing stories and take them to technical spec ➕ 2026-10-30 📅 2026-11-03
+- [ ] new - Decide how to release the invoices screen: gradually or to selected accounts ➕ 2026-10-30
+
+**Platform**
+- [ ] Prioritize the services left to migrate and agree on the cutover pace ➕ 2026-10-08 📅 2026-10-15
+- [ ] Book 30 min on the app&#x27;s long-term vision ➕ 2026-10-14 📅 2026-10-20
+- [ ] Define who owns each front in the platform squad ⏫ ➕ 2026-10-09
+- [ ] new - Review the database migration plan before the maintenance window ➕ 2026-11-03 📅 2026-11-05
+
+**Data**
+- [ ] Check the new active-accounts metric with Gabi before publishing it on the dashboard ➕ 2026-10-29 📅 2026-11-03
+    - 2026-11-01 - Gabi sent the first version of the query. Cancellations still need checking.
+- [ ] Document the active-customer definition in the data glossary ➕ 2026-10-25
+- [ ] new - Ask for read access to the production database for the data team ➕ 2026-11-02
+
+**Team management**
+- [ ] Prepare the cycle feedback for Henrique ➕ 2026-10-19 📅 2026-11-08
+- [ ] Compile the last months&#x27; deliveries, including what was asked and not delivered, with the reasons ⬇️ ➕ 2026-09-27
+- [ ] new - Open the product designer position ➕ 2026-11-02 📅 2026-11-10</pre>
+    </details>
+  </section>
+</main>
+<script src="../../../src/app/js/sidebar.js"></script>
+<script src="https://unpkg.com/lucide@1.66.0/dist/umd/lucide.min.js"></script>
+<script src="../../../src/shared/js/icons.js"></script>
+</body>
+</html>

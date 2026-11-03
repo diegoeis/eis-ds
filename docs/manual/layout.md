@@ -136,7 +136,7 @@ Rules:
 - `shared` never depends on a scope. Shared elements (button, chip, fields, table, panel) and, later, icons live there.
 - A scope's tokens live under its own group (`web.*`, `app.*`) and MAY reference shared tokens: `"{font.size.800}"`. A colour change in shared reaches every scope.
 - A scope MUST NOT reference another scope's tokens, variables or classes.
-- Every selector in `<scope>/css/components.css` starts with `.eis-<scope>-`. A scope never styles bare HTML or shared classes on their own. It MAY place a shared element in its own context (`.eis-app-tasks .eis-table`) for layout only.
+- Every selector in `<scope>/css/components.css` starts with `.eis-<scope>-`. A scope never styles bare HTML or shared classes on their own. It MAY place a shared element in its own context (`.eis-app-task-table.eis-table`) for layout only.
 - `scripts/build-tokens.py` validates the token rules. `scripts/check-css.py` validates the CSS rules. Both MUST pass.
 - A pattern used on two or more pages goes into the scope CSS. A pattern used on one page only stays in that page's `<style>`.
 
@@ -168,7 +168,7 @@ Rules:
 | `eis-app-metrics` | Row of metric cells (`<dl>`) |
 | `eis-app-grid` (`--halves`, `--main`), `eis-app-stack` | Panel grids and the side column stack |
 | `eis-app-agenda`, `eis-app-cells`, `eis-app-legend`, `eis-app-bar`, `eis-app-pips` | Agenda list, cell matrix, legend, stacked bar, pips |
-| `eis-app-tasks`, `eis-app-task-title`, `eis-app-meta`, `eis-app-due` | Task groups with tables (cells aligned to the top; columns `eis-app-col-check`, `-idx`, `-src`, `-date`, `-due`), the task title when it is not a `<label>`, task metadata, due dates |
+| `eis-app-task-table`, `eis-app-task-title`, `eis-app-meta`, `eis-app-due` | A table of tasks, on `<table class="eis-table eis-app-task-table">` (cells aligned to the top; columns `eis-app-col-check`, `-idx`, `-src`, `-date`, `-due`; rows become cards below 760px), the task title when it is not a `<label>`, task metadata, due dates. To group tasks, put each table in an `eis-disclosure` inside an `eis-panel` (shared element). There is no group component: `eis-disclosure` is the only element that opens and closes |
 | `eis-app-topics`, `eis-app-people`, `eis-app-done` | Side lists |
 | `eis-app-filters` (`__fields`, `__search`) | Filter bar above a list: `eis-tabs` on the left, labelled fields on the right. Fields take the full width below 420px |
 | `eis-app-notice` | One status line (`role="status"`), sticky at the top while the user scrolls a long list |

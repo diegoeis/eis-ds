@@ -266,14 +266,17 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 
 ```html
 <details class="eis-disclosure" open>
-  <summary><h3 class="eis-label">Payments</h3><span class="eis-mono">13</span></summary>
+  <summary><h3>Payments</h3><span class="eis-mono">13</span></summary>
   <!-- content -->
 </details>
 ```
 
-- Native `<details>`/`<summary>`. It opens and closes without JS.
-- The CSS draws the marker on the right: Lucide `plus` when closed, `minus` when open. Write no icon in the summary. When open, the summary gets `--surface-canvas` background.
-- A `--line` separates stacked disclosures.
+- Native `<details>`/`<summary>`. It opens and closes without JS. It is the only element that opens and closes: groups of tasks, topics or any list use it too.
+- The CSS draws the marker on the right: Lucide `plus` when closed, `minus` when open. Write no icon in the summary. When open, the summary gets `--surface-canvas` background and a `--line` under it.
+- The heading in the summary (`h2`, `h3` or `h4`, no class needed) uses the label type one step up (`--font-size-200`), in `--ink`: it names the group. A count or a path goes after it in `eis-mono`.
+- A `--line` separates stacked disclosures. To list several, put them as direct children of one `eis-panel`.
+- Content goes right after the summary: an `eis-panel__body` for text and fields, or an `eis-table` (its first row drops its top line, the summary line already separates them), then an optional `eis-panel__footer`.
+- The styles reach only the disclosure's own summary (`> summary`). A `<details>` inside the content keeps its own style.
 
 ## Metrics (label–value)
 

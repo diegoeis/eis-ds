@@ -144,6 +144,16 @@
 /* chips sit in the title line, before or after the text, separated by a space */
 .eis-app-task-title .eis-chip{vertical-align:text-bottom}
 .eis-app-task-table.eis-table tr:has(.eis-checkbox:checked) :is(label,.eis-app-task-title){color:var(--ink-muted);text-decoration:line-through}
+/* a cancelled task: struck through like a done one (its checkbox is not checked); chips are not struck */
+.eis-app-task-title--cancelled{color:var(--ink-muted);text-decoration:line-through;text-decoration-color:var(--ink-muted)}
+/* a title opened by a double click: the text cursor says so */
+.eis-app-task-title--editable{cursor:text}
+/* priority of a task, on a small chip (eis-chip eis-chip--sm eis-app-priority--high): five levels, strongest first */
+.eis-app-priority--highest{--bg:var(--danger);--bd:var(--danger);--fg:var(--danger-on)}
+.eis-app-priority--high{--bg:var(--accent);--bd:var(--accent);--fg:var(--accent-on)}
+.eis-app-priority--medium{--bg:var(--color-neutral-300);--bd:var(--color-neutral-300);--fg:var(--ink)}
+.eis-app-priority--low{--bg:var(--surface-head);--bd:var(--surface-head);--fg:var(--ink)}
+.eis-app-priority--lowest{--bg:transparent;--bd:var(--line);--fg:var(--ink-muted)}
 .eis-app-meta{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-100);margin-top:var(--space-100)}
 .eis-app-meta em{font-family:var(--font-family-mono);font-size:var(--font-size-200);color:var(--ink-muted)}
 .eis-app-due--over,.eis-app-meta .eis-app-over,.eis-app-over,.eis-app-task-meta .eis-app-due--over{color:var(--accent-ink);font-weight:var(--font-weight-medium)}
@@ -162,6 +172,15 @@
 .eis-app-notes time{font-family:var(--font-family-mono);font-size:var(--font-size-200);line-height:inherit}
 /* a long note (a pasted result) stops at 250px tall and scrolls inside, so the list stays short */
 .eis-app-notes > li > div{max-block-size:calc(var(--space-400) * 4 - var(--space-100) * 0.75);overflow-y:auto;overscroll-behavior:contain}
+/* a small icon button inside a note's text (delete it): inline, right after the text, no box of its own */
+.eis-app-notes p > .eis-button--icon{display:inline-flex;vertical-align:middle;min-width:0;min-height:0;padding:0;margin-left:var(--space-100);line-height:0}
+
+/* add bar: the form that adds an item, first in a list panel (before its groups). Fields side by side,
+   aligned on their bottom edge: the first field takes the free room, the others keep their width
+   (eis-width-*), the buttons come last. The error line takes a row of its own */
+.eis-app-add-bar{display:flex;flex-wrap:wrap;align-items:flex-end;gap:var(--space-200);padding:var(--space-200);border-bottom:var(--border-width-100) solid var(--line)}
+.eis-app-add-bar > .eis-field:first-child{flex:1 1 var(--app-size-form-field);min-inline-size:0}
+.eis-app-add-bar > .eis-field__error{flex-basis:100%;margin:0}
 
 /* side lists */
 .eis-app-bar{display:flex;gap:calc(var(--space-100) / 2);height:10px;margin:var(--space-200) var(--space-200) var(--space-100)}

@@ -263,7 +263,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <label><input type="radio" name="range" value="all"><span>All</span></label>
         </fieldset>
       </div>
-      <p class="eis-note"><code>.eis-checkbox</code> · <code>.eis-radio</code> · <code>.eis-switch</code> (checkbox + <code>role="switch"</code>) inside <code>.eis-choice</code> labels; groups in <code>fieldset.eis-choices</code>. <code>.eis-tabs</code> is a radio group.</p>
+      <div class="eis-demo">
+        <fieldset class="eis-tabs">
+          <legend>Type</legend>
+          <label><input type="radio" name="kind" value="all" checked><span>All <span class="eis-tabs__count">14</span></span></label>
+          <label><input type="radio" name="kind" value="project"><span>Project <span class="eis-tabs__count">10</span></span></label>
+          <label><input type="radio" name="kind" value="team"><span>Team <span class="eis-tabs__count">04</span></span></label>
+        </fieldset>
+      </div>
+      <p class="eis-note"><code>.eis-checkbox</code> · <code>.eis-radio</code> · <code>.eis-switch</code> (checkbox + <code>role="switch"</code>) inside <code>.eis-choice</code> labels; groups in <code>fieldset.eis-choices</code>. <code>.eis-tabs</code> is a radio group, <code>.eis-tabs__count</code> the number of items of an option.</p>
     </div>
   </section>
 

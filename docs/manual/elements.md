@@ -198,6 +198,7 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 - When the options do not fit the width (narrow screens), they wrap to more rows and each row fills the width. There is never a horizontal scroll.
 - Radius `--radius-100`, like buttons, inputs and selects. The selected item uses the inner radius (`--radius-100` minus the padding).
 - Not for navigation between pages (use links) and not for form answers (use radio).
+- Count: when an option filters a list, put the number of items after its text, in `<span class="eis-tabs__count">` inside the option's `<span>`: `<span>Team <span class="eis-tabs__count">04</span></span>`. Two digits at least, as in metrics. The count of the whole list goes on `All`.
 
 ## Table
 

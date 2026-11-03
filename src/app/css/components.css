@@ -129,7 +129,7 @@
 /* task table: a real table of tasks. Put it in an eis-disclosure (shared) to group tasks */
 .eis-app-task-table.eis-table{table-layout:fixed}
 .eis-app-task-table.eis-table .eis-app-col-check,.eis-app-task-table.eis-table .eis-app-col-act{width:48px}
-.eis-app-task-table.eis-table .eis-app-col-idx{width:44px}
+.eis-app-task-table.eis-table .eis-app-col-idx{width:56px}
 .eis-app-task-table.eis-table .eis-app-col-src{width:184px}
 .eis-app-task-table.eis-table .eis-app-col-due,.eis-app-task-table.eis-table .eis-app-col-date{width:88px}
 .eis-app-task-table.eis-table th{text-align:left;padding-inline:0 var(--space-200);font-weight:inherit}
@@ -303,16 +303,19 @@
   .eis-app-metrics > div:nth-child(n+3){border-top:var(--border-width-100) solid var(--line)}
   .eis-app-metrics dd{font-size:var(--font-size-600)}
   /* table rows reflow into cards; semantics stay a table */
-  .eis-app-task-table.eis-table thead,.eis-app-task-table.eis-table colgroup,.eis-app-task-table.eis-table td:nth-child(2){display:none}
+  /* columns: number, checkbox, task, then src/due or one action. The number hides; the checkbox takes the first column */
+  .eis-app-task-table.eis-table thead,.eis-app-task-table.eis-table colgroup,.eis-app-task-table.eis-table td:nth-child(1){display:none}
   .eis-app-task-table.eis-table,.eis-app-task-table.eis-table tbody{display:block}
   .eis-app-task-table.eis-table tr{display:grid;grid-template-columns:32px minmax(0,1fr) auto;column-gap:var(--space-100);
     padding:var(--space-200);border-top:var(--border-width-100) solid var(--line)}
   .eis-app-task-table.eis-table td,.eis-app-task-table.eis-table td:first-child,.eis-app-task-table.eis-table td:last-child{border:0;padding:0;text-align:left}
-  .eis-app-task-table.eis-table td:nth-child(1){grid-column:1;grid-row:1}
+  .eis-app-task-table.eis-table td:nth-child(2){grid-column:1;grid-row:1}
   .eis-app-task-table.eis-table td:nth-child(3){grid-column:2;grid-row:1}
   .eis-app-task-table.eis-table td:nth-child(4){grid-column:2;grid-row:2;margin-top:var(--space-100)}
   .eis-app-task-table.eis-table td:nth-child(5){grid-column:3;grid-row:1}
   .eis-app-task-table.eis-table td:nth-child(6){grid-column:3;grid-row:2;margin-top:var(--space-100)}
+  /* four cells (number, checkbox, task, one action): the action sits to the right of the text */
+  .eis-app-task-table.eis-table td:nth-child(4):last-child{grid-column:3;grid-row:1;margin-top:0}
   .eis-app-notes > li{grid-template-columns:minmax(0,1fr);gap:0}
   .eis-app-agenda li{grid-template-columns:minmax(0,1fr) auto;row-gap:calc(var(--space-100) / 2)}
   .eis-app-agenda time{grid-column:1/-1}

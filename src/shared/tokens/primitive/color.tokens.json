@@ -43,7 +43,7 @@
           ],
           "hex": "#eaeaea"
         },
-        "$description": "Canvas.",
+        "$description": "Selected row of a table (surface.selected). Holds ink-muted at 4.6:1. Was the canvas until 2026-10-30.",
         "$extensions": {
           "com.diegoeis.eis-ds": {
             "source": "author's choice, 2026-10-25 (was #e6e6e6, sampled from docs/visual-guidance/references/interface main-1..3)"
@@ -112,13 +112,18 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.4,
-            0.4,
-            0.4
+            0.412,
+            0.412,
+            0.412
           ],
-          "hex": "#666666"
+          "hex": "#696969"
         },
-        "$description": "Secondary ink. 4.8:1 on neutral.100, 5.4:1 on neutral.0."
+        "$description": "Secondary ink. 5.5:1 on white, 5.1:1 on neutral.0, 4.6:1 on neutral.100. Never on neutral.200 (4.0:1, fails).",
+        "$extensions": {
+          "com.diegoeis.eis-ds": {
+            "source": "author's request, 2026-11-03: lighter secondary text (was #666666). The lightest grey that still passes 4.5:1 on neutral.100, the selected row"
+          }
+        }
       },
       "900": {
         "$value": {

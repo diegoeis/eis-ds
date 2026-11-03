@@ -232,6 +232,7 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 - Numbers: `.eis-num` (mono, tabular, right-aligned), including the header cell.
 - Header row (`thead th`): `--surface-inverse` background, `--ink-inverse` text, label type, inner padding. A scope may change the inline padding of the header to align it with its cells. It never changes the colours.
 - Rows separated by `--line`. No zebra stripes, no vertical lines.
+- A selected row gets the `--surface-selected` background. A row is selected when a checkbox in it is checked, or when it has `aria-selected="true"`. The table sets it: write no class. Every text role passes on it, `--ink-muted` included.
 - On narrow screens a table MAY reflow into cards with CSS (`display:block/grid` on `tr`), keeping the HTML a table. If it can't reflow, wrap it in a horizontally scrollable container — the page itself MUST NOT scroll sideways.
 
 ## Panel
@@ -247,7 +248,7 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 ```
 
 - The only container. `--surface-panel`, 1px `--line`, `--radius-100`, no shadow.
-- Head: `--surface-head` background, text in `--ink`. The title is `eis-panel__title` (label type, ink: it names the panel, it is not a muted label) on the left, mono meta (count, range) on the right.
+- Head: `--surface-head` background, text in `--ink`. The title is `eis-panel__title` (label type, ink: it names the panel, it is not a muted label) on the left, mono meta (count, range) on the right. `eis-mono`, `eis-label` and an outline chip in the head take `--ink`: `--ink-muted` fails on `--surface-head` (4.0:1).
 - MUST NOT nest a panel inside a panel. Separate inside with hairlines.
 - Content padding: `--space-200`.
 

@@ -10,7 +10,7 @@
   --color-neutral-300: #cfcfcf;
   --color-neutral-400: #a3a3a3;
   --color-neutral-500: #858585;
-  --color-neutral-600: #666666;
+  --color-neutral-600: #696969;
   --color-neutral-900: #111111;
   --color-orange-500: #f35919;
   --color-orange-700: #b5400c;
@@ -24,13 +24,6 @@
   --space-200: 16px;
   --space-300: 32px;
   --space-400: 64px;
-
-  /* width: fixed widths for a field or a block (width helpers, eis-width-*) */
-  --width-100: 128px;
-  --width-200: 192px;
-  --width-300: 256px;
-  --width-400: 360px;
-  --width-500: 480px;
 
   /* radius */
   --radius-100: 7px;
@@ -68,6 +61,7 @@
   --surface-canvas: var(--color-neutral-0);
   --surface-panel: var(--color-white);
   --surface-head: var(--color-neutral-200);
+  --surface-selected: var(--color-neutral-100);
   --surface-raised: var(--color-white);
   --surface-inverse: var(--color-neutral-900);
 

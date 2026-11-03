@@ -13,6 +13,10 @@
       "$value": "{color.neutral.200}",
       "$description": "Head strip of a panel (eis-panel__head). Text on it is --ink: --ink-muted fails there (4.2:1). Not a page surface."
     },
+    "selected": {
+      "$value": "{color.neutral.100}",
+      "$description": "Background of a selected table row (its checkbox checked, or aria-selected). Every text role still passes on it: ink 15.7:1, ink-muted 4.6:1. Not a page surface."
+    },
     "raised": {
       "$value": "{color.white}",
       "$description": "Background of a default button: a control raised above the canvas. Not for page areas."

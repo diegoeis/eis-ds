@@ -12,6 +12,9 @@
 .eis-panel__head{display:flex;justify-content:space-between;align-items:center;gap:var(--space-200);
   padding:var(--space-200);border-bottom:var(--border-width-100) solid var(--line);background:var(--surface-head);color:var(--ink)}
 /* the panel's title: label type, in ink (it names the panel, it is not a muted label) */
+/* text helpers in the head take ink: --ink-muted fails on --surface-head (4.0:1) */
+.eis-panel__head :is(.eis-mono,.eis-label){color:var(--ink)}
+.eis-panel__head .eis-chip--outline{--fg:var(--ink)}
 .eis-panel__title{margin:0;font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);font-weight:var(--type-label-font-weight);
   letter-spacing:var(--type-label-letter-spacing);line-height:var(--type-label-line-height);text-transform:uppercase;color:var(--ink)}
 .eis-panel__body{display:flex;flex-direction:column;gap:var(--space-200);min-width:0;padding:var(--space-200)}
@@ -138,6 +141,8 @@
 .eis-table thead th{border-top:0;padding-block:calc(var(--space-100) * 1.5);background:var(--surface-inverse);font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);
   font-weight:var(--type-label-font-weight);letter-spacing:var(--type-label-letter-spacing);text-transform:uppercase;color:var(--ink-inverse)}
 .eis-table .eis-checkbox,.eis-table .eis-radio{margin-top:0;display:grid}
+/* a selected row: its checkbox is checked, or the row has aria-selected="true" */
+.eis-table tbody tr:has(.eis-checkbox:checked),.eis-table tbody tr[aria-selected="true"]{background:var(--surface-selected)}
 .eis-table .eis-num{text-align:right;font-family:var(--font-family-mono);font-variant-numeric:tabular-nums}
 
 /* ---------- navigation bits ---------- */

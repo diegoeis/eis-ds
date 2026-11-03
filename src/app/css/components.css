@@ -22,6 +22,18 @@
   border-radius:var(--radius-100);background:var(--bg);color:var(--fg)}
 .eis-app-nav a:hover{--bg:var(--surface-canvas)}
 .eis-app-nav a[aria-current="page"]{--bg:var(--surface-inverse);--fg:var(--ink-inverse)}
+/* an item that opens a sub-list (button + ul): the arrow points right when closed, down when open */
+.eis-app-nav__toggle{--bg:transparent;--fg:var(--ink);
+  display:flex;align-items:center;gap:var(--space-100);inline-size:100%;min-height:var(--app-size-nav-item);padding:0 var(--space-100);
+  border:0;border-radius:var(--radius-100);background:var(--bg);color:var(--fg);text-align:start;cursor:pointer}
+.eis-app-nav__toggle:hover{--bg:var(--surface-canvas)}
+.eis-app-nav__toggle::after{content:"";flex:none;inline-size:var(--space-200);block-size:var(--space-200);margin-left:auto;
+  background:currentColor;mask:var(--icon-chevron-left) center / contain no-repeat;rotate:-90deg}
+.eis-app-nav__toggle > .eis-app-nav__count{margin-left:auto}
+.eis-app-nav__toggle:has(> .eis-app-nav__count)::after{margin-left:0}
+.eis-app-nav__toggle[aria-expanded="false"]::after{rotate:180deg}
+.eis-app-nav__toggle[aria-expanded="false"] + .eis-app-nav__sub{display:none}
+.eis-app-nav__sub{padding-left:var(--space-200)}
 .eis-app-nav__count{margin-left:auto;font-family:var(--font-family-mono);font-size:var(--font-size-200);opacity:.7}
 .eis-app-nav__count--accent{opacity:1;background:var(--accent);color:var(--accent-on);padding:2px var(--space-100);border-radius:2px;font-weight:var(--font-weight-medium)}
 .eis-app-sidebar__foot{margin-top:auto;padding:var(--space-200) 0 0;border-top:var(--border-width-100) solid var(--line)}
@@ -263,6 +275,10 @@
   .eis-app-sidebar__foot,.eis-app-nav__section > .eis-label{display:none}
   .eis-app-nav,.eis-app-nav ul{flex-direction:row;gap:var(--space-100)}
   .eis-app-nav a{white-space:nowrap}
+  /* a sub-list sits on the same row, right after its item */
+  .eis-app-nav li:has(> .eis-app-nav__toggle){display:flex;align-items:center;gap:var(--space-100)}
+  .eis-app-nav__toggle{inline-size:auto;white-space:nowrap}
+  .eis-app-nav__sub{padding-left:0}
   .eis-app-main{padding:var(--space-200);max-inline-size:calc(var(--app-size-main) + var(--space-200) * 2)}
   .eis-app-grid--halves{grid-template-columns:minmax(0,1fr)}
 }

@@ -162,7 +162,7 @@ Rules:
 | Class | What it is |
 |---|---|
 | `eis-app-shell` | On `<body>`: sidebar + main grid. Becomes a top bar below 1024px |
-| `eis-app-sidebar`, `eis-app-brand`, `eis-app-nav` (`__section`, `__count`) | Sidebar, brand, navigation with counts |
+| `eis-app-sidebar`, `eis-app-brand`, `eis-app-nav` (`__section`, `__count`, `__toggle`, `__sub`) | Sidebar, brand, navigation with counts. An item that holds a sub-list is a `<button class="eis-app-nav__toggle" aria-expanded aria-controls data-eis-app-nav-toggle>` followed by `<ul class="eis-app-nav__sub">`; `app/js/sidebar.js` opens and closes it and keeps the state. See "Nav sub-list" below |
 | `eis-app-sidebar__toggle` + `data-eis-app-sidebar-toggle` | Collapse button at the bottom left of the sidebar, last in `eis-app-sidebar__foot`. Driven by `app/js/sidebar.js`. Collapsed, the sidebar keeps only the button. Above 1024px only. See "Sidebar collapse" below |
 | `eis-app-main`, `eis-app-page-head` (`__meta`), `eis-app-toolbar` | Main region (content max `--app-size-main`, in the centre of the free space), page head, action toolbar. See "Page head" below |
 | `eis-app-metrics` | Row of metric cells (`<dl>`) |
@@ -198,6 +198,22 @@ The sidebar can collapse to a narrow strip (`--app-size-sidebar-collapsed`). Col
 3. Load `app/js/sidebar.js` at the end of `<body>`, after the icon scripts (elements.md, "Icons").
 
 The script sets `aria-expanded`. The CSS reads it. The script keeps the choice in `localStorage` (key `eis-app-sidebar`, change it with `data-key`). The main content then fills the free space, up to `--app-size-main` (1200px). Below 1024px the sidebar is a top bar, the toggle is hidden and the collapse has no effect.
+
+### Nav sub-list
+
+An item of the nav can hold a list of sub-items (one page per team under "Topics"). The item is a button, not a link: a click opens or closes the list. Its arrow points right when closed, down when open.
+
+```html
+<li>
+  <button class="eis-app-nav__toggle" type="button" aria-expanded="true" aria-controls="nav-teams"
+          data-eis-app-nav-toggle>Topics <span class="eis-app-nav__count">12</span></button>
+  <ul class="eis-app-nav__sub" id="nav-teams">
+    <li><a href="#team/growth" aria-current="page">Growth</a></li>
+  </ul>
+</li>
+```
+
+`app/js/sidebar.js` sets `aria-expanded` and keeps each list open or closed for the next visit (`localStorage`, key `eis-app-nav:` + the list id). The CSS reads `aria-expanded`. Sub-items are links, styled like the other items.
 
 ### Page head
 

@@ -115,6 +115,7 @@ Which variable to use for what. Shared variables come from `src/shared/css/token
 ###### Accent budget
 
 - One accent per piece. If two things compete for it, one of them is not important.
+- Small state marks do not count for this rule: a count badge (`eis-app-nav__count--accent`), an overdue dot, a due date in `--accent-ink`. They can be on the same piece as the one accent action.
 - Accent covers ≤ 5% of the area. Exception: one "accent block" (a whole section in `--accent`) per page, declared on purpose.
 - Normal data is grey. Accent marks only the exception.
 
@@ -620,6 +621,7 @@ Load at the end of `<body>`, Lucide first:
 - `.eis-mono` — mono metadata (12, `--ink-muted`, tabular numbers).
 - `.eis-visually-hidden` — hidden on screen, read by screen readers. For captions, legends and labels the design doesn't show.
 - `.eis-width-fit`, `.eis-width-100` … `.eis-width-500` — the width of a field, a button or a block: as wide as its content, or the `--width-*` step (128, 192, 256, 360, 480px). Never wider than the container. In a flex row (`eis-app-inline`) the item keeps its width and the others take the rest. In a row of fields (`eis-app-add-bar`, `eis-app-form-row`, `eis-app-filters__fields`) the step is the base and the minimum width of the field: it grows into the free room and wraps when it no longer fits (layout.md §7, "Rows of fields"). A short select before the field it controls is `<div class="eis-field eis-width-fit">`. Don't write a width in page CSS for this.
+- `.eis-grow` — the item takes the free room of its flex row first (it grows three times as fast as the others). In a row of fields it marks the main field: it has no `--width-400` limit, while the other fields stop growing at `--width-400`. Put it on one item per row. With a width helper, the helper sets its base.
 
 ##### Not yet in the system
 
@@ -806,7 +808,7 @@ Rules:
 | `eis-app-task-meta` | A task's fields in one line under its text: `<dl class="eis-app-task-meta">` with one `<div><dt>Source</dt><dd>…</dd></div>` per field (label upper case, value in ink, cut with an ellipsis). Use `—` for an empty value |
 | `eis-app-notes` | Dated notes under a task (the sub-items of a markdown task): `<ul class="eis-app-notes">`, each `<li>` a `<time>` (or an empty `<span>`) then a `<div>` with the text. A rule on the left; the date column stacks above the text below 760px; a note taller than 250px scrolls inside. A small icon button (`eis-button--ghost eis-button--icon eis-button--sm`) at the end of a note's `<p>` sits inline, right after the text: use it to delete the note |
 | `eis-app-priority` (`--highest`, `--high`, `--medium`, `--low`, `--lowest`) | The priority of a task, on a small chip: `<span class="eis-chip eis-chip--sm eis-app-priority--high">High</span>` in the task's `eis-app-meta` line. One colour per level, strongest first |
-| `eis-app-add-bar` | The form that adds an item, first in a list panel, before its groups: `<form class="eis-app-add-bar">` with `eis-field`s side by side, aligned on their bottom edge, then an `eis-app-inline` with Cancel and Save. The fields are a row of fields (see "Rows of fields" below): give the short ones a width helper. An `eis-field__error` takes a row of its own |
+| `eis-app-add-bar` | The form that adds an item, first in a list panel, before its groups: `<form class="eis-app-add-bar">` with `eis-field`s side by side, aligned on their bottom edge, then an `eis-app-inline` with Cancel and Save. The fields are a row of fields (see "Rows of fields" below): give the short ones a width helper and the main one `eis-grow`. An `eis-field__error` takes a row of its own |
 | `eis-app-task-table`, `eis-app-task-title`, `eis-app-meta`, `eis-app-due` | A table of tasks, on `<table class="eis-table eis-app-task-table">` (cells aligned to the top; columns in this order: `eis-app-col-idx` (the number), `eis-app-col-check`, the task, then `-src`, `-date`, `-due` or `-act` (one small button); below 760px the number hides and the checkbox takes the first column; rows become cards below 760px), the task title when it is not a `<label>` (`--cancelled`: struck through like a done task, for a cancelled one; `--editable`: a text cursor, for a title a double click edits), task metadata, due dates. To group tasks, put each table in an `eis-disclosure` inside an `eis-panel` (shared element). There is no group component: `eis-disclosure` is the only element that opens and closes |
 | `eis-app-topics`, `eis-app-people`, `eis-app-done` | Side lists |
 | `eis-app-filters` (`__fields`, `__search`) | Filter bar above a list: `eis-tabs` on the left, labelled fields on the right. The fields are a row of fields (base `--app-size-filter-field`, `__search` `--app-size-filter-search`). When they do not fit next to the tabs on one line, they move as one block to a row of their own and fill it |
@@ -828,12 +830,14 @@ Rules:
 
 - Each field starts at a base width and never gets narrower than it. The base is the field's width helper (`eis-width-100` … `eis-width-500`), else the row's default: `--app-size-form-field` (256px), or in a filter bar `--app-size-filter-field` (192px) and `--app-size-filter-search` (224px). `eis-width-fit`: the content's width is the base.
 - The fields share the free room of the row and grow with it. They do not keep a fixed width.
-- A field goes to the next line only when it no longer fits. A field on a new line starts at the left and fills that line.
+- A field grows up to `--width-400` (360px). A field with a wider base (`eis-width-500`) grows up to its base. So one field never stretches across the whole row.
+- `eis-grow` marks the main field of the row (the text of a new task). It grows three times as fast as the other fields and has no `--width-400` limit. Use it on one field per row, or on none.
+- A field goes to the next line only when it no longer fits. A field on a new line starts at the left.
 - Write no width and no `flex` for this in page CSS. To make a field shorter or longer, change its width helper.
 
 ```html
 <form class="eis-app-add-bar">
-  <div class="eis-field"><label for="t">Task</label><input class="eis-input" id="t"></div>
+  <div class="eis-field eis-grow"><label for="t">Task</label><input class="eis-input" id="t"></div>
   <div class="eis-field eis-width-200"><label for="g">Group</label><select class="eis-select" id="g">…</select></div>
   <div class="eis-field eis-width-fit"><label for="d">Due date</label><input class="eis-input" id="d" type="date"></div>
   <p class="eis-app-inline"><button class="eis-button eis-button--ghost" type="button">Cancel</button><button class="eis-button eis-button--primary" type="submit">Save</button></p>
@@ -977,7 +981,7 @@ Run this before calling a piece, element or token done. Every box must be true.
 
 ##### Visual rules
 
-- [ ] Accent used once per piece, ≤ 5% of the area (or one declared accent block).
+- [ ] Accent used once per piece, ≤ 5% of the area (or one declared accent block). Small state marks (a count badge, an overdue dot) do not count.
 - [ ] Statuses are chips. Actions are buttons. The main action is `eis-button--primary` (one per view, or one per panel that saves on its own). In an app page head it is `eis-button--accent`, the page's one accent. Remove/delete is `eis-button--danger`.
 - [ ] Every border and divider is `--line`, 1px.
 - [ ] Numbers are mono and tabular. Labels use the label style. Running text is in sentence case.

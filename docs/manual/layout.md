@@ -173,7 +173,7 @@ Rules:
 | `eis-app-task-meta` | A task's fields in one line under its text: `<dl class="eis-app-task-meta">` with one `<div><dt>Source</dt><dd>…</dd></div>` per field (label upper case, value in ink, cut with an ellipsis). Use `—` for an empty value |
 | `eis-app-notes` | Dated notes under a task (the sub-items of a markdown task): `<ul class="eis-app-notes">`, each `<li>` a `<time>` (or an empty `<span>`) then a `<div>` with the text. A rule on the left; the date column stacks above the text below 760px; a note taller than 250px scrolls inside. A small icon button (`eis-button--ghost eis-button--icon eis-button--sm`) at the end of a note's `<p>` sits inline, right after the text: use it to delete the note |
 | `eis-app-priority` (`--highest`, `--high`, `--medium`, `--low`, `--lowest`) | The priority of a task, on a small chip: `<span class="eis-chip eis-chip--sm eis-app-priority--high">High</span>` in the task's `eis-app-meta` line. One colour per level, strongest first |
-| `eis-app-add-bar` | The form that adds an item, first in a list panel, before its groups: `<form class="eis-app-add-bar">` with `eis-field`s side by side, aligned on their bottom edge, then an `eis-app-inline` with Cancel and Save. The fields are a row of fields (see "Rows of fields" below): give the short ones a width helper. An `eis-field__error` takes a row of its own |
+| `eis-app-add-bar` | The form that adds an item, first in a list panel, before its groups: `<form class="eis-app-add-bar">` with `eis-field`s side by side, aligned on their bottom edge, then an `eis-app-inline` with Cancel and Save. The fields are a row of fields (see "Rows of fields" below): give the short ones a width helper and the main one `eis-grow`. An `eis-field__error` takes a row of its own |
 | `eis-app-task-table`, `eis-app-task-title`, `eis-app-meta`, `eis-app-due` | A table of tasks, on `<table class="eis-table eis-app-task-table">` (cells aligned to the top; columns in this order: `eis-app-col-idx` (the number), `eis-app-col-check`, the task, then `-src`, `-date`, `-due` or `-act` (one small button); below 760px the number hides and the checkbox takes the first column; rows become cards below 760px), the task title when it is not a `<label>` (`--cancelled`: struck through like a done task, for a cancelled one; `--editable`: a text cursor, for a title a double click edits), task metadata, due dates. To group tasks, put each table in an `eis-disclosure` inside an `eis-panel` (shared element). There is no group component: `eis-disclosure` is the only element that opens and closes |
 | `eis-app-topics`, `eis-app-people`, `eis-app-done` | Side lists |
 | `eis-app-filters` (`__fields`, `__search`) | Filter bar above a list: `eis-tabs` on the left, labelled fields on the right. The fields are a row of fields (base `--app-size-filter-field`, `__search` `--app-size-filter-search`). When they do not fit next to the tabs on one line, they move as one block to a row of their own and fill it |
@@ -195,12 +195,14 @@ Rules:
 
 - Each field starts at a base width and never gets narrower than it. The base is the field's width helper (`eis-width-100` … `eis-width-500`), else the row's default: `--app-size-form-field` (256px), or in a filter bar `--app-size-filter-field` (192px) and `--app-size-filter-search` (224px). `eis-width-fit`: the content's width is the base.
 - The fields share the free room of the row and grow with it. They do not keep a fixed width.
-- A field goes to the next line only when it no longer fits. A field on a new line starts at the left and fills that line.
+- A field grows up to `--width-400` (360px). A field with a wider base (`eis-width-500`) grows up to its base. So one field never stretches across the whole row.
+- `eis-grow` marks the main field of the row (the text of a new task). It grows three times as fast as the other fields and has no `--width-400` limit. Use it on one field per row, or on none.
+- A field goes to the next line only when it no longer fits. A field on a new line starts at the left.
 - Write no width and no `flex` for this in page CSS. To make a field shorter or longer, change its width helper.
 
 ```html
 <form class="eis-app-add-bar">
-  <div class="eis-field"><label for="t">Task</label><input class="eis-input" id="t"></div>
+  <div class="eis-field eis-grow"><label for="t">Task</label><input class="eis-input" id="t"></div>
   <div class="eis-field eis-width-200"><label for="g">Group</label><select class="eis-select" id="g">…</select></div>
   <div class="eis-field eis-width-fit"><label for="d">Due date</label><input class="eis-input" id="d" type="date"></div>
   <p class="eis-app-inline"><button class="eis-button eis-button--ghost" type="button">Cancel</button><button class="eis-button eis-button--primary" type="submit">Save</button></p>

@@ -233,6 +233,9 @@ Candidates will be compared side by side in HTML before the decision.
 
 | Date | Decision | Origin |
 |---|---|---|
+| 2026-11-03 | In a row of fields a field grows up to `--width-400` (or up to its base when the base is wider). It no longer fills a line of its own. New shared helper `eis-grow`: the main field of a row (the task text of an add bar) grows three times as fast as the others and has no limit | Author: a field that wrapped alone stretched across the whole row, and the task text got as much room as the short selects |
+| 2026-11-03 | Small state marks (the accent count of a nav item, an overdue dot, a due date in `--accent-ink`) do not count for "one accent per piece". They can sit next to the page's one accent action | Author: the Inbox count and the Overdue dot stay accent next to the accent New task |
+| 2026-11-03 | The hover of a closed `eis-disclosure` summary keeps the text in `--ink` (the `eis-mono` and `eis-label` too), on `--surface-hover` | Author: confirmed as built |
 | 2026-11-03 | `--ink-muted` is `#6d6d6d` (`neutral.600`, was `#696969`): 5.2:1 on panel, 4.8:1 on canvas, 4.5:1 on selected. `surface.selected` moves to a new primitive `neutral.50` (`#f0f0f0`, was `neutral.100`), the darkest step that still holds `--ink-muted` at 4.5:1 | Author: lighter secondary text and a lighter selected row |
 | 2026-11-03 | New role `surface.hover` (`neutral.100`, `#eaeaea`): a closed `eis-disclosure` summary under the pointer. `--ink-muted` fails on it (4.3:1), so `eis-mono` and `eis-label` in the summary take `--ink` on hover, as in the panel head | Author: hover on a closed disclosure |
 | 2026-11-03 | `--surface-panel` and `--surface-raised` stay two roles with the same value (white): panel = a surface that holds content (panel, sidebar, field, table); raised = a control above the canvas (default button). A mode can split them | Author's decision after the question "why two tokens with one value?" |

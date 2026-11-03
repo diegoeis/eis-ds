@@ -298,8 +298,8 @@
 /* rows of fields (eis-app-add-bar, eis-app-form-row, eis-app-filters__fields): each field starts at its base
    width and never gets narrower than it. The base is its width helper (eis-width-100…500, read from --basis),
    else the row's default (--app-size-form-field; in a filter bar --app-size-filter-field, -filter-search).
-   Fields share the free room and grow with it. A field wraps only when it no longer fits; a wrapped field
-   starts at the left and fills its row. eis-width-fit: the content's width is the base */
+   Fields share the free room and grow with it, up to --width-400. A field wraps only when it no longer fits;
+   a wrapped field starts at the left. eis-width-fit: the content's width is the base */
 .eis-app-add-bar > .eis-field,.eis-app-form-row:not(.eis-app-form-row--2) > *{
   flex:1 1 var(--basis,var(--app-size-form-field));min-inline-size:min(var(--basis,var(--app-size-form-field)),100%)}
 .eis-app-filters__fields > .eis-field{flex:1 1 var(--basis,var(--app-size-filter-field));min-inline-size:min(var(--basis,var(--app-size-filter-field)),100%);
@@ -307,6 +307,11 @@
 .eis-app-filters__fields > .eis-app-filters__search{flex-basis:var(--basis,var(--app-size-filter-search));min-inline-size:min(var(--basis,var(--app-size-filter-search)),100%);
   inline-size:var(--basis,var(--app-size-filter-search))}
 .eis-app-add-bar > .eis-width-fit,.eis-app-form-row > .eis-width-fit,.eis-app-filters__fields > .eis-width-fit{flex:1 1 auto;min-inline-size:auto}
+/* a field grows up to --width-400 (or up to its base, when the base is wider), so one field never stretches
+   across the whole row. eis-grow: the main field of the row grows with a larger weight and has no limit */
+.eis-app-add-bar > .eis-field,.eis-app-form-row:not(.eis-app-form-row--2) > .eis-field,.eis-app-filters__fields > .eis-field{
+  max-inline-size:min(max(var(--basis,var(--width-400)),var(--width-400)),100%)}
+.eis-app-add-bar > .eis-grow,.eis-app-form-row > .eis-grow,.eis-app-filters__fields > .eis-grow{flex-grow:3;max-inline-size:100%}
 .eis-app-form-text{max-inline-size:80ch;color:var(--ink-muted)}
 /* buttons keep their natural height: centred on a one-line field, at the top of a textarea */
 .eis-app-inline{display:flex;align-items:center;gap:var(--space-100);min-width:0}

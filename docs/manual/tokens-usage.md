@@ -40,6 +40,7 @@ Which variable to use for what. Shared variables come from `src/shared/css/token
 ### Accent budget
 
 - One accent per piece. If two things compete for it, one of them is not important.
+- Small state marks do not count for this rule: a count badge (`eis-app-nav__count--accent`), an overdue dot, a due date in `--accent-ink`. They can be on the same piece as the one accent action.
 - Accent covers ≤ 5% of the area. Exception: one "accent block" (a whole section in `--accent`) per page, declared on purpose.
 - Normal data is grey. Accent marks only the exception.
 

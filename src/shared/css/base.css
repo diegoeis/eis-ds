@@ -32,6 +32,9 @@ code{font-family:var(--font-family-mono);font-size:var(--font-size-200)}
 .eis-width-300{--basis:var(--width-300);inline-size:var(--basis);max-inline-size:100%;flex:0 0 auto}
 .eis-width-400{--basis:var(--width-400);inline-size:var(--basis);max-inline-size:100%;flex:0 0 auto}
 .eis-width-500{--basis:var(--width-500);inline-size:var(--basis);max-inline-size:100%;flex:0 0 auto}
+/* grow: the item takes the free room of its flex row first. In a row of fields it is the main field: it grows
+   three times as fast as the others and has no --width-400 limit. Combine with a width helper to set its base */
+.eis-grow{flex-grow:3;min-inline-size:0}
 
 /* ---------- link ----------
    Every link is underlined and turns --accent-ink on hover (5.3:1 on --surface-panel,

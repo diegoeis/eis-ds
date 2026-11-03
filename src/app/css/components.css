@@ -39,9 +39,14 @@
 .eis-app-sidebar__foot{margin-top:auto;padding:var(--space-200) 0 0;border-top:var(--border-width-100) solid var(--line)}
 .eis-app-sidebar__foot dl{display:grid;grid-template-columns:auto 1fr;gap:var(--space-100) var(--space-200)}
 .eis-app-sidebar__foot dd{text-align:right}
+/* top bar: the page's first row below 1024px (a menu button that opens the sidebar as a drawer, then the page name).
+   Hidden on wide screens. js/sidebar.js drives the button */
+.eis-app-topbar{display:none}
+.eis-app-topbar__title{min-inline-size:0;text-align:right;overflow-wrap:anywhere;
+  font-family:var(--font-family-mono);font-size:var(--font-size-300);font-weight:var(--font-weight-semibold);letter-spacing:var(--font-letter-spacing-wide)}
 /* collapse: a toggle in the sidebar footer, last, at the bottom left (js/sidebar.js sets aria-expanded).
    Collapsed, the sidebar keeps only the toggle. The toggle never moves: only its arrow turns.
-   Wide screens only. Below 1024px the sidebar is a top bar and the toggle is hidden. */
+   Wide screens only. Below 1024px the sidebar is a drawer (eis-app-topbar) and the toggle is hidden. */
 .eis-app-sidebar__toggle{display:none}
 @media (min-width:1025px){
   .eis-app-shell[data-eis-app-animate]{transition:grid-template-columns .2s ease}
@@ -303,17 +308,28 @@
 }
 @media (max-width:1024px){
   .eis-app-shell{grid-template-columns:minmax(0,1fr);grid-template-rows:auto 1fr} /* short pages: the top bar keeps its height */
-  .eis-app-sidebar{position:sticky;top:0;z-index:10;height:auto;flex-direction:row;align-items:center;gap:var(--space-200);
-    padding:var(--space-100) var(--space-200);border-right:0;border-bottom:var(--border-width-100) solid var(--line);overflow-x:auto}
-  .eis-app-sidebar__foot,.eis-app-nav__section > .eis-label{display:none}
-  .eis-app-nav,.eis-app-nav ul{flex-direction:row;gap:var(--space-100)}
-  .eis-app-nav a{white-space:nowrap}
-  /* a sub-list sits on the same row, right after its item */
-  .eis-app-nav li:has(> .eis-app-nav__toggle){display:flex;align-items:center;gap:var(--space-100)}
-  .eis-app-nav__toggle{inline-size:auto;white-space:nowrap}
-  .eis-app-nav__sub{padding-left:0}
+  /* top bar: fixed at the top, menu button on the left, page name on the right */
+  .eis-app-topbar{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:var(--space-200);
+    padding:var(--space-100) var(--space-200);background:var(--surface-panel);border-bottom:var(--border-width-100) solid var(--line)}
+  /* drawer: the sidebar slides in from the left, over the content, on a dimmed page */
+  .eis-app-sidebar{position:fixed;inset-block:0;inset-inline-start:0;z-index:30;block-size:100%;
+    inline-size:min(var(--app-size-sidebar),calc(100% - var(--space-400)));overflow-y:auto;overscroll-behavior:contain;
+    translate:-100% 0;visibility:hidden;transition:translate .2s ease,visibility 0s linear .2s}
+  .eis-app-shell::after{content:"";position:fixed;inset:0;z-index:20;background:color-mix(in srgb,var(--surface-inverse) 40%,transparent);
+    opacity:0;visibility:hidden;transition:opacity .2s ease,visibility 0s linear .2s}
+  /* a footer that holds only the collapse toggle has nothing to show in the drawer */
+  .eis-app-sidebar__foot:not(:has(> :not(.eis-app-sidebar__toggle))){display:none}
+  .eis-app-shell:has(.eis-app-topbar [aria-expanded="true"]){overflow:hidden}
+  .eis-app-shell:has(.eis-app-topbar [aria-expanded="true"]) .eis-app-sidebar{translate:0 0;visibility:visible;transition:translate .2s ease}
+  .eis-app-shell:has(.eis-app-topbar [aria-expanded="true"])::after{opacity:1;visibility:visible;transition:opacity .2s ease}
   .eis-app-main{padding:var(--space-200);max-inline-size:calc(var(--app-size-main) + var(--space-200) * 2)}
   .eis-app-grid--halves{grid-template-columns:minmax(0,1fr)}
+}
+/* after the drawer rules, so it wins */
+@media (max-width:1024px) and (prefers-reduced-motion:reduce){
+  .eis-app-sidebar,.eis-app-shell::after,
+  .eis-app-shell:has(.eis-app-topbar [aria-expanded="true"]) .eis-app-sidebar,
+  .eis-app-shell:has(.eis-app-topbar [aria-expanded="true"])::after{transition:none}
 }
 @media (max-width:760px){
   .eis-app-form-row--2{grid-template-columns:minmax(0,1fr)}

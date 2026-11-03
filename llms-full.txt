@@ -659,7 +659,8 @@ A piece is a standalone HTML file. It links one stylesheet:
 <html lang="en">
 <head>…files above…</head>
 <body class="eis-app-shell">
-  <aside class="eis-app-sidebar" aria-label="Sidebar">
+  <header class="eis-app-topbar">…menu button, page name…</header>
+  <aside class="eis-app-sidebar" id="sidebar" aria-label="Sidebar">
     <nav class="eis-app-nav" aria-label="Main">…</nav>
   </aside>
   <main class="eis-app-main">
@@ -692,7 +693,7 @@ Element roles:
 
 | Region | Element |
 |---|---|
-| Sidebar / side navigation | `<aside aria-label="…">` — also when it becomes a top bar on mobile |
+| Sidebar / side navigation | `<aside aria-label="…">` — also when it becomes a drawer on mobile |
 | Navigation lists | `<nav aria-label="…">` + `<ul>` |
 | Page or section heading area | `<header>` (never for the sidebar) |
 | Main content | `<main>`, one per page |
@@ -729,7 +730,7 @@ Every piece MUST work from 360px to wide screens with **no horizontal scroll**, 
 - Display titles: `font-size: clamp(--font-size-600, 5vw, --font-size-800)`.
 - Typical breakpoints so far:
   - 1280px: the side column drops below.
-  - 1024px: the sidebar becomes a top bar.
+  - 1024px: the sidebar becomes a drawer, opened from the top bar (`eis-app-topbar`).
   - 760px: tables reflow, metrics go 2 × 2.
   - 420px: toolbar buttons stretch.
 - A horizontal nav that can't fit scrolls **inside itself** (`overflow-x: auto` on the nav), never the page.
@@ -789,7 +790,8 @@ Rules:
 
 | Class | What it is |
 |---|---|
-| `eis-app-shell` | On `<body>`: sidebar + main grid. Becomes a top bar below 1024px |
+| `eis-app-shell` | On `<body>`: sidebar + main grid. Below 1024px: the top bar, then the main region; the sidebar is a drawer |
+| `eis-app-topbar` (`__title`) + `data-eis-app-drawer-toggle` | First in `<body>`, below 1024px only: a bar fixed at the top with the menu button on the left (`eis-button--ghost eis-button--icon`, Lucide `menu`) and the page name on the right. The button opens the sidebar as a drawer. Driven by `app/js/sidebar.js`. See "Mobile drawer" below |
 | `eis-app-sidebar`, `eis-app-brand`, `eis-app-nav` (`__section`, `__count`, `__toggle`, `__sub`) | Sidebar, brand, navigation with counts. An item that holds a sub-list is a `<button class="eis-app-nav__toggle" aria-expanded aria-controls data-eis-app-nav-toggle>` followed by `<ul class="eis-app-nav__sub">`; `app/js/sidebar.js` opens and closes it and keeps the state. See "Nav sub-list" below |
 | `eis-app-sidebar__toggle` + `data-eis-app-sidebar-toggle` | Collapse button at the bottom left of the sidebar, last in `eis-app-sidebar__foot`. Driven by `app/js/sidebar.js`. Collapsed, the sidebar keeps only the button. Above 1024px only. See "Sidebar collapse" below |
 | `eis-app-main`, `eis-app-page-head` (`__meta`), `eis-app-toolbar` | Main region (content max `--app-size-main`, in the centre of the free space), page head, action toolbar. See "Page head" below |
@@ -829,7 +831,31 @@ The sidebar can collapse to a narrow strip (`--app-size-sidebar-collapsed`). Col
    ```
 3. Load `app/js/sidebar.js` at the end of `<body>`, after the icon scripts (elements.md, "Icons").
 
-The script sets `aria-expanded`. The CSS reads it. The script keeps the choice in `localStorage` (key `eis-app-sidebar`, change it with `data-key`). The main content then fills the free space, up to `--app-size-main` (1200px). Below 1024px the sidebar is a top bar, the toggle is hidden and the collapse has no effect.
+The script sets `aria-expanded`. The CSS reads it. The script keeps the choice in `localStorage` (key `eis-app-sidebar`, change it with `data-key`). The main content then fills the free space, up to `--app-size-main` (1200px). Below 1024px the sidebar is a drawer, the toggle is hidden and the collapse has no effect.
+
+###### Mobile drawer
+
+Below 1024px the sidebar leaves the page. A top bar takes its place, fixed at the top. Its menu button opens the sidebar as a drawer: it slides in from the left, over the content, and the page behind it is dimmed. Above 1024px the top bar is hidden.
+
+1. Give the sidebar an `id`.
+2. Put the top bar first in `<body>`, before the sidebar. The button is on the left, the page name on the right:
+   ```html
+   <header class="eis-app-topbar">
+     <button class="eis-button eis-button--ghost eis-button--icon" type="button" aria-controls="sidebar"
+             aria-expanded="false" aria-label="Menu" title="Menu" data-eis-app-drawer-toggle>
+       <i data-lucide="menu" class="eis-icon"></i></button>
+     <p class="eis-app-topbar__title">Page name</p>
+   </header>
+   ```
+3. Load `app/js/sidebar.js` at the end of `<body>`, after the icon scripts.
+
+The script sets `aria-expanded` on the button. The CSS reads it. When the drawer opens, the focus goes into it, and Tab and Shift+Tab stay inside it. These close the drawer:
+
+- Esc, or a click outside it. The focus goes back to the menu button.
+- A click on a nav item: a link, or a button that is not a sub-list toggle.
+- A window that grows above 1024px.
+
+The drawer shows the whole sidebar: section labels, nav, and the footer. A footer that holds only the collapse toggle is hidden. Without the top bar, a page has no navigation below 1024px.
 
 ###### Nav sub-list
 

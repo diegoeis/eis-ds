@@ -210,6 +210,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <button class="eis-button eis-button--primary" type="submit">Create task</button>
       </div>
     </form>
+    <p>Width helpers: <code>eis-width-fit</code> (as wide as the content) and <code>eis-width-100</code> … <code>eis-width-500</code>. In a flex row (app scope: <code>eis-app-inline</code>, <code>eis-app-form-row</code>) the item keeps its width and the others take the rest.</p>
+    <div class="eis-panel">
+      <div class="eis-panel__body">
+        <div class="eis-field eis-width-fit">
+          <label for="w-how">How · eis-width-fit</label>
+          <select class="eis-select" id="w-how"><option>Paste a path</option><option>Choose file</option></select>
+        </div>
+        <div class="eis-field eis-width-200">
+          <label for="w-type">Type · eis-width-200</label>
+          <select class="eis-select" id="w-type"><option>project</option><option>team</option></select>
+        </div>
+        <div class="eis-field eis-width-400">
+          <label for="w-path">Path · eis-width-400</label>
+          <input class="eis-input" id="w-path" type="text" placeholder="projects/Atlas.md">
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- CHOICES -->

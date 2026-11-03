@@ -91,6 +91,18 @@ Four steps, each double the previous. Each has a job. Pick by job, not by eye.
 - Use the half step `calc(--space-100 / 2)` (4px) only in dense data: cell grids, tabs padding, list item gaps.
 - Mobile page padding drops one step (`--space-300` → `--space-200`).
 
+### Width
+
+Five fixed widths for a field or a block, used through the width helpers (`eis-width-100` … `eis-width-500`, `eis-width-fit` for "as wide as the content"; see elements.md, "Labels and helpers"). Pick the smallest that fits the longest value the field holds.
+
+| Variable | Value | Job |
+|---|---|---|
+| `--width-100` | 128px | A short value: a number, a date, a status select |
+| `--width-200` | 192px | A word or two: a type, a name |
+| `--width-300` | 256px | A short line: a title, an e-mail |
+| `--width-400` | 360px | A path, a URL |
+| `--width-500` | 480px | A long line |
+
 ## 4. Radius and line
 
 | Variable | Value | Use for |

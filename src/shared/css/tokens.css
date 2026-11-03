@@ -25,6 +25,13 @@
   --space-300: 32px;
   --space-400: 64px;
 
+  /* width: fixed widths for a field or a block (width helpers, eis-width-*) */
+  --width-100: 128px;
+  --width-200: 192px;
+  --width-300: 256px;
+  --width-400: 360px;
+  --width-500: 480px;
+
   /* radius */
   --radius-100: 7px;
   --radius-200: 10px;

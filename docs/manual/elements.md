@@ -346,6 +346,7 @@ Load at the end of `<body>`, Lucide first:
 - `.eis-label` — label text style (mono, 11, uppercase, `--ink-muted`). For panel titles, table heads, nav section titles.
 - `.eis-mono` — mono metadata (12, `--ink-muted`, tabular numbers).
 - `.eis-visually-hidden` — hidden on screen, read by screen readers. For captions, legends and labels the design doesn't show.
+- `.eis-width-fit`, `.eis-width-100` … `.eis-width-500` — the width of a field, a button or a block: as wide as its content, or the `--width-*` step (128, 192, 256, 360, 480px). Never wider than the container. In a flex row (`eis-app-inline`, `eis-app-form-row`) the item keeps its width and the others take the rest: a short select before the field it controls is `<div class="eis-field eis-width-fit">`. Don't write a width in page CSS for this.
 
 ## Not yet in the system
 

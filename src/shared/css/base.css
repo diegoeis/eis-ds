@@ -21,6 +21,17 @@ code{font-family:var(--font-family-mono);font-size:var(--font-size-200)}
   letter-spacing:var(--type-label-letter-spacing);line-height:var(--type-label-line-height);text-transform:uppercase;color:var(--ink-muted)}
 .eis-mono{font-family:var(--type-mono-font-family);font-size:var(--type-mono-font-size);color:var(--ink-muted);font-variant-numeric:tabular-nums}
 
+/* ---------- width helpers ----------
+   On a field, a button or a block: fit = as wide as its content, 100–500 = the --width-* step.
+   Never wider than its container. In a flex row (eis-app-inline, eis-app-form-row) they keep that
+   width while the other items take the rest. */
+.eis-width-fit{inline-size:max-content;max-inline-size:100%;flex:0 0 auto}
+.eis-width-100{inline-size:var(--width-100);max-inline-size:100%;flex:0 0 auto}
+.eis-width-200{inline-size:var(--width-200);max-inline-size:100%;flex:0 0 auto}
+.eis-width-300{inline-size:var(--width-300);max-inline-size:100%;flex:0 0 auto}
+.eis-width-400{inline-size:var(--width-400);max-inline-size:100%;flex:0 0 auto}
+.eis-width-500{inline-size:var(--width-500);max-inline-size:100%;flex:0 0 auto}
+
 /* ---------- link ----------
    Every link is underlined and turns --accent-ink on hover (5.3:1 on --surface-panel,
    4.7:1 on --surface-canvas; --accent itself fails as text). :where() keeps the

@@ -166,6 +166,18 @@ Four steps, each double the previous. Each has a job. Pick by job, not by eye.
 - Use the half step `calc(--space-100 / 2)` (4px) only in dense data: cell grids, tabs padding, list item gaps.
 - Mobile page padding drops one step (`--space-300` → `--space-200`).
 
+###### Width
+
+Five fixed widths for a field or a block, used through the width helpers (`eis-width-100` … `eis-width-500`, `eis-width-fit` for "as wide as the content"; see elements.md, "Labels and helpers"). Pick the smallest that fits the longest value the field holds.
+
+| Variable | Value | Job |
+|---|---|---|
+| `--width-100` | 128px | A short value: a number, a date, a status select |
+| `--width-200` | 192px | A word or two: a type, a name |
+| `--width-300` | 256px | A short line: a title, an e-mail |
+| `--width-400` | 360px | A path, a URL |
+| `--width-500` | 480px | A long line |
+
 ##### 4. Radius and line
 
 | Variable | Value | Use for |
@@ -598,6 +610,7 @@ Load at the end of `<body>`, Lucide first:
 - `.eis-label` — label text style (mono, 11, uppercase, `--ink-muted`). For panel titles, table heads, nav section titles.
 - `.eis-mono` — mono metadata (12, `--ink-muted`, tabular numbers).
 - `.eis-visually-hidden` — hidden on screen, read by screen readers. For captions, legends and labels the design doesn't show.
+- `.eis-width-fit`, `.eis-width-100` … `.eis-width-500` — the width of a field, a button or a block: as wide as its content, or the `--width-*` step (128, 192, 256, 360, 480px). Never wider than the container. In a flex row (`eis-app-inline`, `eis-app-form-row`) the item keeps its width and the others take the rest: a short select before the field it controls is `<div class="eis-field eis-width-fit">`. Don't write a width in page CSS for this.
 
 ##### Not yet in the system
 
@@ -788,7 +801,7 @@ Rules:
 | `eis-app-messages` (`__head`) | Messages grouped by day: one `<section>` per day, a day heading, then one message panel per message |
 | `eis-app-message` (`__head`, `__meta`, `__quote`, `__score`, `__bar`, `__notes`, `__notes--accent`, `__sent`, `__state`, `__task`, `--marked`, `--handled`) | One message on an `<article class="eis-panel">`: head strip (`eis-panel__title` with number and sender, chips, then time, source link and app logo on the right), then `eis-panel__body`: the quote as it arrived first, as an `eis-bleed` (square, touches the edges, optional score on its top right, out of the flow), the reply, collapsible notes and `eis-panel__footer` (action buttons, state text at the right end, optional inline form). `--marked`: accent outline. `--handled`: quote in muted ink |
 | `eis-app-menu` (`__list`) | A button that opens a small row of choices (`role="menu"`, items `menuitemradio`). The list opens above the row, at the left of the nearest positioned container |
-| `eis-app-form-row` (`--2`, `--lead`), `eis-app-form-text`, `eis-app-inline` | Settings forms in `eis-panel__body`: fields side by side (as many as fit; `--2` exactly two columns for long fields such as textareas; `--lead` a short first field as wide as its content, such as a select that picks how to fill the second, and the second takes the rest; one column at ≤760px), a short explanation in muted ink, a field (input or textarea) with its buttons on one line; the buttons keep their natural height, centred on an input and at the top of a textarea |
+| `eis-app-form-row` (`--2`), `eis-app-form-text`, `eis-app-inline` | Settings forms in `eis-panel__body`: fields side by side (as many as fit; `--2` exactly two columns for long fields such as textareas; one column at ≤760px). A field with a width helper (`eis-width-fit`, `eis-width-100`…`500`) keeps that width and the other fields of the row take the rest, wrapping below `--app-size-form-field`, a short explanation in muted ink, a field (input or textarea) with its buttons on one line; the buttons keep their natural height, centred on an input and at the top of a textarea |
 | `eis-app-message__head` title edited in place | Put the inline field (`<form class="eis-field">` with an `eis-app-inline` inside) in the `eis-panel__title`, after the number: the title grows and the field takes its room on the same line |
 | `eis-app-items` (`__text`) | A list of saved entries: each row has its text in mono and small buttons |
 

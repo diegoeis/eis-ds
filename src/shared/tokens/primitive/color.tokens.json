@@ -33,6 +33,23 @@
           }
         }
       },
+      "50": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.941,
+            0.941,
+            0.941
+          ],
+          "hex": "#f0f0f0"
+        },
+        "$description": "Selected row of a table (surface.selected). Holds ink-muted at 4.5:1 and ink at 16.6:1.",
+        "$extensions": {
+          "com.diegoeis.eis-ds": {
+            "source": "author's request, 2026-11-03: a lighter selected row (was neutral.100, #eaeaea), so the lighter ink-muted #6d6d6d still passes on it"
+          }
+        }
+      },
       "100": {
         "$value": {
           "colorSpace": "srgb",
@@ -43,7 +60,7 @@
           ],
           "hex": "#eaeaea"
         },
-        "$description": "Selected row of a table (surface.selected). Holds ink-muted at 4.6:1. Was the canvas until 2026-10-30.",
+        "$description": "Hover of a closed disclosure summary (surface.hover). Text on it is ink (15.7:1): ink-muted fails there (4.3:1). Was the canvas until 2026-10-30.",
         "$extensions": {
           "com.diegoeis.eis-ds": {
             "source": "author's choice, 2026-10-25 (was #e6e6e6, sampled from docs/visual-guidance/references/interface main-1..3)"
@@ -112,16 +129,16 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.412,
-            0.412,
-            0.412
+            0.427,
+            0.427,
+            0.427
           ],
-          "hex": "#696969"
+          "hex": "#6d6d6d"
         },
-        "$description": "Secondary ink. 5.5:1 on white, 5.1:1 on neutral.0, 4.6:1 on neutral.100. Never on neutral.200 (4.0:1, fails).",
+        "$description": "Secondary ink. 5.2:1 on white, 4.8:1 on neutral.0, 4.5:1 on neutral.50. Never on neutral.100 (4.3:1) or neutral.200 (3.8:1): both fail.",
         "$extensions": {
           "com.diegoeis.eis-ds": {
-            "source": "author's request, 2026-11-03: lighter secondary text (was #666666). The lightest grey that still passes 4.5:1 on neutral.100, the selected row"
+            "source": "author's request, 2026-11-03: lighter secondary text (#666666, then #696969, now #6d6d6d). Passes 4.5:1 on neutral.50, the selected row"
           }
         }
       },

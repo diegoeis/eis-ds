@@ -164,7 +164,7 @@ Rules:
 |---|---|
 | `eis-app-shell` | On `<body>`: sidebar + main grid. Below 1024px: the top bar, then the main region; the sidebar is a drawer |
 | `eis-app-topbar` (`__title`) + `data-eis-app-drawer-toggle` | First in `<body>`, below 1024px only: a bar fixed at the top with the menu button on the left (`eis-button--ghost eis-button--icon`, Lucide `menu`) and the page name on the right. The button opens the sidebar as a drawer. Driven by `app/js/sidebar.js`. See "Mobile drawer" below |
-| `eis-app-sidebar`, `eis-app-brand`, `eis-app-nav` (`__section`, `__count`, `__toggle`, `__sub`) | Sidebar, brand, navigation with counts. An item that holds a sub-list is a `<button class="eis-app-nav__toggle" aria-expanded aria-controls data-eis-app-nav-toggle>` followed by `<ul class="eis-app-nav__sub">`; `app/js/sidebar.js` opens and closes it and keeps the state. See "Nav sub-list" below |
+| `eis-app-sidebar` (`__foot`), `eis-app-brand`, `eis-app-nav` (`__section`, `__count`, `__toggle`, `__sub`) | Sidebar, brand, navigation with counts. The sidebar is as tall as the window and scrolls inside when its content is taller; `__foot` stays at its bottom, on the sidebar background. An item that holds a sub-list is either a link followed by an arrow-only `<button class="eis-app-nav__toggle">` (the link navigates, the arrow opens the list) or a `<button class="eis-app-nav__toggle">` with the item's text (the whole row opens the list). Both take `aria-expanded aria-controls data-eis-app-nav-toggle` and are followed by `<ul class="eis-app-nav__sub">`; `app/js/sidebar.js` opens and closes it and keeps the state. See "Nav sub-list" below |
 | `eis-app-sidebar__toggle` + `data-eis-app-sidebar-toggle` | Collapse button at the bottom left of the sidebar, last in `eis-app-sidebar__foot`. Driven by `app/js/sidebar.js`. Collapsed, the sidebar keeps only the button. Above 1024px only. See "Sidebar collapse" below |
 | `eis-app-main`, `eis-app-page-head` (`__meta`), `eis-app-toolbar` | Main region (content max `--app-size-main`, in the centre of the free space), page head, action toolbar. See "Page head" below |
 | `eis-app-metrics` | Row of metric cells (`<dl>`) |
@@ -173,21 +173,39 @@ Rules:
 | `eis-app-task-meta` | A task's fields in one line under its text: `<dl class="eis-app-task-meta">` with one `<div><dt>Source</dt><dd>…</dd></div>` per field (label upper case, value in ink, cut with an ellipsis). Use `—` for an empty value |
 | `eis-app-notes` | Dated notes under a task (the sub-items of a markdown task): `<ul class="eis-app-notes">`, each `<li>` a `<time>` (or an empty `<span>`) then a `<div>` with the text. A rule on the left; the date column stacks above the text below 760px; a note taller than 250px scrolls inside. A small icon button (`eis-button--ghost eis-button--icon eis-button--sm`) at the end of a note's `<p>` sits inline, right after the text: use it to delete the note |
 | `eis-app-priority` (`--highest`, `--high`, `--medium`, `--low`, `--lowest`) | The priority of a task, on a small chip: `<span class="eis-chip eis-chip--sm eis-app-priority--high">High</span>` in the task's `eis-app-meta` line. One colour per level, strongest first |
-| `eis-app-add-bar` | The form that adds an item, first in a list panel, before its groups: `<form class="eis-app-add-bar">` with `eis-field`s side by side, aligned on their bottom edge, then an `eis-app-inline` with Cancel and Save. The first field takes the free room; give the others a width helper. An `eis-field__error` takes a row of its own |
+| `eis-app-add-bar` | The form that adds an item, first in a list panel, before its groups: `<form class="eis-app-add-bar">` with `eis-field`s side by side, aligned on their bottom edge, then an `eis-app-inline` with Cancel and Save. The fields are a row of fields (see "Rows of fields" below): give the short ones a width helper. An `eis-field__error` takes a row of its own |
 | `eis-app-task-table`, `eis-app-task-title`, `eis-app-meta`, `eis-app-due` | A table of tasks, on `<table class="eis-table eis-app-task-table">` (cells aligned to the top; columns in this order: `eis-app-col-idx` (the number), `eis-app-col-check`, the task, then `-src`, `-date`, `-due` or `-act` (one small button); below 760px the number hides and the checkbox takes the first column; rows become cards below 760px), the task title when it is not a `<label>` (`--cancelled`: struck through like a done task, for a cancelled one; `--editable`: a text cursor, for a title a double click edits), task metadata, due dates. To group tasks, put each table in an `eis-disclosure` inside an `eis-panel` (shared element). There is no group component: `eis-disclosure` is the only element that opens and closes |
 | `eis-app-topics`, `eis-app-people`, `eis-app-done` | Side lists |
-| `eis-app-filters` (`__fields`, `__search`) | Filter bar above a list: `eis-tabs` on the left, labelled fields on the right. Fields take the full width below 420px |
+| `eis-app-filters` (`__fields`, `__search`) | Filter bar above a list: `eis-tabs` on the left, labelled fields on the right. The fields are a row of fields (base `--app-size-filter-field`, `__search` `--app-size-filter-search`). When they do not fit next to the tabs on one line, they move as one block to a row of their own and fill it |
 | `eis-app-notice` | One status line (`role="status"`), sticky at the top while the user scrolls a long list |
 | `eis-app-flash` | The result of one button, right next to it (`role="status"`): "Saved" beside Save. `data-state="ok"` (success ink) fades out by itself once the page adds `data-fade`; `data-state="error"` (danger ink) stays. Empty = hidden. Use it when the result belongs to that button; use `eis-app-notice` for the page |
 | `eis-app-code` | A generated file shown as text (JSON, markdown) inside a panel. Scrolls inside itself |
 | `eis-app-messages` (`__head`) | Messages grouped by day: one `<section>` per day, a day heading, then one message panel per message |
 | `eis-app-message` (`__head`, `__meta`, `__quote`, `__score`, `__bar`, `__notes`, `__notes--accent`, `__sent`, `__state`, `__task`, `--marked`, `--handled`) | One message on an `<article class="eis-panel">`: head strip (`eis-panel__title` with number and sender, chips, then time, source link and app logo on the right), then `eis-panel__body`: the quote as it arrived first, as an `eis-bleed` (square, touches the edges, optional score on its top right, out of the flow), the reply, collapsible notes and `eis-panel__footer` (action buttons, state text at the right end, optional inline form). `--marked`: accent outline. `--handled`: quote in muted ink |
 | `eis-app-menu` (`__list`) | A button that opens a small row of choices (`role="menu"`, items `menuitemradio`). The list opens above the row, at the left of the nearest positioned container |
-| `eis-app-form-row` (`--2`), `eis-app-form-text`, `eis-app-inline` | Settings forms in `eis-panel__body`: fields side by side (as many as fit; `--2` exactly two columns for long fields such as textareas; one column at ≤760px). A field with a width helper (`eis-width-fit`, `eis-width-100`…`500`) keeps that width and the other fields of the row take the rest, wrapping below `--app-size-form-field`, a short explanation in muted ink, a field (input or textarea) with its buttons on one line; the buttons keep their natural height, centred on an input and at the top of a textarea |
+| `eis-app-form-row` (`--2`), `eis-app-form-text`, `eis-app-inline` | Settings forms in `eis-panel__body`: fields side by side, as many as fit, as a row of fields (see "Rows of fields" below; `--2` exactly two equal columns for long fields such as textareas, one column at ≤760px), a short explanation in muted ink, a field (input or textarea) with its buttons on one line; the buttons keep their natural height, centred on an input and at the top of a textarea |
 | `eis-app-message__head` title edited in place | Put the inline field (`<form class="eis-field">` with an `eis-app-inline` inside) in the `eis-panel__title`, after the number: the title grows and the field takes its room on the same line |
 | `eis-app-items` (`__text`) | A list of saved entries: each row has its text in mono and small buttons |
 
 `eis-app-metrics` takes one column per cell: two cells make two columns, four make four. Below 760px it is two columns.
+
+### Rows of fields
+
+`eis-app-add-bar`, `eis-app-form-row` and `eis-app-filters__fields` lay out their `eis-field`s the same way:
+
+- Each field starts at a base width and never gets narrower than it. The base is the field's width helper (`eis-width-100` … `eis-width-500`), else the row's default: `--app-size-form-field` (256px), or in a filter bar `--app-size-filter-field` (192px) and `--app-size-filter-search` (224px). `eis-width-fit`: the content's width is the base.
+- The fields share the free room of the row and grow with it. They do not keep a fixed width.
+- A field goes to the next line only when it no longer fits. A field on a new line starts at the left and fills that line.
+- Write no width and no `flex` for this in page CSS. To make a field shorter or longer, change its width helper.
+
+```html
+<form class="eis-app-add-bar">
+  <div class="eis-field"><label for="t">Task</label><input class="eis-input" id="t"></div>
+  <div class="eis-field eis-width-200"><label for="g">Group</label><select class="eis-select" id="g">…</select></div>
+  <div class="eis-field eis-width-fit"><label for="d">Due date</label><input class="eis-input" id="d" type="date"></div>
+  <p class="eis-app-inline"><button class="eis-button eis-button--ghost" type="button">Cancel</button><button class="eis-button eis-button--primary" type="submit">Save</button></p>
+</form>
+```
 
 ### Sidebar collapse
 
@@ -231,7 +249,22 @@ The drawer shows the whole sidebar: section labels, nav, and the footer. A foote
 
 ### Nav sub-list
 
-An item of the nav can hold a list of sub-items (one page per team under "Topics"). The item is a button, not a link: a click opens or closes the list. Its arrow points right when closed, down when open.
+An item of the nav can hold a list of sub-items. The arrow of the toggle points right when the list is closed, down when it is open. The CSS draws it (`--icon-chevron-left` from `shared/css/icons.css`): write no icon.
+
+**The item is a page too** (a workspace with its teams): the item is a link, and an arrow-only toggle comes right after it. A click on the name opens the page. A click on the arrow, at the right of the count, opens or closes the list. Give the toggle an `aria-label` and a `title` that name the list.
+
+```html
+<li>
+  <a href="#workspace/acme">Acme <span class="eis-app-nav__count">40</span></a>
+  <button class="eis-app-nav__toggle" type="button" aria-expanded="true" aria-controls="nav-acme"
+          aria-label="Acme teams" title="Acme teams" data-eis-app-nav-toggle></button>
+  <ul class="eis-app-nav__sub" id="nav-acme">
+    <li><a href="#team/growth" aria-current="page">Growth <span class="eis-app-nav__count">12</span></a></li>
+  </ul>
+</li>
+```
+
+**The item only groups the list** (one page per team under "Topics"): the item is a button with the item's text, not a link. A click anywhere on it opens or closes the list.
 
 ```html
 <li>
@@ -243,7 +276,7 @@ An item of the nav can hold a list of sub-items (one page per team under "Topics
 </li>
 ```
 
-`app/js/sidebar.js` sets `aria-expanded` and keeps each list open or closed for the next visit (`localStorage`, key `eis-app-nav:` + the list id). The CSS reads `aria-expanded`. Sub-items are links, styled like the other items.
+`app/js/sidebar.js` sets `aria-expanded` on both forms and keeps each list open or closed for the next visit (`localStorage`, key `eis-app-nav:` + the list id). The CSS reads `aria-expanded`. Sub-items are links, styled like the other items. In the mobile drawer a toggle opens and closes its list and the drawer stays open; a link closes the drawer.
 
 ### Page head
 
@@ -262,6 +295,7 @@ Every app page starts with `eis-app-page-head`. It sets one standard top for all
 
 - `__meta` is optional. It is a full-width row above the title: the first child sits on the left (the page context, e.g. today's date), the last child on the right (a detail, e.g. the source file or the last update). One child only: it stays on the left.
 - The `<h1>` is required. The toolbar is optional and sits on the right of the title.
+- The main action of the page (New task, New topic) is `eis-button--accent`, with its Lucide icon. It is the accent of the page: use no other accent button on it. Main actions inside panels (each Save) stay `eis-button--primary`.
 - Don't put a breadcrumb and a meta row in the same head. Don't build a page head with helper classes or page CSS: use this component.
 
 ### Add a scope

@@ -90,12 +90,12 @@ Which variable to use for what. Shared variables come from `src/shared/css/token
 | Variable | Value | Use for | MUST NOT |
 |---|---|---|---|
 | `--surface-canvas` | `#f7f7f7` | Page background. Hover background of secondary/ghost controls. Background of an open disclosure summary. | Use as a card or panel background. |
-| `--surface-raised` | `#ffffff` | Background of a default button: a control raised above the canvas. | Use for panels, cards or other page areas. It is not a third surface level. |
-| `--surface-panel` | `#ffffff` | Panels, the app sidebar, inputs, table backgrounds. The second and **last** surface level. | Stack a panel inside a panel to get a third level. Use a line instead. |
+| `--surface-raised` | `#ffffff` | Background of a default button: a control raised above the canvas. Same value as `--surface-panel` today, another role (see the note below the table). | Use for panels, cards or other page areas. It is not a third surface level. |
+| `--surface-panel` | `#ffffff` | Panels, the app sidebar, inputs, table backgrounds: the surface that holds content. The second and **last** surface level. | Stack a panel inside a panel to get a third level. Use a line instead. |
 | `--surface-inverse` | `#111111` | Primary and black buttons (`eis-button--primary`, `--black`), active nav item, solid chip. | Use for large areas. |
 | `--line` | `#cfcfcf` | **Every** border, divider and hairline: panels, table rows, separators, chip outlines. | Use `--ink` or any darker grey for borders of shapes, panels or cards. |
 | `--ink` | `#111111` | Primary text, headings, numbers, checked controls, focus outline. | — |
-| `--ink-muted` | `#696969` | Secondary text, labels, metadata, placeholders, **outlines of interactive controls** (input, checkbox, radio, switch). 5.5:1 on panel, 5.1:1 on canvas, 4.6:1 on selected. | Use for decorative borders (that is `--line`). |
+| `--ink-muted` | `#6d6d6d` | Secondary text, labels, metadata, placeholders, **outlines of interactive controls** (input, checkbox, radio, switch). 5.2:1 on panel, 4.8:1 on canvas, 4.5:1 on selected. | Use for decorative borders (that is `--line`). Put on `--surface-hover` (4.3:1) or `--surface-head` (3.8:1): both fail. |
 | `--ink-inverse` | `#f7f7f7` | Text on `--surface-inverse`. | Put on `--accent` (use `--accent-on`). |
 | `--accent` | `#f35919` | **Fills and marks** for the one thing that matters: overdue, conflict, urgent, record. | Use as text on light surfaces (3.1:1, fails). Decorate. Exceed ~5% of the visible area. |
 | `--accent-ink` | `#b5400c` | The accent **as text**: overdue dates, error messages, current breadcrumb item. 4.7:1 on canvas. | Use as a fill. |
@@ -107,7 +107,10 @@ Which variable to use for what. Shared variables come from `src/shared/css/token
 | `--danger-ink` | `#b42318` | Danger **as text** and the line of a danger button. 6.6:1 on white. | Use as a fill. |
 | `--danger-on` | `#111111` | Text **on** a `--danger` fill. 4.8:1. | Use white on `--danger` (3.9:1, fails). |
 | `--surface-head` | `#dddddd` | Head strip of a panel. Text on it is `--ink` (13.9:1). `eis-mono`, `eis-label` and an outline chip in the head take `--ink` by themselves. | Put `--ink-muted` on it (4.0:1, fails). Use as a page area. |
-| `--surface-selected` | `#eaeaea` | Background of a selected table row: its checkbox is checked, or the row has `aria-selected="true"`. `eis-table` sets it. Every text role passes on it (`--ink` 15.7:1, `--ink-muted` 4.6:1, `--accent-ink` 4.7:1). | Use as a page area, a panel or a hover. |
+| `--surface-selected` | `#f0f0f0` | Background of a selected table row: its checkbox is checked, or the row has `aria-selected="true"`. `eis-table` sets it. Every text role passes on it (`--ink` 16.6:1, `--ink-muted` 4.5:1, `--accent-ink` 5.0:1). | Use as a page area, a panel or a hover. |
+| `--surface-hover` | `#eaeaea` | Background of a closed disclosure summary under the pointer. `eis-disclosure` sets it. Text on it is `--ink` (15.7:1): `eis-mono` and `eis-label` in the summary take `--ink` on hover by themselves. `--accent-ink` passes (4.7:1). | Put `--ink-muted` on it (4.3:1, fails). Use as a page area or a selected state. |
+
+**`--surface-panel` and `--surface-raised` have the same value today (white), with two roles.** `--surface-panel` is a surface that holds content (panel, sidebar, field, table). `--surface-raised` is a control raised above the canvas (the default button). Keep both: a mode (dark, paper) can give them different values. Use the role of the job, never the one with the right colour.
 
 ###### Accent budget
 
@@ -122,6 +125,7 @@ Which variable to use for what. Shared variables come from `src/shared/css/token
 | `--surface-canvas` | `--ink` | `--ink-muted` | `--accent-ink` |
 | `--surface-panel` | `--ink` | `--ink-muted` | `--accent-ink` |
 | `--surface-selected` | `--ink` | `--ink-muted` | `--accent-ink` |
+| `--surface-hover` | `--ink` | — (use `--ink`) | `--accent-ink` |
 | `--surface-inverse` | `--ink-inverse` | — | — |
 | `--accent` | `--accent-on` | — | — |
 | `--success` | `--success-on` | — | — |
@@ -136,12 +140,13 @@ Use the role above whenever one exists. Use these primitives directly **only** f
 |---|---|---|
 | `--color-white` | `#ffffff` | — (use `--surface-panel` / `--surface-raised`) |
 | `--color-neutral-0` | `#f7f7f7` | — (use `--surface-canvas` / `--ink-inverse`) |
-| `--color-neutral-100` | `#eaeaea` | — (use `--surface-selected`) |
+| `--color-neutral-50` | `#f0f0f0` | — (use `--surface-selected`) |
+| `--color-neutral-100` | `#eaeaea` | — (use `--surface-hover`) |
 | `--color-neutral-200` | `#dddddd` | Data ramp, lowest step. |
 | `--color-neutral-300` | `#cfcfcf` | Data ramp. (As a border, use `--line`.) |
 | `--color-neutral-400` | `#a3a3a3` | Data ramp. |
 | `--color-neutral-500` | `#858585` | Data ramp. Icons and non-text graphics (3.4:1 on panel). Never body text. |
-| `--color-neutral-600` | `#696969` | Data ramp. (As text, use `--ink-muted`.) |
+| `--color-neutral-600` | `#6d6d6d` | Data ramp. (As text, use `--ink-muted`.) |
 | `--color-neutral-900` | `#111111` | Data ramp, highest step. (As text, use `--ink`.) |
 
 ###### Data ramp
@@ -170,7 +175,7 @@ Four steps, each double the previous. Each has a job. Pick by job, not by eye.
 
 ###### Width
 
-Five fixed widths for a field or a block, used through the width helpers (`eis-width-100` … `eis-width-500`, `eis-width-fit` for "as wide as the content"; see elements.md, "Labels and helpers"). Pick the smallest that fits the longest value the field holds.
+Five fixed widths for a field or a block, used through the width helpers (`eis-width-100` … `eis-width-500`, `eis-width-fit` for "as wide as the content"; see elements.md, "Labels and helpers"). Pick the smallest that fits the longest value the field holds. In a row of fields (`eis-app-add-bar`, `eis-app-form-row`, `eis-app-filters__fields`) the step is the base and the minimum width of the field: it grows into the free room, and wraps when it no longer fits (layout.md §7, "Rows of fields").
 
 | Variable | Value | Job |
 |---|---|---|
@@ -331,7 +336,7 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 | `--danger` | Remove, delete: an action that loses data. A ghost with a red line and red text (`--danger-ink`); on hover it fills `--danger` with dark text. | Use for anything that does not remove or break. |
 | *(default)* | Secondary actions. White background (`--surface-raised`), line border. | — |
 | `--ghost` | Low-emphasis actions next to others (Skip, Clear). | No glow on hover. |
-| `--accent` | Only when the action **is** the accent: record, go live, publish. | Rare. Never "Save" or "Delete". |
+| `--accent` | Only when the action **is** the accent: record, go live, publish. In the app scope: the main action of the page head (`eis-app-page-head`), e.g. "New task" (layout.md §7, "Page head"). | Rare: one per page, and it counts toward the accent budget. Never "Save" or "Delete". |
 | `--success` | Save, when the page asks for a positive action in green. | Not together with a `--primary` button for the same action. |
 
 - `type="button"` unless it submits a form (`type="submit"`) or resets (`type="reset"`).
@@ -540,7 +545,7 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 ```
 
 - Native `<details>`/`<summary>`. It opens and closes without JS. It is the only element that opens and closes: groups of tasks, topics or any list use it too.
-- The CSS draws the marker on the right: Lucide `plus` when closed, `minus` when open. Write no icon in the summary. When open, the summary gets `--surface-canvas` background and a `--line` under it.
+- The CSS draws the marker on the right: Lucide `plus` when closed, `minus` when open. Write no icon in the summary. When open, the summary gets `--surface-canvas` background and a `--line` under it. A closed summary under the pointer gets `--surface-hover`; `eis-mono` and `eis-label` in it take `--ink` (`--ink-muted` fails on `--surface-hover`).
 - The heading in the summary (`h2`, `h3` or `h4`, no class needed) uses the label type one step up (`--font-size-200`), in `--ink`: it names the group. A count or a path goes after it in `eis-mono`.
 - A `--line` separates stacked disclosures. To list several, put them as direct children of one `eis-panel`.
 - Content goes right after the summary: an `eis-panel__body` for text and fields, or an `eis-table` (its first row drops its top line, the summary line already separates them), then an optional `eis-panel__footer`.
@@ -614,7 +619,7 @@ Load at the end of `<body>`, Lucide first:
 - `.eis-label` — label text style (mono, 11, uppercase, `--ink-muted`). For panel titles, table heads, nav section titles.
 - `.eis-mono` — mono metadata (12, `--ink-muted`, tabular numbers).
 - `.eis-visually-hidden` — hidden on screen, read by screen readers. For captions, legends and labels the design doesn't show.
-- `.eis-width-fit`, `.eis-width-100` … `.eis-width-500` — the width of a field, a button or a block: as wide as its content, or the `--width-*` step (128, 192, 256, 360, 480px). Never wider than the container. In a flex row (`eis-app-inline`, `eis-app-form-row`) the item keeps its width and the others take the rest: a short select before the field it controls is `<div class="eis-field eis-width-fit">`. Don't write a width in page CSS for this.
+- `.eis-width-fit`, `.eis-width-100` … `.eis-width-500` — the width of a field, a button or a block: as wide as its content, or the `--width-*` step (128, 192, 256, 360, 480px). Never wider than the container. In a flex row (`eis-app-inline`) the item keeps its width and the others take the rest. In a row of fields (`eis-app-add-bar`, `eis-app-form-row`, `eis-app-filters__fields`) the step is the base and the minimum width of the field: it grows into the free room and wraps when it no longer fits (layout.md §7, "Rows of fields"). A short select before the field it controls is `<div class="eis-field eis-width-fit">`. Don't write a width in page CSS for this.
 
 ##### Not yet in the system
 
@@ -792,7 +797,7 @@ Rules:
 |---|---|
 | `eis-app-shell` | On `<body>`: sidebar + main grid. Below 1024px: the top bar, then the main region; the sidebar is a drawer |
 | `eis-app-topbar` (`__title`) + `data-eis-app-drawer-toggle` | First in `<body>`, below 1024px only: a bar fixed at the top with the menu button on the left (`eis-button--ghost eis-button--icon`, Lucide `menu`) and the page name on the right. The button opens the sidebar as a drawer. Driven by `app/js/sidebar.js`. See "Mobile drawer" below |
-| `eis-app-sidebar`, `eis-app-brand`, `eis-app-nav` (`__section`, `__count`, `__toggle`, `__sub`) | Sidebar, brand, navigation with counts. An item that holds a sub-list is a `<button class="eis-app-nav__toggle" aria-expanded aria-controls data-eis-app-nav-toggle>` followed by `<ul class="eis-app-nav__sub">`; `app/js/sidebar.js` opens and closes it and keeps the state. See "Nav sub-list" below |
+| `eis-app-sidebar` (`__foot`), `eis-app-brand`, `eis-app-nav` (`__section`, `__count`, `__toggle`, `__sub`) | Sidebar, brand, navigation with counts. The sidebar is as tall as the window and scrolls inside when its content is taller; `__foot` stays at its bottom, on the sidebar background. An item that holds a sub-list is either a link followed by an arrow-only `<button class="eis-app-nav__toggle">` (the link navigates, the arrow opens the list) or a `<button class="eis-app-nav__toggle">` with the item's text (the whole row opens the list). Both take `aria-expanded aria-controls data-eis-app-nav-toggle` and are followed by `<ul class="eis-app-nav__sub">`; `app/js/sidebar.js` opens and closes it and keeps the state. See "Nav sub-list" below |
 | `eis-app-sidebar__toggle` + `data-eis-app-sidebar-toggle` | Collapse button at the bottom left of the sidebar, last in `eis-app-sidebar__foot`. Driven by `app/js/sidebar.js`. Collapsed, the sidebar keeps only the button. Above 1024px only. See "Sidebar collapse" below |
 | `eis-app-main`, `eis-app-page-head` (`__meta`), `eis-app-toolbar` | Main region (content max `--app-size-main`, in the centre of the free space), page head, action toolbar. See "Page head" below |
 | `eis-app-metrics` | Row of metric cells (`<dl>`) |
@@ -801,21 +806,39 @@ Rules:
 | `eis-app-task-meta` | A task's fields in one line under its text: `<dl class="eis-app-task-meta">` with one `<div><dt>Source</dt><dd>…</dd></div>` per field (label upper case, value in ink, cut with an ellipsis). Use `—` for an empty value |
 | `eis-app-notes` | Dated notes under a task (the sub-items of a markdown task): `<ul class="eis-app-notes">`, each `<li>` a `<time>` (or an empty `<span>`) then a `<div>` with the text. A rule on the left; the date column stacks above the text below 760px; a note taller than 250px scrolls inside. A small icon button (`eis-button--ghost eis-button--icon eis-button--sm`) at the end of a note's `<p>` sits inline, right after the text: use it to delete the note |
 | `eis-app-priority` (`--highest`, `--high`, `--medium`, `--low`, `--lowest`) | The priority of a task, on a small chip: `<span class="eis-chip eis-chip--sm eis-app-priority--high">High</span>` in the task's `eis-app-meta` line. One colour per level, strongest first |
-| `eis-app-add-bar` | The form that adds an item, first in a list panel, before its groups: `<form class="eis-app-add-bar">` with `eis-field`s side by side, aligned on their bottom edge, then an `eis-app-inline` with Cancel and Save. The first field takes the free room; give the others a width helper. An `eis-field__error` takes a row of its own |
+| `eis-app-add-bar` | The form that adds an item, first in a list panel, before its groups: `<form class="eis-app-add-bar">` with `eis-field`s side by side, aligned on their bottom edge, then an `eis-app-inline` with Cancel and Save. The fields are a row of fields (see "Rows of fields" below): give the short ones a width helper. An `eis-field__error` takes a row of its own |
 | `eis-app-task-table`, `eis-app-task-title`, `eis-app-meta`, `eis-app-due` | A table of tasks, on `<table class="eis-table eis-app-task-table">` (cells aligned to the top; columns in this order: `eis-app-col-idx` (the number), `eis-app-col-check`, the task, then `-src`, `-date`, `-due` or `-act` (one small button); below 760px the number hides and the checkbox takes the first column; rows become cards below 760px), the task title when it is not a `<label>` (`--cancelled`: struck through like a done task, for a cancelled one; `--editable`: a text cursor, for a title a double click edits), task metadata, due dates. To group tasks, put each table in an `eis-disclosure` inside an `eis-panel` (shared element). There is no group component: `eis-disclosure` is the only element that opens and closes |
 | `eis-app-topics`, `eis-app-people`, `eis-app-done` | Side lists |
-| `eis-app-filters` (`__fields`, `__search`) | Filter bar above a list: `eis-tabs` on the left, labelled fields on the right. Fields take the full width below 420px |
+| `eis-app-filters` (`__fields`, `__search`) | Filter bar above a list: `eis-tabs` on the left, labelled fields on the right. The fields are a row of fields (base `--app-size-filter-field`, `__search` `--app-size-filter-search`). When they do not fit next to the tabs on one line, they move as one block to a row of their own and fill it |
 | `eis-app-notice` | One status line (`role="status"`), sticky at the top while the user scrolls a long list |
 | `eis-app-flash` | The result of one button, right next to it (`role="status"`): "Saved" beside Save. `data-state="ok"` (success ink) fades out by itself once the page adds `data-fade`; `data-state="error"` (danger ink) stays. Empty = hidden. Use it when the result belongs to that button; use `eis-app-notice` for the page |
 | `eis-app-code` | A generated file shown as text (JSON, markdown) inside a panel. Scrolls inside itself |
 | `eis-app-messages` (`__head`) | Messages grouped by day: one `<section>` per day, a day heading, then one message panel per message |
 | `eis-app-message` (`__head`, `__meta`, `__quote`, `__score`, `__bar`, `__notes`, `__notes--accent`, `__sent`, `__state`, `__task`, `--marked`, `--handled`) | One message on an `<article class="eis-panel">`: head strip (`eis-panel__title` with number and sender, chips, then time, source link and app logo on the right), then `eis-panel__body`: the quote as it arrived first, as an `eis-bleed` (square, touches the edges, optional score on its top right, out of the flow), the reply, collapsible notes and `eis-panel__footer` (action buttons, state text at the right end, optional inline form). `--marked`: accent outline. `--handled`: quote in muted ink |
 | `eis-app-menu` (`__list`) | A button that opens a small row of choices (`role="menu"`, items `menuitemradio`). The list opens above the row, at the left of the nearest positioned container |
-| `eis-app-form-row` (`--2`), `eis-app-form-text`, `eis-app-inline` | Settings forms in `eis-panel__body`: fields side by side (as many as fit; `--2` exactly two columns for long fields such as textareas; one column at ≤760px). A field with a width helper (`eis-width-fit`, `eis-width-100`…`500`) keeps that width and the other fields of the row take the rest, wrapping below `--app-size-form-field`, a short explanation in muted ink, a field (input or textarea) with its buttons on one line; the buttons keep their natural height, centred on an input and at the top of a textarea |
+| `eis-app-form-row` (`--2`), `eis-app-form-text`, `eis-app-inline` | Settings forms in `eis-panel__body`: fields side by side, as many as fit, as a row of fields (see "Rows of fields" below; `--2` exactly two equal columns for long fields such as textareas, one column at ≤760px), a short explanation in muted ink, a field (input or textarea) with its buttons on one line; the buttons keep their natural height, centred on an input and at the top of a textarea |
 | `eis-app-message__head` title edited in place | Put the inline field (`<form class="eis-field">` with an `eis-app-inline` inside) in the `eis-panel__title`, after the number: the title grows and the field takes its room on the same line |
 | `eis-app-items` (`__text`) | A list of saved entries: each row has its text in mono and small buttons |
 
 `eis-app-metrics` takes one column per cell: two cells make two columns, four make four. Below 760px it is two columns.
+
+###### Rows of fields
+
+`eis-app-add-bar`, `eis-app-form-row` and `eis-app-filters__fields` lay out their `eis-field`s the same way:
+
+- Each field starts at a base width and never gets narrower than it. The base is the field's width helper (`eis-width-100` … `eis-width-500`), else the row's default: `--app-size-form-field` (256px), or in a filter bar `--app-size-filter-field` (192px) and `--app-size-filter-search` (224px). `eis-width-fit`: the content's width is the base.
+- The fields share the free room of the row and grow with it. They do not keep a fixed width.
+- A field goes to the next line only when it no longer fits. A field on a new line starts at the left and fills that line.
+- Write no width and no `flex` for this in page CSS. To make a field shorter or longer, change its width helper.
+
+```html
+<form class="eis-app-add-bar">
+  <div class="eis-field"><label for="t">Task</label><input class="eis-input" id="t"></div>
+  <div class="eis-field eis-width-200"><label for="g">Group</label><select class="eis-select" id="g">…</select></div>
+  <div class="eis-field eis-width-fit"><label for="d">Due date</label><input class="eis-input" id="d" type="date"></div>
+  <p class="eis-app-inline"><button class="eis-button eis-button--ghost" type="button">Cancel</button><button class="eis-button eis-button--primary" type="submit">Save</button></p>
+</form>
+```
 
 ###### Sidebar collapse
 
@@ -859,7 +882,22 @@ The drawer shows the whole sidebar: section labels, nav, and the footer. A foote
 
 ###### Nav sub-list
 
-An item of the nav can hold a list of sub-items (one page per team under "Topics"). The item is a button, not a link: a click opens or closes the list. Its arrow points right when closed, down when open.
+An item of the nav can hold a list of sub-items. The arrow of the toggle points right when the list is closed, down when it is open. The CSS draws it (`--icon-chevron-left` from `shared/css/icons.css`): write no icon.
+
+**The item is a page too** (a workspace with its teams): the item is a link, and an arrow-only toggle comes right after it. A click on the name opens the page. A click on the arrow, at the right of the count, opens or closes the list. Give the toggle an `aria-label` and a `title` that name the list.
+
+```html
+<li>
+  <a href="#workspace/acme">Acme <span class="eis-app-nav__count">40</span></a>
+  <button class="eis-app-nav__toggle" type="button" aria-expanded="true" aria-controls="nav-acme"
+          aria-label="Acme teams" title="Acme teams" data-eis-app-nav-toggle></button>
+  <ul class="eis-app-nav__sub" id="nav-acme">
+    <li><a href="#team/growth" aria-current="page">Growth <span class="eis-app-nav__count">12</span></a></li>
+  </ul>
+</li>
+```
+
+**The item only groups the list** (one page per team under "Topics"): the item is a button with the item's text, not a link. A click anywhere on it opens or closes the list.
 
 ```html
 <li>
@@ -871,7 +909,7 @@ An item of the nav can hold a list of sub-items (one page per team under "Topics
 </li>
 ```
 
-`app/js/sidebar.js` sets `aria-expanded` and keeps each list open or closed for the next visit (`localStorage`, key `eis-app-nav:` + the list id). The CSS reads `aria-expanded`. Sub-items are links, styled like the other items.
+`app/js/sidebar.js` sets `aria-expanded` on both forms and keeps each list open or closed for the next visit (`localStorage`, key `eis-app-nav:` + the list id). The CSS reads `aria-expanded`. Sub-items are links, styled like the other items. In the mobile drawer a toggle opens and closes its list and the drawer stays open; a link closes the drawer.
 
 ###### Page head
 
@@ -890,6 +928,7 @@ Every app page starts with `eis-app-page-head`. It sets one standard top for all
 
 - `__meta` is optional. It is a full-width row above the title: the first child sits on the left (the page context, e.g. today's date), the last child on the right (a detail, e.g. the source file or the last update). One child only: it stays on the left.
 - The `<h1>` is required. The toolbar is optional and sits on the right of the title.
+- The main action of the page (New task, New topic) is `eis-button--accent`, with its Lucide icon. It is the accent of the page: use no other accent button on it. Main actions inside panels (each Save) stay `eis-button--primary`.
 - Don't put a breadcrumb and a meta row in the same head. Don't build a page head with helper classes or page CSS: use this component.
 
 ###### Add a scope
@@ -939,7 +978,7 @@ Run this before calling a piece, element or token done. Every box must be true.
 ##### Visual rules
 
 - [ ] Accent used once per piece, ≤ 5% of the area (or one declared accent block).
-- [ ] Statuses are chips. Actions are buttons. The main action is `eis-button--primary` (one per view, or one per panel that saves on its own). Remove/delete is `eis-button--danger`.
+- [ ] Statuses are chips. Actions are buttons. The main action is `eis-button--primary` (one per view, or one per panel that saves on its own). In an app page head it is `eis-button--accent`, the page's one accent. Remove/delete is `eis-button--danger`.
 - [ ] Every border and divider is `--line`, 1px.
 - [ ] Numbers are mono and tabular. Labels use the label style. Running text is in sentence case.
 - [ ] Two surface levels only: canvas and panel. No panel inside a panel.

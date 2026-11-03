@@ -23,14 +23,15 @@ code{font-family:var(--font-family-mono);font-size:var(--font-size-200)}
 
 /* ---------- width helpers ----------
    On a field, a button or a block: fit = as wide as its content, 100–500 = the --width-* step.
-   Never wider than its container. In a flex row (eis-app-inline, eis-app-form-row) they keep that
-   width while the other items take the rest. */
+   Never wider than its container. In a flex row (eis-app-inline) they keep that width while the other
+   items take the rest. On a field in a row of fields (eis-app-add-bar, eis-app-form-row, eis-app-filters__fields)
+   the step is the base and the minimum width (--basis): the field grows into the free room. */
 .eis-width-fit{inline-size:max-content;max-inline-size:100%;flex:0 0 auto}
-.eis-width-100{inline-size:var(--width-100);max-inline-size:100%;flex:0 0 auto}
-.eis-width-200{inline-size:var(--width-200);max-inline-size:100%;flex:0 0 auto}
-.eis-width-300{inline-size:var(--width-300);max-inline-size:100%;flex:0 0 auto}
-.eis-width-400{inline-size:var(--width-400);max-inline-size:100%;flex:0 0 auto}
-.eis-width-500{inline-size:var(--width-500);max-inline-size:100%;flex:0 0 auto}
+.eis-width-100{--basis:var(--width-100);inline-size:var(--basis);max-inline-size:100%;flex:0 0 auto}
+.eis-width-200{--basis:var(--width-200);inline-size:var(--basis);max-inline-size:100%;flex:0 0 auto}
+.eis-width-300{--basis:var(--width-300);inline-size:var(--basis);max-inline-size:100%;flex:0 0 auto}
+.eis-width-400{--basis:var(--width-400);inline-size:var(--basis);max-inline-size:100%;flex:0 0 auto}
+.eis-width-500{--basis:var(--width-500);inline-size:var(--basis);max-inline-size:100%;flex:0 0 auto}
 
 /* ---------- link ----------
    Every link is underlined and turns --accent-ink on hover (5.3:1 on --surface-panel,

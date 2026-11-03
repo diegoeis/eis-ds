@@ -210,7 +210,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <button class="eis-button eis-button--primary" type="submit">Create task</button>
       </div>
     </form>
-    <p>Width helpers: <code>eis-width-fit</code> (as wide as the content) and <code>eis-width-100</code> … <code>eis-width-500</code>. In a flex row (app scope: <code>eis-app-inline</code>, <code>eis-app-form-row</code>) the item keeps its width and the others take the rest.</p>
+    <p>Width helpers: <code>eis-width-fit</code> (as wide as the content) and <code>eis-width-100</code> … <code>eis-width-500</code>. In a flex row (app scope: <code>eis-app-inline</code>) the item keeps its width and the others take the rest. In a row of fields (app scope: <code>eis-app-add-bar</code>, <code>eis-app-form-row</code>, <code>eis-app-filters__fields</code>) the step is the base and the minimum width: the field grows into the free room and wraps when it no longer fits.</p>
     <div class="eis-panel">
       <div class="eis-panel__body">
         <div class="eis-field eis-width-fit">
@@ -323,7 +323,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </details>
         <details class="eis-disclosure">
           <summary><h3>Stacked disclosure</h3><span class="eis-mono">3</span></summary>
-          <p class="eis-note">Stacked disclosures get a <code>--line</code> between them.</p>
+          <p class="eis-note">Stacked disclosures get a <code>--line</code> between them. A closed summary under the pointer gets <code>--surface-hover</code>, and its count turns <code>--ink</code>.</p>
         </details>
       </section>
     </div>

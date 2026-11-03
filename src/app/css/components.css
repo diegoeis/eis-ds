@@ -8,9 +8,11 @@
 .eis-app-shell{display:grid;grid-template-columns:var(--app-size-sidebar) minmax(0,1fr);min-height:100vh}
 .eis-app-brand a,.eis-app-nav a{text-decoration:none}
 /* ---------- sidebar ---------- */
+/* the sidebar is as tall as the window and scrolls inside when its content is taller, so its background
+   always reaches the bottom. The footer stays at the bottom, on the same background */
 .eis-app-sidebar{background:var(--surface-panel);border-right:var(--border-width-100) solid var(--line);
-  display:flex;flex-direction:column;gap:var(--space-300);padding:var(--space-300) var(--space-200) var(--space-200);
-  position:sticky;top:0;height:100vh}
+  display:flex;flex-direction:column;gap:var(--space-300);padding:var(--space-300) var(--space-200) 0;
+  position:sticky;top:0;height:100vh;overflow-y:auto;overscroll-behavior:contain}
 .eis-app-brand{display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-100);padding:0 var(--space-100)}
 .eis-app-brand a{font-family:var(--font-family-mono);font-size:var(--font-size-300);font-weight:var(--font-weight-semibold);letter-spacing:var(--font-letter-spacing-wide)}
 .eis-app-nav{display:flex;flex-direction:column;gap:var(--space-300)}
@@ -33,10 +35,17 @@
 .eis-app-nav__toggle:has(> .eis-app-nav__count)::after{margin-left:0}
 .eis-app-nav__toggle[aria-expanded="false"]::after{rotate:180deg}
 .eis-app-nav__toggle[aria-expanded="false"] + .eis-app-nav__sub{display:none}
+/* a link with a sub-list (a workspace and its teams): the link navigates; the toggle after it holds only
+   the arrow, at the right of the link's count, and opens or closes the sub-list */
+.eis-app-nav li:has(> a + .eis-app-nav__toggle){display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:calc(var(--space-100) / 2)}
+.eis-app-nav li:has(> a + .eis-app-nav__toggle) > .eis-app-nav__sub{grid-column:1 / -1}
+.eis-app-nav a + .eis-app-nav__toggle{inline-size:var(--app-size-nav-item);justify-content:center;padding:0}
+.eis-app-nav a + .eis-app-nav__toggle::after{margin-left:0}
 .eis-app-nav__sub{padding-left:var(--space-200)}
 .eis-app-nav__count{margin-left:auto;font-family:var(--font-family-mono);font-size:var(--font-size-200);opacity:.7}
 .eis-app-nav__count--accent{opacity:1;background:var(--accent);color:var(--accent-on);padding:2px var(--space-100);border-radius:2px;font-weight:var(--font-weight-medium)}
-.eis-app-sidebar__foot{margin-top:auto;padding:var(--space-200) 0 0;border-top:var(--border-width-100) solid var(--line)}
+.eis-app-sidebar__foot{margin-top:auto;padding:var(--space-200) 0;border-top:var(--border-width-100) solid var(--line);
+  position:sticky;bottom:0;background:var(--surface-panel)}
 .eis-app-sidebar__foot dl{display:grid;grid-template-columns:auto 1fr;gap:var(--space-100) var(--space-200)}
 .eis-app-sidebar__foot dd{text-align:right}
 /* top bar: the page's first row below 1024px (a menu button that opens the sidebar as a drawer, then the page name).
@@ -52,6 +61,7 @@
   .eis-app-shell[data-eis-app-animate]{transition:grid-template-columns .2s ease}
   .eis-app-shell:has(.eis-app-sidebar__toggle[aria-expanded="false"]){grid-template-columns:var(--app-size-sidebar-collapsed) minmax(0,1fr)}
   .eis-app-sidebar{overflow-x:clip}
+  .eis-app-sidebar:has(.eis-app-sidebar__toggle[aria-expanded="false"]){overflow-y:hidden}
   .eis-app-sidebar > :not(.eis-app-sidebar__foot),.eis-app-sidebar__foot > :not(.eis-app-sidebar__toggle){
     min-inline-size:calc(var(--app-size-sidebar) - var(--space-200) * 2);transition:opacity .2s ease}
   .eis-app-sidebar:has(.eis-app-sidebar__toggle[aria-expanded="false"]) > :not(.eis-app-sidebar__foot),
@@ -181,10 +191,9 @@
 .eis-app-notes p > .eis-button--icon{display:inline-flex;vertical-align:middle;min-width:0;min-height:0;padding:0;margin-left:var(--space-100);line-height:0}
 
 /* add bar: the form that adds an item, first in a list panel (before its groups). Fields side by side,
-   aligned on their bottom edge: the first field takes the free room, the others keep their width
-   (eis-width-*), the buttons come last. The error line takes a row of its own */
+   aligned on their bottom edge, flexible like every row of fields (see "rows of fields" below), the
+   buttons come last. The error line takes a row of its own */
 .eis-app-add-bar{display:flex;flex-wrap:wrap;align-items:flex-end;gap:var(--space-200);padding:var(--space-200);border-bottom:var(--border-width-100) solid var(--line)}
-.eis-app-add-bar > .eis-field:first-child{flex:1 1 var(--app-size-form-field);min-inline-size:0}
 .eis-app-add-bar > .eis-field__error{flex-basis:100%;margin:0}
 
 /* side lists */
@@ -203,9 +212,9 @@
 
 /* ---------- filters: view tabs on the left, labelled fields on the right ---------- */
 .eis-app-filters{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:var(--space-200)}
-.eis-app-filters__fields{display:flex;flex-wrap:wrap;gap:var(--space-200);margin-left:auto}
-.eis-app-filters__fields > .eis-field{inline-size:var(--app-size-filter-field)}
-.eis-app-filters__fields > .eis-app-filters__search{inline-size:var(--app-size-filter-search)}
+/* the fields stay next to the tabs while they fit on one line there; else they move as one block to a
+   row of their own and fill it */
+.eis-app-filters__fields{flex:1 1 max-content;display:flex;flex-wrap:wrap;gap:var(--space-200)}
 
 /* notice: one status line (role="status"). Sticky, so it shows when the user is down a long list */
 .eis-app-notice{position:sticky;top:var(--space-200);z-index:1;padding:var(--space-200);background:var(--surface-panel);
@@ -283,13 +292,21 @@
 
 /* ---------- settings forms ---------- */
 /* row: fields side by side, as many as fit; text: a short explanation; inline: a field and its buttons on one line */
-.eis-app-form-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(var(--app-size-form-field),100%),1fr));gap:var(--space-200)}
+.eis-app-form-row{display:flex;flex-wrap:wrap;gap:var(--space-200)}
 /* --2: exactly two columns (long fields such as textareas), one column on narrow screens */
-.eis-app-form-row--2{grid-template-columns:repeat(2,minmax(0,1fr))}
-/* a row with a width helper on a field: a wrapping flex row, the helper keeps its width, the other
-   fields share the rest (same minimum as the grid) */
-.eis-app-form-row:has(> [class*="eis-width-"]){display:flex;flex-wrap:wrap}
-.eis-app-form-row:has(> [class*="eis-width-"]) > :not([class*="eis-width-"]){flex:1 1 var(--app-size-form-field);min-inline-size:0}
+.eis-app-form-row--2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+/* rows of fields (eis-app-add-bar, eis-app-form-row, eis-app-filters__fields): each field starts at its base
+   width and never gets narrower than it. The base is its width helper (eis-width-100…500, read from --basis),
+   else the row's default (--app-size-form-field; in a filter bar --app-size-filter-field, -filter-search).
+   Fields share the free room and grow with it. A field wraps only when it no longer fits; a wrapped field
+   starts at the left and fills its row. eis-width-fit: the content's width is the base */
+.eis-app-add-bar > .eis-field,.eis-app-form-row:not(.eis-app-form-row--2) > *{
+  flex:1 1 var(--basis,var(--app-size-form-field));min-inline-size:min(var(--basis,var(--app-size-form-field)),100%)}
+.eis-app-filters__fields > .eis-field{flex:1 1 var(--basis,var(--app-size-filter-field));min-inline-size:min(var(--basis,var(--app-size-filter-field)),100%);
+  inline-size:var(--basis,var(--app-size-filter-field))}
+.eis-app-filters__fields > .eis-app-filters__search{flex-basis:var(--basis,var(--app-size-filter-search));min-inline-size:min(var(--basis,var(--app-size-filter-search)),100%);
+  inline-size:var(--basis,var(--app-size-filter-search))}
+.eis-app-add-bar > .eis-width-fit,.eis-app-form-row > .eis-width-fit,.eis-app-filters__fields > .eis-width-fit{flex:1 1 auto;min-inline-size:auto}
 .eis-app-form-text{max-inline-size:80ch;color:var(--ink-muted)}
 /* buttons keep their natural height: centred on a one-line field, at the top of a textarea */
 .eis-app-inline{display:flex;align-items:center;gap:var(--space-100);min-width:0}

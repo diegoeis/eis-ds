@@ -69,6 +69,45 @@
       "$description": "Pills and circles."
     }
   },
+  "width": {
+    "$type": "dimension",
+    "$description": "Fixed widths for a field or a block, used through the width helpers (eis-width-*). In a row of fields they are the base and the minimum width of a field, which grows into the free room.",
+    "100": {
+      "$value": {
+        "value": 128,
+        "unit": "px"
+      },
+      "$description": "A short value: a number, a date, a status select."
+    },
+    "200": {
+      "$value": {
+        "value": 192,
+        "unit": "px"
+      },
+      "$description": "A word or two: a type, a name."
+    },
+    "300": {
+      "$value": {
+        "value": 256,
+        "unit": "px"
+      },
+      "$description": "A short line: a title, an e-mail."
+    },
+    "400": {
+      "$value": {
+        "value": 360,
+        "unit": "px"
+      },
+      "$description": "A path, a URL."
+    },
+    "500": {
+      "$value": {
+        "value": 480,
+        "unit": "px"
+      },
+      "$description": "A long line."
+    }
+  },
   "border": {
     "width": {
       "$type": "dimension",

@@ -5,12 +5,13 @@
   /* color */
   --color-white: #ffffff;
   --color-neutral-0: #f7f7f7;
+  --color-neutral-50: #f0f0f0;
   --color-neutral-100: #eaeaea;
   --color-neutral-200: #dddddd;
   --color-neutral-300: #cfcfcf;
   --color-neutral-400: #a3a3a3;
   --color-neutral-500: #858585;
-  --color-neutral-600: #696969;
+  --color-neutral-600: #6d6d6d;
   --color-neutral-900: #111111;
   --color-orange-500: #f35919;
   --color-orange-700: #b5400c;
@@ -31,6 +32,13 @@
   --radius-300: 15px;
   --radius-400: 20px;
   --radius-full: 999px;
+
+  /* width */
+  --width-100: 128px;
+  --width-200: 192px;
+  --width-300: 256px;
+  --width-400: 360px;
+  --width-500: 480px;
 
   /* border */
   --border-width-100: 1px;
@@ -61,7 +69,8 @@
   --surface-canvas: var(--color-neutral-0);
   --surface-panel: var(--color-white);
   --surface-head: var(--color-neutral-200);
-  --surface-selected: var(--color-neutral-100);
+  --surface-selected: var(--color-neutral-50);
+  --surface-hover: var(--color-neutral-100);
   --surface-raised: var(--color-white);
   --surface-inverse: var(--color-neutral-900);
 

@@ -26,9 +26,14 @@
    On close the focus goes back to the button (Esc and outside click only, not after a nav item).
 
    Also opens and closes the nav items that hold a sub-list, and keeps each one's state for the
-   next visit (key "eis-app-nav:" + the sub-list id):
+   next visit (key "eis-app-nav:" + the sub-list id). The item only groups the list:
      <li><button class="eis-app-nav__toggle" type="button" aria-expanded="true" aria-controls="nav-x"
                  data-eis-app-nav-toggle>Item</button>
+       <ul class="eis-app-nav__sub" id="nav-x">…</ul></li>
+   The item is a page too: a link, then an arrow-only toggle (the CSS draws the arrow):
+     <li><a href="#x">Item <span class="eis-app-nav__count">40</span></a>
+       <button class="eis-app-nav__toggle" type="button" aria-expanded="true" aria-controls="nav-x"
+               aria-label="Item teams" title="Item teams" data-eis-app-nav-toggle></button>
        <ul class="eis-app-nav__sub" id="nav-x">…</ul></li> */
 (function () {
   "use strict";

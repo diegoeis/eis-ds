@@ -65,7 +65,7 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 | `--danger` | Remove, delete: an action that loses data. A ghost with a red line and red text (`--danger-ink`); on hover it fills `--danger` with dark text. | Use for anything that does not remove or break. |
 | *(default)* | Secondary actions. White background (`--surface-raised`), line border. | — |
 | `--ghost` | Low-emphasis actions next to others (Skip, Clear). | No glow on hover. |
-| `--accent` | Only when the action **is** the accent: record, go live, publish. | Rare. Never "Save" or "Delete". |
+| `--accent` | Only when the action **is** the accent: record, go live, publish. In the app scope: the main action of the page head (`eis-app-page-head`), e.g. "New task" (layout.md §7, "Page head"). | Rare: one per page, and it counts toward the accent budget. Never "Save" or "Delete". |
 | `--success` | Save, when the page asks for a positive action in green. | Not together with a `--primary` button for the same action. |
 
 - `type="button"` unless it submits a form (`type="submit"`) or resets (`type="reset"`).
@@ -274,7 +274,7 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 ```
 
 - Native `<details>`/`<summary>`. It opens and closes without JS. It is the only element that opens and closes: groups of tasks, topics or any list use it too.
-- The CSS draws the marker on the right: Lucide `plus` when closed, `minus` when open. Write no icon in the summary. When open, the summary gets `--surface-canvas` background and a `--line` under it.
+- The CSS draws the marker on the right: Lucide `plus` when closed, `minus` when open. Write no icon in the summary. When open, the summary gets `--surface-canvas` background and a `--line` under it. A closed summary under the pointer gets `--surface-hover`; `eis-mono` and `eis-label` in it take `--ink` (`--ink-muted` fails on `--surface-hover`).
 - The heading in the summary (`h2`, `h3` or `h4`, no class needed) uses the label type one step up (`--font-size-200`), in `--ink`: it names the group. A count or a path goes after it in `eis-mono`.
 - A `--line` separates stacked disclosures. To list several, put them as direct children of one `eis-panel`.
 - Content goes right after the summary: an `eis-panel__body` for text and fields, or an `eis-table` (its first row drops its top line, the summary line already separates them), then an optional `eis-panel__footer`.
@@ -348,7 +348,7 @@ Load at the end of `<body>`, Lucide first:
 - `.eis-label` — label text style (mono, 11, uppercase, `--ink-muted`). For panel titles, table heads, nav section titles.
 - `.eis-mono` — mono metadata (12, `--ink-muted`, tabular numbers).
 - `.eis-visually-hidden` — hidden on screen, read by screen readers. For captions, legends and labels the design doesn't show.
-- `.eis-width-fit`, `.eis-width-100` … `.eis-width-500` — the width of a field, a button or a block: as wide as its content, or the `--width-*` step (128, 192, 256, 360, 480px). Never wider than the container. In a flex row (`eis-app-inline`, `eis-app-form-row`) the item keeps its width and the others take the rest: a short select before the field it controls is `<div class="eis-field eis-width-fit">`. Don't write a width in page CSS for this.
+- `.eis-width-fit`, `.eis-width-100` … `.eis-width-500` — the width of a field, a button or a block: as wide as its content, or the `--width-*` step (128, 192, 256, 360, 480px). Never wider than the container. In a flex row (`eis-app-inline`) the item keeps its width and the others take the rest. In a row of fields (`eis-app-add-bar`, `eis-app-form-row`, `eis-app-filters__fields`) the step is the base and the minimum width of the field: it grows into the free room and wraps when it no longer fits (layout.md §7, "Rows of fields"). A short select before the field it controls is `<div class="eis-field eis-width-fit">`. Don't write a width in page CSS for this.
 
 ## Not yet in the system
 

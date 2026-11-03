@@ -12,7 +12,7 @@ It is several design systems in one. They share the same base and never conflict
 
 More scopes (slides, email) will follow the same pattern.
 
-Version 0.6.0, draft. Light mode only.
+Version 0.7.0, draft. Light mode only.
 
 Site: https://diegoeis.github.io/eis-ds/
 

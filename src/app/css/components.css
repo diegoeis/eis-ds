@@ -128,7 +128,7 @@
 
 /* task table: a real table of tasks. Put it in an eis-disclosure (shared) to group tasks */
 .eis-app-task-table.eis-table{table-layout:fixed}
-.eis-app-task-table.eis-table .eis-app-col-check{width:48px}
+.eis-app-task-table.eis-table .eis-app-col-check,.eis-app-task-table.eis-table .eis-app-col-act{width:48px}
 .eis-app-task-table.eis-table .eis-app-col-idx{width:44px}
 .eis-app-task-table.eis-table .eis-app-col-src{width:184px}
 .eis-app-task-table.eis-table .eis-app-col-due,.eis-app-task-table.eis-table .eis-app-col-date{width:88px}
@@ -146,8 +146,8 @@
 .eis-app-task-table.eis-table tr:has(.eis-checkbox:checked) :is(label,.eis-app-task-title){color:var(--ink-muted);text-decoration:line-through}
 .eis-app-meta{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-100);margin-top:var(--space-100)}
 .eis-app-meta em{font-family:var(--font-family-mono);font-size:var(--font-size-200);color:var(--ink-muted)}
-.eis-app-due--over,.eis-app-meta .eis-app-over,.eis-app-over{color:var(--accent-ink);font-weight:var(--font-weight-medium)}
-.eis-app-due--today{color:var(--ink);font-weight:var(--font-weight-medium)}
+.eis-app-due--over,.eis-app-meta .eis-app-over,.eis-app-over,.eis-app-task-meta .eis-app-due--over{color:var(--accent-ink);font-weight:var(--font-weight-medium)}
+.eis-app-due--today,.eis-app-task-meta .eis-app-due--today{color:var(--ink);font-weight:var(--font-weight-medium)}
 /* a task's fields in one line under its text: <dl> of label/value pairs (source, created, due) */
 .eis-app-task-meta{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-100) var(--space-300);margin:var(--space-100) 0 0;
   font-family:var(--font-family-mono);font-size:var(--font-size-200);color:var(--ink-muted)}

@@ -18,19 +18,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="stylesheet" href="../src/web/web.css">
 <style>
 /* page-only layout for the specimens */
-.eis-demo{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-200);padding:var(--space-300) var(--space-200)}
-.eis-demo + .eis-demo{border-top:var(--border-width-100) solid var(--line)}
-.eis-demo--col{flex-direction:column;align-items:stretch}
-.eis-demo__name{flex-basis:100%}
-.eis-note{padding:var(--space-200);color:var(--ink-muted)}
-.eis-note code{color:var(--ink)}
-.eis-compare{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
-.eis-compare > div{padding:var(--space-300) var(--space-200);display:flex;flex-direction:column;gap:var(--space-200)}
-.eis-compare > div + div{border-left:var(--border-width-100) solid var(--line)}
-.eis-compare p.eis-row{display:flex;flex-wrap:wrap;gap:var(--space-100);align-items:center}
+.doc-demo{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-200);padding:var(--space-300) var(--space-200)}
+.doc-demo + .doc-demo{border-top:var(--border-width-100) solid var(--line)}
+.doc-demo--col{flex-direction:column;align-items:stretch}
+.doc-demo__name{flex-basis:100%}
+.doc-note{padding:var(--space-200);color:var(--ink-muted)}
+.doc-note code{color:var(--ink)}
+.doc-compare{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.doc-compare > div{padding:var(--space-300) var(--space-200);display:flex;flex-direction:column;gap:var(--space-200)}
+.doc-compare > div + div{border-left:var(--border-width-100) solid var(--line)}
+.doc-compare p.doc-row{display:flex;flex-wrap:wrap;gap:var(--space-100);align-items:center}
 @media (max-width:640px){
-  .eis-compare{grid-template-columns:minmax(0,1fr)}
-  .eis-compare > div + div{border-left:0;border-top:var(--border-width-100) solid var(--line)}
+  .doc-compare{grid-template-columns:minmax(0,1fr)}
+  .doc-compare > div + div{border-left:0;border-top:var(--border-width-100) solid var(--line)}
 }
 </style>
 </head>
@@ -76,7 +76,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p>A button acts. Rectangle, small radius, uppercase mono. Use <code>&lt;button&gt;</code> for actions and <code>&lt;a&gt;</code> styled as a button only for navigation.</p>
     </header>
     <div class="eis-panel">
-      <div class="eis-demo">
+      <div class="doc-demo">
         <button class="eis-button eis-button--primary" type="button">Save</button>
         <button class="eis-button" type="button">Cancel</button>
         <button class="eis-button eis-button--ghost" type="button">Skip</button>
@@ -86,14 +86,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <button class="eis-button eis-button--danger" type="button">Remove</button>
         <button class="eis-button" type="button" disabled>Disabled</button>
       </div>
-      <div class="eis-demo">
+      <div class="doc-demo">
         <button class="eis-button eis-button--sm" type="button">Small</button>
         <button class="eis-button" type="button">Medium</button>
         <button class="eis-button eis-button--lg" type="button">Large</button>
         <button class="eis-button eis-button--primary eis-button--sm" type="button"><i data-lucide="plus" class="eis-icon"></i>Note</button>
         <button class="eis-button eis-button--primary eis-button--lg" type="button">Start</button>
       </div>
-      <div class="eis-demo">
+      <div class="doc-demo">
         <button class="eis-button eis-button--primary" type="button"><i data-lucide="plus" class="eis-icon"></i>New topic</button>
         <a class="eis-button" href="#buttons">Open report<i data-lucide="arrow-right" class="eis-icon"></i></a>
         <button class="eis-button eis-button--sm" type="button"><i data-lucide="copy" class="eis-icon"></i>Copy link</button>
@@ -102,7 +102,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <button class="eis-button eis-button--icon eis-button--sm eis-button--ghost" type="button" aria-label="Add" title="Add"><i data-lucide="plus" class="eis-icon"></i></button>
         <button class="eis-button eis-button--icon eis-button--sm eis-button--danger" type="button" aria-label="Remove" title="Remove"><i data-lucide="trash-2" class="eis-icon"></i></button>
       </div>
-      <p class="eis-note"><code>.eis-button</code> (white) + <code>--black</code> · <code>--ghost</code> · <code>--accent</code> · <code>--success</code>. Variants change colour only. Sizes: <code>--sm</code> · default · <code>--lg</code>. Icons (Lucide, <code>eis-icon</code>) go left or right of the text. <code>--icon</code>: square, icon only, with <code>aria-label</code> and <code>title</code>. One <code>--black</code> per view; <code>--accent</code> only for the action that is itself the accent (record, go live).</p>
+      <p class="doc-note"><code>.eis-button</code> (white) + <code>--black</code> · <code>--ghost</code> · <code>--accent</code> · <code>--success</code>. Variants change colour only. Sizes: <code>--sm</code> · default · <code>--lg</code>. Icons (Lucide, <code>eis-icon</code>) go left or right of the text. <code>--icon</code>: square, icon only, with <code>aria-label</code> and <code>title</code>. One <code>--black</code> per view; <code>--accent</code> only for the action that is itself the accent (record, go live).</p>
     </div>
   </section>
 
@@ -114,7 +114,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </header>
     <div>
       <div class="eis-panel">
-        <div class="eis-demo">
+        <div class="doc-demo">
           <span class="eis-chip">Accepted</span>
           <span class="eis-chip eis-chip--outline">Maybe</span>
           <span class="eis-chip eis-chip--solid">Organizer</span>
@@ -122,32 +122,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span class="eis-chip eis-chip--success">Sent</span>
           <span class="eis-chip eis-chip--hatch">Cancelled</span>
         </div>
-        <div class="eis-demo">
+        <div class="doc-demo">
           <span class="eis-chip eis-chip--dot">On track</span>
           <span class="eis-chip eis-chip--accent eis-chip--dot">Urgent</span>
           <span class="eis-chip eis-chip--outline">PLT-204</span>
           <span class="eis-chip eis-chip--outline">Billing</span>
         </div>
-        <div class="eis-demo">
+        <div class="doc-demo">
           <span class="eis-chip eis-chip--sm eis-chip--solid">Small</span>
           <span class="eis-chip eis-chip--solid">Medium</span>
           <span class="eis-chip eis-chip--lg eis-chip--solid">Large</span>
           <span class="eis-chip eis-chip--sm eis-chip--accent eis-chip--dot">Urgent</span>
           <span class="eis-chip eis-chip--lg eis-chip--outline">PLT-204</span>
         </div>
-        <p class="eis-note"><code>.eis-chip</code> + <code>--outline</code> · <code>--solid</code> · <code>--accent</code> · <code>--success</code> · <code>--hatch</code> · <code>--dot</code>. Sizes: <code>--sm</code> · default · <code>--lg</code>. Hatch marks what no longer counts (cancelled, blocked). Accent is the only chip with colour.</p>
+        <p class="doc-note"><code>.eis-chip</code> + <code>--outline</code> · <code>--solid</code> · <code>--accent</code> · <code>--success</code> · <code>--hatch</code> · <code>--dot</code>. Sizes: <code>--sm</code> · default · <code>--lg</code>. Hatch marks what no longer counts (cancelled, blocked). Accent is the only chip with colour.</p>
       </div>
       <div class="eis-panel">
         <h3 class="eis-label">Chip vs button</h3>
-        <div class="eis-compare">
+        <div class="doc-compare">
           <div>
             <p class="eis-label">Button · acts</p>
-            <p class="eis-row"><button class="eis-button" type="button">Filter</button><button class="eis-button eis-button--primary" type="button">Export</button></p>
+            <p class="doc-row"><button class="eis-button" type="button">Filter</button><button class="eis-button eis-button--primary" type="button">Export</button></p>
             <p class="eis-mono">Rectangle · 4px radius · UPPERCASE · 40px tall · hover glow</p>
           </div>
           <div>
             <p class="eis-label">Chip · describes</p>
-            <p class="eis-row"><span class="eis-chip">Accepted</span><span class="eis-chip eis-chip--accent">Conflict</span></p>
+            <p class="doc-row"><span class="eis-chip">Accepted</span><span class="eis-chip eis-chip--accent">Conflict</span></p>
             <p class="eis-mono">Pill · full radius · Sentence case · 24px tall · static</p>
           </div>
         </div>
@@ -221,7 +221,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p>Checkbox for independent options, radio for one of many, switch for a setting that applies at once, tabs for switching a view.</p>
     </header>
     <div class="eis-panel">
-      <div class="eis-demo">
+      <div class="doc-demo">
         <fieldset class="eis-field eis-choices">
           <legend>Show</legend>
           <label class="eis-choice"><input class="eis-checkbox" type="checkbox" checked> Overdue</label>
@@ -240,7 +240,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <label class="eis-choice"><input class="eis-switch" type="checkbox" role="switch"> Compact rows</label>
         </fieldset>
       </div>
-      <div class="eis-demo">
+      <div class="doc-demo">
         <fieldset class="eis-tabs">
           <legend>Range</legend>
           <label><input type="radio" name="range" value="today" checked><span>Today</span></label>
@@ -254,7 +254,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <label><input type="radio" name="kind" value="team"><span>Team <span class="eis-tabs__count">04</span></span></label>
         </fieldset>
       </div>
-      <p class="eis-note"><code>.eis-checkbox</code> · <code>.eis-radio</code> · <code>.eis-switch</code> (checkbox + <code>role="switch"</code>) inside <code>.eis-choice</code> labels; groups in <code>fieldset.eis-choices</code>. <code>.eis-tabs</code> is a radio group, <code>.eis-tabs__count</code> the number of items of an option.</p>
+      <p class="doc-note"><code>.eis-checkbox</code> · <code>.eis-radio</code> · <code>.eis-switch</code> (checkbox + <code>role="switch"</code>) inside <code>.eis-choice</code> labels; groups in <code>fieldset.eis-choices</code>. <code>.eis-tabs</code> is a radio group, <code>.eis-tabs__count</code> the number of items of an option.</p>
     </div>
   </section>
 
@@ -304,11 +304,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <section class="eis-panel">
         <details class="eis-disclosure">
           <summary><h3>Disclosure</h3><span class="eis-mono">7</span></summary>
-          <p class="eis-note">A <code>&lt;details&gt;</code> with <code>.eis-disclosure</code>. Opens and closes natively, keyboard included.</p>
+          <p class="doc-note">A <code>&lt;details&gt;</code> with <code>.eis-disclosure</code>. Opens and closes natively, keyboard included.</p>
         </details>
         <details class="eis-disclosure">
           <summary><h3>Stacked disclosure</h3><span class="eis-mono">3</span></summary>
-          <p class="eis-note">Stacked disclosures get a <code>--line</code> between them. A closed summary under the pointer gets <code>--surface-hover</code>, and its count turns <code>--ink</code>.</p>
+          <p class="doc-note">Stacked disclosures get a <code>--line</code> between them. A closed summary under the pointer gets <code>--surface-hover</code>, and its count turns <code>--ink</code>.</p>
         </details>
       </section>
     </div>
@@ -321,10 +321,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p>Breadcrumb in label style, current page in accent ink. Every link is underlined and turns accent ink on hover.</p>
     </header>
     <div class="eis-panel">
-      <div class="eis-demo">
+      <div class="doc-demo">
         <nav class="eis-breadcrumb eis-label" aria-label="Breadcrumb"><ol><li><a href="#nav">Tasks</a></li><li><a href="#nav">Work</a></li><li aria-current="page">Billing</li></ol></nav>
       </div>
-      <div class="eis-demo">
+      <div class="doc-demo">
         <p>Read the <a class="eis-link" href="foundations.html">foundations</a> before changing a token.</p>
       </div>
     </div>

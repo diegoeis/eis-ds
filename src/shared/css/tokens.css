@@ -25,6 +25,9 @@
   --space-200: 16px;
   --space-300: 32px;
   --space-400: 64px;
+  --space-500: 128px;
+  --space-600: 256px;
+  --space-700: 512px;
 
   /* radius */
   --radius-100: 7px;

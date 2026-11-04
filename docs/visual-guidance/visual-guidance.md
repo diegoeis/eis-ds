@@ -233,6 +233,8 @@ Candidates will be compared side by side in HTML before the decision.
 
 | Date | Decision | Origin |
 |---|---|---|
+| 2026-11-04 | New space steps `--space-500` (128px), `--space-600` (256px) and `--space-700` (512px). The scale keeps the rule "each step doubles the previous". Use them only in page layout on wide screens | Author: needs larger steps for page layout |
+| 2026-11-04 | The `eis-web-hero` title spans the 12 columns, with `--space-400` above and below its line (was `--space-200`). The meta row moves under the line, starts at column 1 with the lead (columns 1 to 7) and shows its four items in one row | Author: the meta sat to the right with an empty space on its left and did not align with the lead |
 | 2026-11-03 | An `eis-disclosure` after other content in a table cell gets `--space-200` above it | Author: the topic's Actions stuck to the description text |
 | 2026-11-03 | A table row that holds an `eis-disclosure` aligns its cells to the top; other rows stay vertically centred | Author: with a topic's actions open, its title sat in the middle of a tall row |
 | 2026-11-03 | A checked checkbox no longer selects its table row: only `aria-selected="true"` paints `--surface-selected`. A done task already reads as done (struck title), and in a table whose rows hold a list of checkboxes (a topic and its actions) one done action greyed the whole row | Author: the grey on topic rows meant nothing |

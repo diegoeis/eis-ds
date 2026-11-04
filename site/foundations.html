@@ -49,7 +49,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 /* space, radius, line */
 .eis-space li{display:grid;grid-template-columns:120px 80px minmax(0,1fr);gap:var(--space-200);align-items:center;padding:var(--space-200);border-top:var(--border-width-100) solid var(--line)}
 .eis-space li:first-child{border-top:0}
-.eis-space i{display:block;height:var(--space-200);width:var(--s);background:var(--accent)}
+.eis-space i{display:block;height:var(--space-200);width:var(--s);max-width:100%;background:var(--accent)}
 .eis-space p{grid-column:1/-1;color:var(--ink-muted)}
 .eis-shapes{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(180px,100%),1fr))}
 .eis-shapes li{padding:var(--space-200);display:flex;flex-direction:column;gap:var(--space-200);border-right:var(--border-width-100) solid var(--line);border-bottom:var(--border-width-100) solid var(--line);margin:0 -1px -1px 0}
@@ -263,13 +263,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section class="eis-web-doc" id="space" aria-labelledby="space-h">
     <header>
       <h2 id="space-h"><small class="eis-label">04</small>Space</h2>
-      <p>Four values, each double the previous. They cover margin, padding, gap and offsets. Each one has a place, so it isn't picked at random.</p>
+      <p>Seven values, each double the previous. They cover margin, padding, gap and offsets. Each one has a place, so it isn't picked at random.</p>
     </header>
     <ol class="eis-panel eis-space">
       <li><code>--space-100</code><span class="eis-mono">8px</span><i style="--s:var(--space-100)"></i><p>Inside a component: icon to label, tag padding.</p></li>
       <li><code>--space-200</code><span class="eis-mono">16px</span><i style="--s:var(--space-200)"></i><p>Between siblings: rows, list items, panel padding.</p></li>
       <li><code>--space-300</code><span class="eis-mono">32px</span><i style="--s:var(--space-300)"></i><p>Between blocks: panels, groups.</p></li>
       <li><code>--space-400</code><span class="eis-mono">64px</span><i style="--s:var(--space-400)"></i><p>Between sections and page gutters.</p></li>
+      <li><code>--space-500</code><span class="eis-mono">128px</span><i style="--s:var(--space-500)"></i><p>Large layout: space around a hero or a page opening.</p></li>
+      <li><code>--space-600</code><span class="eis-mono">256px</span><i style="--s:var(--space-600)"></i><p>Large layout: offsets on wide marketing pages.</p></li>
+      <li><code>--space-700</code><span class="eis-mono">512px</span><i style="--s:var(--space-700)"></i><p>Large layout: the largest offset on wide marketing pages.</p></li>
     </ol>
     <p>Widths: five fixed widths for a field or a block, used through the width helpers <code>eis-width-100</code> … <code>eis-width-500</code> (and <code>eis-width-fit</code>, as wide as the content).</p>
     <ol class="eis-panel eis-space">

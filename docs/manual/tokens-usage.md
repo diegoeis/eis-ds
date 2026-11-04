@@ -87,7 +87,7 @@ Ordinal data (age, volume, intensity) goes from light to dark, low to high:
 
 ## 3. Space
 
-Four steps, each double the previous. Each has a job. Pick by job, not by eye.
+Seven steps, each double the previous. Each has a job. Pick by job, not by eye.
 
 | Variable | Value | Job |
 |---|---|---|
@@ -95,9 +95,13 @@ Four steps, each double the previous. Each has a job. Pick by job, not by eye.
 | `--space-200` | 16px | **Between siblings**: panel padding, table cell padding, list rows, gap between panels in a grid. |
 | `--space-300` | 32px | **Between blocks**: page padding (desktop), gap between page regions, title ↔ content of a section. |
 | `--space-400` | 64px | **Between sections**: large section gaps on documentation and marketing pages. |
+| `--space-500` | 128px | **Large layout**: space around a hero or a page opening. |
+| `--space-600` | 256px | **Large layout**: offsets on wide marketing pages. |
+| `--space-700` | 512px | **Large layout**: the largest offset on wide marketing pages. |
 
 - Use the half step `calc(--space-100 / 2)` (4px) only in dense data: cell grids, tabs padding, list item gaps.
 - Mobile page padding drops one step (`--space-300` → `--space-200`).
+- Use `--space-500` to `--space-700` only in page layout on wide screens. Never use them inside a component. Below 1024px, drop them to `--space-400` or less.
 
 ### Width
 

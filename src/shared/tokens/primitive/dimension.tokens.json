@@ -1,7 +1,7 @@
 {
   "space": {
     "$type": "dimension",
-    "$description": "Exactly four steps, each double the previous. Covers margin, padding, gap and offsets.",
+    "$description": "Seven steps, each double the previous. Covers margin, padding, gap and offsets.",
     "100": {
       "$value": {
         "value": 8,
@@ -29,6 +29,27 @@
         "unit": "px"
       },
       "$description": "Between sections and page-level gutters."
+    },
+    "500": {
+      "$value": {
+        "value": 128,
+        "unit": "px"
+      },
+      "$description": "Large layout: space around a hero or a page opening."
+    },
+    "600": {
+      "$value": {
+        "value": 256,
+        "unit": "px"
+      },
+      "$description": "Large layout: offsets on wide marketing pages."
+    },
+    "700": {
+      "$value": {
+        "value": 512,
+        "unit": "px"
+      },
+      "$description": "Large layout: the largest offset on wide marketing pages."
     }
   },
   "radius": {

@@ -56,7 +56,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <p class="eis-app-notice" id="notice" role="status" hidden></p>
 
   <section class="eis-panel" aria-label="Summary">
-    <dl class="eis-app-metrics" id="metrics"></dl>
+    <dl class="eis-metrics" id="metrics"></dl>
   </section>
 
   <form class="eis-app-filters" id="toolbar" action="#" aria-label="Filters">
@@ -489,7 +489,7 @@ window.AA_DATA = {
 
   /* ---- metrics ---- */
   function metric(label, value, sub, accent) {
-    return "<div" + (accent ? ' class="eis-is-accent"' : "") + '><dt class="eis-label">' + esc(label) + "</dt><dd>" + pad(value) + "</dd><dd>" + esc(sub) + "</dd></div>";
+    return "<div" + (accent ? ' class="eis-metrics__cell--accent"' : "") + '><dt class="eis-label">' + esc(label) + "</dt><dd>" + pad(value) + "</dd><dd>" + esc(sub) + "</dd></div>";
   }
   function renderMetrics() {
     var pend = ITEMS.filter(function (i) { return i.status === "pendente"; });

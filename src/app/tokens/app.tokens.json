@@ -45,13 +45,6 @@
         },
         "$description": "Min height of a list row (agenda, people)."
       },
-      "metric": {
-        "$value": {
-          "value": 136,
-          "unit": "px"
-        },
-        "$description": "Min height of a metric cell."
-      },
       "avatar": {
         "$value": {
           "value": 28,

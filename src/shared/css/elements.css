@@ -193,19 +193,32 @@ hr{border:0;border-top:var(--border-width-100) solid var(--line);margin:0;inline
 .eis-panel__body > hr{margin-inline:calc(var(--space-200) * -1);inline-size:auto}
 
 /* ---------- metrics: a <dl> of numbers. One column per cell, a hairline between cells.
-   Each cell: <div><dt>label</dt><dd>value</dd><dd>context</dd></div>. One column at ≤640px ---------- */
+   Each cell: <div><dt>label</dt><dd>value</dd><dd>context</dd></div>.
+   eis-metrics__cell--accent on a cell puts an accent dot before its label.
+   Two or four cells go in two columns at ≤760px (four make 2 × 2). Other counts stack at ≤640px ---------- */
 .eis-metrics{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr)}
 .eis-metrics > div{display:flex;flex-direction:column;padding:var(--space-200);min-height:calc(var(--space-400) * 2)}
 .eis-metrics > div + div{border-left:var(--border-width-100) solid var(--line)}
 .eis-metrics dt{margin-bottom:auto;padding-bottom:var(--space-300)}
 .eis-metrics dd:first-of-type{font-family:var(--type-metric-font-family);font-size:var(--type-metric-font-size);font-weight:var(--type-metric-font-weight);
   letter-spacing:var(--type-metric-letter-spacing);line-height:var(--type-metric-line-height)}
-.eis-metrics dd + dd{margin-top:var(--space-100)}
+.eis-metrics dd + dd{font-family:var(--type-mono-font-family);font-size:var(--type-mono-font-size);font-weight:var(--type-mono-font-weight);
+  letter-spacing:var(--type-mono-letter-spacing);line-height:var(--type-mono-line-height);color:var(--ink-muted);margin-top:var(--space-100)}
+.eis-metrics .eis-metrics__cell--accent dt{display:flex;align-items:center;gap:var(--space-100)}
+.eis-metrics .eis-metrics__cell--accent dt::before{content:"";flex:none;width:var(--space-100);height:var(--space-100);border-radius:50%;background:var(--accent)}
+@media (max-width:760px){
+  .eis-metrics:is(:has(> div:nth-child(2):last-child),:has(> div:nth-child(4):last-child)){grid-auto-flow:row;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .eis-metrics:is(:has(> div:nth-child(2):last-child),:has(> div:nth-child(4):last-child)) > div{min-height:0}
+  .eis-metrics:is(:has(> div:nth-child(2):last-child),:has(> div:nth-child(4):last-child)) > div:nth-child(3){border-left:0}
+  .eis-metrics:is(:has(> div:nth-child(2):last-child),:has(> div:nth-child(4):last-child)) > div:nth-child(n+3){border-top:var(--border-width-100) solid var(--line)}
+  .eis-metrics:is(:has(> div:nth-child(2):last-child),:has(> div:nth-child(4):last-child)) dt{padding-bottom:var(--space-200)}
+  .eis-metrics:is(:has(> div:nth-child(2):last-child),:has(> div:nth-child(4):last-child)) dd:first-of-type{font-size:var(--font-size-600)}
+}
 @media (max-width:640px){
-  .eis-metrics{grid-auto-flow:row;grid-template-columns:minmax(0,1fr)}
-  .eis-metrics > div{min-height:0}
-  .eis-metrics > div + div{border-left:0;border-top:var(--border-width-100) solid var(--line)}
-  .eis-metrics dd:first-of-type{font-size:var(--font-size-600)}
+  .eis-metrics:not(:has(> div:nth-child(2):last-child),:has(> div:nth-child(4):last-child)){grid-auto-flow:row;grid-template-columns:minmax(0,1fr)}
+  .eis-metrics:not(:has(> div:nth-child(2):last-child),:has(> div:nth-child(4):last-child)) > div{min-height:0}
+  .eis-metrics:not(:has(> div:nth-child(2):last-child),:has(> div:nth-child(4):last-child)) > div + div{border-left:0;border-top:var(--border-width-100) solid var(--line)}
+  .eis-metrics:not(:has(> div:nth-child(2):last-child),:has(> div:nth-child(4):last-child)) dd:first-of-type{font-size:var(--font-size-600)}
 }
 
 /* ---------- avatar ---------- */

@@ -107,7 +107,7 @@ Which variable to use for what. Shared variables come from `src/shared/css/token
 | `--danger-ink` | `#b42318` | Danger **as text** and the line of a danger button. 6.6:1 on white. | Use as a fill. |
 | `--danger-on` | `#111111` | Text **on** a `--danger` fill. 4.8:1. | Use white on `--danger` (3.9:1, fails). |
 | `--surface-head` | `#dddddd` | Head strip of a panel. Text on it is `--ink` (13.9:1). `eis-mono`, `eis-label` and an outline chip in the head take `--ink` by themselves. | Put `--ink-muted` on it (4.0:1, fails). Use as a page area. |
-| `--surface-selected` | `#f0f0f0` | Background of a selected table row: its checkbox is checked, or the row has `aria-selected="true"`. `eis-table` sets it. Every text role passes on it (`--ink` 16.6:1, `--ink-muted` 4.5:1, `--accent-ink` 5.0:1). | Use as a page area, a panel or a hover. |
+| `--surface-selected` | `#f0f0f0` | Background of a selected table row: the row has `aria-selected="true"`. `eis-table` sets it. Every text role passes on it (`--ink` 16.6:1, `--ink-muted` 4.5:1, `--accent-ink` 5.0:1). | Use as a page area, a panel or a hover. |
 | `--surface-hover` | `#eaeaea` | Background of a closed disclosure summary under the pointer. `eis-disclosure` sets it. Text on it is `--ink` (15.7:1): `eis-mono` and `eis-label` in the summary take `--ink` on hover by themselves. `--accent-ink` passes (4.7:1). | Put `--ink-muted` on it (4.3:1, fails). Use as a page area or a selected state. |
 
 **`--surface-panel` and `--surface-raised` have the same value today (white), with two roles.** `--surface-panel` is a surface that holds content (panel, sidebar, field, table). `--surface-raised` is a control raised above the canvas (the default button). Keep both: a mode (dark, paper) can give them different values. Use the role of the job, never the one with the right colour.
@@ -504,7 +504,7 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 - Numbers: `.eis-num` (mono, tabular, right-aligned), including the header cell.
 - Header row (`thead th`): `--surface-inverse` background, `--ink-inverse` text, label type, inner padding. A scope may change the inline padding of the header to align it with its cells. It never changes the colours.
 - Rows separated by `--line`. No zebra stripes, no vertical lines.
-- A selected row gets the `--surface-selected` background. A row is selected when a checkbox in it is checked, or when it has `aria-selected="true"`. The table sets it: write no class. Every text role passes on it, `--ink-muted` included.
+- A selected row gets the `--surface-selected` background. A row is selected when it has `aria-selected="true"`; a checked checkbox in the row does not select it (a done task is not a selection). Write no class. Every text role passes on it, `--ink-muted` included.
 - On narrow screens a table MAY reflow into cards with CSS (`display:block/grid` on `tr`), keeping the HTML a table. If it can't reflow, wrap it in a horizontally scrollable container — the page itself MUST NOT scroll sideways.
 
 ##### Panel

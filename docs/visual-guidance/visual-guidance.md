@@ -233,6 +233,7 @@ Candidates will be compared side by side in HTML before the decision.
 
 | Date | Decision | Origin |
 |---|---|---|
+| 2026-11-03 | A checked checkbox no longer selects its table row: only `aria-selected="true"` paints `--surface-selected`. A done task already reads as done (struck title), and in a table whose rows hold a list of checkboxes (a topic and its actions) one done action greyed the whole row | Author: the grey on topic rows meant nothing |
 | 2026-11-03 | A long `eis-app-notes` note grows with its text again and does not scroll. The height limit (250px) and the inside scroll are removed together: without the scroll, the limit lets the text run over the next row. This reverses the 250px decision | Author: no scroll inside a note |
 | 2026-11-03 | An `eis-app-task-meta` value stops at `--space-300` × 5 (160px, was `--space-400` × 5, 320px) and ends with an ellipsis | Author: shorter meta values |
 | 2026-11-03 | In a row of fields a field grows up to `--width-400` (or up to its base when the base is wider). It no longer fills a line of its own. New shared helper `eis-grow`: the main field of a row (the task text of an add bar) grows three times as fast as the others and has no limit | Author: a field that wrapped alone stretched across the whole row, and the task text got as much room as the short selects |

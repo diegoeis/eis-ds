@@ -15,7 +15,7 @@
     },
     "selected": {
       "$value": "{color.neutral.50}",
-      "$description": "Background of a selected table row (its checkbox checked, or aria-selected). Every text role still passes on it: ink 16.6:1, ink-muted 4.5:1, accent-ink 5.0:1. Not a page surface."
+      "$description": "Background of a selected table row (aria-selected=true; a checked checkbox does not select the row). Every text role still passes on it: ink 16.6:1, ink-muted 4.5:1, accent-ink 5.0:1. Not a page surface."
     },
     "hover": {
       "$value": "{color.neutral.100}",

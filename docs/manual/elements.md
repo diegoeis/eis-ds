@@ -232,7 +232,7 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 - Numbers: `.eis-num` (mono, tabular, right-aligned), including the header cell.
 - Header row (`thead th`): `--surface-inverse` background, `--ink-inverse` text, label type, inner padding. A scope may change the inline padding of the header to align it with its cells. It never changes the colours.
 - Rows separated by `--line`. No zebra stripes, no vertical lines.
-- A selected row gets the `--surface-selected` background. A row is selected when a checkbox in it is checked, or when it has `aria-selected="true"`. The table sets it: write no class. Every text role passes on it, `--ink-muted` included.
+- A selected row gets the `--surface-selected` background. A row is selected when it has `aria-selected="true"`; a checked checkbox in the row does not select it (a done task is not a selection). Write no class. Every text role passes on it, `--ink-muted` included.
 - On narrow screens a table MAY reflow into cards with CSS (`display:block/grid` on `tr`), keeping the HTML a table. If it can't reflow, wrap it in a horizontally scrollable container — the page itself MUST NOT scroll sideways.
 
 ## Panel

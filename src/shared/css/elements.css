@@ -138,6 +138,7 @@
 
 /* ---------- table ---------- */
 .eis-table th,.eis-table td{text-align:left;vertical-align:middle;padding:var(--space-200);border-top:var(--border-width-100) solid var(--line)}
+.eis-table tbody tr:has(.eis-disclosure) > :is(th,td){vertical-align:top}
 .eis-table thead th{border-top:0;padding-block:calc(var(--space-100) * 1.5);background:var(--surface-inverse);font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);
   font-weight:var(--type-label-font-weight);letter-spacing:var(--type-label-letter-spacing);text-transform:uppercase;color:var(--ink-inverse)}
 .eis-table .eis-checkbox,.eis-table .eis-radio{margin-top:0;display:grid}

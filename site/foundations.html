@@ -20,66 +20,66 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <style>
 
 /* swatches */
-.eis-swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(140px,100%),1fr))}
-.eis-swatches li{border-right:var(--border-width-100) solid var(--line);border-bottom:var(--border-width-100) solid var(--line);margin:0 -1px -1px 0}
-.eis-swatch{height:112px;background:var(--c);border-bottom:var(--border-width-100) solid var(--line);position:relative}
-.eis-swatches dl{padding:var(--space-200);display:flex;flex-direction:column;gap:var(--space-100)}
-.eis-swatches dt{font-weight:var(--font-weight-medium)}
-.eis-swatches dd{font-family:var(--font-family-mono);font-size:var(--font-size-200);color:var(--ink-muted)}
-.eis-swatches dd.eis-desc{font-family:var(--font-family-sans);font-size:var(--font-size-300);color:var(--ink)}
+.doc-swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(140px,100%),1fr))}
+.doc-swatches li{border-right:var(--border-width-100) solid var(--line);border-bottom:var(--border-width-100) solid var(--line);margin:0 -1px -1px 0}
+.doc-swatch{height:112px;background:var(--c);border-bottom:var(--border-width-100) solid var(--line);position:relative}
+.doc-swatches dl{padding:var(--space-200);display:flex;flex-direction:column;gap:var(--space-100)}
+.doc-swatches dt{font-weight:var(--font-weight-medium)}
+.doc-swatches dd{font-family:var(--font-family-mono);font-size:var(--font-size-200);color:var(--ink-muted)}
+.doc-swatches dd.doc-desc{font-family:var(--font-family-sans);font-size:var(--font-size-300);color:var(--ink)}
 
 
 /* type */
-.eis-specimen{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
-.eis-specimen > div{padding:var(--space-200);display:flex;flex-direction:column;gap:var(--space-200)}
-.eis-specimen > div + div{border-left:var(--border-width-100) solid var(--line)}
-.eis-specimen .eis-big{font-size:var(--font-size-700);line-height:var(--font-line-height-tight);font-weight:var(--font-weight-light);letter-spacing:var(--font-letter-spacing-tight)}
-.eis-specimen .eis-sans{font-family:var(--font-family-sans)}
-.eis-specimen .eis-monoface{font-family:var(--font-family-mono)}
-.eis-specimen .eis-glyphs{font-size:var(--font-size-400);word-break:break-all}
-.eis-weights{display:flex;flex-wrap:wrap;gap:var(--space-100) var(--space-200);font-size:var(--font-size-400)}
-.eis-styles li{display:grid;grid-template-columns:200px minmax(0,1fr);gap:var(--space-200);padding:var(--space-200);border-top:var(--border-width-100) solid var(--line);align-items:baseline}
-.eis-styles li:first-child{border-top:0}
-.eis-styles li > div{display:flex;flex-direction:column;gap:var(--space-100)}
-.eis-styles .eis-sample{overflow:hidden;text-overflow:ellipsis}
-.eis-scale li{display:grid;grid-template-columns:120px minmax(0,1fr);gap:var(--space-200);padding:var(--space-200);border-top:var(--border-width-100) solid var(--line);align-items:baseline}
-.eis-scale li:first-child{border-top:0}
-.eis-scale span:last-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:var(--font-line-height-tight)}
+.doc-specimen{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.doc-specimen > div{padding:var(--space-200);display:flex;flex-direction:column;gap:var(--space-200)}
+.doc-specimen > div + div{border-left:var(--border-width-100) solid var(--line)}
+.doc-specimen .doc-big{font-size:var(--font-size-700);line-height:var(--font-line-height-tight);font-weight:var(--font-weight-light);letter-spacing:var(--font-letter-spacing-tight)}
+.doc-specimen .doc-sans{font-family:var(--font-family-sans)}
+.doc-specimen .doc-monoface{font-family:var(--font-family-mono)}
+.doc-specimen .doc-glyphs{font-size:var(--font-size-400);word-break:break-all}
+.doc-weights{display:flex;flex-wrap:wrap;gap:var(--space-100) var(--space-200);font-size:var(--font-size-400)}
+.doc-styles li{display:grid;grid-template-columns:200px minmax(0,1fr);gap:var(--space-200);padding:var(--space-200);border-top:var(--border-width-100) solid var(--line);align-items:baseline}
+.doc-styles li:first-child{border-top:0}
+.doc-styles li > div{display:flex;flex-direction:column;gap:var(--space-100)}
+.doc-styles .doc-sample{overflow:hidden;text-overflow:ellipsis}
+.doc-scale li{display:grid;grid-template-columns:120px minmax(0,1fr);gap:var(--space-200);padding:var(--space-200);border-top:var(--border-width-100) solid var(--line);align-items:baseline}
+.doc-scale li:first-child{border-top:0}
+.doc-scale span:last-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:var(--font-line-height-tight)}
 
 /* space, radius, line */
-.eis-space li{display:grid;grid-template-columns:120px 80px minmax(0,1fr);gap:var(--space-200);align-items:center;padding:var(--space-200);border-top:var(--border-width-100) solid var(--line)}
-.eis-space li:first-child{border-top:0}
-.eis-space i{display:block;height:var(--space-200);width:var(--s);max-width:100%;background:var(--accent)}
-.eis-space p{grid-column:1/-1;color:var(--ink-muted)}
-.eis-shapes{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(180px,100%),1fr))}
-.eis-shapes li{padding:var(--space-200);display:flex;flex-direction:column;gap:var(--space-200);border-right:var(--border-width-100) solid var(--line);border-bottom:var(--border-width-100) solid var(--line);margin:0 -1px -1px 0}
-.eis-shape{height:96px;border:var(--border-width-100) solid var(--line);border-radius:var(--r);background:var(--surface-canvas)}
+.doc-space li{display:grid;grid-template-columns:120px 80px minmax(0,1fr);gap:var(--space-200);align-items:center;padding:var(--space-200);border-top:var(--border-width-100) solid var(--line)}
+.doc-space li:first-child{border-top:0}
+.doc-space i{display:block;height:var(--space-200);width:var(--s);max-width:100%;background:var(--accent)}
+.doc-space p{grid-column:1/-1;color:var(--ink-muted)}
+.doc-shapes{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(180px,100%),1fr))}
+.doc-shapes li{padding:var(--space-200);display:flex;flex-direction:column;gap:var(--space-200);border-right:var(--border-width-100) solid var(--line);border-bottom:var(--border-width-100) solid var(--line);margin:0 -1px -1px 0}
+.doc-shape{height:96px;border:var(--border-width-100) solid var(--line);border-radius:var(--r);background:var(--surface-canvas)}
 
 /* motifs */
-.eis-motifs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr))}
-.eis-motifs li{padding:var(--space-200);display:flex;flex-direction:column;gap:var(--space-200);border-right:var(--border-width-100) solid var(--line);border-bottom:var(--border-width-100) solid var(--line);margin:0 -1px -1px 0}
-.eis-motifs figure{height:96px;display:grid;place-items:center;border-radius:var(--radius-100);background:var(--surface-canvas)}
-.eis-hatch{width:100%;height:100%;border-radius:var(--radius-100);background:repeating-linear-gradient(135deg,transparent 0 6px,var(--line) 6px 7px)}
-.eis-block{background:var(--surface-inverse);color:var(--ink-inverse);padding:calc(var(--space-100) / 2) var(--space-100);font-family:var(--type-label-font-family);
+.doc-motifs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr))}
+.doc-motifs li{padding:var(--space-200);display:flex;flex-direction:column;gap:var(--space-200);border-right:var(--border-width-100) solid var(--line);border-bottom:var(--border-width-100) solid var(--line);margin:0 -1px -1px 0}
+.doc-motifs figure{height:96px;display:grid;place-items:center;border-radius:var(--radius-100);background:var(--surface-canvas)}
+.doc-hatch{width:100%;height:100%;border-radius:var(--radius-100);background:repeating-linear-gradient(135deg,transparent 0 6px,var(--line) 6px 7px)}
+.doc-block{background:var(--surface-inverse);color:var(--ink-inverse);padding:calc(var(--space-100) / 2) var(--space-100);font-family:var(--type-label-font-family);
   font-size:var(--type-label-font-size);font-weight:var(--type-label-font-weight);letter-spacing:var(--type-label-letter-spacing);text-transform:uppercase}
-.eis-block--accent{background:var(--accent);color:var(--accent-on)}
-.eis-cells{display:grid;grid-template-columns:repeat(8,14px);gap:calc(var(--space-100) / 2)}
-.eis-cells i{width:14px;height:14px;border-radius:2px;background:var(--c)}
-.eis-rule{width:80%;display:flex;flex-direction:column;gap:var(--space-100)}
-.eis-rule i{height:var(--border-width-100);background:var(--line)}
+.doc-block--accent{background:var(--accent);color:var(--accent-on)}
+.doc-cells{display:grid;grid-template-columns:repeat(8,14px);gap:calc(var(--space-100) / 2)}
+.doc-cells i{width:14px;height:14px;border-radius:2px;background:var(--c)}
+.doc-rule{width:80%;display:flex;flex-direction:column;gap:var(--space-100)}
+.doc-rule i{height:var(--border-width-100);background:var(--line)}
 
-.eis-rules{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(260px,100%),1fr))}
-.eis-rules li{padding:var(--space-200);border-right:var(--border-width-100) solid var(--line);border-bottom:var(--border-width-100) solid var(--line);margin:0 -1px -1px 0;display:flex;flex-direction:column;gap:var(--space-100)}
-.eis-rules strong{font-weight:var(--font-weight-medium)}
-.eis-rules p{color:var(--ink-muted)}
+.doc-rules{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(260px,100%),1fr))}
+.doc-rules li{padding:var(--space-200);border-right:var(--border-width-100) solid var(--line);border-bottom:var(--border-width-100) solid var(--line);margin:0 -1px -1px 0;display:flex;flex-direction:column;gap:var(--space-100)}
+.doc-rules strong{font-weight:var(--font-weight-medium)}
+.doc-rules p{color:var(--ink-muted)}
 
 @media (max-width:640px){
-  .eis-specimen{grid-template-columns:minmax(0,1fr)}
-  .eis-specimen > div + div{border-left:0;border-top:var(--border-width-100) solid var(--line)}
-  .eis-styles li,.eis-scale li{grid-template-columns:minmax(0,1fr);gap:var(--space-100)}
-  .eis-space li{grid-template-columns:auto 1fr;}
-  .eis-space i{grid-column:1/-1}
-  .eis-specimen .eis-big{font-size:var(--font-size-600)}
+  .doc-specimen{grid-template-columns:minmax(0,1fr)}
+  .doc-specimen > div + div{border-left:0;border-top:var(--border-width-100) solid var(--line)}
+  .doc-styles li,.doc-scale li{grid-template-columns:minmax(0,1fr);gap:var(--space-100)}
+  .doc-space li{grid-template-columns:auto 1fr;}
+  .doc-space i{grid-column:1/-1}
+  .doc-specimen .doc-big{font-size:var(--font-size-600)}
 }
 </style>
 </head>
@@ -127,18 +127,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div>
       <section class="eis-panel" aria-labelledby="prim-h">
         <h3 class="eis-label" id="prim-h">Primitives</h3>
-        <ul class="eis-swatches">
-          <li><div class="eis-swatch" style="--c:var(--color-neutral-0)"></div><dl><dt>neutral.0</dt><dd>--color-neutral-0</dd><dd data-var="--color-neutral-0"></dd><dd class="eis-desc">Canvas, inverse text</dd></dl></li>
-          <li><div class="eis-swatch" style="--c:var(--color-neutral-50)"></div><dl><dt>neutral.50</dt><dd>--color-neutral-50</dd><dd data-var="--color-neutral-50"></dd><dd class="eis-desc">Selected row</dd></dl></li>
-          <li><div class="eis-swatch" style="--c:var(--color-neutral-100)"></div><dl><dt>neutral.100</dt><dd>--color-neutral-100</dd><dd data-var="--color-neutral-100"></dd><dd class="eis-desc">Hover of a closed disclosure</dd></dl></li>
-          <li><div class="eis-swatch" style="--c:var(--color-neutral-200)"></div><dl><dt>neutral.200</dt><dd>--color-neutral-200</dd><dd data-var="--color-neutral-200"></dd><dd class="eis-desc">Data only</dd></dl></li>
-          <li><div class="eis-swatch" style="--c:var(--color-neutral-300)"></div><dl><dt>neutral.300</dt><dd>--color-neutral-300</dd><dd data-var="--color-neutral-300"></dd><dd class="eis-desc">Lines</dd></dl></li>
-          <li><div class="eis-swatch" style="--c:var(--color-neutral-400)"></div><dl><dt>neutral.400</dt><dd>--color-neutral-400</dd><dd data-var="--color-neutral-400"></dd><dd class="eis-desc">Data only</dd></dl></li>
-          <li><div class="eis-swatch" style="--c:var(--color-neutral-500)"></div><dl><dt>neutral.500</dt><dd>--color-neutral-500</dd><dd data-var="--color-neutral-500"></dd><dd class="eis-desc">Icons, placeholders</dd></dl></li>
-          <li><div class="eis-swatch" style="--c:var(--color-neutral-600)"></div><dl><dt>neutral.600</dt><dd>--color-neutral-600</dd><dd data-var="--color-neutral-600"></dd><dd class="eis-desc">Secondary ink</dd></dl></li>
-          <li><div class="eis-swatch" style="--c:var(--color-neutral-900)"></div><dl><dt>neutral.900</dt><dd>--color-neutral-900</dd><dd data-var="--color-neutral-900"></dd><dd class="eis-desc">Ink, inverse surface</dd></dl></li>
-          <li><div class="eis-swatch" style="--c:var(--color-orange-500)"></div><dl><dt>orange.500</dt><dd>--color-orange-500</dd><dd data-var="--color-orange-500"></dd><dd class="eis-desc">Accent fill</dd></dl></li>
-          <li><div class="eis-swatch" style="--c:var(--color-orange-700)"></div><dl><dt>orange.700</dt><dd>--color-orange-700</dd><dd data-var="--color-orange-700"></dd><dd class="eis-desc">Accent as text</dd></dl></li>
+        <ul class="doc-swatches">
+          <li><div class="doc-swatch" style="--c:var(--color-neutral-0)"></div><dl><dt>neutral.0</dt><dd>--color-neutral-0</dd><dd data-var="--color-neutral-0"></dd><dd class="doc-desc">Canvas, inverse text</dd></dl></li>
+          <li><div class="doc-swatch" style="--c:var(--color-neutral-50)"></div><dl><dt>neutral.50</dt><dd>--color-neutral-50</dd><dd data-var="--color-neutral-50"></dd><dd class="doc-desc">Selected row</dd></dl></li>
+          <li><div class="doc-swatch" style="--c:var(--color-neutral-100)"></div><dl><dt>neutral.100</dt><dd>--color-neutral-100</dd><dd data-var="--color-neutral-100"></dd><dd class="doc-desc">Hover of a closed disclosure</dd></dl></li>
+          <li><div class="doc-swatch" style="--c:var(--color-neutral-200)"></div><dl><dt>neutral.200</dt><dd>--color-neutral-200</dd><dd data-var="--color-neutral-200"></dd><dd class="doc-desc">Data only</dd></dl></li>
+          <li><div class="doc-swatch" style="--c:var(--color-neutral-300)"></div><dl><dt>neutral.300</dt><dd>--color-neutral-300</dd><dd data-var="--color-neutral-300"></dd><dd class="doc-desc">Lines</dd></dl></li>
+          <li><div class="doc-swatch" style="--c:var(--color-neutral-400)"></div><dl><dt>neutral.400</dt><dd>--color-neutral-400</dd><dd data-var="--color-neutral-400"></dd><dd class="doc-desc">Data only</dd></dl></li>
+          <li><div class="doc-swatch" style="--c:var(--color-neutral-500)"></div><dl><dt>neutral.500</dt><dd>--color-neutral-500</dd><dd data-var="--color-neutral-500"></dd><dd class="doc-desc">Icons, placeholders</dd></dl></li>
+          <li><div class="doc-swatch" style="--c:var(--color-neutral-600)"></div><dl><dt>neutral.600</dt><dd>--color-neutral-600</dd><dd data-var="--color-neutral-600"></dd><dd class="doc-desc">Secondary ink</dd></dl></li>
+          <li><div class="doc-swatch" style="--c:var(--color-neutral-900)"></div><dl><dt>neutral.900</dt><dd>--color-neutral-900</dd><dd data-var="--color-neutral-900"></dd><dd class="doc-desc">Ink, inverse surface</dd></dl></li>
+          <li><div class="doc-swatch" style="--c:var(--color-orange-500)"></div><dl><dt>orange.500</dt><dd>--color-orange-500</dd><dd data-var="--color-orange-500"></dd><dd class="doc-desc">Accent fill</dd></dl></li>
+          <li><div class="doc-swatch" style="--c:var(--color-orange-700)"></div><dl><dt>orange.700</dt><dd>--color-orange-700</dd><dd data-var="--color-orange-700"></dd><dd class="doc-desc">Accent as text</dd></dl></li>
         </ul>
       </section>
 
@@ -212,19 +212,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div>
       <section class="eis-panel" aria-labelledby="fam-h">
         <h3 class="eis-label" id="fam-h">Families</h3>
-        <div class="eis-specimen">
-          <div class="eis-sans">
+        <div class="doc-specimen">
+          <div class="doc-sans">
             <p class="eis-label">--font-family-sans</p>
-            <p class="eis-big">Geist</p>
-            <p class="eis-glyphs">Aa Bb Cc Gg Rr 0123456789 &amp; ? !</p>
-            <p class="eis-weights"><span style="font-weight:var(--font-weight-light)">Light</span><span style="font-weight:var(--font-weight-regular)">Regular</span><span style="font-weight:var(--font-weight-medium)">Medium</span><span style="font-weight:var(--font-weight-semibold)">Semibold</span></p>
+            <p class="doc-big">Geist</p>
+            <p class="doc-glyphs">Aa Bb Cc Gg Rr 0123456789 &amp; ? !</p>
+            <p class="doc-weights"><span style="font-weight:var(--font-weight-light)">Light</span><span style="font-weight:var(--font-weight-regular)">Regular</span><span style="font-weight:var(--font-weight-medium)">Medium</span><span style="font-weight:var(--font-weight-semibold)">Semibold</span></p>
             <p class="eis-mono">Titles, body, task text. Open substitute for Teenage Engineering's proprietary grotesque.</p>
           </div>
-          <div class="eis-monoface">
+          <div class="doc-monoface">
             <p class="eis-label">--font-family-mono</p>
-            <p class="eis-big">Geist Mono</p>
-            <p class="eis-glyphs">EP–133 2.0 09:45 R$ 5.000</p>
-            <p class="eis-weights"><span style="font-weight:var(--font-weight-light)">Light</span><span style="font-weight:var(--font-weight-regular)">Regular</span><span style="font-weight:var(--font-weight-medium)">Medium</span></p>
+            <p class="doc-big">Geist Mono</p>
+            <p class="doc-glyphs">EP–133 2.0 09:45 R$ 5.000</p>
+            <p class="doc-weights"><span style="font-weight:var(--font-weight-light)">Light</span><span style="font-weight:var(--font-weight-regular)">Regular</span><span style="font-weight:var(--font-weight-medium)">Medium</span></p>
             <p class="eis-mono">Labels, numbers, dates, sources. Tabular figures line columns up.</p>
           </div>
         </div>
@@ -232,20 +232,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <section class="eis-panel" aria-labelledby="styles-h">
         <h3 class="eis-label" id="styles-h">Text styles · <code>.eis-type-*</code></h3>
-        <ul class="eis-styles">
-          <li><div><code>.eis-type-display</code><span class="eis-mono">sans · 56 · 300 · −1.5</span></div><p class="eis-sample eis-type-display">Work</p></li>
-          <li><div><code>.eis-type-heading</code><span class="eis-mono">sans · 24 · 400</span></div><p class="eis-sample eis-type-heading">Today's agenda</p></li>
-          <li><div><code>.eis-type-lead</code><span class="eis-mono">sans · 18 · 400 · 1.45</span></div><p class="eis-sample eis-type-lead">A manual for a machine somebody made too beautiful.</p></li>
-          <li><div><code>.eis-type-body</code><span class="eis-mono">sans · 14 · 400 · 1.45</span></div><p class="eis-sample eis-type-body">Get API access approved with the new payment provider before the release.</p></li>
-          <li><div><code>.eis-type-metric</code><span class="eis-mono">mono · 48 · 300 · −1.5</span></div><p class="eis-sample eis-type-metric">84</p></li>
-          <li><div><code>.eis-type-mono</code><span class="eis-mono">mono · 12 · 400</span></div><p class="eis-sample eis-type-mono">Sprint review 21.10 · created 2 days ago</p></li>
-          <li><div><code>.eis-type-label</code><span class="eis-mono">mono · 11 · 500 · +0.88 · upper</span></div><p class="eis-sample eis-type-label">Open task age</p></li>
+        <ul class="doc-styles">
+          <li><div><code>.eis-type-display</code><span class="eis-mono">sans · 56 · 300 · −1.5</span></div><p class="doc-sample eis-type-display">Work</p></li>
+          <li><div><code>.eis-type-heading</code><span class="eis-mono">sans · 24 · 400</span></div><p class="doc-sample eis-type-heading">Today's agenda</p></li>
+          <li><div><code>.eis-type-lead</code><span class="eis-mono">sans · 18 · 400 · 1.45</span></div><p class="doc-sample eis-type-lead">A manual for a machine somebody made too beautiful.</p></li>
+          <li><div><code>.eis-type-body</code><span class="eis-mono">sans · 14 · 400 · 1.45</span></div><p class="doc-sample eis-type-body">Get API access approved with the new payment provider before the release.</p></li>
+          <li><div><code>.eis-type-metric</code><span class="eis-mono">mono · 48 · 300 · −1.5</span></div><p class="doc-sample eis-type-metric">84</p></li>
+          <li><div><code>.eis-type-mono</code><span class="eis-mono">mono · 12 · 400</span></div><p class="doc-sample eis-type-mono">Sprint review 21.10 · created 2 days ago</p></li>
+          <li><div><code>.eis-type-label</code><span class="eis-mono">mono · 11 · 500 · +0.88 · upper</span></div><p class="doc-sample eis-type-label">Open task age</p></li>
         </ul>
       </section>
 
       <section class="eis-panel" aria-labelledby="scale-h">
         <h3 class="eis-label" id="scale-h">Size scale · <code>--font-size-*</code></h3>
-        <ol class="eis-scale">
+        <ol class="doc-scale">
           <li><span class="eis-mono">100 · 10px</span><span style="font-size:var(--font-size-100)">Retrofuturist minimalism</span></li>
           <li><span class="eis-mono">200 · 12px</span><span style="font-size:var(--font-size-200)">Retrofuturist minimalism</span></li>
           <li><span class="eis-mono">300 · 14px</span><span style="font-size:var(--font-size-300)">Retrofuturist minimalism</span></li>
@@ -265,7 +265,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h2 id="space-h"><small class="eis-label">04</small>Space</h2>
       <p>Seven values, each double the previous. They cover margin, padding, gap and offsets. Each one has a place, so it isn't picked at random.</p>
     </header>
-    <ol class="eis-panel eis-space">
+    <ol class="eis-panel doc-space">
       <li><code>--space-100</code><span class="eis-mono">8px</span><i style="--s:var(--space-100)"></i><p>Inside a component: icon to label, tag padding.</p></li>
       <li><code>--space-200</code><span class="eis-mono">16px</span><i style="--s:var(--space-200)"></i><p>Between siblings: rows, list items, panel padding.</p></li>
       <li><code>--space-300</code><span class="eis-mono">32px</span><i style="--s:var(--space-300)"></i><p>Between blocks: panels, groups.</p></li>
@@ -275,7 +275,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li><code>--space-700</code><span class="eis-mono">512px</span><i style="--s:var(--space-700)"></i><p>Large layout: the largest offset on wide marketing pages.</p></li>
     </ol>
     <p>Widths: five fixed widths for a field or a block, used through the width helpers <code>eis-width-100</code> … <code>eis-width-500</code> (and <code>eis-width-fit</code>, as wide as the content).</p>
-    <ol class="eis-panel eis-space">
+    <ol class="eis-panel doc-space">
       <li><code>--width-100</code><span class="eis-mono">128px</span><i style="--s:var(--width-100)"></i><p>A short value: a number, a date, a status.</p></li>
       <li><code>--width-200</code><span class="eis-mono">192px</span><i style="--s:var(--width-200)"></i><p>A word or two: a type, a name.</p></li>
       <li><code>--width-300</code><span class="eis-mono">256px</span><i style="--s:var(--width-300)"></i><p>A short line: a title, an e-mail.</p></li>
@@ -290,13 +290,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h2 id="shape-h"><small class="eis-label">05</small>Shape</h2>
       <p>One line weight. Small radii. No shadows: panels separate by surface tone or a hairline.</p>
     </header>
-    <ul class="eis-panel eis-shapes">
-      <li><div class="eis-shape" style="--r:var(--radius-100)"></div><code>--radius-100</code><span class="eis-mono">7px · controls</span></li>
-      <li><div class="eis-shape" style="--r:var(--radius-200)"></div><code>--radius-200</code><span class="eis-mono">10px · panels</span></li>
-      <li><div class="eis-shape" style="--r:var(--radius-300)"></div><code>--radius-300</code><span class="eis-mono">15px · large surfaces</span></li>
-      <li><div class="eis-shape" style="--r:var(--radius-400)"></div><code>--radius-400</code><span class="eis-mono">20px · sheets</span></li>
-      <li><div class="eis-shape" style="--r:var(--radius-full)"></div><code>--radius-full</code><span class="eis-mono">pills, circles</span></li>
-      <li><div class="eis-shape" style="--r:var(--radius-200);background:var(--surface-panel)"></div><code>--border-width-100</code><span class="eis-mono">1px · the only weight</span></li>
+    <ul class="eis-panel doc-shapes">
+      <li><div class="doc-shape" style="--r:var(--radius-100)"></div><code>--radius-100</code><span class="eis-mono">7px · controls</span></li>
+      <li><div class="doc-shape" style="--r:var(--radius-200)"></div><code>--radius-200</code><span class="eis-mono">10px · panels</span></li>
+      <li><div class="doc-shape" style="--r:var(--radius-300)"></div><code>--radius-300</code><span class="eis-mono">15px · large surfaces</span></li>
+      <li><div class="doc-shape" style="--r:var(--radius-400)"></div><code>--radius-400</code><span class="eis-mono">20px · sheets</span></li>
+      <li><div class="doc-shape" style="--r:var(--radius-full)"></div><code>--radius-full</code><span class="eis-mono">pills, circles</span></li>
+      <li><div class="doc-shape" style="--r:var(--radius-200);background:var(--surface-panel)"></div><code>--border-width-100</code><span class="eis-mono">1px · the only weight</span></li>
     </ul>
   </section>
 
@@ -306,14 +306,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h2 id="motifs-h"><small class="eis-label">06</small>Motifs</h2>
       <p>Built only from the tokens above. They come from the Teenage Engineering references: panel silkscreen, key matrices, hatched bands.</p>
     </header>
-    <ul class="eis-panel eis-motifs">
-      <li><figure><span class="eis-block">Update</span></figure><strong>Block label</strong><p class="eis-mono">Solid rectangle, knocked-out mono text. For graphic pieces (posters, slides, covers). In UI, use a chip.</p></li>
-      <li><figure><div class="eis-hatch"></div></figure><strong>Hatch</strong><p class="eis-mono">Diagonal line at 135°. Marks what is not yours: personal blocks, unavailable.</p></li>
-      <li><figure><div class="eis-cells" aria-hidden="true">
+    <ul class="eis-panel doc-motifs">
+      <li><figure><span class="doc-block">Update</span></figure><strong>Block label</strong><p class="eis-mono">Solid rectangle, knocked-out mono text. For graphic pieces (posters, slides, covers). In UI, use a chip.</p></li>
+      <li><figure><div class="doc-hatch"></div></figure><strong>Hatch</strong><p class="eis-mono">Diagonal line at 135°. Marks what is not yours: personal blocks, unavailable.</p></li>
+      <li><figure><div class="doc-cells" aria-hidden="true">
         <i style="--c:var(--accent)"></i><i style="--c:var(--color-neutral-900)"></i><i style="--c:var(--color-neutral-900)"></i><i style="--c:var(--color-neutral-600)"></i><i style="--c:var(--color-neutral-600)"></i><i style="--c:var(--color-neutral-400)"></i><i style="--c:var(--color-neutral-400)"></i><i style="--c:var(--color-neutral-200)"></i>
         <i style="--c:var(--color-neutral-900)"></i><i style="--c:var(--color-neutral-600)"></i><i style="--c:var(--color-neutral-400)"></i><i style="--c:var(--color-neutral-400)"></i><i style="--c:var(--color-neutral-200)"></i><i style="--c:var(--color-neutral-200)"></i><i style="--c:var(--color-neutral-200)"></i><i style="--c:var(--color-neutral-200)"></i>
       </div></figure><strong>Cell matrix</strong><p class="eis-mono">Data as a grid of equal squares, like keys on a device.</p></li>
-      <li><figure><div class="eis-rule"><i></i><i></i><i></i></div></figure><strong>Hairline</strong><p class="eis-mono">Separate with a 1px line before reaching for a box.</p></li>
+      <li><figure><div class="doc-rule"><i></i><i></i><i></i></div></figure><strong>Hairline</strong><p class="eis-mono">Separate with a 1px line before reaching for a box.</p></li>
     </ul>
   </section>
 
@@ -323,7 +323,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h2 id="rules-h"><small class="eis-label">07</small>Rules</h2>
       <p>Budgets, not adjectives. The full list lives in <code>docs/visual-guidance/visual-guidance.md</code>.</p>
     </header>
-    <ul class="eis-panel eis-rules">
+    <ul class="eis-panel doc-rules">
       <li><strong>Accent ≤ 5% of the area</strong><p>It marks a state, never decorates. One accent per piece.</p></li>
       <li><strong>Two surface levels</strong><p>Canvas and panel. A third level means the layout needs a line, not a box.</p></li>
       <li><strong>Mono for numbers and labels</strong><p>Sans for text. Labels are always uppercase and tracked.</p></li>

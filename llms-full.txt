@@ -306,7 +306,7 @@ Every basic element: when to use it, the HTML to copy, variants, and what is for
 | Show rows × columns of data | **Table** |
 | Group content in a container | **Panel** |
 | Content that opens and closes | **Disclosure** (`<details>`) |
-| Label–value pairs (metrics, metadata) | `<dl>` |
+| Label–value pairs (metrics, metadata) | `<dl>`. A row of numbers: **Metrics** `<dl class="eis-metrics">` |
 
 **Button vs chip** — the most common mistake:
 
@@ -567,9 +567,13 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 </dl>
 ```
 
-- Always `<dl>`. Value in `metric` style, context line in `mono`.
-- Only the metric that is the exception gets a accent mark.
-- The layout of `.eis-metrics` is page CSS today. See `site/elements.html` for the reference.
+- Always `<dl>`. Each cell is a `<div>` with a `<dt>` (the label, `eis-label`), a `<dd>` (the value) and an optional second `<dd>` (the context line, `eis-mono`).
+- The first `<dd>` takes the `metric` type. Write numbers with two digits at least (`06`, not `6`).
+- One column per cell: two cells make two columns, four make four. A `--line` separates the cells. Prefer two to four cells. At ≤640px the cells stack in one column, with a `--line` between them, and the value drops to `--font-size-600`.
+- Put the `<dl>` as a direct child of an `eis-panel`, under its `eis-panel__head`. The cells have their own padding.
+- Only the metric that is the exception gets an accent mark.
+- Don't use it for metadata in running text (owner, date, source): use a plain `<dl>`.
+- In the app scope, a dashboard row of metrics uses `eis-app-metrics` (layout.md §7). It has the accent dot (`eis-is-accent`) and goes 2 × 2 at ≤760px. Don't put both classes on one `<dl>`.
 
 ##### Breadcrumb and link
 

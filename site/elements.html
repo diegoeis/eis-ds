@@ -31,17 +31,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .eis-compare > div{padding:var(--space-300) var(--space-200);display:flex;flex-direction:column;gap:var(--space-200)}
 .eis-compare > div + div{border-left:var(--border-width-100) solid var(--line)}
 .eis-compare p.eis-row{display:flex;flex-wrap:wrap;gap:var(--space-100);align-items:center}
-.eis-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
-.eis-metrics > div{display:flex;flex-direction:column;padding:var(--space-200);min-height:128px}
-.eis-metrics > div + div{border-left:var(--border-width-100) solid var(--line)}
-.eis-metrics dt{margin-bottom:auto;padding-bottom:var(--space-300)}
-.eis-metrics dd:first-of-type{font-family:var(--type-metric-font-family);font-size:var(--type-metric-font-size);font-weight:var(--type-metric-font-weight);letter-spacing:var(--type-metric-letter-spacing);line-height:var(--type-metric-line-height)}
-.eis-metrics dd + dd{margin-top:var(--space-100)}
 @media (max-width:640px){
-  .eis-form,.eis-compare,.eis-metrics{grid-template-columns:minmax(0,1fr)}
-  .eis-compare > div + div,.eis-metrics > div + div{border-left:0;border-top:var(--border-width-100) solid var(--line)}
-  .eis-metrics > div{min-height:0}
-  .eis-metrics dd:first-of-type{font-size:var(--font-size-600)}
+  .eis-form,.eis-compare{grid-template-columns:minmax(0,1fr)}
+  .eis-compare > div + div{border-left:0;border-top:var(--border-width-100) solid var(--line)}
 }
 </style>
 </head>

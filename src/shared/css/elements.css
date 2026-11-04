@@ -75,6 +75,8 @@
 
 /* ---------- form fields ---------- */
 .eis-field{display:flex;flex-direction:column;gap:var(--space-100);min-width:0}
+/* a fieldset field (a group of options) has no border. The reset clears its padding and margin, min-width:0 its min-inline-size */
+fieldset.eis-field{border:0}
 .eis-field > label,.eis-field > legend{font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);
   font-weight:var(--type-label-font-weight);letter-spacing:var(--type-label-letter-spacing);text-transform:uppercase;color:var(--ink)}
 .eis-field__hint{font-family:var(--font-family-mono);font-size:var(--font-size-200);color:var(--ink-muted)}
@@ -126,7 +128,6 @@
 .eis-switch:checked::after{translate:14px 0;background:var(--ink-inverse)}
 .eis-choice{display:flex;align-items:flex-start;gap:var(--space-100);cursor:pointer;line-height:20px}
 .eis-choice:has(input:disabled){color:var(--ink-muted);cursor:not-allowed}
-.eis-choices{border:0;display:flex;flex-direction:column;gap:var(--space-100)}
 
 /* tabs = radio group that switches the view of the page. Same radius and height as the other controls,
    so tabs, buttons and fields line up in one toolbar. When the options do not fit the width, they wrap to

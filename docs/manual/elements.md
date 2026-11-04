@@ -192,13 +192,13 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 ## Checkbox, radio, switch
 
 ```html
-<fieldset class="eis-field eis-choices">
+<fieldset class="eis-field">
   <legend>Show</legend>
   <label class="eis-choice"><input class="eis-checkbox" type="checkbox" checked> Overdue</label>
   <label class="eis-choice"><input class="eis-checkbox" type="checkbox"> New today</label>
 </fieldset>
 
-<fieldset class="eis-field eis-choices">
+<fieldset class="eis-field">
   <legend>Sort by</legend>
   <label class="eis-choice"><input class="eis-radio" type="radio" name="sort" checked> Due date</label>
   <label class="eis-choice"><input class="eis-radio" type="radio" name="sort"> Age</label>
@@ -208,7 +208,7 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 ```
 
 - Always use a real `<input>`. Restyle it with `appearance:none`. Never replace it with a `span`.
-- Groups of related options go in `<fieldset>` + `<legend>`.
+- Groups of related options go in `<fieldset class="eis-field">` + `<legend>`. On a `fieldset`, `eis-field` removes the border and stacks the options. No other class is necessary.
 - Radios in one group share `name`.
 - Switch = checkbox + `role="switch"`, only for settings that apply immediately (no Save button).
 - Wrapping the input in `<label class="eis-choice">` makes the whole text clickable and gives the hover.

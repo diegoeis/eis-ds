@@ -90,6 +90,9 @@
 .eis-web-cards{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:var(--space-200);margin-top:var(--space-300)}
 .eis-web-card{display:flex;flex-direction:column;border:var(--border-width-100) solid var(--line);border-radius:var(--radius-200);overflow:hidden}
 .eis-web-card figure{aspect-ratio:4/3;background:var(--surface-canvas);border-bottom:var(--border-width-100) solid var(--line);padding:var(--space-200);display:grid}
+.eis-web-card__figure{place-items:end start}
+.eis-web-card__figure > span{font-family:var(--font-family-mono);font-size:var(--font-size-600);font-weight:var(--font-weight-light);line-height:var(--font-line-height-tight)}
+.eis-web-card .eis-web-card__figure--accent{background:var(--accent);color:var(--accent-on)}
 .eis-web-card__body{padding:var(--space-200);display:grid;gap:var(--space-100);align-content:start;flex:1}
 .eis-web-card__body h3{font-weight:var(--font-weight-regular);font-size:var(--font-size-400)}
 .eis-web-card__body p{color:var(--ink-muted)}

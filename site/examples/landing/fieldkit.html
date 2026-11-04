@@ -21,9 +21,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script src="../../../src/web/js/lines.js" defer></script>
 <style>
 /* Page layout only. Structure comes from src/web/web.css. */
-.eis-card-figure{display:grid;place-items:end start;padding:var(--space-200)}
-.eis-card-figure span{font-family:var(--font-family-mono);font-size:var(--font-size-600);font-weight:var(--font-weight-light);line-height:var(--font-line-height-tight)}
-.eis-card-figure.is-accent{background:var(--accent);color:var(--accent-on)}
 .eis-plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:var(--space-200);margin-top:var(--space-300)}
 .eis-plan{display:flex;flex-direction:column;gap:var(--space-200);padding:var(--space-300) var(--space-200)}
 .eis-plan h3{font-weight:var(--font-weight-regular);font-size:var(--font-size-400)}
@@ -113,19 +110,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </dl>
         <ul class="eis-web-cards">
           <li class="eis-web-card">
-            <figure class="eis-card-figure" aria-hidden="true"><span>PLT-204</span></figure>
+            <figure class="eis-web-card__figure" aria-hidden="true"><span>PLT-204</span></figure>
             <div class="eis-web-card__body"><span class="eis-label">Plants</span><h3>Production lines</h3><p>Shift checks on presses, conveyors and ovens.</p></div>
           </li>
           <li class="eis-web-card">
-            <figure class="eis-card-figure" aria-hidden="true"><span>FLT-031</span></figure>
+            <figure class="eis-web-card__figure" aria-hidden="true"><span>FLT-031</span></figure>
             <div class="eis-web-card__body"><span class="eis-label">Fleets</span><h3>Vehicles and trailers</h3><p>Pre-trip inspections and defect reports.</p></div>
           </li>
           <li class="eis-web-card">
-            <figure class="eis-card-figure is-accent" aria-hidden="true"><span>LAB-112</span></figure>
+            <figure class="eis-web-card__figure eis-web-card__figure--accent" aria-hidden="true"><span>LAB-112</span></figure>
             <div class="eis-web-card__body"><span class="eis-label">Labs</span><h3>Instruments</h3><p>Calibration due dates you cannot miss.</p></div>
           </li>
           <li class="eis-web-card">
-            <figure class="eis-card-figure" aria-hidden="true"><span>BLD-007</span></figure>
+            <figure class="eis-web-card__figure" aria-hidden="true"><span>BLD-007</span></figure>
             <div class="eis-web-card__body"><span class="eis-label">Buildings</span><h3>Facilities</h3><p>HVAC, lifts and fire systems on one schedule.</p></div>
           </li>
         </ul>

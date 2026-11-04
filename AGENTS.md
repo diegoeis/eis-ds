@@ -41,7 +41,7 @@ docs/
   tokens.md              token format
   visual-guidance/       reference only: direction, Pinterest links, decisions
 scripts/build-tokens.py  validates the tokens of every scope and generates each tokens.css
-scripts/check-css.py     checks that scopes never use each other's classes or variables
+scripts/check-css.py     checks that scopes never use each other's classes or variables, and that pages use no eis-* class missing from src/
 scripts/build-icons.py   writes src/shared/css/icons.css from pinned lucide-static (--check: fail if stale). Needs the network
 scripts/build-css.py     bundles each scope entry into dist/eis-<scope>.min.css (--check: fail if stale)
 scripts/build-llms.py    copies the manual rules into llms.txt and generates llms-full.txt (--check: fail if stale)
@@ -69,7 +69,8 @@ A project needs `src/shared/` and one scope. `site/` and `docs/` document the sy
 - Write documentation in STE-flavored English (ASD-STE100): short sentences, active voice, no semicolons, no phrasal verbs.
 - Every piece is responsive from 360px to wide screens, with no horizontal scroll.
 - Use semantic HTML and native controls that work. Never fake a table or a control with `div` or `span`.
-- Every class starts with `eis-`. Scope classes start with `eis-<scope>-` and live only in that scope. Scopes never use each other.
+- Every class of the system starts with `eis-`. Scope classes start with `eis-<scope>-` and live only in that scope. Scopes never use each other.
+- An `eis-*` class MUST exist in `src/**/*.css`. A class that lives only in the `<style>` of a page in `site/` or `index.html` (a documentation frame: swatch, specimen, demo row) starts with `doc-`. If two pages need it, or it is a real element, move it into `src/`. `scripts/check-css.py` fails on an `eis-*` class that is not in `src/`.
 - No raw values in CSS. All values come from the tokens.
 - A piece does not restyle a basic element. If it needs a change, change the element in the system.
 - A variant changes colour only. A size (`--sm`, `--lg`) changes size only, from the spacing and type tokens.

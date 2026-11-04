@@ -138,7 +138,8 @@ Rules:
 - A scope's tokens live under its own group (`web.*`, `app.*`) and MAY reference shared tokens: `"{font.size.800}"`. A colour change in shared reaches every scope.
 - A scope MUST NOT reference another scope's tokens, variables or classes.
 - Every selector in `<scope>/css/components.css` starts with `.eis-<scope>-`. A scope never styles bare HTML or shared classes on their own. It MAY place a shared element in its own context (`.eis-app-task-table.eis-table`) for layout only.
-- `scripts/build-tokens.py` validates the token rules. `scripts/check-css.py` validates the CSS rules. Both MUST pass.
+- Use an `eis-*` class only if eis-ds has it. A class of your own page uses your own prefix, never `eis-`. In this repository, the frame classes of the documentation pages use `doc-`.
+- `scripts/build-tokens.py` validates the token rules. `scripts/check-css.py` validates the CSS rules. It also fails when `index.html` or a page in `site/` uses an `eis-*` class that is not in `src/**/*.css`. It does not read `<script>` blocks. Both scripts MUST pass.
 - A pattern used on two or more pages goes into the scope CSS. A pattern used on one page only stays in that page's `<style>`.
 
 ### Web components

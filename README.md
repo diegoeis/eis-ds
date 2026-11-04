@@ -76,7 +76,7 @@ Tokens are the source of truth, in `src/<scope>/tokens/*.tokens.json`. Never edi
 
 ```sh
 python3 scripts/build-tokens.py   # validate the tokens of every scope and write each tokens.css
-python3 scripts/check-css.py      # check that scopes never use each other's classes or variables
+python3 scripts/check-css.py      # check that scopes never use each other's classes or variables, and that pages use no eis-* class missing from src/
 python3 scripts/build-css.py      # write dist/eis-<scope>.min.css. Run it after every CSS change and commit dist/
 python3 scripts/build-llms.py     # copy the manual rules into llms.txt and write llms-full.txt. Run it after every change in docs/manual/ or llms.txt
 ```

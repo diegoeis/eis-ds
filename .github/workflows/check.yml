@@ -27,7 +27,7 @@ jobs:
           git diff --exit-code -- 'src/*/css/tokens.css' || {
             echo "::error::tokens.css is not up to date. Run: python3 scripts/build-tokens.py"; exit 1; }
 
-      - name: Scopes stay isolated
+      - name: Scopes stay isolated and pages use only eis-* classes from src/
         run: python3 scripts/check-css.py
 
       - name: icons.css is up to date with the Lucide list

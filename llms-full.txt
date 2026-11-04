@@ -849,7 +849,8 @@ Rules:
 - A scope's tokens live under its own group (`web.*`, `app.*`) and MAY reference shared tokens: `"{font.size.800}"`. A colour change in shared reaches every scope.
 - A scope MUST NOT reference another scope's tokens, variables or classes.
 - Every selector in `<scope>/css/components.css` starts with `.eis-<scope>-`. A scope never styles bare HTML or shared classes on their own. It MAY place a shared element in its own context (`.eis-app-task-table.eis-table`) for layout only.
-- `scripts/build-tokens.py` validates the token rules. `scripts/check-css.py` validates the CSS rules. Both MUST pass.
+- Use an `eis-*` class only if eis-ds has it. A class of your own page uses your own prefix, never `eis-`. In this repository, the frame classes of the documentation pages use `doc-`.
+- `scripts/build-tokens.py` validates the token rules. `scripts/check-css.py` validates the CSS rules. It also fails when `index.html` or a page in `site/` uses an `eis-*` class that is not in `src/**/*.css`. It does not read `<script>` blocks. Both scripts MUST pass.
 - A pattern used on two or more pages goes into the scope CSS. A pattern used on one page only stays in that page's `<style>`.
 
 ###### Web components
@@ -1038,11 +1039,11 @@ Run this before calling a piece, element or token done. Every box must be true.
 
 - [ ] Links one scope entry (`web/web.css` or `app/app.css`, or `dist/eis-web.min.css` or `dist/eis-app.min.css`), then only its own layout CSS. No separate font link.
 - [ ] Uses only shared classes and the classes of its own scope.
-- [ ] Scope CSS changed? `python3 scripts/check-css.py` passes.
+- [ ] Scope CSS or a page in `site/` changed? `python3 scripts/check-css.py` passes.
 - [ ] No raw colours, font sizes, spacing or radii (only the exceptions in `tokens-usage.md` §8).
 - [ ] Backgrounds, text, lines and accent use roles (`--surface-*`, `--ink*`, `--line`, `--accent*`), not primitives.
 - [ ] Does not restyle any element from `elements.css`.
-- [ ] Every class starts with `eis-`.
+- [ ] Every class of the system starts with `eis-`. Every `eis-*` class on the page exists in eis-ds. Classes of your own page CSS use your own prefix (`doc-` on the pages of this repository).
 - [ ] Variants change colour only.
 - [ ] No shadows (except the built-in button hover glow), no gradients, no glow, no background grid.
 

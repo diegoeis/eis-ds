@@ -6,11 +6,11 @@ Run this before calling a piece, element or token done. Every box must be true.
 
 - [ ] Links one scope entry (`web/web.css` or `app/app.css`, or `dist/eis-web.min.css` or `dist/eis-app.min.css`), then only its own layout CSS. No separate font link.
 - [ ] Uses only shared classes and the classes of its own scope.
-- [ ] Scope CSS changed? `python3 scripts/check-css.py` passes.
+- [ ] Scope CSS or a page in `site/` changed? `python3 scripts/check-css.py` passes.
 - [ ] No raw colours, font sizes, spacing or radii (only the exceptions in `tokens-usage.md` §8).
 - [ ] Backgrounds, text, lines and accent use roles (`--surface-*`, `--ink*`, `--line`, `--accent*`), not primitives.
 - [ ] Does not restyle any element from `elements.css`.
-- [ ] Every class starts with `eis-`.
+- [ ] Every class of the system starts with `eis-`. Every `eis-*` class on the page exists in eis-ds. Classes of your own page CSS use your own prefix (`doc-` on the pages of this repository).
 - [ ] Variants change colour only.
 - [ ] No shadows (except the built-in button hover glow), no gradients, no glow, no background grid.
 

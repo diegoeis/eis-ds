@@ -25,6 +25,7 @@ Every basic element: when to use it, the HTML to copy, variants, and what is for
 | Pick one of many options | **Select** |
 | Turn a setting on/off that applies immediately | **Switch** |
 | Switch the view of the current page (Today / Week / All) | **Tabs** |
+| Show items one per row, with a short text and an action or status | **List** `<ul class="eis-list">` |
 | Show rows × columns of data | **Table** |
 | Group content in a container | **Panel** |
 | Content that opens and closes | **Disclosure** (`<details>`) |
@@ -311,13 +312,32 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 
 ## Lists and avatar
 
+A list in its own box:
+
 ```html
-<ul class="eis-panel">
+<ul class="eis-panel eis-list">
   <li><span class="eis-avatar" aria-hidden="true">AN</span><p>Ana<small class="eis-mono">Release plan</small></p><span class="eis-chip">Waiting</span></li>
 </ul>
 ```
 
-- Lists are `<ul>`/`<ol>`. A `--line` separates the rows.
+A list inside a panel body, rows to the panel edges:
+
+```html
+<div class="eis-panel__body">
+  <h3 class="eis-label">Topics</h3>
+  <ul class="eis-list eis-bleed">
+    <li>
+      <p>Checkout<small class="eis-mono">project — New payment flow</small></p>
+      <label class="eis-choice"><input class="eis-switch" type="checkbox" role="switch" checked> Use</label>
+    </li>
+  </ul>
+</div>
+```
+
+- Lists are `<ul>`/`<ol class="eis-list">`. A `--line` separates the rows. The first row has no line.
+- A row is one line: an optional leading `eis-avatar`, then one `<p>` that takes the free width, then optional trailing items (chips, buttons, a switch). The trailing items stay at the right end and never shrink.
+- The `<p>` holds the title. An optional `<small class="eis-mono">` under it holds the description, in muted ink. Long text wraps.
+- Put the box on the list itself (`eis-panel eis-list`) or put the list in an `eis-panel__body`. In a body, add `eis-bleed` so the rows touch the panel edges and do not get the body padding twice.
 - Avatar: initials in a circle, `aria-hidden` (the name is in the text). No photos, no colour fills.
 
 ## Icons

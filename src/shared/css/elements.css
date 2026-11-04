@@ -171,6 +171,13 @@
 .eis-disclosure > summary + .eis-table > tbody:first-of-type > tr:first-child,
 .eis-disclosure > summary + .eis-table > tbody:first-of-type > tr:first-child > :is(th,td){border-top:0}
 
+/* ---------- list: rows split by a hairline. Leading avatar, main text that grows, trailing items ---------- */
+.eis-list > li{display:flex;align-items:center;gap:var(--space-200);padding:var(--space-200);border-top:var(--border-width-100) solid var(--line)}
+.eis-list > li:first-child{border-top:0}
+.eis-list > li > p{flex:1;min-width:0;overflow-wrap:anywhere}
+.eis-list > li > p > small{display:block}
+.eis-list > li > :not(p){flex:none}
+
 /* ---------- avatar ---------- */
 .eis-avatar{width:28px;height:28px;flex:none;border-radius:50%;border:var(--border-width-100) solid var(--line);display:grid;place-items:center;
   font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);font-weight:var(--type-label-font-weight);color:var(--ink-muted)}

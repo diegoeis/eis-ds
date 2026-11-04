@@ -696,7 +696,7 @@ Load at the end of `<body>`, Lucide first:
 - `.eis-label` — label text style (mono, 11, uppercase, `--ink-muted`). For panel titles, table heads, nav section titles.
 - `.eis-mono` — mono metadata (12, `--ink-muted`, tabular numbers).
 - `.eis-visually-hidden` — hidden on screen, read by screen readers. For captions, legends and labels the design doesn't show.
-- `.eis-width-fit`, `.eis-width-100` … `.eis-width-500` — the width of a field, a button or a block: as wide as its content, or the `--width-*` step (128, 192, 256, 360, 480px). Never wider than the container. In a flex row (`eis-app-inline`) the item keeps its width and the others take the rest. In a row of fields (`eis-app-add-bar`, `eis-app-form-row`, `eis-app-filters__fields`) the step is the base and the minimum width of the field: it grows into the free room and wraps when it no longer fits (layout.md §7, "Rows of fields"). A short select before the field it controls is `<div class="eis-field eis-width-fit">`. Don't write a width in page CSS for this.
+- `.eis-width-fit`, `.eis-width-100` … `.eis-width-500` — the width of a field, a button or a block: as wide as its content, or the `--width-*` step (128, 192, 256, 360, 480px). Never wider than the container. In a flex row (`eis-app-inline`) the item keeps its width and the others take the rest. In a row of fields (`eis-app-add-bar`, `eis-app-form-row`, `eis-app-filters__fields`) the step is the base and the minimum width of the field: it grows into the free room and wraps when it no longer fits (layout.md §7, "Rows of fields"). `eis-width-fit` in a row of fields keeps the content's width and does not grow. A short select before the field it controls is `<div class="eis-field eis-width-fit">`. Don't write a width in page CSS for this.
 - `.eis-grow` — the item takes the free room of its flex row first (it grows three times as fast as the others). In a row of fields it marks the main field: it has no `--width-400` limit, while the other fields stop growing at `--width-400`. Put it on one item per row. With a width helper, the helper sets its base.
 
 ##### Not yet in the system
@@ -907,7 +907,7 @@ For a row of metric cells, use the shared `eis-metrics` (elements.md, "Metrics")
 
 `eis-app-add-bar`, `eis-app-form-row` and `eis-app-filters__fields` lay out their `eis-field`s the same way:
 
-- Each field starts at a base width and never gets narrower than it. The base is the field's width helper (`eis-width-100` … `eis-width-500`), else the row's default: `--app-size-form-field` (256px), or in a filter bar `--app-size-filter-field` (192px) and `--app-size-filter-search` (224px). `eis-width-fit`: the content's width is the base.
+- Each field starts at a base width and never gets narrower than it. The base is the field's width helper (`eis-width-100` … `eis-width-500`), else the row's default: `--app-size-form-field` (256px), or in a filter bar `--app-size-filter-field` (192px) and `--app-size-filter-search` (224px). `eis-width-fit`: the field keeps the content's width. It does not grow, so the other fields take the free room.
 - The fields share the free room of the row and grow with it. They do not keep a fixed width.
 - A field grows up to `--width-400` (360px). A field with a wider base (`eis-width-500`) grows up to its base. So one field never stretches across the whole row.
 - `eis-grow` marks the main field of the row (the text of a new task). It grows three times as fast as the other fields and has no `--width-400` limit. Use it on one field per row, or on none.

@@ -196,7 +196,7 @@ For a row of metric cells, use the shared `eis-metrics` (elements.md, "Metrics")
 
 `eis-app-add-bar`, `eis-app-form-row` and `eis-app-filters__fields` lay out their `eis-field`s the same way:
 
-- Each field starts at a base width and never gets narrower than it. The base is the field's width helper (`eis-width-100` … `eis-width-500`), else the row's default: `--app-size-form-field` (256px), or in a filter bar `--app-size-filter-field` (192px) and `--app-size-filter-search` (224px). `eis-width-fit`: the content's width is the base.
+- Each field starts at a base width and never gets narrower than it. The base is the field's width helper (`eis-width-100` … `eis-width-500`), else the row's default: `--app-size-form-field` (256px), or in a filter bar `--app-size-filter-field` (192px) and `--app-size-filter-search` (224px). `eis-width-fit`: the field keeps the content's width. It does not grow, so the other fields take the free room.
 - The fields share the free room of the row and grow with it. They do not keep a fixed width.
 - A field grows up to `--width-400` (360px). A field with a wider base (`eis-width-500`) grows up to its base. So one field never stretches across the whole row.
 - `eis-grow` marks the main field of the row (the text of a new task). It grows three times as fast as the other fields and has no `--width-400` limit. Use it on one field per row, or on none.

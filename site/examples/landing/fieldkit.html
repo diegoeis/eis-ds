@@ -21,14 +21,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script src="../../../src/web/js/lines.js" defer></script>
 <style>
 /* Page layout only. Structure comes from src/web/web.css. */
-.eis-plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:var(--space-200);margin-top:var(--space-300)}
-.eis-plan{display:flex;flex-direction:column;gap:var(--space-200);padding:var(--space-300) var(--space-200)}
-.eis-plan h3{font-weight:var(--font-weight-regular);font-size:var(--font-size-400)}
-.eis-plan .eis-price{font-family:var(--type-metric-font-family);font-size:var(--type-metric-font-size);font-weight:var(--type-metric-font-weight);letter-spacing:var(--type-metric-letter-spacing);line-height:var(--type-metric-line-height)}
-.eis-plan .eis-price small{font-family:var(--font-family-mono);font-size:var(--font-size-200);letter-spacing:0;color:var(--ink-muted)}
-.eis-plan ul{display:grid;gap:var(--space-100);color:var(--ink-muted);flex:1}
-.eis-plan li::before{content:"— ";color:var(--ink)}
-.eis-plan .eis-button{align-self:flex-start}
 .eis-faq{margin-top:var(--space-300)}
 .eis-faq p{padding:0 var(--space-200) var(--space-200);color:var(--ink-muted);max-width:64ch}
 </style>
@@ -152,25 +144,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span class="eis-label">/04 · Pricing</span>
           <h2 id="pricing-h">Priced per site, not per person.</h2>
         </header>
-        <div class="eis-plans">
-          <section class="eis-panel eis-plan" aria-labelledby="plan-1">
+        <div class="eis-web-plans">
+          <section class="eis-panel eis-web-plan" aria-labelledby="plan-1">
             <span class="eis-label">Starter</span>
             <h3 id="plan-1">One site, small team</h3>
-            <p class="eis-price">$0 <small>/ month</small></p>
+            <p class="eis-web-plan__price">$0 <small>/ month</small></p>
             <ul><li>Up to 25 machines</li><li>Checklists and fault log</li><li>30 days of history</li></ul>
             <a class="eis-button" href="#top">Start free</a>
           </section>
-          <section class="eis-panel eis-plan" aria-labelledby="plan-2">
+          <section class="eis-panel eis-web-plan" aria-labelledby="plan-2">
             <span class="eis-label">Site <span class="eis-chip eis-chip--accent">Popular</span></span>
             <h3 id="plan-2">One site, whole team</h3>
-            <p class="eis-price">$49 <small>/ site / month</small></p>
+            <p class="eis-web-plan__price">$49 <small>/ site / month</small></p>
             <ul><li>Unlimited machines and people</li><li>Offline mode and exports</li><li>Full history</li></ul>
             <a class="eis-button eis-button--primary" href="#top">Start 30-day trial</a>
           </section>
-          <section class="eis-panel eis-plan" aria-labelledby="plan-3">
+          <section class="eis-panel eis-web-plan" aria-labelledby="plan-3">
             <span class="eis-label">Group</span>
             <h3 id="plan-3">Many sites</h3>
-            <p class="eis-price">Talk to us</p>
+            <p class="eis-web-plan__price">Talk to us</p>
             <ul><li>Everything in Site</li><li>Cross-site reports</li><li>Single sign-on</li></ul>
             <a class="eis-button" href="#top">Contact sales</a>
           </section>

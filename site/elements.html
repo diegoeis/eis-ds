@@ -77,7 +77,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </header>
 
   <nav class="eis-web-toc" aria-label="Sections">
-    <a href="#buttons">Buttons</a><a href="#chips">Chips</a><a href="#fields">Fields</a><a href="#choices">Choices</a><a href="#table">Table</a><a href="#panel">Panel</a><a href="#nav">Navigation</a><a href="#lists">Lists</a>
+    <a href="#buttons">Buttons</a><a href="#chips">Chips</a><a href="#fields">Fields</a><a href="#choices">Choices</a><a href="#table">Table</a><a href="#panel">Panel</a><a href="#nav">Navigation</a><a href="#lists">Lists</a><a href="#divider">Divider</a>
   </nav>
 
   <!-- BUTTONS -->
@@ -352,6 +352,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li><span class="eis-avatar" aria-hidden="true">BR</span><p>Bruno<small class="eis-mono">Test list for the provider migration</small></p><span class="eis-chip">Waiting</span></li>
       <li><span class="eis-avatar" aria-hidden="true">DV</span><p>Davi<small class="eis-mono">Payment slip in the checkout drawer</small></p><span class="eis-chip eis-chip--outline">In review</span></li>
     </ul>
+  </section>
+
+  <!-- DIVIDER -->
+  <section class="eis-web-doc" id="divider" aria-labelledby="divider-h">
+    <header>
+      <h2 id="divider-h"><small class="eis-label">09</small>Divider</h2>
+      <p>A hairline that splits two parts of the same panel body. It touches the panel edges.</p>
+    </header>
+    <div class="eis-panel">
+      <div class="eis-panel__body">
+        <h3 class="eis-label">Your teams</h3>
+        <ul class="eis-list eis-bleed">
+          <li><p>Payments<small class="eis-mono">Card provider and invoices</small></p><button class="eis-button eis-button--sm" type="button">Move</button></li>
+          <li><p>Growth<small class="eis-mono">Onboarding and activation</small></p><button class="eis-button eis-button--sm" type="button">Move</button></li>
+        </ul>
+        <hr>
+        <h3 class="eis-label">Shared teams</h3>
+        <label class="eis-choice"><input class="eis-switch" type="checkbox" role="switch" checked> Use the shared teams</label>
+      </div>
+    </div>
   </section>
 
   <footer class="eis-web-docfoot eis-mono">

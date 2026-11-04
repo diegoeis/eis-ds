@@ -316,18 +316,19 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 
 ```html
 <dl class="eis-metrics">
-  <div><dt class="eis-label">Open</dt><dd>84</dd><dd class="eis-mono">11 streams</dd></div>
-  <div><dt class="eis-label">Overdue</dt><dd>06</dd><dd class="eis-mono">3 in Platform</dd></div>
+  <div><dt class="eis-label">Open</dt><dd>84</dd><dd>11 streams</dd></div>
+  <div class="eis-metrics__cell--accent"><dt class="eis-label">Overdue</dt><dd>06</dd><dd>3 in Platform</dd></div>
 </dl>
 ```
 
-- Always `<dl>`. Each cell is a `<div>` with a `<dt>` (the label, `eis-label`), a `<dd>` (the value) and an optional second `<dd>` (the context line, `eis-mono`).
+- Always `<dl>`. Each cell is a `<div>` with a `<dt>` (the label, `eis-label`), a `<dd>` (the value) and an optional second `<dd>` (the context line). The CSS sets the context line in mono and `--ink-muted`. Write no class on it.
 - The first `<dd>` takes the `metric` type. Write numbers with two digits at least (`06`, not `6`).
-- One column per cell: two cells make two columns, four make four. A `--line` separates the cells. Prefer two to four cells. At ≤640px the cells stack in one column, with a `--line` between them, and the value drops to `--font-size-600`.
+- One column per cell: two cells make two columns, four make four. A `--line` separates the cells. Prefer two to four cells. The min height of a cell is `--space-400` × 2.
+- Small screens: at ≤760px, two cells stay side by side and four cells go 2 × 2. Other counts stack in one column at ≤640px, with a `--line` between the cells. On a small screen the value drops to `--font-size-600`.
+- `eis-metrics__cell--accent` on a cell puts an accent dot before its label. Use it only on the metric that is the exception (overdue, conflict), once per row.
 - Put the `<dl>` as a direct child of an `eis-panel`, under its `eis-panel__head`. The cells have their own padding.
-- Only the metric that is the exception gets an accent mark.
+- It is the one row of numbers for every scope. The app scope has no metrics component of its own.
 - Don't use it for metadata in running text (owner, date, source): use a plain `<dl>`.
-- In the app scope, a dashboard row of metrics uses `eis-app-metrics` (layout.md §7). It has the accent dot (`eis-is-accent`) and goes 2 × 2 at ≤760px. Don't put both classes on one `<dl>`.
 
 ## Breadcrumb and link
 

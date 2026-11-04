@@ -103,7 +103,7 @@ Every piece MUST work from 360px to wide screens with **no horizontal scroll**, 
 - Typical breakpoints so far:
   - 1280px: the side column drops below.
   - 1024px: the sidebar becomes a drawer, opened from the top bar (`eis-app-topbar`).
-  - 760px: tables reflow, metrics go 2 × 2.
+  - 760px: tables reflow, metrics with two or four cells go in two columns (four make 2 × 2).
   - 420px: toolbar buttons stretch.
 - A horizontal nav that can't fit scrolls **inside itself** (`overflow-x: auto` on the nav), never the page.
 - Tables: reflow to cards with CSS, or scroll inside a wrapper.
@@ -171,7 +171,6 @@ Rules:
 | `eis-app-sidebar` (`__foot`), `eis-app-brand`, `eis-app-nav` (`__section`, `__count`, `__toggle`, `__sub`) | Sidebar, brand, navigation with counts. The sidebar is as tall as the window and scrolls inside when its content is taller; `__foot` stays at its bottom, on the sidebar background. An item that holds a sub-list is either a link followed by an arrow-only `<button class="eis-app-nav__toggle">` (the link navigates, the arrow opens the list) or a `<button class="eis-app-nav__toggle">` with the item's text (the whole row opens the list). Both take `aria-expanded aria-controls data-eis-app-nav-toggle` and are followed by `<ul class="eis-app-nav__sub">`; `app/js/sidebar.js` opens and closes it and keeps the state. See "Nav sub-list" below |
 | `eis-app-sidebar__toggle` + `data-eis-app-sidebar-toggle` | Collapse button at the bottom left of the sidebar, last in `eis-app-sidebar__foot`. Driven by `app/js/sidebar.js`. Collapsed, the sidebar keeps only the button. Above 1024px only. See "Sidebar collapse" below |
 | `eis-app-main`, `eis-app-page-head` (`__meta`), `eis-app-toolbar` | Main region (content max `--app-size-main`, in the centre of the free space), page head, action toolbar. See "Page head" below |
-| `eis-app-metrics` | Row of metric cells (`<dl>`) |
 | `eis-app-grid` (`--halves`, `--main`), `eis-app-stack` | Panel grids and the side column stack |
 | `eis-app-agenda`, `eis-app-cells`, `eis-app-legend`, `eis-app-bar`, `eis-app-pips` | Agenda list, cell matrix, legend, stacked bar, pips |
 | `eis-app-task-meta` | A task's fields in one line under its text: `<dl class="eis-app-task-meta">` with one `<div><dt>Source</dt><dd>…</dd></div>` per field (label upper case, value in ink, at most `--space-300` × 5 wide, cut with an ellipsis). Use `—` for an empty value |
@@ -191,7 +190,7 @@ Rules:
 | `eis-app-message__head` title edited in place | Put the inline field (`<form class="eis-field">` with an `eis-app-inline` inside) in the `eis-panel__title`, after the number: the title grows and the field takes its room on the same line |
 | `eis-app-items` (`__text`) | A list of saved entries: each row has its text in mono and small buttons |
 
-`eis-app-metrics` takes one column per cell: two cells make two columns, four make four. Below 760px it is two columns.
+For a row of metric cells, use the shared `eis-metrics` (elements.md, "Metrics").
 
 ### Rows of fields
 

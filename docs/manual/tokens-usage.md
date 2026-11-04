@@ -178,7 +178,6 @@ Use a scope token only inside that scope.
 | `--app-size-aside` | 360px | Side column width. |
 | `--app-size-nav-item` | 32px | Min height of a navigation item. |
 | `--app-size-row` | 44px | Min height of a list row. |
-| `--app-size-metric` | 136px | Min height of a metric cell. |
 | `--app-size-avatar` | 28px | Avatar size in lists. |
 | `--app-size-filter-field` | 192px | Width of a labelled field in a filter bar (`eis-app-filters`). |
 | `--app-size-filter-search` | 224px | Width of the search field in a filter bar. |

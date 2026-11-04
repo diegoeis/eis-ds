@@ -200,7 +200,7 @@ Draft of the rules that become norms when the tokens are approved:
 | Rainbow stripes | `logo-new-era-rainbow-stripes`, `scenography-prism-stars` | Decorative 70s retro. May become an occasional motif, never a palette |
 | Product green | `riddim-ting` | Color of a specific product. Candidate for an optional variant |
 | Screen blue | `op1-field`, `vinyl-sinus` | Information color on a display. Reassess if the system needs a data color |
-| Aqua and Heat Marker | palette pin | Good for illustration. Evaluate as a separate illustration palette |
+| Aqua and Heat Marker | palette pin | Good for illustration. Aqua is now a category colour (2026-11-04). Heat Marker stays out: it is too close to the accent |
 | Gradients, reflections and shadows | TE product photos | They come from photography, not the graphic language |
 | Dense anime-style illustration | `illus-workbench-mess`, `illus-space-eye` | Too much detail for the system. Mood reference, not form |
 | Lime yellow and cyan in the treemap | `main-3` | Neon in the interface. The structure of `main-3` is in. The colors are not |
@@ -233,6 +233,7 @@ Candidates will be compared side by side in HTML before the decision.
 
 | Date | Decision | Origin |
 |---|---|---|
+| 2026-11-04 | Category palette: seven mid-tone hues as primitives `color.category.*` (pink `#ff6a8c`, terracotta `#e8906e`, yellow `#ffd966`, green `#98d9a4`, aqua `#7fcfd0`, blue `#9db4ff`, lilac `#c3a6f2`) and one number `color.category.pastel` (0.5). The pastel tone is the hue mixed with white at that share (`color-mix`), so one hex gives two tones. Chip variants `eis-chip--<colour>` and `eis-chip--pastel`. Text on them is `--ink` (6.9:1 or more). They tell groups apart and never mark a state | Author: a palette of about seven colours for chips and other places, from a reference strip (pink, orange, green, mint, cream). Mint and cream are the pastel tones of green and yellow at 0.5, so they are not separate hues. Orange became a light terracotta (1.4:1 from the accent), and aqua, blue and lilac complete the seven. The accent rule does not change: category colours are labels, not highlights |
 | 2026-11-04 | New space steps `--space-500` (128px), `--space-600` (256px) and `--space-700` (512px). The scale keeps the rule "each step doubles the previous". Use them only in page layout on wide screens | Author: needs larger steps for page layout |
 | 2026-11-04 | The `eis-web-hero` title spans the 12 columns, with `--space-400` above and below its line (was `--space-200`). The meta row moves under the line, starts at column 1 with the lead (columns 1 to 7) and shows its four items in one row | Author: the meta sat to the right with an empty space on its left and did not align with the lead |
 | 2026-11-03 | An `eis-disclosure` after other content in a table cell gets `--space-200` above it | Author: the topic's Actions stuck to the description text |
@@ -314,7 +315,7 @@ Candidates will be compared side by side in HTML before the decision.
 1. **Neutral temperature:** cool is in use (provisional). Warm raw (PO-80, Architectural Cream) remains an alternative. The system cannot mix the two. In the interfaces, 3 of the 4 main references are neutral gray and only `main-4` is cream.
 2. **Accent:** decided `#f35919` (see Made).
 3. **Dark background:** neutral black (`#111`) or greenish Iron Core (`#222A2A`)? Depends on decision 1.
-4. **Illustration palette:** have a secondary palette only for illustration (aqua, amber) or illustrate only with the system palette?
+4. **Illustration palette:** have a secondary palette only for illustration (aqua, amber) or illustrate only with the system palette? Partly answered 2026-11-04: the category palette (see Made) may be used in illustration.
 5. **Display:** is a third typographic slot (rounded or LCD) needed for covers?
 6. **Status color:** ~~green and red?~~ Partly decided 2026-10-26: green `success` exists; no red, the accent marks problems.
 7. **Color variant:** blue (`#1850A8`) as the only alternative variant to orange, swapping only the color?

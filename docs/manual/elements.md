@@ -103,6 +103,8 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 <span class="eis-chip eis-chip--accent">Overdue</span>
 <span class="eis-chip eis-chip--hatch">Cancelled</span>
 <span class="eis-chip eis-chip--dot">On track</span>
+<span class="eis-chip eis-chip--blue">Platform</span>
+<span class="eis-chip eis-chip--blue eis-chip--pastel">Platform</span>
 ```
 
 | Variant | Use for |
@@ -114,6 +116,8 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 | `--success` | A positive state: done, sent, saved. |
 | `--hatch` | What no longer counts: cancelled, blocked. |
 | `--dot` | Adds a status dot. Combine it with any variant. |
+| `--pink`, `--terracotta`, `--yellow`, `--green`, `--aqua`, `--blue`, `--lilac` | Categories: a team, a project, a topic, a calendar type. The colour tells groups apart. It does not mark a state. |
+| `--pastel` | The light tone of the same hue. Put it after a category colour: `eis-chip eis-chip--blue eis-chip--pastel`. It has no effect on other variants. |
 
 | Size | Height | Padding | Font | Use for |
 |---|---|---|---|---|
@@ -123,6 +127,9 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 
 - Text in sentence case (`Overdue`, not `OVERDUE`).
 - Never wrap a chip in `<a>` or `<button>`.
+- Give each category one colour, and keep it in all views. Use one tone per set: all mid tone or all pastel. Use the mid tone when the chips must stand out, and the pastel tone in dense lists.
+- Never use a category colour for a state. Overdue is `--accent`, done is `--success`.
+- With more than seven categories, use `--outline` for the rest. Do not repeat a colour in one view.
 
 ## Fields
 

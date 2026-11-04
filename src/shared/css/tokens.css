@@ -19,6 +19,14 @@
   --color-green-700: #16753f;
   --color-red-500: #e5484d;
   --color-red-700: #b42318;
+  --color-category-pink: #ff6a8c;
+  --color-category-terracotta: #e8906e;
+  --color-category-yellow: #ffd966;
+  --color-category-green: #98d9a4;
+  --color-category-aqua: #7fcfd0;
+  --color-category-blue: #9db4ff;
+  --color-category-lilac: #c3a6f2;
+  --color-category-pastel: 0.5;
 
   /* space */
   --space-100: 8px;

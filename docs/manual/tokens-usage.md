@@ -85,6 +85,28 @@ Ordinal data (age, volume, intensity) goes from light to dark, low to high:
 - `200` and `300` are close (1.15:1). Don't put them next to each other when the difference matters.
 - No hues for data. Status colours: `--success` (green) for a positive state, `--danger` (red) only on a remove/delete button. The accent still marks problems.
 
+### Category colours
+
+Seven hues tell groups apart: a team, a project, a topic, a calendar type. They are not data values and not states. Use them directly, as primitives.
+
+| Variable | Value | `--ink` on it | Pastel tone | `--ink` on pastel |
+|---|---|---|---|---|
+| `--color-category-pink` | `#ff6a8c` | 6.9:1 | `#ffb4c6` | 11.3:1 |
+| `--color-category-terracotta` | `#e8906e` | 7.8:1 | `#f4c8b6` | 12.4:1 |
+| `--color-category-yellow` | `#ffd966` | 13.8:1 | `#ffecb2` | 16.1:1 |
+| `--color-category-green` | `#98d9a4` | 11.5:1 | `#ccecd2` | 14.8:1 |
+| `--color-category-aqua` | `#7fcfd0` | 10.6:1 | `#bfe7e8` | 14.2:1 |
+| `--color-category-blue` | `#9db4ff` | 9.4:1 | `#cedaff` | 13.6:1 |
+| `--color-category-lilac` | `#c3a6f2` | 9.0:1 | `#e1d2f8` | 13.3:1 |
+| `--color-category-pastel` | `0.5` | — | — | — |
+
+- The pastel tone is not a token. Mix the hue with white at `--color-category-pastel`:
+  `color-mix(in srgb, var(--color-category-blue) calc(var(--color-category-pastel) * 100%), var(--color-white))`. On a chip, add `eis-chip--pastel` instead.
+- Text and icons on a category colour are `--ink`. `--ink-muted` fails on some of them (1.9:1 on pink). White fails on all of them.
+- Use: chip fills, tag and legend dots, calendar events, illustration.
+- Do not use: as text, as a page or panel surface, for a state (use `--accent`, `--success`, `--danger`), for ordinal data (use the data ramp).
+- The fills are light. They do not reach 3:1 against the canvas (pastel yellow is 1.1:1). The text inside carries the meaning, so this is correct for a chip. A shape with no text in a category colour needs a `--line` border.
+
 ## 3. Space
 
 Seven steps, each double the previous. Each has a job. Pick by job, not by eye.

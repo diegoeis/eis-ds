@@ -20,50 +20,50 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="stylesheet" href="src/web/web.css">
 <style>
 /* Landing page only: illustrations and the specimen. Structure comes from src/web/web.css. */
-.eis-mini{background:var(--surface-panel);border:var(--border-width-100) solid var(--line);border-radius:var(--radius-100);padding:var(--space-100);display:grid;gap:calc(var(--space-100)/2);align-content:start;min-width:0}
-.eis-mini i{display:block;height:var(--space-100);background:var(--color-neutral-200);border-radius:var(--radius-full)}
-.eis-mini i.is-dark{background:var(--ink)}
-.eis-mini i.is-accent{background:var(--accent)}
-.eis-mini--ui{grid-template-columns:28% 1fr;gap:var(--space-100)}
-.eis-mini--ui > div{display:grid;gap:calc(var(--space-100)/2);align-content:start;min-width:0}
-.eis-cells{display:grid;grid-template-columns:repeat(8,1fr);gap:2px}
-.eis-cells b{aspect-ratio:1;background:var(--color-neutral-300);border-radius:1px}
-.eis-cells b:nth-child(3n){background:var(--color-neutral-500)}
-.eis-cells b:nth-child(7n){background:var(--ink)}
-.eis-cells b:nth-child(13){background:var(--accent)}
-.eis-mini--slide{aspect-ratio:16/9;align-self:center;align-content:end;padding:var(--space-200)}
-.eis-big{font-weight:var(--font-weight-light);font-size:var(--font-size-600);line-height:var(--font-line-height-tight);letter-spacing:var(--font-letter-spacing-tight)}
-.eis-mini--mail{width:70%;justify-self:center}
-.eis-mini--mail .eis-mailbtn{width:40%;height:var(--space-200);background:var(--ink);border-radius:2px;margin-top:calc(var(--space-100)/2)}
-.eis-mini--image{background:var(--ink);padding:0;overflow:hidden;border-color:var(--ink)}
-.eis-mini--image svg{width:100%;height:100%;display:block}
-.eis-dotmark,.eis-ring,.eis-sq{width:var(--space-200);height:var(--space-200)}
-.eis-dotmark{border-radius:var(--radius-full);background:var(--accent)}
-.eis-ring{border-radius:var(--radius-full);border:var(--border-width-100) solid var(--ink-muted)}
-.eis-sq{border-radius:2px;border:var(--border-width-100) solid var(--line)}
-.eis-sq.is-panel{background:var(--surface-panel)}
-.eis-sq.is-canvas{background:var(--surface-canvas)}
-.eis-hair{width:var(--space-300);height:var(--border-width-100);background:var(--ink)}
-.eis-aa{font-size:var(--font-size-500);line-height:1}
-.eis-aa.is-mono{font-family:var(--font-family-mono)}
-.eis-specimen{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--space-200);margin-top:var(--space-300)}
-.eis-specimen > *{border:var(--border-width-100) solid var(--line);border-radius:var(--radius-200);padding:var(--space-200);min-width:0}
-.eis-swatches{grid-column:span 7;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(88px,100%),1fr));gap:var(--space-100);list-style:none;align-content:start}
-.eis-swatches li{display:grid;gap:var(--space-100)}
-.eis-swatches figure{aspect-ratio:1;border-radius:var(--radius-100);border:var(--border-width-100) solid var(--line);background:var(--sw)}
-.eis-swatches code{font-family:var(--font-family-mono);font-size:var(--font-size-100);color:var(--ink-muted);overflow-wrap:anywhere}
-.eis-type-card{grid-column:span 5;display:grid;gap:var(--space-200);align-content:space-between}
-.eis-aa-big{font-weight:var(--font-weight-light);font-size:var(--web-font-size-specimen);line-height:var(--font-line-height-tight);letter-spacing:var(--font-letter-spacing-tight)}
-.eis-aa-big span{font-family:var(--font-family-mono);color:var(--ink-muted)}
-.eis-live{grid-column:span 12;display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-200)}
-.eis-live > .eis-label{flex-basis:100%}
+.doc-mini{background:var(--surface-panel);border:var(--border-width-100) solid var(--line);border-radius:var(--radius-100);padding:var(--space-100);display:grid;gap:calc(var(--space-100)/2);align-content:start;min-width:0}
+.doc-mini i{display:block;height:var(--space-100);background:var(--color-neutral-200);border-radius:var(--radius-full)}
+.doc-mini i.is-dark{background:var(--ink)}
+.doc-mini i.is-accent{background:var(--accent)}
+.doc-mini--ui{grid-template-columns:28% 1fr;gap:var(--space-100)}
+.doc-mini--ui > div{display:grid;gap:calc(var(--space-100)/2);align-content:start;min-width:0}
+.doc-cells{display:grid;grid-template-columns:repeat(8,1fr);gap:2px}
+.doc-cells b{aspect-ratio:1;background:var(--color-neutral-300);border-radius:1px}
+.doc-cells b:nth-child(3n){background:var(--color-neutral-500)}
+.doc-cells b:nth-child(7n){background:var(--ink)}
+.doc-cells b:nth-child(13){background:var(--accent)}
+.doc-mini--slide{aspect-ratio:16/9;align-self:center;align-content:end;padding:var(--space-200)}
+.doc-big{font-weight:var(--font-weight-light);font-size:var(--font-size-600);line-height:var(--font-line-height-tight);letter-spacing:var(--font-letter-spacing-tight)}
+.doc-mini--mail{width:70%;justify-self:center}
+.doc-mini--mail .doc-mailbtn{width:40%;height:var(--space-200);background:var(--ink);border-radius:2px;margin-top:calc(var(--space-100)/2)}
+.doc-mini--image{background:var(--ink);padding:0;overflow:hidden;border-color:var(--ink)}
+.doc-mini--image svg{width:100%;height:100%;display:block}
+.doc-dotmark,.doc-ring,.doc-sq{width:var(--space-200);height:var(--space-200)}
+.doc-dotmark{border-radius:var(--radius-full);background:var(--accent)}
+.doc-ring{border-radius:var(--radius-full);border:var(--border-width-100) solid var(--ink-muted)}
+.doc-sq{border-radius:2px;border:var(--border-width-100) solid var(--line)}
+.doc-sq.is-panel{background:var(--surface-panel)}
+.doc-sq.is-canvas{background:var(--surface-canvas)}
+.doc-hair{width:var(--space-300);height:var(--border-width-100);background:var(--ink)}
+.doc-aa{font-size:var(--font-size-500);line-height:1}
+.doc-aa.is-mono{font-family:var(--font-family-mono)}
+.doc-specimen{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--space-200);margin-top:var(--space-300)}
+.doc-specimen > *{border:var(--border-width-100) solid var(--line);border-radius:var(--radius-200);padding:var(--space-200);min-width:0}
+.doc-swatches{grid-column:span 7;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(88px,100%),1fr));gap:var(--space-100);list-style:none;align-content:start}
+.doc-swatches li{display:grid;gap:var(--space-100)}
+.doc-swatches figure{aspect-ratio:1;border-radius:var(--radius-100);border:var(--border-width-100) solid var(--line);background:var(--sw)}
+.doc-swatches code{font-family:var(--font-family-mono);font-size:var(--font-size-100);color:var(--ink-muted);overflow-wrap:anywhere}
+.doc-type-card{grid-column:span 5;display:grid;gap:var(--space-200);align-content:space-between}
+.doc-aa-big{font-weight:var(--font-weight-light);font-size:var(--web-font-size-specimen);line-height:var(--font-line-height-tight);letter-spacing:var(--font-letter-spacing-tight)}
+.doc-aa-big span{font-family:var(--font-family-mono);color:var(--ink-muted)}
+.doc-live{grid-column:span 12;display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-200)}
+.doc-live > .eis-label{flex-basis:100%}
 @media (max-width:1024px){
-  .eis-swatches,.eis-type-card{grid-column:span 12}
+  .doc-swatches,.doc-type-card{grid-column:span 12}
 }
-.eis-start{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr));gap:var(--space-200);margin-top:var(--space-300)}
-.eis-start figure{display:grid;gap:var(--space-100);min-width:0;align-content:start}
-.eis-start .eis-web-code{margin-top:0;height:100%;white-space:pre-wrap;overflow-wrap:anywhere}
-.eis-start__note{margin-top:var(--space-200)}
+.doc-start{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr));gap:var(--space-200);margin-top:var(--space-300)}
+.doc-start figure{display:grid;gap:var(--space-100);min-width:0;align-content:start}
+.doc-start .eis-web-code{margin-top:0;height:100%;white-space:pre-wrap;overflow-wrap:anywhere}
+.doc-start__note{margin-top:var(--space-200)}
 </style>
 <script src="src/web/js/lines.js" defer></script>
 </head>
@@ -140,28 +140,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <ul class="eis-web-cards">
           <li class="eis-web-card">
             <figure aria-hidden="true">
-              <div class="eis-mini eis-mini--ui">
+              <div class="doc-mini doc-mini--ui">
                 <div><i class="is-dark" style="width:70%"></i><i></i><i></i><i style="width:60%"></i></div>
-                <div><i style="width:40%"></i><div class="eis-cells"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div><i></i><i style="width:80%"></i></div>
+                <div><i style="width:40%"></i><div class="doc-cells"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div><i></i><i style="width:80%"></i></div>
               </div>
             </figure>
             <div class="eis-web-card__body"><span class="eis-label">Interfaces</span><h3>Dashboards and tools</h3><p>Dense data in grey cells. The accent marks only the exception.</p><a class="eis-web-arrow" href="site/examples/dashboard/tasks-work.html"><i data-lucide="arrow-down-right" class="eis-icon"></i>See an example</a></div>
           </li>
           <li class="eis-web-card">
             <figure aria-hidden="true">
-              <div class="eis-mini eis-mini--slide"><span class="eis-label">Q3 · Review</span><span class="eis-big">Fewer, better.</span><i class="is-accent" style="width:18%"></i></div>
+              <div class="doc-mini doc-mini--slide"><span class="eis-label">Q3 · Review</span><span class="doc-big">Fewer, better.</span><i class="is-accent" style="width:18%"></i></div>
             </figure>
             <div class="eis-web-card__body"><span class="eis-label">Slides</span><h3>Decks and talks</h3><p>One idea per slide. Display type, a thin rule, generous space.</p><span class="eis-chip eis-chip--outline">Future</span></div>
           </li>
           <li class="eis-web-card">
             <figure aria-hidden="true">
-              <div class="eis-mini eis-mini--mail"><i style="width:30%" class="is-dark"></i><i></i><i></i><i style="width:70%"></i><div class="eis-mailbtn"></div></div>
+              <div class="doc-mini doc-mini--mail"><i style="width:30%" class="is-dark"></i><i></i><i></i><i style="width:70%"></i><div class="doc-mailbtn"></div></div>
             </figure>
             <div class="eis-web-card__body"><span class="eis-label">Email</span><h3>Newsletters and notices</h3><p>Two surfaces and one column survive every mail client.</p><span class="eis-chip eis-chip--outline">Future</span></div>
           </li>
           <li class="eis-web-card">
             <figure aria-hidden="true">
-              <div class="eis-mini eis-mini--image" id="eis-art"></div>
+              <div class="doc-mini doc-mini--image" id="eis-art"></div>
             </figure>
             <div class="eis-web-card__body"><span class="eis-label">Images</span><h3>Covers and illustrations</h3><p>Line, grid and a single warm mark, at any ratio.</p><span class="eis-chip eis-chip--outline">Future</span></div>
           </li>
@@ -176,10 +176,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <h2 id="principles-h">Restraint is the feature.</h2>
         </header>
         <ul class="eis-web-principles">
-          <li><div class="eis-web-principles__glyph" aria-hidden="true"><span class="eis-dotmark"></span><span class="eis-ring"></span><span class="eis-ring"></span></div><h3>One accent</h3><p>Orange marks the one thing that matters. Never more than 5% of the area.</p></li>
-          <li><div class="eis-web-principles__glyph" aria-hidden="true"><span class="eis-aa">Aa</span><span class="eis-aa is-mono">01</span></div><h3>Two voices</h3><p>Sans speaks the text. Mono speaks for the instrument: labels, numbers, dates.</p></li>
-          <li><div class="eis-web-principles__glyph" aria-hidden="true"><span class="eis-sq is-canvas"></span><span class="eis-sq is-panel"></span></div><h3>Two surfaces</h3><p>Canvas and panel. A third level is a line, not another box.</p></li>
-          <li><div class="eis-web-principles__glyph" aria-hidden="true"><span class="eis-hair"></span></div><h3>One line weight</h3><p>Every border and divider is 1px. No shadows at rest.</p></li>
+          <li><div class="eis-web-principles__glyph" aria-hidden="true"><span class="doc-dotmark"></span><span class="doc-ring"></span><span class="doc-ring"></span></div><h3>One accent</h3><p>Orange marks the one thing that matters. Never more than 5% of the area.</p></li>
+          <li><div class="eis-web-principles__glyph" aria-hidden="true"><span class="doc-aa">Aa</span><span class="doc-aa is-mono">01</span></div><h3>Two voices</h3><p>Sans speaks the text. Mono speaks for the instrument: labels, numbers, dates.</p></li>
+          <li><div class="eis-web-principles__glyph" aria-hidden="true"><span class="doc-sq is-canvas"></span><span class="doc-sq is-panel"></span></div><h3>Two surfaces</h3><p>Canvas and panel. A third level is a line, not another box.</p></li>
+          <li><div class="eis-web-principles__glyph" aria-hidden="true"><span class="doc-hair"></span></div><h3>One line weight</h3><p>Every border and divider is 1px. No shadows at rest.</p></li>
           <li><div class="eis-web-principles__glyph" aria-hidden="true"><span class="eis-mono">&lt;button&gt;</span></div><h3>Native first</h3><p>Real tables, real checkboxes, real buttons. Accessible by default.</p></li>
           <li><div class="eis-web-principles__glyph" aria-hidden="true"><span class="eis-mono">0 deps</span></div><h3>No build</h3><p>One stylesheet per scope and custom properties. It works from a file on disk.</p></li>
         </ul>
@@ -193,8 +193,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <h2 id="specimen-h">The parts, running live.</h2>
           <p>Everything below comes from the same file you will link.</p>
         </header>
-        <div class="eis-specimen">
-          <ul class="eis-swatches" aria-label="Colour roles">
+        <div class="doc-specimen">
+          <ul class="doc-swatches" aria-label="Colour roles">
             <li><figure style="--sw:var(--surface-canvas)"></figure><code>surface-canvas</code></li>
             <li><figure style="--sw:var(--surface-panel)"></figure><code>surface-panel</code></li>
             <li><figure style="--sw:var(--line)"></figure><code>line</code></li>
@@ -202,12 +202,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li><figure style="--sw:var(--ink)"></figure><code>ink</code></li>
             <li><figure style="--sw:var(--accent)"></figure><code>accent</code></li>
           </ul>
-          <div class="eis-type-card">
+          <div class="doc-type-card">
             <span class="eis-label">Type</span>
-            <p class="eis-aa-big" aria-hidden="true">Aa <span>01</span></p>
+            <p class="doc-aa-big" aria-hidden="true">Aa <span>01</span></p>
             <p class="eis-mono">Geist · Geist Mono — 11 to 56 px</p>
           </div>
-          <form class="eis-live" onsubmit="return false" aria-label="Live elements">
+          <form class="doc-live" onsubmit="return false" aria-label="Live elements">
             <span class="eis-label">Elements</span>
             <button class="eis-button eis-button--primary" type="button">Save</button>
             <button class="eis-button" type="button">Cancel</button>
@@ -264,7 +264,7 @@ Check the piece against the checklist before you finish.</code></pre>
           <li><strong>Build</strong><p>Native HTML with shared <code>eis-</code> classes and your scope's classes. Your own CSS is layout only.</p></li>
           <li><strong>Check</strong><p>Run the <a class="eis-link" href="docs/manual/checklist.md">checklist</a> in the manual.</p></li>
         </ol>
-        <div class="eis-start">
+        <div class="doc-start">
           <figure>
             <figcaption class="eis-label">Website or docs · shared + web</figcaption>
 <pre class="eis-web-code"><code><span class="c">&lt;!-- one file: fonts, shared and web --&gt;</span>
@@ -299,7 +299,7 @@ Check the piece against the checklist before you finish.</code></pre>
 &lt;/body&gt;</code></pre>
           </figure>
         </div>
-        <p class="eis-start__note eis-mono">In these samples, <code>eis-ds/</code> is where you copied the files: the contents of <code>src/</code>.</p>
+        <p class="doc-start__note eis-mono">In these samples, <code>eis-ds/</code> is where you copied the files: the contents of <code>src/</code>.</p>
       </div>
     </section>
 

@@ -228,7 +228,7 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 
 - Tabular data MUST be `<table>` with `<thead>`, `<tbody>`, `<th scope>`. Never a grid of `div`s.
 - Every table has a `<caption>` (visually hidden if the panel already has a title).
-- Cells are vertically centred (`th`, `td`: `vertical-align: middle`). Don't override. A row that holds an `eis-disclosure` (a list that opens) aligns its cells to the top instead, so the row's title stays at the top when the list is open. The table sets it: write no class.
+- Cells are vertically centred (`th`, `td`: `vertical-align: middle`). Don't override. A row that holds an `eis-disclosure` (a list that opens) aligns its cells to the top instead, so the row's title stays at the top when the list is open, and a disclosure after other content in the cell (a date, a text) keeps `--space-200` above it. The table sets both: write no class.
 - Numbers: `.eis-num` (mono, tabular, right-aligned), including the header cell.
 - Header row (`thead th`): `--surface-inverse` background, `--ink-inverse` text, label type, inner padding. A scope may change the inline padding of the header to align it with its cells. It never changes the colours.
 - Rows separated by `--line`. No zebra stripes, no vertical lines.

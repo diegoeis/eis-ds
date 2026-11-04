@@ -233,6 +233,7 @@ Candidates will be compared side by side in HTML before the decision.
 
 | Date | Decision | Origin |
 |---|---|---|
+| 2026-11-03 | An `eis-disclosure` after other content in a table cell gets `--space-200` above it | Author: the topic's Actions stuck to the description text |
 | 2026-11-03 | A table row that holds an `eis-disclosure` aligns its cells to the top; other rows stay vertically centred | Author: with a topic's actions open, its title sat in the middle of a tall row |
 | 2026-11-03 | A checked checkbox no longer selects its table row: only `aria-selected="true"` paints `--surface-selected`. A done task already reads as done (struck title), and in a table whose rows hold a list of checkboxes (a topic and its actions) one done action greyed the whole row | Author: the grey on topic rows meant nothing |
 | 2026-11-03 | A long `eis-app-notes` note grows with its text again and does not scroll. The height limit (250px) and the inside scroll are removed together: without the scroll, the limit lets the text run over the next row. This reverses the 250px decision | Author: no scroll inside a note |

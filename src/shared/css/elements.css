@@ -97,6 +97,16 @@
   background-image:linear-gradient(45deg,transparent 50%,var(--ink) 50%),linear-gradient(135deg,var(--ink) 50%,transparent 50%);
   background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;background-size:5px 5px;background-repeat:no-repeat}
 
+/* form: a <form> of fields in two equal columns, on an eis-panel. A wide field takes the whole row.
+   The actions close the form on a row of their own, at the right, under a hairline. One column at ≤640px */
+.eis-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-300) var(--space-200);padding:var(--space-300) var(--space-200)}
+.eis-form .eis-field--wide{grid-column:1/-1}
+.eis-form__actions{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:var(--space-100);justify-content:flex-end;
+  padding-top:var(--space-200);border-top:var(--border-width-100) solid var(--line)}
+@media (max-width:640px){
+  .eis-form{grid-template-columns:minmax(0,1fr)}
+}
+
 /* checkbox, radio, switch: native inputs, restyled */
 .eis-checkbox,.eis-radio{appearance:none;flex:none;width:16px;height:16px;margin-top:2px;cursor:pointer;
   border:var(--border-width-100) solid var(--ink-muted);background:var(--surface-panel);display:grid;place-content:center}

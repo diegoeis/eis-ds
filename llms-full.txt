@@ -435,6 +435,36 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 - Fields always use body type, also inside a label-styled container (a panel title being edited).
 - Put fields in a `<form>`. Put the actions at the end, the `--primary` button last.
 
+###### Form
+
+```html
+<form class="eis-panel eis-form" action="/tasks" method="post">
+  <div class="eis-field">
+    <label for="title">Title</label>
+    <input class="eis-input" id="title" name="title" type="text">
+  </div>
+  <div class="eis-field">
+    <label for="due">Due</label>
+    <input class="eis-input" id="due" name="due" type="date">
+  </div>
+  <div class="eis-field eis-field--wide">
+    <label for="notes">Notes</label>
+    <textarea class="eis-textarea" id="notes" name="notes"></textarea>
+  </div>
+  <div class="eis-form__actions">
+    <button class="eis-button eis-button--ghost" type="reset">Clear</button>
+    <button class="eis-button eis-button--primary" type="submit">Create task</button>
+  </div>
+</form>
+```
+
+- `.eis-form` goes on the `<form>`. It sets the fields in two equal columns, with its own padding. Put it on the same element as `eis-panel`: the form is the panel.
+- `.eis-field--wide` makes a field take the whole row: a textarea, a long text. It works only inside `.eis-form`.
+- `.eis-form__actions` is the last child. It takes the whole row, puts the buttons at the right, and has a `--line` above it. The `--primary` button goes last.
+- At ≤640px the form has one column.
+- Use it for a form that is the whole content of a panel (create, edit). Don't use it for fields in an `eis-panel__body` next to other content.
+- In the app scope, a settings panel lays out its fields with `eis-app-form-row` inside `eis-panel__body`, and its buttons in `eis-panel__footer` (layout.md §7). Don't mix `eis-form` with `eis-app-form-row`.
+
 ##### Checkbox, radio, switch
 
 ```html

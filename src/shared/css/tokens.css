@@ -15,18 +15,18 @@
   --color-neutral-900: #111111;
   --color-orange-500: #f35919;
   --color-orange-700: #b5400c;
+  --color-green: #98d9a4;
   --color-green-500: #2a9d5c;
   --color-green-700: #16753f;
   --color-red-500: #e5484d;
   --color-red-700: #b42318;
-  --color-category-pink: #ff6a8c;
-  --color-category-terracotta: #e8906e;
-  --color-category-yellow: #ffd966;
-  --color-category-green: #98d9a4;
-  --color-category-aqua: #7fcfd0;
-  --color-category-blue: #9db4ff;
-  --color-category-lilac: #c3a6f2;
-  --color-category-pastel: 0.5;
+  --color-pink: #ff6a8c;
+  --color-terracotta: #e8906e;
+  --color-yellow: #ffd966;
+  --color-aqua: #7fcfd0;
+  --color-blue: #9db4ff;
+  --color-lilac: #c3a6f2;
+  --color-pastel: 0.5;
 
   /* space */
   --space-100: 8px;

@@ -71,15 +71,15 @@
 .eis-chip--accent{--bg:var(--accent);--fg:var(--accent-on)}
 .eis-chip--success{--bg:var(--success);--fg:var(--success-on)}
 /* category colours: tell groups apart, never a state. --pastel mixes the same hue with white */
-.eis-chip--pink{--hue:var(--color-category-pink)}
-.eis-chip--terracotta{--hue:var(--color-category-terracotta)}
-.eis-chip--yellow{--hue:var(--color-category-yellow)}
-.eis-chip--green{--hue:var(--color-category-green)}
-.eis-chip--aqua{--hue:var(--color-category-aqua)}
-.eis-chip--blue{--hue:var(--color-category-blue)}
-.eis-chip--lilac{--hue:var(--color-category-lilac)}
+.eis-chip--pink{--hue:var(--color-pink)}
+.eis-chip--terracotta{--hue:var(--color-terracotta)}
+.eis-chip--yellow{--hue:var(--color-yellow)}
+.eis-chip--green{--hue:var(--color-green)}
+.eis-chip--aqua{--hue:var(--color-aqua)}
+.eis-chip--blue{--hue:var(--color-blue)}
+.eis-chip--lilac{--hue:var(--color-lilac)}
 .eis-chip:is(.eis-chip--pink,.eis-chip--terracotta,.eis-chip--yellow,.eis-chip--green,.eis-chip--aqua,.eis-chip--blue,.eis-chip--lilac){--bg:var(--hue);--fg:var(--ink)}
-.eis-chip.eis-chip--pastel{--bg:color-mix(in srgb,var(--hue) calc(var(--color-category-pastel) * 100%),var(--color-white))}
+.eis-chip.eis-chip--pastel{--bg:color-mix(in srgb,var(--hue) calc(var(--color-pastel) * 100%),var(--color-white))}
 .eis-chip--hatch{--bg:repeating-linear-gradient(135deg,var(--surface-panel) 0 3px,var(--line) 3px 4px);--bd:var(--line)}
 .eis-chip--dot::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
 

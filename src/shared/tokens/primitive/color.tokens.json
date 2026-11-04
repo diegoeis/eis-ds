@@ -193,7 +193,19 @@
       }
     },
     "green": {
-      "$description": "Status colour for success. Not a second accent: it only confirms a state.",
+      "$description": "Status colour for success. Not a second accent: it only confirms a state. green.$root is the green category colour.",
+      "$root": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.596,
+            0.851,
+            0.643
+          ],
+          "hex": "#98d9a4"
+        },
+        "$description": "Green category (--color-green). Not success: success is green.500. neutral.900 on it 11.5:1. Category colour: tells groups apart (tags, chips, calendar events), never a state or an accent. Text on it is neutral.900."
+      },
       "500": {
         "$value": {
           "colorSpace": "srgb",
@@ -246,97 +258,82 @@
         "$description": "Danger when it has to BE text or a line on light surfaces. 6.6:1 on white, 6.1:1 on neutral.0."
       }
     },
-    "category": {
-      "$description": "Category palette: seven mid-tone hues that tell groups apart (tags, chip categories, calendar events). Not a state and not an accent. Text on them is neutral.900, never neutral.600 or white. The pastel tone of each hue is not a token: mix the hue with white by category.pastel.",
-      "pink": {
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [
-            1.0,
-            0.416,
-            0.549
-          ],
-          "hex": "#ff6a8c"
-        },
-        "$description": "Pink category. neutral.900 on it 6.9:1."
+    "pink": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1.0,
+          0.416,
+          0.549
+        ],
+        "hex": "#ff6a8c"
       },
-      "terracotta": {
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [
-            0.91,
-            0.565,
-            0.431
-          ],
-          "hex": "#e8906e"
-        },
-        "$description": "Light terracotta category. Softer and browner than the accent (1.4:1 apart), so it does not read as the accent. neutral.900 on it 7.8:1."
+      "$description": "Pink category. neutral.900 on it 6.9:1. Category colour: tells groups apart (tags, chips, calendar events), never a state or an accent. Text on it is neutral.900."
+    },
+    "terracotta": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.91,
+          0.565,
+          0.431
+        ],
+        "hex": "#e8906e"
       },
-      "yellow": {
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [
-            1.0,
-            0.851,
-            0.4
-          ],
-          "hex": "#ffd966"
-        },
-        "$description": "Yellow category. Pastel almost disappears on canvas (1.1:1): the text carries the label. neutral.900 on it 13.8:1."
+      "$description": "Light terracotta category. Softer and browner than the accent (1.4:1 apart), so it does not read as the accent. neutral.900 on it 7.8:1. Category colour: tells groups apart (tags, chips, calendar events), never a state or an accent. Text on it is neutral.900."
+    },
+    "yellow": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1.0,
+          0.851,
+          0.4
+        ],
+        "hex": "#ffd966"
       },
-      "green": {
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [
-            0.596,
-            0.851,
-            0.643
-          ],
-          "hex": "#98d9a4"
-        },
-        "$description": "Green category. Not success: success is green.500. neutral.900 on it 11.5:1."
+      "$description": "Yellow category. Pastel almost disappears on canvas (1.1:1): the text carries the label. neutral.900 on it 13.8:1. Category colour: tells groups apart (tags, chips, calendar events), never a state or an accent. Text on it is neutral.900."
+    },
+    "aqua": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.498,
+          0.812,
+          0.816
+        ],
+        "hex": "#7fcfd0"
       },
-      "aqua": {
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [
-            0.498,
-            0.812,
-            0.816
-          ],
-          "hex": "#7fcfd0"
-        },
-        "$description": "Aqua category. neutral.900 on it 10.6:1."
+      "$description": "Aqua category. neutral.900 on it 10.6:1. Category colour: tells groups apart (tags, chips, calendar events), never a state or an accent. Text on it is neutral.900."
+    },
+    "blue": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.616,
+          0.706,
+          1.0
+        ],
+        "hex": "#9db4ff"
       },
-      "blue": {
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [
-            0.616,
-            0.706,
-            1.0
-          ],
-          "hex": "#9db4ff"
-        },
-        "$description": "Blue category. neutral.900 on it 9.4:1."
+      "$description": "Blue category. neutral.900 on it 9.4:1. Category colour: tells groups apart (tags, chips, calendar events), never a state or an accent. Text on it is neutral.900."
+    },
+    "lilac": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.765,
+          0.651,
+          0.949
+        ],
+        "hex": "#c3a6f2"
       },
-      "lilac": {
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [
-            0.765,
-            0.651,
-            0.949
-          ],
-          "hex": "#c3a6f2"
-        },
-        "$description": "Lilac category. neutral.900 on it 9.0:1."
-      },
-      "pastel": {
-        "$type": "number",
-        "$value": 0.5,
-        "$description": "Share of the category hue in its pastel tone, mixed with white: color-mix(in srgb, hue calc(pastel * 100%), white). 0.5 gives the light tints of the reference (mint, cream). neutral.900 on every pastel is 11:1 or more."
-      }
+      "$description": "Lilac category. neutral.900 on it 9.0:1. Category colour: tells groups apart (tags, chips, calendar events), never a state or an accent. Text on it is neutral.900."
+    },
+    "pastel": {
+      "$type": "number",
+      "$value": 0.5,
+      "$description": "Share of the category hue in its pastel tone, mixed with white: color-mix(in srgb, hue calc(pastel * 100%), white). 0.5 gives the light tints of the reference (mint, cream). neutral.900 on every pastel is 11:1 or more."
     }
   }
 }

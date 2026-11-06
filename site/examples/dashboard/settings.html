@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KWLTJ7HD');</script>
+<!-- End Google Tag Manager -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Settings — eis</title>
+<link rel="icon" href="../../../src/shared/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../../src/shared/brand/apple-touch-icon.png">
+<link rel="describedby" type="text/markdown" href="../../../llms.txt" title="eis-ds manual for LLMs">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../../../src/app/app.css"></head>
+<body class="eis-app-shell">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWLTJ7HD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<header class="eis-app-topbar">
+  <button class="eis-button eis-button--ghost eis-button--icon" type="button" aria-controls="sidebar" aria-expanded="false" aria-label="Menu" title="Menu" data-eis-app-drawer-toggle><i data-lucide="menu" class="eis-icon"></i></button>
+  <p class="eis-app-topbar__title">TASK MANAGER</p>
+</header>
+
+<aside class="eis-app-sidebar" id="sidebar" aria-label="Sidebar">
+  <p class="eis-app-brand"><a href="#">TASK MANAGER</a> <span class="eis-mono">v0.1</span></p>
+  <nav class="eis-app-nav" aria-label="Main">
+    <section class="eis-app-nav__section" aria-labelledby="nav-tasks">
+      <h2 class="eis-label" id="nav-tasks">Tasks</h2>
+      <ul>
+        <li><a href="daily.html">Daily <span class="eis-app-nav__count">19</span></a></li>
+        <li><a href="#" aria-current="page">Settings</a></li>
+      </ul>
+    </section>
+    <section class="eis-app-nav__section" aria-labelledby="nav-pages">
+      <h2 class="eis-label" id="nav-pages">Other pages</h2>
+      <ul>
+        <li><a href="replies.html">Replies</a></li>
+        <li><a href="tasks-work.html">Work</a></li>
+      </ul>
+    </section>
+  </nav>
+  <footer class="eis-app-sidebar__foot">
+    <button class="eis-app-sidebar__toggle" type="button" aria-controls="sidebar" aria-expanded="true" aria-label="Sidebar" data-eis-app-sidebar-toggle></button>
+  </footer>
+</aside>
+
+<main class="eis-app-main">
+  <header class="eis-app-page-head">
+    <p class="eis-app-page-head__meta"><time class="eis-label" datetime="2026-11-06">Friday, 6 November 2026</time><span class="eis-mono">eis-ops/task-manager/config.json</span></p>
+    <h1>Settings</h1>
+  </header>
+
+  <!-- A body with two or more parts: one eis-panel__section per part (title + all its content). No <hr> -->
+  <section class="eis-panel" aria-labelledby="ws-h">
+    <header class="eis-panel__head"><h2 class="eis-panel__title" id="ws-h">Workspace</h2><span class="eis-mono">3 parts</span></header>
+    <div class="eis-panel__body">
+      <section class="eis-panel__section" aria-labelledby="ws-daily-h">
+        <h3 class="eis-label" id="ws-daily-h">Daily notes folder</h3>
+        <div class="eis-field">
+          <label for="ws-daily">Folder</label>
+          <div class="eis-app-inline">
+            <input class="eis-input" id="ws-daily" type="text" value="notes/daily/{YYYY}-{MM}" aria-describedby="ws-daily-hint">
+            <button class="eis-button" type="button">Choose folder</button>
+          </div>
+          <p class="eis-field__hint" id="ws-daily-hint">One note per day. The page reads the tasks of today's note.</p>
+        </div>
+      </section>
+      <section class="eis-panel__section" aria-labelledby="ws-topics-h">
+        <h3 class="eis-label" id="ws-topics-h">Your topics</h3>
+        <p class="eis-app-form-text">Topics group the tasks of a day. Tick the workspaces where each topic applies. A topic with no workspace shows only in Personal.</p>
+        <p><button class="eis-button eis-button--sm" type="button"><i data-lucide="plus" class="eis-icon"></i>Topic</button></p>
+        <ul class="eis-list eis-bleed" aria-label="Your topics">
+          <li>
+            <div class="eis-grow">
+              <h6>Atlas</h6>
+              <p>project — New billing engine</p>
+              <fieldset>
+                <legend>Workspaces for Atlas</legend>
+                <label class="eis-choice"><input class="eis-checkbox" type="checkbox" name="ws-atlas" value="payments" checked> Payments</label>
+                <label class="eis-choice"><input class="eis-checkbox" type="checkbox" name="ws-atlas" value="growth" checked> Growth</label>
+                <label class="eis-choice"><input class="eis-checkbox" type="checkbox" name="ws-atlas" value="platform"> Platform</label>
+                <label class="eis-choice"><input class="eis-checkbox" type="checkbox" name="ws-atlas" value="personal"> Personal</label>
+              </fieldset>
+            </div>
+            <button class="eis-button eis-button--sm eis-button--icon eis-button--danger" type="button" aria-label="Remove Atlas" title="Remove Atlas"><i data-lucide="trash-2" class="eis-icon"></i></button>
+          </li>
+          <li>
+            <div class="eis-grow">
+              <h6>Harbor</h6>
+              <p>project — Warehouse app for the night shift</p>
+              <fieldset>
+                <legend>Workspaces for Harbor</legend>
+                <label class="eis-choice"><input class="eis-checkbox" type="checkbox" name="ws-harbor" value="payments"> Payments</label>
+                <label class="eis-choice"><input class="eis-checkbox" type="checkbox" name="ws-harbor" value="growth"> Growth</label>
+                <label class="eis-choice"><input class="eis-checkbox" type="checkbox" name="ws-harbor" value="platform" checked> Platform</label>
+                <label class="eis-choice"><input class="eis-checkbox" type="checkbox" name="ws-harbor" value="personal"> Personal</label>
+              </fieldset>
+            </div>
+            <button class="eis-button eis-button--sm eis-button--icon eis-button--danger" type="button" aria-label="Remove Harbor" title="Remove Harbor"><i data-lucide="trash-2" class="eis-icon"></i></button>
+          </li>
+          <li>
+            <div class="eis-grow">
+              <h6>Onboarding revamp</h6>
+              <p>initiative — First week of a new customer, from sign-up to first report</p>
+              <fieldset>
+                <legend>Workspaces for Onboarding revamp</legend>
+                <label class="eis-choice"><input class="eis-checkbox" type="checkbox" name="ws-onboarding revamp" value="payments"> Payments</label>
+                <label class="eis-choice"><input class="eis-checkbox" type="checkbox" name="ws-onboarding revamp" value="growth" checked> Growth</label>
+                <label class="eis-choice"><input class="eis-checkbox" type="checkbox" name="ws-onboarding revamp" value="platform"> Platform</label>
+                <label class="eis-choice"><input class="eis-checkbox" type="checkbox" name="ws-onboarding revamp" value="personal" checked> Personal</label>
+              </fieldset>
+            </div>
+            <button class="eis-button eis-button--sm eis-button--icon eis-button--danger" type="button" aria-label="Remove Onboarding revamp" title="Remove Onboarding revamp"><i data-lucide="trash-2" class="eis-icon"></i></button>
+          </li>
+        </ul>
+      </section>
+      <section class="eis-panel__section" aria-labelledby="ws-shared-h">
+        <h3 class="eis-label" id="ws-shared-h">Shared topics</h3>
+        <p class="eis-app-form-text">Topics of the shared graph join your own. A name in both lists counts once.</p>
+        <label class="eis-choice"><input class="eis-switch" type="checkbox" role="switch" checked> Use the shared topics</label>
+      </section>
+    </div>
+    <footer class="eis-panel__footer"><button class="eis-button eis-button--primary" type="button">Save</button></footer>
+  </section>
+
+  <!-- A body with one part: content directly in eis-panel__body, no section -->
+  <section class="eis-panel" aria-labelledby="sc-h">
+    <header class="eis-panel__head"><h2 class="eis-panel__title" id="sc-h">Schedule</h2><span class="eis-mono">morning create · evening update</span></header>
+    <div class="eis-panel__body">
+      <div class="eis-app-form-row">
+        <div class="eis-field">
+          <label for="sc-create">Create the day at</label>
+          <input class="eis-input" id="sc-create" type="time" value="07:00">
+        </div>
+        <div class="eis-field">
+          <label for="sc-update">Update the day at</label>
+          <input class="eis-input" id="sc-update" type="time" value="18:30">
+        </div>
+      </div>
+    </div>
+    <footer class="eis-panel__footer"><button class="eis-button eis-button--primary" type="button">Save</button></footer>
+  </section>
+
+  <!-- A body that a script fills: the id goes on eis-panel__body itself, never on an empty <div> around it -->
+  <section class="eis-panel" aria-labelledby="dr-h">
+    <header class="eis-panel__head"><h2 class="eis-panel__title" id="dr-h">Doctor</h2><span class="eis-mono" id="doctor-count"></span></header>
+    <div class="eis-panel__body" id="doctor" aria-live="polite"></div>
+  </section>
+</main>
+
+<script>
+/* MOCK: fictional checks. A real page reads them from its data file. */
+(function () {
+  var checks = [
+    { name: "Daily notes folder", detail: "notes/daily/2026-11 · 6 notes", ok: true },
+    { name: "Topics", detail: "3 own · 12 shared", ok: true },
+    { name: "Schedule", detail: "next run today at 18:30", ok: true },
+    { name: "Shared graph", detail: "entities.json is 9 days old", ok: false }
+  ];
+  var rows = checks.map(function (c) {
+    return '<li><p>' + c.name + '<small class="eis-mono">' + c.detail + '</small></p>' +
+      '<span class="eis-chip ' + (c.ok ? "eis-chip--success" : "eis-chip--accent") + '">' + (c.ok ? "Ok" : "Check") + "</span></li>";
+  });
+  document.getElementById("doctor").innerHTML = '<ul class="eis-list eis-bleed">' + rows.join("") + "</ul>";
+  var bad = checks.filter(function (c) { return !c.ok; }).length;
+  document.getElementById("doctor-count").textContent = String(checks.length).padStart(2, "0") + " checks · " + bad + " to check";
+})();
+</script>
+<script src="../../../src/app/js/sidebar.js"></script>
+<script src="https://unpkg.com/lucide@1.66.0/dist/umd/lucide.min.js"></script>
+<script src="../../../src/shared/js/icons.js"></script>
+</body>
+</html>

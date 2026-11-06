@@ -24,6 +24,8 @@ Run this before calling a piece, element or token done. Every box must be true.
 - [ ] Visual-only elements are `aria-hidden`. Charts have `role="img"` + a data `aria-label`.
 - [ ] Icons are Lucide: `<i data-lucide="name" class="eis-icon"></i>` in content, no typed character as an icon. Write no icon for a disclosure, a task group, notes, a done list or the sidebar toggle: the CSS draws it.
 - [ ] Dates and times in `<time datetime>`.
+- [ ] A panel body that a script fills has the `id` itself (`<div class="eis-panel__body" id="…">`). No empty `<div id>` around or inside it.
+- [ ] A panel body with two or more titled parts puts each part in an `eis-panel__section`. A body with one part has no section.
 - [ ] Interface text is in English. Example data is fictional.
 
 ## Visual rules

@@ -301,6 +301,7 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 ```
 
 - `eis-panel__body`: the padded content area under the head. Its children stack with a `--space-200` gap. Use it for any panel that holds fields or text, not for a panel that holds a table or a metric row.
+- When a script fills the body of a panel, put the `id` on the body itself: `<div class="eis-panel__body" id="doctor">`. The script writes the content into it. Never put an empty `<div id="…">` in the panel, or around or inside the body, for the script: the body loses its padding and gap, or the content gets them twice. The same rule applies to an `eis-panel__section` that a script fills.
 - `eis-bleed` (helper): a direct child of `eis-panel__body` that touches the panel edges: no side padding, none above it when it is first, none below it when it is last. Use it for a quoted block or a strip, never to remove the body padding of fields.
 - `eis-panel__footer`: the bottom area for actions. Same padding, buttons in one row that wraps. No line above it. After a body it drops its top padding, so body and footer share one gap.
 

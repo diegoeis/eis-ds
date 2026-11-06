@@ -599,6 +599,7 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 ```
 
 - `eis-panel__body`: the padded content area under the head. Its children stack with a `--space-200` gap. Use it for any panel that holds fields or text, not for a panel that holds a table or a metric row.
+- When a script fills the body of a panel, put the `id` on the body itself: `<div class="eis-panel__body" id="doctor">`. The script writes the content into it. Never put an empty `<div id="…">` in the panel, or around or inside the body, for the script: the body loses its padding and gap, or the content gets them twice. The same rule applies to an `eis-panel__section` that a script fills.
 - `eis-bleed` (helper): a direct child of `eis-panel__body` that touches the panel edges: no side padding, none above it when it is first, none below it when it is last. Use it for a quoted block or a strip, never to remove the body padding of fields.
 - `eis-panel__footer`: the bottom area for actions. Same padding, buttons in one row that wraps. No line above it. After a body it drops its top padding, so body and footer share one gap.
 
@@ -1141,6 +1142,8 @@ Run this before calling a piece, element or token done. Every box must be true.
 - [ ] Visual-only elements are `aria-hidden`. Charts have `role="img"` + a data `aria-label`.
 - [ ] Icons are Lucide: `<i data-lucide="name" class="eis-icon"></i>` in content, no typed character as an icon. Write no icon for a disclosure, a task group, notes, a done list or the sidebar toggle: the CSS draws it.
 - [ ] Dates and times in `<time datetime>`.
+- [ ] A panel body that a script fills has the `id` itself (`<div class="eis-panel__body" id="…">`). No empty `<div id>` around or inside it.
+- [ ] A panel body with two or more titled parts puts each part in an `eis-panel__section`. A body with one part has no section.
 - [ ] Interface text is in English. Example data is fictional.
 
 ##### Visual rules

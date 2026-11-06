@@ -22,9 +22,16 @@
 .eis-panel__body + .eis-panel__footer{padding-top:0} /* body and footer share one gap, no double padding */
 /* helper: a child of the body that touches the panel edges (no side padding; none above it
    when first, none below it when last). For a quoted block, a strip, an image */
-.eis-panel__body > .eis-bleed{margin-inline:calc(var(--space-200) * -1)}
-.eis-panel__body > .eis-bleed:first-child{margin-top:calc(var(--space-200) * -1)}
-.eis-panel__body > .eis-bleed:last-child{margin-bottom:calc(var(--space-200) * -1)}
+.eis-panel__body > .eis-bleed,.eis-panel__section > .eis-bleed{margin-inline:calc(var(--space-200) * -1)}
+.eis-panel__body > .eis-bleed:first-child,.eis-panel__section > .eis-bleed:first-child{margin-top:calc(var(--space-200) * -1)}
+.eis-panel__body > .eis-bleed:last-child,.eis-panel__section > .eis-bleed:last-child{margin-bottom:calc(var(--space-200) * -1)}
+/* section: one whole part of a body that has two or more parts. Its title (h3.eis-label) and its content
+   stack with the body gap. A hairline to the panel edges splits two sections: no <hr> between them */
+.eis-panel__section{display:flex;flex-direction:column;gap:var(--space-200);min-width:0}
+.eis-panel__section + .eis-panel__section{margin-inline:calc(var(--space-200) * -1);padding:var(--space-200) var(--space-200) 0;
+  border-top:var(--border-width-100) solid var(--line)}
+/* the title of a section: label type one step up, as the heading of a disclosure, so it reads above the field labels */
+.eis-panel__section > .eis-label:first-child{font-size:var(--font-size-200)}
 
 /* ---------- button: rectangle, uppercase mono. Acts. ---------- */
 .eis-button{--bg:var(--surface-raised);--fg:var(--ink);--bd:var(--line);
@@ -199,7 +206,7 @@ fieldset.eis-field{border:0}
 .eis-list > li > p > small{display:block}
 .eis-list > li > :not(p,.eis-grow){flex:none}
 
-/* ---------- hr: a hairline between two parts of the same block ---------- */
+/* ---------- hr: a hairline between two parts of the same block that have no title (parts with a title: eis-panel__section) ---------- */
 hr{border:0;border-top:var(--border-width-100) solid var(--line);margin:0;inline-size:100%}
 .eis-panel__body > hr{margin-inline:calc(var(--space-200) * -1);inline-size:auto}
 

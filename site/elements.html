@@ -300,7 +300,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section class="eis-web-doc" id="panel" aria-labelledby="panel-h">
     <header>
       <h2 id="panel-h"><small class="eis-label">06</small>Panel</h2>
-      <p>The one container. Second surface level, 1px line, 10px radius, no shadow. Head with a label on the left and a mono count on the right. Optional body (padded stack) and footer (actions).</p>
+      <p>The one container. Second surface level, 1px line, 10px radius, no shadow. Head with a label on the left and a mono count on the right. Optional body (padded stack) and footer (actions). A body with two or more titled parts puts each part in an <code>eis-panel__section</code>: a hairline to the edges splits them, no <code>&lt;hr&gt;</code>.</p>
     </header>
     <div>
       <section class="eis-panel" aria-labelledby="p-h">
@@ -318,6 +318,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p class="eis-field__hint"><code>eis-panel__body</code> stacks its content. <code>eis-panel__footer</code> holds the actions.</p>
         </div>
         <footer class="eis-panel__footer"><button class="eis-button" type="button">Save</button><button class="eis-button eis-button--ghost" type="button">Cancel</button></footer>
+      </section>
+      <section class="eis-panel" aria-labelledby="ps-h">
+        <header class="eis-panel__head"><h3 class="eis-panel__title" id="ps-h">Workspace</h3><span class="eis-mono">eis-panel__section</span></header>
+        <div class="eis-panel__body">
+          <section class="eis-panel__section" aria-labelledby="ps-daily-h">
+            <h4 class="eis-label" id="ps-daily-h">Daily notes folder</h4>
+            <div class="eis-field">
+              <label for="ps-daily">Folder</label>
+              <input class="eis-input" id="ps-daily" type="text" value="notes/daily">
+            </div>
+          </section>
+          <section class="eis-panel__section" aria-labelledby="ps-topics-h">
+            <h4 class="eis-label" id="ps-topics-h">Your topics</h4>
+            <p>Topics that only this workspace uses. Each section holds one whole part: its title and all its content.</p>
+            <p><button class="eis-button eis-button--sm" type="button"><i data-lucide="plus" class="eis-icon"></i>Topic</button></p>
+            <ul class="eis-list eis-bleed">
+              <li><p>Atlas<small class="eis-mono">project — New billing engine</small></p><button class="eis-button eis-button--sm eis-button--danger" type="button">Remove</button></li>
+              <li><p>Harbor<small class="eis-mono">project — Warehouse app</small></p><button class="eis-button eis-button--sm eis-button--danger" type="button">Remove</button></li>
+            </ul>
+          </section>
+          <section class="eis-panel__section" aria-labelledby="ps-og-h">
+            <h4 class="eis-label" id="ps-og-h">Shared topics</h4>
+            <label class="eis-choice"><input class="eis-switch" type="checkbox" role="switch" checked> Use the shared topics</label>
+          </section>
+        </div>
+        <footer class="eis-panel__footer"><button class="eis-button eis-button--primary" type="button">Save</button></footer>
       </section>
       <section class="eis-panel">
         <details class="eis-disclosure">
@@ -365,17 +391,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section class="eis-web-doc" id="divider" aria-labelledby="divider-h">
     <header>
       <h2 id="divider-h"><small class="eis-label">09</small>Divider</h2>
-      <p>A hairline that splits two parts of the same panel body. It touches the panel edges.</p>
+      <p>A hairline that splits two parts of the same panel body that have no title. It touches the panel edges. Parts with a title use <code>eis-panel__section</code> (see Panel).</p>
     </header>
     <div class="eis-panel">
       <div class="eis-panel__body">
-        <h3 class="eis-label">Your teams</h3>
         <ul class="eis-list eis-bleed">
           <li><p>Payments<small class="eis-mono">Card provider and invoices</small></p><button class="eis-button eis-button--sm" type="button">Move</button></li>
           <li><p>Growth<small class="eis-mono">Onboarding and activation</small></p><button class="eis-button eis-button--sm" type="button">Move</button></li>
         </ul>
         <hr>
-        <h3 class="eis-label">Shared teams</h3>
         <label class="eis-choice"><input class="eis-switch" type="checkbox" role="switch" checked> Use the shared teams</label>
       </div>
     </div>

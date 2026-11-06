@@ -324,7 +324,8 @@ Every basic element: when to use it, the HTML to copy, variants, and what is for
 | Turn a setting on/off that applies immediately | **Switch** |
 | Switch the view of the current page (Today / Week / All) | **Tabs** |
 | Show items one per row, with a short text and an action or status | **List** `<ul class="eis-list">` |
-| Split two parts of the same panel body | **Divider** `<hr>` |
+| Group each part of a panel body that has two or more titled parts | **Panel section** `<section class="eis-panel__section">` |
+| Split two parts of the same panel body that have no title | **Divider** `<hr>` |
 | Show rows × columns of data | **Table** |
 | Group content in a container | **Panel** |
 | Content that opens and closes | **Disclosure** (`<details>`) |
@@ -601,6 +602,37 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 - `eis-bleed` (helper): a direct child of `eis-panel__body` that touches the panel edges: no side padding, none above it when it is first, none below it when it is last. Use it for a quoted block or a strip, never to remove the body padding of fields.
 - `eis-panel__footer`: the bottom area for actions. Same padding, buttons in one row that wraps. No line above it. After a body it drops its top padding, so body and footer share one gap.
 
+###### Panel section
+
+```html
+<section class="eis-panel" aria-labelledby="ws-h">
+  <header class="eis-panel__head"><h2 class="eis-panel__title" id="ws-h">Workspace</h2></header>
+  <div class="eis-panel__body">
+    <section class="eis-panel__section" aria-labelledby="ws-daily-h">
+      <h3 class="eis-label" id="ws-daily-h">Daily notes folder</h3>
+      <div class="eis-field">
+        <label for="ws-daily">Folder</label>
+        <input class="eis-input" id="ws-daily" type="text" value="notes/daily">
+      </div>
+    </section>
+    <section class="eis-panel__section" aria-labelledby="ws-topics-h">
+      <h3 class="eis-label" id="ws-topics-h">Your topics</h3>
+      <p>Topics that only this workspace uses.</p>
+      <p><button class="eis-button eis-button--sm" type="button"><i data-lucide="plus" class="eis-icon"></i>Topic</button></p>
+      <ul class="eis-list eis-bleed">…</ul>
+    </section>
+  </div>
+  <footer class="eis-panel__footer"><button class="eis-button eis-button--primary" type="button">Save</button></footer>
+</section>
+```
+
+- Use `eis-panel__section` when a panel body has two or more parts, and each part has a title. Put one section around each whole part: its title and all its content (text, fields, buttons, a list).
+- When the body has only one part, do not use a section. Put the content directly in `eis-panel__body`. The panel title names it.
+- A section is a direct child of `eis-panel__body`. Do not mix sections and loose content in one body. Do not put a section in a section.
+- The title is the first child: `<h3 class="eis-label">` with an `id` (one level below the panel title). The `<section>` has `aria-labelledby` with that `id`. The section shows its title one step up (`--font-size-200`), as the heading of a disclosure, so it reads above the field labels of the part.
+- The content of a section stacks with a `--space-200` gap, as in the body. `eis-bleed` works in a section as it does in the body.
+- From the second section on, a `--line` above the section touches the panel edges. Do not write an `<hr>` between sections.
+
 ##### Disclosure
 
 ```html
@@ -686,16 +718,15 @@ A list inside a panel body, rows to the panel edges:
 
 ```html
 <div class="eis-panel__body">
-  <h3 class="eis-label">Your teams</h3>
   <ul class="eis-list eis-bleed">…</ul>
   <hr>
-  <h3 class="eis-label">Ontology graph teams</h3>
-  …
+  <label class="eis-choice"><input class="eis-switch" type="checkbox" role="switch" checked> Use the shared teams</label>
 </div>
 ```
 
 - `<hr>` is a hairline: one `--border-width-100` line in `--line`, no margin. The gap of the container spaces it.
-- Use it to split two parts of the same panel body. In an `eis-panel__body` it touches the panel edges, like the rows of a list.
+- Use it to split two parts of the same panel body that have no title. In an `eis-panel__body` it touches the panel edges, like the rows of a list.
+- When each part has a title, use `eis-panel__section` (see Panel). The section draws the line. Do not add an `<hr>`.
 - Do not use it between panels or between list rows. Panels have their own border and lists draw their own lines.
 
 ##### Icons

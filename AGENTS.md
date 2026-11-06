@@ -2,7 +2,7 @@
 
 A visual design system in plain HTML and CSS. It contains primitives (colour, type, space, shape) and basic elements. Uses: slides, websites, email, illustrations and images.
 
-Version 0.7.0, draft. Only the light mode exists.
+Version 0.8.0, draft. Only the light mode exists.
 
 ## Read before you change anything
 1. `README.md` — what the system is and how a project uses it.

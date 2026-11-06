@@ -12,8 +12,8 @@
 .eis-panel__head{display:flex;justify-content:space-between;align-items:center;gap:var(--space-200);
   padding:var(--space-200);border-bottom:var(--border-width-100) solid var(--line);background:var(--surface-head);color:var(--ink)}
 /* the panel's title: label type, in ink (it names the panel, it is not a muted label) */
-/* text helpers in the head take ink: --ink-muted fails on --surface-head (4.0:1) */
-.eis-panel__head :is(.eis-mono,.eis-label){color:var(--ink)}
+/* mono in the head takes ink: --ink-muted fails on --surface-head (3.8:1). eis-label is already ink */
+.eis-panel__head .eis-mono{color:var(--ink)}
 .eis-panel__head .eis-chip--outline{--fg:var(--ink)}
 .eis-panel__title{margin:0;font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);font-weight:var(--type-label-font-weight);
   letter-spacing:var(--type-label-letter-spacing);line-height:var(--type-label-line-height);text-transform:uppercase;color:var(--ink)}
@@ -180,9 +180,9 @@ fieldset.eis-field{border:0}
 .eis-disclosure > summary::after{content:"";flex:none;inline-size:var(--space-200);block-size:var(--space-200);background:currentColor;mask:var(--icon-plus) center / contain no-repeat;margin-left:auto;align-self:center}
 .eis-disclosure[open] > summary::after{mask-image:var(--icon-minus)}
 .eis-disclosure[open] > summary{background:var(--surface-canvas);border-bottom:var(--border-width-100) solid var(--line)}
-/* a closed summary under the pointer: --surface-hover. --ink-muted fails on it (4.3:1), so muted helpers take --ink */
+/* a closed summary under the pointer: --surface-hover. --ink-muted fails on it (4.3:1), so mono takes --ink */
 .eis-disclosure:not([open]) > summary:hover{background:var(--surface-hover)}
-.eis-disclosure:not([open]) > summary:hover :is(.eis-mono,.eis-label){color:var(--ink)}
+.eis-disclosure:not([open]) > summary:hover .eis-mono{color:var(--ink)}
 /* stacked disclosures: one hairline between them */
 .eis-disclosure + .eis-disclosure{border-top:var(--border-width-100) solid var(--line)}
 /* the heading of a disclosure: label type, one step up, in ink (it names the group) */

@@ -20,7 +20,7 @@ Which variable to use for what. Shared variables come from `src/shared/css/token
 | `--surface-inverse` | `#111111` | Primary and black buttons (`eis-button--primary`, `--black`), active nav item, solid chip. | Use for large areas. |
 | `--line` | `#cfcfcf` | **Every** border, divider and hairline: panels, table rows, separators, chip outlines. | Use `--ink` or any darker grey for borders of shapes, panels or cards. |
 | `--ink` | `#111111` | Primary text, headings, numbers, checked controls, focus outline. | — |
-| `--ink-muted` | `#6d6d6d` | Secondary text, labels, metadata, placeholders, **outlines of interactive controls** (input, checkbox, radio, switch). 5.2:1 on panel, 4.8:1 on canvas, 4.5:1 on selected. | Use for decorative borders (that is `--line`). Put on `--surface-hover` (4.3:1) or `--surface-head` (3.8:1): both fail. |
+| `--ink-muted` | `#6d6d6d` | Secondary text, metadata, placeholders, **outlines of interactive controls** (input, checkbox, radio, switch). 5.2:1 on panel, 4.8:1 on canvas, 4.5:1 on selected. | Use for decorative borders (that is `--line`). Put on `--surface-hover` (4.3:1) or `--surface-head` (3.8:1): both fail. |
 | `--ink-inverse` | `#f7f7f7` | Text on `--surface-inverse`. | Put on `--accent` (use `--accent-on`). |
 | `--accent` | `#f35919` | **Fills and marks** for the one thing that matters: overdue, conflict, urgent, record. | Use as text on light surfaces (3.1:1, fails). Decorate. Exceed ~5% of the visible area. |
 | `--accent-ink` | `#b5400c` | The accent **as text**: overdue dates, error messages, current breadcrumb item. 4.7:1 on canvas. | Use as a fill. |
@@ -31,9 +31,9 @@ Which variable to use for what. Shared variables come from `src/shared/css/token
 | `--danger` | `#e5484d` | **Fill** of a danger button on hover. | Use as text (use `--danger-ink`), or to decorate. |
 | `--danger-ink` | `#b42318` | Danger **as text** and the line of a danger button. 6.6:1 on white. | Use as a fill. |
 | `--danger-on` | `#111111` | Text **on** a `--danger` fill. 4.8:1. | Use white on `--danger` (3.9:1, fails). |
-| `--surface-head` | `#dddddd` | Head strip of a panel. Text on it is `--ink` (13.9:1). `eis-mono`, `eis-label` and an outline chip in the head take `--ink` by themselves. | Put `--ink-muted` on it (4.0:1, fails). Use as a page area. |
+| `--surface-head` | `#dddddd` | Head strip of a panel. Text on it is `--ink` (13.9:1). `eis-mono` and an outline chip in the head take `--ink` by themselves. `eis-label` is always `--ink`. | Put `--ink-muted` on it (3.8:1, fails). Use as a page area. |
 | `--surface-selected` | `#f0f0f0` | Background of a selected table row: the row has `aria-selected="true"`. `eis-table` sets it. Every text role passes on it (`--ink` 16.6:1, `--ink-muted` 4.5:1, `--accent-ink` 5.0:1). | Use as a page area, a panel or a hover. |
-| `--surface-hover` | `#eaeaea` | Background of a closed disclosure summary under the pointer. `eis-disclosure` sets it. Text on it is `--ink` (15.7:1): `eis-mono` and `eis-label` in the summary take `--ink` on hover by themselves. `--accent-ink` passes (4.7:1). | Put `--ink-muted` on it (4.3:1, fails). Use as a page area or a selected state. |
+| `--surface-hover` | `#eaeaea` | Background of a closed disclosure summary under the pointer. `eis-disclosure` sets it. Text on it is `--ink` (15.7:1): `eis-mono` in the summary takes `--ink` on hover by itself. `eis-label` is always `--ink`. `--accent-ink` passes (4.7:1). | Put `--ink-muted` on it (4.3:1, fails). Use as a page area or a selected state. |
 
 **`--surface-panel` and `--surface-raised` have the same value today (white), with two roles.** `--surface-panel` is a surface that holds content (panel, sidebar, field, table). `--surface-raised` is a control raised above the canvas (the default button). Keep both: a mode (dark, paper) can give them different values. Use the role of the job, never the one with the right colour.
 

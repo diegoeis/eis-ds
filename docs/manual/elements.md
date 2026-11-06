@@ -287,7 +287,7 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 ```
 
 - The only container. `--surface-panel`, 1px `--line`, `--radius-100`, no shadow.
-- Head: `--surface-head` background, text in `--ink`. The title is `eis-panel__title` (label type, ink: it names the panel, it is not a muted label) on the left, mono meta (count, range) on the right. `eis-mono`, `eis-label` and an outline chip in the head take `--ink`: `--ink-muted` fails on `--surface-head` (4.0:1).
+- Head: `--surface-head` background, text in `--ink`. The title is `eis-panel__title` (label type, ink: it names the panel, it is not a muted label) on the left, mono meta (count, range) on the right. `eis-mono` and an outline chip in the head take `--ink`: `--ink-muted` fails on `--surface-head` (3.8:1). `eis-label` is in `--ink` on every surface.
 - MUST NOT nest a panel inside a panel. Separate inside with hairlines.
 - Content padding: `--space-200`.
 
@@ -313,7 +313,7 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 ```
 
 - Native `<details>`/`<summary>`. It opens and closes without JS. It is the only element that opens and closes: groups of tasks, topics or any list use it too.
-- The CSS draws the marker on the right: Lucide `plus` when closed, `minus` when open. Write no icon in the summary. When open, the summary gets `--surface-canvas` background and a `--line` under it. A closed summary under the pointer gets `--surface-hover`; `eis-mono` and `eis-label` in it take `--ink` (`--ink-muted` fails on `--surface-hover`).
+- The CSS draws the marker on the right: Lucide `plus` when closed, `minus` when open. Write no icon in the summary. When open, the summary gets `--surface-canvas` background and a `--line` under it. A closed summary under the pointer gets `--surface-hover`; `eis-mono` in it takes `--ink` (`--ink-muted` fails on `--surface-hover`).
 - The heading in the summary (`h2`, `h3` or `h4`, no class needed) uses the label type one step up (`--font-size-200`), in `--ink`: it names the group. A count or a path goes after it in `eis-mono`.
 - A `--line` separates stacked disclosures. To list several, put them as direct children of one `eis-panel`.
 - Content goes right after the summary: an `eis-panel__body` for text and fields, or an `eis-table` (its first row drops its top line, the summary line already separates them), then an optional `eis-panel__footer`.
@@ -425,7 +425,7 @@ Load at the end of `<body>`, Lucide first:
 
 ## Labels and helpers
 
-- `.eis-label` — label text style (mono, 11, uppercase, `--ink-muted`). For panel titles, table heads, nav section titles.
+- `.eis-label` — label text style (mono, 11, uppercase, `--ink`). For panel titles, table heads, nav section titles, the title of a part of a panel body. It is in `--ink` on every surface: it names what follows, it is not metadata. Measured: 18.9:1 on `--surface-panel`, 17.6:1 on `--surface-canvas`, 13.9:1 on `--surface-head`. Use `eis-mono` for muted metadata.
 - `.eis-mono` — mono metadata (12, `--ink-muted`, tabular numbers).
 - `.eis-visually-hidden` — hidden on screen, read by screen readers. For captions, legends and labels the design doesn't show.
 - `.eis-width-fit`, `.eis-width-100` … `.eis-width-500` — the width of a field, a button or a block: as wide as its content, or the `--width-*` step (128, 192, 256, 360, 480px). Never wider than the container. In a flex row (`eis-app-inline`) the item keeps its width and the others take the rest. In a row of fields (`eis-app-add-bar`, `eis-app-form-row`, `eis-app-filters__fields`) the step is the base and the minimum width of the field: it grows into the free room and wraps when it no longer fits (layout.md §7, "Rows of fields"). `eis-width-fit` in a row of fields keeps the content's width and does not grow. A short select before the field it controls is `<div class="eis-field eis-width-fit">`. Don't write a width in page CSS for this.

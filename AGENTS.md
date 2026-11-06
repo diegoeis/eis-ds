@@ -41,7 +41,7 @@ docs/
   tokens.md              token format
   visual-guidance/       reference only: direction, Pinterest links, decisions
 scripts/build-tokens.py  validates the tokens of every scope and generates each tokens.css
-scripts/check-css.py     checks that scopes never use each other's classes or variables, and that pages use no eis-* class missing from src/
+scripts/check-css.py     checks that scopes never use each other's classes or variables, and that pages use no eis-* class missing from src/ and follow the panel structure
 scripts/build-icons.py   writes src/shared/css/icons.css from pinned lucide-static (--check: fail if stale). Needs the network
 scripts/build-css.py     bundles each scope entry into dist/eis-<scope>.min.css (--check: fail if stale)
 scripts/build-llms.py    copies the manual rules into llms.txt and generates llms-full.txt (--check: fail if stale)

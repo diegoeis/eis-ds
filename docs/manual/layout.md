@@ -138,7 +138,7 @@ Rules:
 - A scope's tokens live under its own group (`web.*`, `app.*`) and MAY reference shared tokens: `"{font.size.800}"`. A colour change in shared reaches every scope.
 - A scope MUST NOT reference another scope's tokens, variables or classes.
 - Every selector in `<scope>/css/components.css` starts with `.eis-<scope>-`. A scope never styles bare HTML or shared classes on their own. It MAY place a shared element in its own context (`.eis-app-task-table.eis-table`) for layout only.
-- Use an `eis-*` class only if eis-ds has it. A class of your own page uses your own prefix, never `eis-`. In this repository, the frame classes of the documentation pages use `doc-`.
+- Use an `eis-*` class only if eis-ds has it. A class of your own page uses your own prefix, never `eis-`. In this repository, the frame classes of the documentation pages use `doc-`. A `doc-` frame can sit directly in an `eis-panel`, and a panel with a `doc-` class is a frame: `scripts/check-css.py` does not check their panel structure.
 - `scripts/build-tokens.py` validates the token rules. `scripts/check-css.py` validates the CSS rules. It also fails when `index.html` or a page in `site/` uses an `eis-*` class that is not in `src/**/*.css`. It does not read `<script>` blocks. Both scripts MUST pass.
 - A pattern used on two or more pages goes into the scope CSS. A pattern used on one page only stays in that page's `<style>`.
 
@@ -158,9 +158,11 @@ Rules:
 | `eis-web-section` (`__head`, `__body`) | Landing section. `__head` holds the label, the `h2` and an optional `p`. The label and the title use the left five columns. The `p` goes to the right six columns, level with the bottom of the title. Do not put a class on the `p` and do not move it out of `__head`. Without a `p`, `__head` uses the left five columns and `__body` sits next to it. With a `p`, `__body` goes below it in the right column |
 | `eis-web-numbered`, `eis-web-cards`/`eis-web-card`, `eis-web-principles`, `eis-web-steps` | Numbered list, cards with a figure, principles grid, step timeline. A chip at the end of `eis-web-card__body` keeps its own width (for example `Future` on a surface that is not available yet). `eis-web-card__figure` on the card `<figure>` puts one short code (`<span>`) at the bottom left in large mono type. `eis-web-card__figure--accent` fills it with the accent. Use the accent on one card only |
 | `eis-web-proof` | Band of proof numbers on a landing (`<dl>`): each cell is a `<div>` with a `<dt class="eis-label">`, the value `<dd>` in `metric` type and a context `<dd>` in muted ink. Cells wrap at 200px or more, with a `--line` above the band and under each cell. No panel. For a row of numbers in a panel, use the shared `eis-metrics` |
-| `eis-web-plans`, `eis-web-plan` (`__price`) | Pricing cards. `eis-web-plans` is the grid (cards of 280px or more). Each card is a `<section class="eis-panel eis-web-plan">`. It holds a label, an `h3`, a `<p class="eis-web-plan__price">` (price in `metric` type, period in a `<small>`), a `<ul>` of features and one button. The feature lists fill the card, so the buttons line up. Mark the plan you recommend with one `eis-chip--accent` in its label |
+| `eis-web-plans`, `eis-web-plan` (`__price`) | Pricing cards. `eis-web-plans` is the grid (cards of 280px or more). Each card is a `<section class="eis-panel eis-web-plan">` with an `eis-panel__body` and an `eis-panel__footer`. The body holds a label, an `h3`, a `<p class="eis-web-plan__price">` (price in `metric` type, period in a `<small>`) and a `<ul>` of features. The footer holds one button. The bodies fill the cards, so the buttons line up. Mark the plan you recommend with one `eis-chip--accent` in its label |
 | `eis-web-faq` | Questions and answers on a landing: an `eis-panel` with one `eis-disclosure` per question (the question as `<h3 class="eis-label">` in the `<summary>`). Each answer is a `<p>` in muted ink, 64 characters wide at most, with space under it. Put it on the `eis-web-section__body` |
 | `eis-web-code`, `eis-web-cta`, `eis-web-footer`, `eis-web-arrow` | Code block, closing call to action, landing footer, arrow link |
+
+Panel parts: `eis-web-scroll` (around a table) and an `eis-web-spec` table go directly in an `eis-panel`, after its head, in place of an `eis-panel__body` (elements.md, "Panel structure"). Every other web component goes in a body. `scripts/check-css.py` keeps the same list in `PANEL_CONTENT`: change both together.
 
 ### App components
 
@@ -191,6 +193,8 @@ Rules:
 | `eis-app-items` (`__text`) | A list of saved entries: each row has its text in mono and small buttons |
 
 For a row of metric cells, use the shared `eis-metrics` (elements.md, "Metrics").
+
+Panel parts: `eis-app-agenda`, `eis-app-cells`, `eis-app-legend`, `eis-app-bar`, `eis-app-topics`, `eis-app-people`, `eis-app-done` and `eis-app-add-bar` have their own padding. Put them directly in an `eis-panel`, after its head, in place of an `eis-panel__body` (elements.md, "Panel structure"). Every other app component goes in a body. `scripts/check-css.py` keeps the same list in `PANEL_CONTENT`: change both together.
 
 ### Rows of fields
 

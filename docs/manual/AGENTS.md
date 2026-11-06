@@ -28,6 +28,7 @@ The other files of this manual give the details of each rule.
 - Use no raw values for colour, type, space or radius. Use the tokens. The manual lists the few allowed exceptions.
 - Use semantic HTML and native controls: `table`, `button`, `a`, `input`, `select`, `details`, `fieldset`. Never make a control or a table from `div` or `span`.
 - A variant changes colour only. A size (`--sm`, `--lg`) changes size only.
+- A panel holds only its parts: `eis-panel__head`, `eis-panel__body` (the `id` of a script goes on it), an optional `eis-panel__footer`, or a full-width part the manual lists (table, list, disclosure, metrics). No wrapper between the panel and its parts. Never an `eis-panel__body` inside another one. The Save of a settings panel goes in its footer.
 - Use the accent once per piece, on 5% of the area or less.
 - Every piece works from 360px to wide screens, with no horizontal scroll.
 - Before you finish, check the piece against the checklist.

@@ -16,6 +16,7 @@ Rules that have no exceptions:
 - Use no raw values for colour, type, space or radius. Use the tokens. The manual lists the few allowed exceptions.
 - Use semantic HTML and native controls: `table`, `button`, `a`, `input`, `select`, `details`, `fieldset`. Never make a control or a table from `div` or `span`.
 - A variant changes colour only. A size (`--sm`, `--lg`) changes size only.
+- A panel holds only its parts: `eis-panel__head`, `eis-panel__body` (the `id` of a script goes on it), an optional `eis-panel__footer`, or a full-width part the manual lists (table, list, disclosure, metrics). No wrapper between the panel and its parts. Never an `eis-panel__body` inside another one. The Save of a settings panel goes in its footer.
 - Use the accent once per piece, on 5% of the area or less.
 - Every piece works from 360px to wide screens, with no horizontal scroll.
 - Before you finish, check the piece against the checklist.
@@ -56,6 +57,7 @@ The other files of this manual give the details of each rule.
 - Use no raw values for colour, type, space or radius. Use the tokens. The manual lists the few allowed exceptions.
 - Use semantic HTML and native controls: `table`, `button`, `a`, `input`, `select`, `details`, `fieldset`. Never make a control or a table from `div` or `span`.
 - A variant changes colour only. A size (`--sm`, `--lg`) changes size only.
+- A panel holds only its parts: `eis-panel__head`, `eis-panel__body` (the `id` of a script goes on it), an optional `eis-panel__footer`, or a full-width part the manual lists (table, list, disclosure, metrics). No wrapper between the panel and its parts. Never an `eis-panel__body` inside another one. The Save of a settings panel goes in its footer.
 - Use the accent once per piece, on 5% of the area or less.
 - Every piece works from 360px to wide screens, with no horizontal scroll.
 - Before you finish, check the piece against the checklist.
@@ -590,13 +592,27 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 - MUST NOT nest a panel inside a panel. Separate inside with hairlines.
 - Content padding: `--space-200`.
 
+###### Panel structure
+
+A panel holds only its parts, as direct children, in this order:
+
 ```html
 <section class="eis-panel" aria-labelledby="run-h">
-  <header class="eis-panel__head">…</header>
-  <div class="eis-panel__body"><!-- fields, text --></div>
-  <footer class="eis-panel__footer"><button class="eis-button" type="button">Save</button></footer>
+  <header class="eis-panel__head"><h2 class="eis-panel__title" id="run-h">Run</h2></header>
+  <div class="eis-panel__body" id="run"><!-- fields, text. The id of a script goes here --></div>
+  <footer class="eis-panel__footer"><button class="eis-button eis-button--primary" type="button">Save</button></footer>
 </section>
 ```
+
+- The head is first. Use it when the panel has a title. The footer is last and optional. A panel has one head and one footer at most.
+- MUST NOT put a wrapper (`div`, `form`, `section`) between the panel and its parts. Loose content (a heading, a paragraph, a field, a button) goes in the body, never directly in the panel.
+- In place of a body, a panel can hold a full-width element that has its own padding: `eis-table` (or the horizontal scroll wrapper of a table that can't reflow), `eis-list`, `eis-disclosure`, `eis-metrics`, or a scope component that `layout.md` §7 lists as a panel part. Put it directly in the panel, after the head.
+- The panel can be the content itself: a list (`<ul class="eis-panel eis-list">`) or a form with no title (`<form class="eis-panel eis-form">`, see Form). Its children are then the rows or the fields. It has no head, body or footer.
+- MUST NOT put an `eis-panel__body` inside another `eis-panel__body` or inside an `eis-panel__section`. A `<form>` inside a body gets no `eis-panel__body` class.
+- A panel with a head and a footer that submits a form: make the `<form>` the panel (`<form class="eis-panel">`, with the head, the body and the footer in it). The `<form>` never sits between the panel and its parts.
+- The Save button of a settings panel (it saves the whole panel) goes in `eis-panel__footer`, never in the body or the head. A button that acts on one row or one field (Save of one key, Remove) stays in that row.
+- In an `eis-disclosure`, the same parts come after the `<summary>`: a body, then an optional footer.
+- `scripts/check-css.py` fails when a page in `site/` or `index.html` breaks these rules.
 
 - `eis-panel__body`: the padded content area under the head. Its children stack with a `--space-200` gap. Use it for any panel that holds fields or text, not for a panel that holds a table or a metric row.
 - When a script fills the body of a panel, put the `id` on the body itself: `<div class="eis-panel__body" id="doctor">`. The script writes the content into it. Never put an empty `<div id="…">` in the panel, or around or inside the body, for the script: the body loses its padding and gap, or the content gets them twice. The same rule applies to an `eis-panel__section` that a script fills.
@@ -935,7 +951,7 @@ Rules:
 - A scope's tokens live under its own group (`web.*`, `app.*`) and MAY reference shared tokens: `"{font.size.800}"`. A colour change in shared reaches every scope.
 - A scope MUST NOT reference another scope's tokens, variables or classes.
 - Every selector in `<scope>/css/components.css` starts with `.eis-<scope>-`. A scope never styles bare HTML or shared classes on their own. It MAY place a shared element in its own context (`.eis-app-task-table.eis-table`) for layout only.
-- Use an `eis-*` class only if eis-ds has it. A class of your own page uses your own prefix, never `eis-`. In this repository, the frame classes of the documentation pages use `doc-`.
+- Use an `eis-*` class only if eis-ds has it. A class of your own page uses your own prefix, never `eis-`. In this repository, the frame classes of the documentation pages use `doc-`. A `doc-` frame can sit directly in an `eis-panel`, and a panel with a `doc-` class is a frame: `scripts/check-css.py` does not check their panel structure.
 - `scripts/build-tokens.py` validates the token rules. `scripts/check-css.py` validates the CSS rules. It also fails when `index.html` or a page in `site/` uses an `eis-*` class that is not in `src/**/*.css`. It does not read `<script>` blocks. Both scripts MUST pass.
 - A pattern used on two or more pages goes into the scope CSS. A pattern used on one page only stays in that page's `<style>`.
 
@@ -955,9 +971,11 @@ Rules:
 | `eis-web-section` (`__head`, `__body`) | Landing section. `__head` holds the label, the `h2` and an optional `p`. The label and the title use the left five columns. The `p` goes to the right six columns, level with the bottom of the title. Do not put a class on the `p` and do not move it out of `__head`. Without a `p`, `__head` uses the left five columns and `__body` sits next to it. With a `p`, `__body` goes below it in the right column |
 | `eis-web-numbered`, `eis-web-cards`/`eis-web-card`, `eis-web-principles`, `eis-web-steps` | Numbered list, cards with a figure, principles grid, step timeline. A chip at the end of `eis-web-card__body` keeps its own width (for example `Future` on a surface that is not available yet). `eis-web-card__figure` on the card `<figure>` puts one short code (`<span>`) at the bottom left in large mono type. `eis-web-card__figure--accent` fills it with the accent. Use the accent on one card only |
 | `eis-web-proof` | Band of proof numbers on a landing (`<dl>`): each cell is a `<div>` with a `<dt class="eis-label">`, the value `<dd>` in `metric` type and a context `<dd>` in muted ink. Cells wrap at 200px or more, with a `--line` above the band and under each cell. No panel. For a row of numbers in a panel, use the shared `eis-metrics` |
-| `eis-web-plans`, `eis-web-plan` (`__price`) | Pricing cards. `eis-web-plans` is the grid (cards of 280px or more). Each card is a `<section class="eis-panel eis-web-plan">`. It holds a label, an `h3`, a `<p class="eis-web-plan__price">` (price in `metric` type, period in a `<small>`), a `<ul>` of features and one button. The feature lists fill the card, so the buttons line up. Mark the plan you recommend with one `eis-chip--accent` in its label |
+| `eis-web-plans`, `eis-web-plan` (`__price`) | Pricing cards. `eis-web-plans` is the grid (cards of 280px or more). Each card is a `<section class="eis-panel eis-web-plan">` with an `eis-panel__body` and an `eis-panel__footer`. The body holds a label, an `h3`, a `<p class="eis-web-plan__price">` (price in `metric` type, period in a `<small>`) and a `<ul>` of features. The footer holds one button. The bodies fill the cards, so the buttons line up. Mark the plan you recommend with one `eis-chip--accent` in its label |
 | `eis-web-faq` | Questions and answers on a landing: an `eis-panel` with one `eis-disclosure` per question (the question as `<h3 class="eis-label">` in the `<summary>`). Each answer is a `<p>` in muted ink, 64 characters wide at most, with space under it. Put it on the `eis-web-section__body` |
 | `eis-web-code`, `eis-web-cta`, `eis-web-footer`, `eis-web-arrow` | Code block, closing call to action, landing footer, arrow link |
+
+Panel parts: `eis-web-scroll` (around a table) and an `eis-web-spec` table go directly in an `eis-panel`, after its head, in place of an `eis-panel__body` (elements.md, "Panel structure"). Every other web component goes in a body. `scripts/check-css.py` keeps the same list in `PANEL_CONTENT`: change both together.
 
 ###### App components
 
@@ -988,6 +1006,8 @@ Rules:
 | `eis-app-items` (`__text`) | A list of saved entries: each row has its text in mono and small buttons |
 
 For a row of metric cells, use the shared `eis-metrics` (elements.md, "Metrics").
+
+Panel parts: `eis-app-agenda`, `eis-app-cells`, `eis-app-legend`, `eis-app-bar`, `eis-app-topics`, `eis-app-people`, `eis-app-done` and `eis-app-add-bar` have their own padding. Put them directly in an `eis-panel`, after its head, in place of an `eis-panel__body` (elements.md, "Panel structure"). Every other app component goes in a body. `scripts/check-css.py` keeps the same list in `PANEL_CONTENT`: change both together.
 
 ###### Rows of fields
 
@@ -1142,6 +1162,7 @@ Run this before calling a piece, element or token done. Every box must be true.
 - [ ] Visual-only elements are `aria-hidden`. Charts have `role="img"` + a data `aria-label`.
 - [ ] Icons are Lucide: `<i data-lucide="name" class="eis-icon"></i>` in content, no typed character as an icon. Write no icon for a disclosure, a task group, notes, a done list or the sidebar toggle: the CSS draws it.
 - [ ] Dates and times in `<time datetime>`.
+- [ ] Each panel holds only its parts: head first, body, optional footer last, or a full-width part (table, list, disclosure, metrics, a scope panel part). No wrapper between the panel and its parts. No `eis-panel__body` inside another one. The Save of a settings panel is in its footer.
 - [ ] A panel body that a script fills has the `id` itself (`<div class="eis-panel__body" id="…">`). No empty `<div id>` around or inside it.
 - [ ] A panel body with two or more titled parts puts each part in an `eis-panel__section`. A body with one part has no section.
 - [ ] Interface text is in English. Example data is fictional.

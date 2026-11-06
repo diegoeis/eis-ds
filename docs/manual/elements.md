@@ -292,13 +292,27 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 - MUST NOT nest a panel inside a panel. Separate inside with hairlines.
 - Content padding: `--space-200`.
 
+### Panel structure
+
+A panel holds only its parts, as direct children, in this order:
+
 ```html
 <section class="eis-panel" aria-labelledby="run-h">
-  <header class="eis-panel__head">…</header>
-  <div class="eis-panel__body"><!-- fields, text --></div>
-  <footer class="eis-panel__footer"><button class="eis-button" type="button">Save</button></footer>
+  <header class="eis-panel__head"><h2 class="eis-panel__title" id="run-h">Run</h2></header>
+  <div class="eis-panel__body" id="run"><!-- fields, text. The id of a script goes here --></div>
+  <footer class="eis-panel__footer"><button class="eis-button eis-button--primary" type="button">Save</button></footer>
 </section>
 ```
+
+- The head is first. Use it when the panel has a title. The footer is last and optional. A panel has one head and one footer at most.
+- MUST NOT put a wrapper (`div`, `form`, `section`) between the panel and its parts. Loose content (a heading, a paragraph, a field, a button) goes in the body, never directly in the panel.
+- In place of a body, a panel can hold a full-width element that has its own padding: `eis-table` (or the horizontal scroll wrapper of a table that can't reflow), `eis-list`, `eis-disclosure`, `eis-metrics`, or a scope component that `layout.md` §7 lists as a panel part. Put it directly in the panel, after the head.
+- The panel can be the content itself: a list (`<ul class="eis-panel eis-list">`) or a form with no title (`<form class="eis-panel eis-form">`, see Form). Its children are then the rows or the fields. It has no head, body or footer.
+- MUST NOT put an `eis-panel__body` inside another `eis-panel__body` or inside an `eis-panel__section`. A `<form>` inside a body gets no `eis-panel__body` class.
+- A panel with a head and a footer that submits a form: make the `<form>` the panel (`<form class="eis-panel">`, with the head, the body and the footer in it). The `<form>` never sits between the panel and its parts.
+- The Save button of a settings panel (it saves the whole panel) goes in `eis-panel__footer`, never in the body or the head. A button that acts on one row or one field (Save of one key, Remove) stays in that row.
+- In an `eis-disclosure`, the same parts come after the `<summary>`: a body, then an optional footer.
+- `scripts/check-css.py` fails when a page in `site/` or `index.html` breaks these rules.
 
 - `eis-panel__body`: the padded content area under the head. Its children stack with a `--space-200` gap. Use it for any panel that holds fields or text, not for a panel that holds a table or a metric row.
 - When a script fills the body of a panel, put the `id` on the body itself: `<div class="eis-panel__body" id="doctor">`. The script writes the content into it. Never put an empty `<div id="…">` in the panel, or around or inside the body, for the script: the body loses its padding and gap, or the content gets them twice. The same rule applies to an `eis-panel__section` that a script fills.

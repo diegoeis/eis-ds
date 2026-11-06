@@ -205,6 +205,15 @@ fieldset.eis-field{border:0}
 .eis-list > li > :is(p,.eis-grow){flex:1;min-width:0;overflow-wrap:anywhere}
 .eis-list > li > p > small{display:block}
 .eis-list > li > :not(p,.eis-grow){flex:none}
+/* a row with a title, a description and a group of options: <div class="eis-grow"> holds h4–h6 + p + fieldset.
+   The heading looks like the <p> title, the <p> after it like the <small> description. The fieldset puts its
+   options in a row that wraps, and hides its legend (the heading already names the row) */
+.eis-list > li > .eis-grow > :is(h4,h5,h6){font-family:var(--type-body-font-family);font-size:var(--type-body-font-size);
+  font-weight:var(--type-body-font-weight);line-height:var(--type-body-line-height)}
+.eis-list > li > .eis-grow > :is(h4,h5,h6) + p{font-family:var(--type-mono-font-family);font-size:var(--type-mono-font-size);color:var(--ink-muted)}
+.eis-list > li > .eis-grow > :is(h4,h5,h6) ~ fieldset{display:flex;flex-wrap:wrap;gap:var(--space-100) var(--space-300);
+  margin-top:var(--space-100);border:0;min-inline-size:0}
+.eis-list > li > .eis-grow > :is(h4,h5,h6) ~ fieldset > legend{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 
 /* ---------- hr: a hairline between two parts of the same block that have no title (parts with a title: eis-panel__section) ---------- */
 hr{border:0;border-top:var(--border-width-100) solid var(--line);margin:0;inline-size:100%}

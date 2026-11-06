@@ -378,13 +378,45 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section class="eis-web-doc" id="lists" aria-labelledby="lists-h">
     <header>
       <h2 id="lists-h"><small class="eis-label">08</small>Lists</h2>
-      <p>Rows separated by hairlines. Avatar is initials in a circle, never a photo frame with colour.</p>
+      <p>Rows separated by hairlines. Avatar is initials in a circle, never a photo frame with colour. A row that holds more than a title and a description puts a heading, a <code>&lt;p&gt;</code> and a <code>&lt;fieldset&gt;</code> of checkboxes in an <code>eis-grow</code> block: the options wrap on narrow screens and the legend is hidden.</p>
     </header>
+    <div>
     <ul class="eis-panel eis-list">
       <li><span class="eis-avatar" aria-hidden="true">AN</span><p>Ana<small class="eis-mono">Release plan with the 6 milestones</small></p><span class="eis-chip eis-chip--accent">Overdue</span></li>
       <li><span class="eis-avatar" aria-hidden="true">BR</span><p>Bruno<small class="eis-mono">Test list for the provider migration</small></p><span class="eis-chip">Waiting</span></li>
       <li><span class="eis-avatar" aria-hidden="true">DV</span><p>Davi<small class="eis-mono">Payment slip in the checkout drawer</small></p><span class="eis-chip eis-chip--outline">In review</span></li>
     </ul>
+    <ul class="eis-panel eis-list" aria-label="Topics and their workspaces">
+      <li>
+        <div class="eis-grow">
+          <h6>Atlas</h6>
+          <p>project — New billing engine</p>
+          <fieldset>
+            <legend>Workspaces for Atlas</legend>
+            <label class="eis-choice"><input class="eis-checkbox" type="checkbox" checked> Payments</label>
+            <label class="eis-choice"><input class="eis-checkbox" type="checkbox" checked> Growth</label>
+            <label class="eis-choice"><input class="eis-checkbox" type="checkbox"> Platform</label>
+            <label class="eis-choice"><input class="eis-checkbox" type="checkbox"> Personal</label>
+          </fieldset>
+        </div>
+        <button class="eis-button eis-button--sm eis-button--danger" type="button">Remove</button>
+      </li>
+      <li>
+        <div class="eis-grow">
+          <h6>Harbor</h6>
+          <p>project — Warehouse app for the night shift</p>
+          <fieldset>
+            <legend>Workspaces for Harbor</legend>
+            <label class="eis-choice"><input class="eis-checkbox" type="checkbox"> Payments</label>
+            <label class="eis-choice"><input class="eis-checkbox" type="checkbox"> Growth</label>
+            <label class="eis-choice"><input class="eis-checkbox" type="checkbox" checked> Platform</label>
+            <label class="eis-choice"><input class="eis-checkbox" type="checkbox"> Personal</label>
+          </fieldset>
+        </div>
+        <button class="eis-button eis-button--sm eis-button--danger" type="button">Remove</button>
+      </li>
+    </ul>
+    </div>
   </section>
 
   <!-- DIVIDER -->

@@ -413,6 +413,30 @@ A list inside a panel body, rows to the panel edges:
 - A row is one line: an optional leading `eis-avatar`, then one `<p>` that takes the free width, then optional trailing items (chips, buttons, a switch). The trailing items stay at the right end and never shrink.
 - The `<p>` holds the title. An optional `<small class="eis-mono">` under it holds the description, in muted ink. Long text wraps.
 - When the main part of a row is not a `<p>` (for example a `<form>` that edits the row in place), give it `eis-grow`. It then takes the free width like the `<p>`.
+
+A row with a title, a description and a group of options (a topic and the workspaces it applies to):
+
+```html
+<ul class="eis-list eis-bleed">
+  <li>
+    <div class="eis-grow">
+      <h6>Atlas</h6>
+      <p>project — New billing engine</p>
+      <fieldset>
+        <legend>Workspaces for Atlas</legend>
+        <label class="eis-choice"><input class="eis-checkbox" type="checkbox" checked> Payments</label>
+        <label class="eis-choice"><input class="eis-checkbox" type="checkbox"> Growth</label>
+      </fieldset>
+    </div>
+    <button class="eis-button eis-button--sm eis-button--danger" type="button">Remove</button>
+  </li>
+</ul>
+```
+
+- Use this form when a row holds more than a title and a description. The main part is a `<div class="eis-grow">` with a heading, then a `<p>`, then a `<fieldset>`. The `<p>` and the `<fieldset>` are optional.
+- The heading (`h4`, `h5` or `h6`, no class) looks like the title of the short form. The `<p>` right after it looks like the `<small>` description: mono, muted.
+- The `<fieldset>` needs no class. It puts its options (`eis-choice` + `eis-checkbox`) in a row that wraps on narrow screens. Its `<legend>` is hidden on screen, but it MUST name the group for screen readers: write the row title in it (`Workspaces for Atlas`).
+- The short form (`<p>` + `<small>`) still works. Use it when the row has only a title and a description.
 - Put the box on the list itself (`eis-panel eis-list`) or put the list in an `eis-panel__body`. In a body, add `eis-bleed` so the rows touch the panel edges and do not get the body padding twice.
 - Avatar: initials in a circle, `aria-hidden` (the name is in the text). No photos, no colour fills.
 

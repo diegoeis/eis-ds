@@ -71,7 +71,7 @@ Use the role above whenever one exists. Use these primitives directly **only** f
 | `--color-neutral-200` | `#dddddd` | Data ramp, lowest step. |
 | `--color-neutral-300` | `#cfcfcf` | Data ramp. (As a border, use `--line`.) |
 | `--color-neutral-400` | `#a3a3a3` | Data ramp. |
-| `--color-neutral-500` | `#858585` | Data ramp. Icons and non-text graphics (3.4:1 on panel). Never body text. |
+| `--color-neutral-500` | `#858585` | Data ramp. Icons and non-text graphics (3.4:1 on panel). Section labels in the app sidebar (`.eis-app-sidebar .eis-label`, author's choice). Never body text. |
 | `--color-neutral-600` | `#6d6d6d` | Data ramp. (As text, use `--ink-muted`.) |
 | `--color-neutral-900` | `#111111` | Data ramp, highest step. (As text, use `--ink`.) |
 

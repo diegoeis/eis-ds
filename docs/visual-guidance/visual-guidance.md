@@ -315,6 +315,7 @@ Candidates will be compared side by side in HTML before the decision.
 | 2026-11-03 | Stacked `eis-disclosure` elements get a `--line` between them (`.eis-disclosure + .eis-disclosure`) | The manual already said so, but the CSS did not draw it: a list of closed disclosures had no dividers, unlike `eis-app-tasks` groups |
 | 2026-10-25 | Reference images removed from the repository. Pinterest links are the source of record | Keep the repository small (82 MB of images) |
 | 2026-10-25 | Scopes: `src/shared/` (tokens, base, elements, one `shared.css` entry), `src/web/` (sites and docs) and `src/app/` (dashboards). Scope tokens reference shared ones. Prefixes `eis-web-`/`--web-` and `eis-app-`/`--app-`, checked by `scripts/check-css.py` | Several systems in one: same colours and spacing, no conflicts. Copy shared + one scope to start a project |
+| 2026-11-09 | `eis-app-sidebar__foot` takes one `eis-app-nav__section` before the toggle: plain (underlined) links under a label, padded `--space-100` so label and links line up with the toggle's arrow. Section labels in the app sidebar (nav and footer) are `--color-neutral-500` (3.4:1 on the panel, below 4.5:1 for small text) | Author: the links to the other eis-ops plugin pages move from the nav to the bottom of the sidebar, and the group labels step back from the items |
 
 ### Open
 

@@ -170,7 +170,7 @@ Panel parts: `eis-web-scroll` (around a table) and an `eis-web-spec` table go di
 |---|---|
 | `eis-app-shell` | On `<body>`: sidebar + main grid. Below 1024px: the top bar, then the main region; the sidebar is a drawer |
 | `eis-app-topbar` (`__title`) + `data-eis-app-drawer-toggle` | First in `<body>`, below 1024px only: a bar fixed at the top with the menu button on the left (`eis-button--ghost eis-button--icon`, Lucide `menu`) and the page name on the right. The button opens the sidebar as a drawer. Driven by `app/js/sidebar.js`. See "Mobile drawer" below |
-| `eis-app-sidebar` (`__foot`), `eis-app-brand`, `eis-app-nav` (`__section`, `__count`, `__toggle`, `__sub`) | Sidebar, brand, navigation with counts. The sidebar is as tall as the window and scrolls inside when its content is taller; `__foot` stays at its bottom, on the sidebar background. An item that holds a sub-list is either a link followed by an arrow-only `<button class="eis-app-nav__toggle">` (the link navigates, the arrow opens the list) or a `<button class="eis-app-nav__toggle">` with the item's text (the whole row opens the list). Both take `aria-expanded aria-controls data-eis-app-nav-toggle` and are followed by `<ul class="eis-app-nav__sub">`; `app/js/sidebar.js` opens and closes it and keeps the state. See "Nav sub-list" below |
+| `eis-app-sidebar` (`__foot`), `eis-app-brand`, `eis-app-nav` (`__section`, `__count`, `__toggle`, `__sub`) | Sidebar, brand, navigation with counts. The sidebar is as tall as the window and scrolls inside when its content is taller; `__foot` stays at its bottom, on the sidebar background. `__foot` takes one `eis-app-nav__section` before the toggle, for links to other apps (the eis-ops plugin pages): a label, then plain links, lined up with the toggle's arrow. Section labels (`eis-label`) in the sidebar, in the nav and in the footer, are `--color-neutral-500`. An item that holds a sub-list is either a link followed by an arrow-only `<button class="eis-app-nav__toggle">` (the link navigates, the arrow opens the list) or a `<button class="eis-app-nav__toggle">` with the item's text (the whole row opens the list). Both take `aria-expanded aria-controls data-eis-app-nav-toggle` and are followed by `<ul class="eis-app-nav__sub">`; `app/js/sidebar.js` opens and closes it and keeps the state. See "Nav sub-list" below |
 | `eis-app-sidebar__toggle` + `data-eis-app-sidebar-toggle` | Collapse button at the bottom left of the sidebar, last in `eis-app-sidebar__foot`. Driven by `app/js/sidebar.js`. Collapsed, the sidebar keeps only the button. Above 1024px only. See "Sidebar collapse" below |
 | `eis-app-main`, `eis-app-page-head` (`__meta`), `eis-app-toolbar` | Main region (content max `--app-size-main`, in the centre of the free space), page head, action toolbar. See "Page head" below |
 | `eis-app-grid` (`--halves`, `--main`), `eis-app-stack` | Panel grids and the side column stack |
@@ -221,9 +221,13 @@ Panel parts: `eis-app-agenda`, `eis-app-cells`, `eis-app-legend`, `eis-app-bar`,
 The sidebar can collapse to a narrow strip (`--app-size-sidebar-collapsed`). Collapsed, it shows only the toggle. The toggle does not move. Only its arrow turns.
 
 1. Give the sidebar an `id`.
-2. Put the toggle last in the sidebar footer. Put links such as Settings in the main nav, not in the footer:
+2. Put the toggle last in the sidebar footer. Put links such as Settings in the main nav. The footer takes only links to other apps, in one `eis-app-nav__section` before the toggle:
    ```html
    <footer class="eis-app-sidebar__foot">
+     <section class="eis-app-nav__section" aria-labelledby="nav-apps">
+       <h2 class="eis-label" id="nav-apps">Apps</h2>
+       <ul><li><a href="…">All apps</a></li><li><a href="…">Other app</a></li></ul>
+     </section>
      <button class="eis-app-sidebar__toggle" type="button" aria-controls="sidebar"
              aria-expanded="true" aria-label="Sidebar" data-eis-app-sidebar-toggle></button>
    </footer>
@@ -254,7 +258,7 @@ The script sets `aria-expanded` on the button. The CSS reads it. When the drawer
 - A click on a nav item: a link, or a button that is not a sub-list toggle.
 - A window that grows above 1024px.
 
-The drawer shows the whole sidebar: section labels, nav, and the footer. A footer that holds only the collapse toggle is hidden. Without the top bar, a page has no navigation below 1024px.
+The drawer shows the whole sidebar: section labels, nav, and the footer. A footer that holds only the collapse toggle (and `hidden` parts) is hidden. Without the top bar, a page has no navigation below 1024px.
 
 ### Nav sub-list
 

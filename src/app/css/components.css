@@ -48,6 +48,12 @@
   position:sticky;bottom:0;background:var(--surface-panel)}
 .eis-app-sidebar__foot dl{display:grid;grid-template-columns:auto 1fr;gap:var(--space-100) var(--space-200)}
 .eis-app-sidebar__foot dd{text-align:right}
+/* links to other apps (the eis-ops plugin pages): one eis-app-nav__section in the footer, before the toggle.
+   Plain links under the label. The label and the links line up with the toggle's arrow */
+.eis-app-sidebar__foot .eis-app-nav__section{padding-left:var(--space-100)}
+.eis-app-sidebar__foot .eis-app-nav__section > .eis-label{padding:0}
+/* section labels in the sidebar (nav and footer) are mid gray: they name a group, the items are the content */
+.eis-app-sidebar .eis-label{color:var(--color-neutral-500)}
 /* top bar: the page's first row below 1024px (a menu button that opens the sidebar as a drawer, then the page name).
    Hidden on wide screens. js/sidebar.js drives the button */
 .eis-app-topbar{display:none}
@@ -72,7 +78,7 @@
   .eis-app-sidebar__toggle{--bg:transparent;display:flex;align-items:center;justify-content:flex-start;
     inline-size:var(--app-size-nav-item);block-size:var(--app-size-nav-item);padding:var(--space-100);
     border:0;border-radius:var(--radius-100);background:var(--bg);color:var(--ink);cursor:pointer}
-  .eis-app-sidebar__foot > * + .eis-app-sidebar__toggle{margin-top:var(--space-200)}
+  .eis-app-sidebar__foot > :not([hidden]) + .eis-app-sidebar__toggle{margin-top:var(--space-200)}
   .eis-app-sidebar__toggle:hover{--bg:var(--surface-canvas)}
   /* the chevron icon: points left (collapse), turns to point right (expand) */
   .eis-app-sidebar__toggle::before{content:"";flex:none;inline-size:var(--space-200);block-size:var(--space-200);background:currentColor;mask:var(--icon-chevron-left) center / contain no-repeat}
@@ -326,8 +332,8 @@
     translate:-100% 0;visibility:hidden;transition:translate .2s ease,visibility 0s linear .2s}
   .eis-app-shell::after{content:"";position:fixed;inset:0;z-index:20;background:color-mix(in srgb,var(--surface-inverse) 40%,transparent);
     opacity:0;visibility:hidden;transition:opacity .2s ease,visibility 0s linear .2s}
-  /* a footer that holds only the collapse toggle has nothing to show in the drawer */
-  .eis-app-sidebar__foot:not(:has(> :not(.eis-app-sidebar__toggle))){display:none}
+  /* a footer that holds only the collapse toggle (and hidden parts) has nothing to show in the drawer */
+  .eis-app-sidebar__foot:not(:has(> :not(.eis-app-sidebar__toggle):not([hidden])))){display:none}
   .eis-app-shell:has(.eis-app-topbar [aria-expanded="true"]){overflow:hidden}
   .eis-app-shell:has(.eis-app-topbar [aria-expanded="true"]) .eis-app-sidebar{translate:0 0;visibility:visible;transition:translate .2s ease}
   .eis-app-shell:has(.eis-app-topbar [aria-expanded="true"])::after{opacity:1;visibility:visible;transition:opacity .2s ease}

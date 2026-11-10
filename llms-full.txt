@@ -323,6 +323,7 @@ Every basic element: when to use it, the HTML to copy, variants, and what is for
 | Pick several independent options | **Checkbox** |
 | Pick one of a few options in a form | **Radio** group |
 | Pick one of many options | **Select** |
+| Pick several of many options, and show the picks in the field | **Multi-select** `<div class="eis-multiselect">` |
 | Turn a setting on/off that applies immediately | **Switch** |
 | Switch the view of the current page (Today / Week / All) | **Tabs** |
 | Show items one per row, with a short text and an action or status | **List** `<ul class="eis-list">` |
@@ -428,6 +429,7 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 
 - Text in sentence case (`Overdue`, not `OVERDUE`).
 - Never wrap a chip in `<a>` or `<button>`.
+- A chip that shows a value the user picked can hold one remove button, `<button class="eis-chip__remove">`, after its text. The CSS draws the Lucide `x`. Give the button `aria-label` and `title` ("Remove Billing"). Only the button reacts to the pointer. The chip stays without hover. The multi-select writes these chips for you.
 - Give each category one colour, and keep it in all views. Use one tone per set: all mid tone or all pastel. Use the mid tone when the chips must stand out, and the pastel tone in dense lists.
 - Never use a category colour for a state. Overdue is `--accent`, done is `--success`.
 - With more than seven categories, use `--outline` for the rest. Do not repeat a colour in one view.
@@ -461,11 +463,47 @@ Naming: the orange is **accent** (`--accent`, `eis-button--accent`, `eis-chip--a
 ```
 
 - Label always above the control, always present, linked with `for`/`id`. A placeholder is not a label.
+- A fieldset field (a group of options, a multi-select) uses `<legend>` as its label. The legend has the same style and the same gap to the control as a label.
 - Use the right `type`: `email`, `date`, `number`, `search`, `url`…
 - Error: `aria-invalid="true"` on the control + `aria-describedby` pointing to `.eis-field__error`. Never colour alone.
 - Hint and error sit below the control. An empty hint or error takes no room, so a script can keep the `<p>` and fill it on demand.
 - Fields always use body type, also inside a label-styled container (a panel title being edited).
 - Put fields in a `<form>`. Put the actions at the end, the `--primary` button last.
+
+###### Multi-select
+
+```html
+<fieldset class="eis-field">
+  <legend>Teams</legend>
+  <div class="eis-multiselect" data-eis-multiselect>
+    <ul class="eis-multiselect__chips" aria-label="Selected teams"></ul>
+    <details class="eis-multiselect__menu">
+      <summary><span class="eis-multiselect__placeholder">Select teams</span></summary>
+      <div class="eis-multiselect__options">
+        <label class="eis-choice"><input class="eis-checkbox" type="checkbox" name="teams" value="billing" checked> Billing</label>
+        <label class="eis-choice"><input class="eis-checkbox" type="checkbox" name="teams" value="platform"> Platform</label>
+        <label class="eis-choice"><input class="eis-checkbox" type="checkbox" name="teams" value="data"> Data</label>
+      </div>
+    </details>
+  </div>
+</fieldset>
+```
+
+Load the script at the end of `<body>`:
+
+```html
+<script src="<src>/shared/js/multiselect.js"></script>
+```
+
+- Use it to pick several values from a list of about 5 to 30 options: teams, tags, people. The picks stay visible in the field. For 2 to 4 options, show the checkboxes in a `fieldset` (see "Checkbox, radio, switch"). To pick one value, use the select.
+- The options are native checkboxes in a `<details>`. The form sends the checked values with or without the script. Give every checkbox the same `name`.
+- The field is a `fieldset` with a `legend`, because it holds a group of controls.
+- `shared/js/multiselect.js` shows each checked option as a chip with a remove button (`eis-chip__remove`), in the order of the list. The remove button unchecks the option. Esc and a click outside the field close the list. After a remove, the focus goes to the next remove button, or to the summary.
+- The placeholder in `__placeholder` shows while the user has no option checked. With a value, it leaves the view, but screen readers still read it as the name of the summary.
+- The list stays open while the user checks options. It is as wide as the field, and scrolls when it is taller than 256px (2 × `--space-500`).
+- The field grows in height when the chips wrap to more rows. With no value, or with chips on one row, it is 40px tall, as the other fields.
+- A script that checks an option from code must dispatch a `change` event (`bubbles: true`) on the checkbox, so the chips follow. A form reset updates the chips.
+- Error: put `aria-invalid="true"` and `aria-describedby` on the `fieldset`, and the `.eis-field__error` after the `.eis-multiselect`.
 
 ###### Form
 
@@ -940,7 +978,7 @@ eis-ds is several design systems in one. They share the same base and never conf
 
 | Folder | Use for | Load | Class prefix | Variable prefix |
 |---|---|---|---|---|
-| `src/shared/` | Every scope | Imported by each scope entry. Optional `shared/js/icons.js` (with Lucide) for icons | `eis-` | `--color-`, `--space-`, `--ink`… |
+| `src/shared/` | Every scope | Imported by each scope entry. Optional `shared/js/icons.js` (with Lucide) for icons, `shared/js/multiselect.js` for the multi-select | `eis-` | `--color-`, `--space-`, `--ink`… |
 | `src/web/` | Websites, landing pages, marketing pages, documentation | `web/web.css` or `dist/eis-web.min.css`, optional `web/js/lines.js` | `eis-web-` | `--web-` |
 | `src/app/` | Dashboards, tools, system screens | `app/app.css` or `dist/eis-app.min.css`, optional `app/js/sidebar.js` | `eis-app-` | `--app-` |
 

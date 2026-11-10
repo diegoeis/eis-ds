@@ -127,7 +127,7 @@ eis-ds is several design systems in one. They share the same base and never conf
 
 | Folder | Use for | Load | Class prefix | Variable prefix |
 |---|---|---|---|---|
-| `src/shared/` | Every scope | Imported by each scope entry. Optional `shared/js/icons.js` (with Lucide) for icons | `eis-` | `--color-`, `--space-`, `--ink`… |
+| `src/shared/` | Every scope | Imported by each scope entry. Optional `shared/js/icons.js` (with Lucide) for icons, `shared/js/multiselect.js` for the multi-select | `eis-` | `--color-`, `--space-`, `--ink`… |
 | `src/web/` | Websites, landing pages, marketing pages, documentation | `web/web.css` or `dist/eis-web.min.css`, optional `web/js/lines.js` | `eis-web-` | `--web-` |
 | `src/app/` | Dashboards, tools, system screens | `app/app.css` or `dist/eis-app.min.css`, optional `app/js/sidebar.js` | `eis-app-` | `--app-` |
 

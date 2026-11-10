@@ -89,11 +89,21 @@
 .eis-chip.eis-chip--pastel{--bg:color-mix(in srgb,var(--hue) calc(var(--color-pastel) * 100%),var(--color-white))}
 .eis-chip--hatch{--bg:repeating-linear-gradient(135deg,var(--surface-panel) 0 3px,var(--line) 3px 4px);--bd:var(--line)}
 .eis-chip--dot::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+/* remove: the button inside a chip that takes the value off (multi-select). Lucide x, drawn by the CSS.
+   The chip itself stays without hover: only the button reacts */
+.eis-chip__remove{flex:none;display:grid;place-items:center;inline-size:var(--space-200);block-size:var(--space-200);
+  margin-right:calc(var(--space-100) / -2);border:0;border-radius:var(--radius-full);background:transparent;color:inherit;cursor:pointer}
+.eis-chip__remove::before{content:"";inline-size:calc(var(--space-100) * 1.5);block-size:calc(var(--space-100) * 1.5);
+  background:currentColor;mask:var(--icon-x) center / contain no-repeat}
+.eis-chip__remove:hover{background:var(--surface-hover);color:var(--ink)}
+.eis-chip__remove:focus-visible{outline-offset:0}
 
 /* ---------- form fields ---------- */
 .eis-field{display:flex;flex-direction:column;gap:var(--space-100);min-width:0}
 /* a fieldset field (a group of options) has no border. The reset clears its padding and margin, min-width:0 its min-inline-size */
 fieldset.eis-field{border:0}
+/* a float takes the legend out of its special place, so it becomes a flex item and keeps the same gap as a label */
+fieldset.eis-field > legend{float:left}
 .eis-field > label,.eis-field > legend{font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);
   font-weight:var(--type-label-font-weight);letter-spacing:var(--type-label-letter-spacing);text-transform:uppercase;color:var(--ink)}
 .eis-field__hint{font-family:var(--font-family-mono);font-size:var(--font-size-200);color:var(--ink-muted)}
@@ -115,6 +125,32 @@ fieldset.eis-field{border:0}
 .eis-select{appearance:none;padding-right:var(--space-300);cursor:pointer;
   background-image:linear-gradient(45deg,transparent 50%,var(--ink) 50%),linear-gradient(135deg,var(--ink) 50%,transparent 50%);
   background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;background-size:5px 5px;background-repeat:no-repeat}
+
+/* multi-select: a field that holds many values. Native checkboxes in a <details> list; shared/js/multiselect.js
+   shows each checked option as a chip with a remove button. The field grows in height when the chips wrap */
+.eis-multiselect{--bd:var(--ink-muted);position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:calc(var(--space-100) / 2);
+  inline-size:100%;min-height:40px;padding:calc(var(--space-100) / 2) var(--space-100);background:var(--surface-panel);
+  border:var(--border-width-100) solid var(--bd);border-radius:var(--radius-100);font-size:var(--font-size-300)}
+.eis-multiselect:hover,.eis-multiselect:has([open]){--bd:var(--ink)}
+.eis-multiselect:has(summary:focus-visible){outline:2px solid var(--ink)}
+fieldset[aria-invalid="true"] > .eis-multiselect{--bd:var(--accent-ink)}
+.eis-multiselect__chips{display:contents}
+.eis-multiselect__chips .eis-chip{max-inline-size:100%}
+.eis-multiselect__menu{flex:1 1 var(--space-300);min-inline-size:0}
+.eis-multiselect__menu > summary{display:flex;align-items:center;justify-content:space-between;gap:var(--space-100);
+  min-height:calc(40px - 2 * var(--border-width-100) - var(--space-100));padding-left:var(--space-100);
+  list-style:none;cursor:pointer;color:var(--ink-muted);outline:0}
+.eis-multiselect__menu > summary::-webkit-details-marker{display:none}
+.eis-multiselect__menu > summary::after{content:"";flex:none;margin-left:auto;inline-size:var(--space-200);block-size:var(--space-200);
+  background:var(--ink);mask:var(--icon-chevron-down) center / contain no-repeat;transition:rotate .12s linear}
+.eis-multiselect__menu[open] > summary::after{rotate:180deg}
+/* with a value, the placeholder leaves the view but stays the name of the summary for screen readers */
+.eis-multiselect:has(:checked) .eis-multiselect__placeholder{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.eis-multiselect__options{position:absolute;top:calc(100% + var(--space-100) / 2);left:calc(var(--border-width-100) * -1);right:calc(var(--border-width-100) * -1);
+  z-index:2;display:flex;flex-direction:column;max-height:calc(var(--space-500) * 2);overflow-y:auto;padding:calc(var(--space-100) / 2);
+  background:var(--surface-panel);border:var(--border-width-100) solid var(--line);border-radius:var(--radius-100)}
+.eis-multiselect__options .eis-choice{padding:var(--space-100);border-radius:calc(var(--radius-100) - var(--space-100) / 2)}
+.eis-multiselect__options .eis-choice:hover{background:var(--surface-hover)}
 
 /* form: a <form> of fields in two equal columns, on an eis-panel. A wide field takes the whole row.
    The actions close the form on a row of their own, at the right, under a hairline. One column at ≤640px */

@@ -191,6 +191,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <option>Priority</option><option>Billing</option><option>Platform</option><option>Data</option>
         </select>
       </div>
+      <fieldset class="eis-field">
+        <legend>Teams</legend>
+        <div class="eis-multiselect" data-eis-multiselect>
+          <ul class="eis-multiselect__chips" aria-label="Selected teams"></ul>
+          <details class="eis-multiselect__menu">
+            <summary><span class="eis-multiselect__placeholder">Select teams</span></summary>
+            <div class="eis-multiselect__options">
+              <label class="eis-choice"><input class="eis-checkbox" type="checkbox" name="teams" value="billing" checked> Billing</label>
+              <label class="eis-choice"><input class="eis-checkbox" type="checkbox" name="teams" value="platform" checked> Platform</label>
+              <label class="eis-choice"><input class="eis-checkbox" type="checkbox" name="teams" value="data"> Data</label>
+              <label class="eis-choice"><input class="eis-checkbox" type="checkbox" name="teams" value="mobile"> Mobile</label>
+              <label class="eis-choice"><input class="eis-checkbox" type="checkbox" name="teams" value="security"> Security</label>
+              <label class="eis-choice"><input class="eis-checkbox" type="checkbox" name="teams" value="design"> Design</label>
+            </div>
+          </details>
+        </div>
+      </fieldset>
       <div class="eis-field">
         <label for="f-due">Due</label>
         <input class="eis-input" id="f-due" name="due" type="date" value="2026-10-26">
@@ -444,5 +461,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </main>
 <script src="https://unpkg.com/lucide@1.66.0/dist/umd/lucide.min.js"></script>
 <script src="../src/shared/js/icons.js"></script>
+<script src="../src/shared/js/multiselect.js"></script>
 </body>
 </html>

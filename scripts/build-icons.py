@@ -30,7 +30,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "src" / "shared" / "css" / "icons.css"
 LUCIDE = "1.66.0"
-ICONS = ["plus", "minus", "check", "chevron-left"]
+ICONS = ["plus", "minus", "check", "chevron-left", "chevron-down", "x"]
 URL = "https://unpkg.com/lucide-static@{v}/icons/{name}.svg"
 
 

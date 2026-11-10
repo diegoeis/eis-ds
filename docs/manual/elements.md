@@ -31,6 +31,7 @@ Every basic element: when to use it, the HTML to copy, variants, and what is for
 | Split two parts of the same panel body that have no title | **Divider** `<hr>` |
 | Show rows × columns of data | **Table** |
 | Group content in a container | **Panel** |
+| Group the buttons that end a form or a step, at the right | **Actions** `<div class="eis-actions">` |
 | Content that opens and closes | **Disclosure** (`<details>`) |
 | Label–value pairs (metrics, metadata) | `<dl>`. A row of numbers: **Metrics** `<dl class="eis-metrics">` |
 
@@ -221,7 +222,7 @@ Load the script at the end of `<body>`:
     <label for="notes">Notes</label>
     <textarea class="eis-textarea" id="notes" name="notes"></textarea>
   </div>
-  <div class="eis-form__actions">
+  <div class="eis-actions">
     <button class="eis-button eis-button--ghost" type="reset">Clear</button>
     <button class="eis-button eis-button--primary" type="submit">Create task</button>
   </div>
@@ -230,10 +231,25 @@ Load the script at the end of `<body>`:
 
 - `.eis-form` goes on the `<form>`. It sets the fields in two equal columns, with its own padding. Put it on the same element as `eis-panel`: the form is the panel.
 - `.eis-field--wide` makes a field take the whole row: a textarea, a long text. It works only inside `.eis-form`.
-- `.eis-form__actions` is the last child. It takes the whole row, puts the buttons at the right, and has a `--line` above it. The `--primary` button goes last.
+- Close the form with an `.eis-actions` as the last child (see "Actions"). In `.eis-form` it takes the whole row.
 - At ≤640px the form has one column.
 - Use it for a form that is the whole content of a panel (create, edit). Don't use it for fields in an `eis-panel__body` next to other content.
 - In the app scope, a settings panel lays out its fields with `eis-app-form-row` inside `eis-panel__body`, and its buttons in `eis-panel__footer` (layout.md §7). Don't mix `eis-form` with `eis-app-form-row`.
+
+### Actions
+
+```html
+<div class="eis-actions">
+  <button class="eis-button eis-button--ghost" type="button">Cancel</button>
+  <button class="eis-button eis-button--primary" type="submit">Create task</button>
+</div>
+```
+
+- `.eis-actions` groups the buttons of one task: Cancel and Create, Clear and Save. It puts them at the right, in one row that wraps, with a `--line` above it.
+- The `--primary` button goes last. Use one `--primary` button in a group, or none.
+- Use it in an `eis-form` (as the last child), at the end of an `eis-panel__body`, or in a page section with no panel. It is not a panel part: never put it as a direct child of an `eis-panel`.
+- Use `<button>` elements, or `<a class="eis-button">` for a link. A group holds only buttons.
+- `eis-actions` vs `eis-panel__footer`: the footer is the bottom part of a panel. It has no line above it and acts on the whole panel. The Save of a settings panel stays in `eis-panel__footer` (see "Panel structure"). Use `eis-actions` for a group of buttons inside content: the end of a form, or a step in a body.
 
 ## Checkbox, radio, switch
 

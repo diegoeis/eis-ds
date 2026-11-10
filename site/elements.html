@@ -104,6 +104,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <p class="doc-note"><code>.eis-button</code> (white) + <code>--black</code> · <code>--ghost</code> · <code>--accent</code> · <code>--success</code>. Variants change colour only. Sizes: <code>--sm</code> · default · <code>--lg</code>. Icons (Lucide, <code>eis-icon</code>) go left or right of the text. <code>--icon</code>: square, icon only, with <code>aria-label</code> and <code>title</code>. One <code>--black</code> per view; <code>--accent</code> only for the action that is itself the accent (record, go live).</p>
     </div>
+    <p><code>eis-actions</code> groups the buttons that end a form or a step: at the right, in a row that wraps, under a <code>--line</code>. The <code>--primary</code> button goes last. It works in an <code>eis-form</code> (see Fields), at the end of a panel body, or with no panel. The Save of a settings panel stays in <code>eis-panel__footer</code>.</p>
+    <div>
+      <div class="eis-panel">
+        <div class="eis-panel__body">
+          <p>Import 42 tasks from Sprint review 21.10 into Billing?</p>
+          <div class="eis-actions">
+            <button class="eis-button eis-button--ghost" type="button">Cancel</button>
+            <button class="eis-button eis-button--primary" type="button">Import</button>
+          </div>
+        </div>
+      </div>
+      <div class="eis-actions">
+        <button class="eis-button" type="button">Export CSV</button>
+        <button class="eis-button eis-button--primary" type="button"><i data-lucide="plus" class="eis-icon"></i>New task</button>
+      </div>
+    </div>
   </section>
 
   <!-- CHIPS -->
@@ -225,7 +241,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <label for="f-source">Source</label>
         <input class="eis-input" id="f-source" name="source" type="text" value="Sprint review 21.10" disabled>
       </div>
-      <div class="eis-form__actions">
+      <div class="eis-actions">
         <button class="eis-button eis-button--ghost" type="reset">Clear</button>
         <button class="eis-button eis-button--primary" type="submit">Create task</button>
       </div>

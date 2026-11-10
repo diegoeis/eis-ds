@@ -152,14 +152,17 @@ fieldset[aria-invalid="true"] > .eis-multiselect{--bd:var(--accent-ink)}
 .eis-multiselect__options .eis-choice:hover{background:var(--surface-hover)}
 
 /* form: a <form> of fields in two equal columns, on an eis-panel. A wide field takes the whole row.
-   The actions close the form on a row of their own, at the right, under a hairline. One column at ≤640px */
+   An eis-actions closes the form on a row of its own. One column at ≤640px */
 .eis-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-300) var(--space-200);padding:var(--space-300) var(--space-200)}
 .eis-form .eis-field--wide{grid-column:1/-1}
-.eis-form__actions{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:var(--space-100);justify-content:flex-end;
-  padding-top:var(--space-200);border-top:var(--border-width-100) solid var(--line)}
+.eis-form > .eis-actions{grid-column:1/-1}
 @media (max-width:640px){
   .eis-form{grid-template-columns:minmax(0,1fr)}
 }
+
+/* actions: a group of buttons, at the right, under a hairline. Wraps. In a form, on a panel body or alone */
+.eis-actions{display:flex;flex-wrap:wrap;gap:var(--space-100);justify-content:flex-end;
+  padding-top:var(--space-200);border-top:var(--border-width-100) solid var(--line)}
 
 /* checkbox, radio, switch: native inputs, restyled */
 .eis-checkbox,.eis-radio{appearance:none;flex:none;width:16px;height:16px;margin-top:2px;cursor:pointer;

@@ -6,15 +6,20 @@
    - closes the list on Esc or on a click outside the field.
    Load it at the end of <body>:
      <script src="<src>/shared/js/multiselect.js"></script>
+   It starts every [data-eis-multiselect] that is in the page when it loads. A page that adds a field
+   later (from a template) calls EisMultiselect.init(container) after it adds the field. The call starts
+   each field in the container, or the container itself, and skips a field that already runs.
    The chips follow the checkboxes. A script that checks a box from code must dispatch a "change" event
    on it (bubbles: true) for the chips to follow. A form reset updates the chips. */
 (function () {
   "use strict";
-  function init(root) {
+  function start(root) {
+    if (root.eisMultiselect) return;
     var chips = root.querySelector(".eis-multiselect__chips");
     var menu = root.querySelector(".eis-multiselect__menu");
     var summary = menu && menu.querySelector("summary");
     if (!chips || !menu || !summary) return;
+    root.eisMultiselect = true;
     var boxes = function () { return root.querySelectorAll(".eis-multiselect__options input[type=checkbox]"); };
 
     function name(box) {
@@ -58,12 +63,26 @@
     root.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && menu.open) { menu.open = false; summary.focus(); }
     });
-    document.addEventListener("click", function (e) {
-      if (menu.open && !root.contains(e.target)) menu.open = false;
-    });
     var form = root.closest("form");
     if (form) form.addEventListener("reset", function () { setTimeout(render); });
     render();
   }
-  document.querySelectorAll("[data-eis-multiselect]").forEach(init);
+
+  function init(container) {
+    var scope = container || document;
+    if (scope.matches && scope.matches("[data-eis-multiselect]")) start(scope);
+    scope.querySelectorAll("[data-eis-multiselect]").forEach(start);
+  }
+
+  /* one listener for all fields: a click outside a field closes its list. The path is read from the
+     event, because a remove button leaves the page before this listener runs */
+  document.addEventListener("click", function (e) {
+    var path = e.composedPath();
+    document.querySelectorAll("[data-eis-multiselect] .eis-multiselect__menu[open]").forEach(function (menu) {
+      if (path.indexOf(menu.closest("[data-eis-multiselect]")) < 0) menu.open = false;
+    });
+  });
+
+  window.EisMultiselect = { init: init };
+  init(document);
 })();

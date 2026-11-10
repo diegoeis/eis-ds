@@ -496,6 +496,8 @@ Load the script at the end of `<body>`:
 <script src="<src>/shared/js/multiselect.js"></script>
 ```
 
+The script starts the fields that are in the page when it loads. A page that adds a field later (from a template) calls `EisMultiselect.init(container)` after it adds the field. The call starts each field in `container`, or `container` itself. A field that already runs is not started again.
+
 - Use it to pick several values from a list of about 5 to 30 options: teams, tags, people. The picks stay visible in the field. For 2 to 4 options, show the checkboxes in a `fieldset` (see "Checkbox, radio, switch"). To pick one value, use the select.
 - The options are native checkboxes in a `<details>`. The form sends the checked values with or without the script. Give every checkbox the same `name`.
 - The field is a `fieldset` with a `legend`, because it holds a group of controls.

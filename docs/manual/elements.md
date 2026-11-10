@@ -272,6 +272,7 @@ Load the script at the end of `<body>`:
 ```
 
 - It is a radio group (not ARIA tabs). Use it to switch the **view** of the current page, 2–4 options.
+- The checked option has the `--surface-inverse` fill and `--ink-inverse` text, as the current item of a nav. An option under the pointer has the `--surface-canvas` fill.
 - Height 40px, like the default button, input and select: in a toolbar, put tabs next to a default-size button (not `--sm`), and they line up.
 - When the options do not fit the width (narrow screens), they wrap to more rows and each row fills the width. There is never a horizontal scroll.
 - Radius `--radius-100`, like buttons, inputs and selects. The selected item uses the inner radius (`--radius-100` minus the padding).

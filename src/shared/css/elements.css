@@ -194,9 +194,10 @@ fieldset[aria-invalid="true"] > .eis-multiselect{--bd:var(--accent-ink)}
   min-height:calc(40px - 2 * var(--border-width-100) - var(--space-100));border-radius:calc(var(--radius-100) - var(--space-100) / 2);
   font-family:var(--font-family-mono);font-size:var(--font-size-200);font-weight:var(--font-weight-medium);
   letter-spacing:var(--font-letter-spacing-wide);line-height:var(--font-line-height-tight);text-transform:uppercase;color:var(--ink-muted)}
-.eis-tabs label:hover span{color:var(--ink)}
-.eis-tabs input:checked + span{background:var(--surface-canvas);color:var(--ink)}
-.eis-tabs input:focus-visible + span{outline:2px solid var(--ink);outline-offset:-2px}
+/* hover: the grey of a nav item under the pointer. The checked option: ink fill, inverse text, as the current nav item */
+.eis-tabs label:hover input:not(:checked) + span{background:var(--surface-canvas);color:var(--ink)}
+.eis-tabs input:checked + span{background:var(--surface-inverse);color:var(--ink-inverse)}
+.eis-tabs input:focus-visible + span{outline:2px solid var(--ink);outline-offset:2px}
 /* the number of items behind the option, after its text, in the same ink at lower weight */
 .eis-tabs__count{margin-left:var(--space-100);font-variant-numeric:tabular-nums;opacity:.7}
 

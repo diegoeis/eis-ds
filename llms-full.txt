@@ -507,6 +507,7 @@ The script starts the fields that are in the page when it loads. A page that add
 - The field grows in height when the chips wrap to more rows. With no value, or with chips on one row, it is 40px tall, as the other fields.
 - A script that checks an option from code must dispatch a `change` event (`bubbles: true`) on the checkbox, so the chips follow. A form reset updates the chips.
 - Error: put `aria-invalid="true"` and `aria-describedby` on the `fieldset`, and the `.eis-field__error` after the `.eis-multiselect`.
+- **All** (optional): to let the user pick every option at once, put an All option first in `__options`: `<label class="eis-choice eis-multiselect__all"><input class="eis-checkbox" type="checkbox" data-eis-multiselect-all> All</label>`. Give it no `name`, so the form never sends it. The script checks or unchecks every option that is not disabled, and each option it changes sends its own `change` event. All shows checked when every option is checked, and mixed (`indeterminate`, a minus) when only some are. It never shows as a chip. A hairline sets it apart from the options. Use it when picking all of the list is a common choice.
 
 ###### Form
 
@@ -554,6 +555,8 @@ The script starts the fields that are in the page when it loads. A page that add
 - `eis-actions` vs `eis-panel__footer`: the footer is the bottom part of a panel. It has no line above it and acts on the whole panel. The Save of a settings panel stays in `eis-panel__footer` (see "Panel structure"). Use `eis-actions` for a group of buttons inside content: the end of a form, or a step in a body.
 
 ##### Checkbox, radio, switch
+
+A checkbox can show a mixed state, some of a group checked: set `indeterminate = true` from a script (the multi-select's All does). It shows a minus on the checked fill.
 
 ```html
 <fieldset class="eis-field">

@@ -126,7 +126,8 @@ fieldset.eis-field > legend{float:left}
   background:var(--surface-panel) var(--icon-chevron-down-ink) no-repeat right var(--space-100) center / var(--space-200)}
 
 /* multi-select: a field that holds many values. Native checkboxes in a <details> list; shared/js/multiselect.js
-   shows each checked option as a chip with a remove button. The field grows in height when the chips wrap */
+   shows each checked option as a chip with a remove button. The field grows in height when the chips wrap.
+   An optional All option (eis-multiselect__all, data-eis-multiselect-all) checks or unchecks every option */
 .eis-multiselect{--bd:var(--ink-muted);position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:calc(var(--space-100) / 2);
   inline-size:100%;min-height:40px;padding:calc(var(--space-100) / 2) var(--space-100);background:var(--surface-panel);
   border:var(--border-width-100) solid var(--bd);border-radius:var(--radius-100);font-size:var(--font-size-300)}
@@ -150,6 +151,9 @@ fieldset[aria-invalid="true"] > .eis-multiselect{--bd:var(--accent-ink)}
   background:var(--surface-panel);border:var(--border-width-100) solid var(--line);border-radius:var(--radius-100)}
 .eis-multiselect__options .eis-choice{padding:var(--space-100);border-radius:calc(var(--radius-100) - var(--space-100) / 2)}
 .eis-multiselect__options .eis-choice:hover{background:var(--surface-hover)}
+/* All: the first option, checks or unchecks every option; a hairline sets it apart from them */
+.eis-multiselect__options .eis-multiselect__all{margin-bottom:calc(var(--space-100) / 2);border-bottom:var(--border-width-100) solid var(--line);
+  border-radius:calc(var(--radius-100) - var(--space-100) / 2) calc(var(--radius-100) - var(--space-100) / 2) 0 0}
 
 /* form: a <form> of fields in two equal columns, on an eis-panel. A wide field takes the whole row.
    An eis-actions closes the form on a row of its own. One column at ≤640px */
@@ -174,6 +178,9 @@ fieldset[aria-invalid="true"] > .eis-multiselect{--bd:var(--accent-ink)}
 .eis-radio::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--ink-inverse);scale:0}
 .eis-checkbox:checked,.eis-radio:checked{background:var(--ink);border-color:var(--ink)}
 .eis-checkbox:checked::after,.eis-radio:checked::after{scale:1}
+/* mixed: some of a group checked (a multi-select's All); set from a script, el.indeterminate = true */
+.eis-checkbox:indeterminate{background:var(--ink);border-color:var(--ink)}
+.eis-checkbox:indeterminate::after{mask-image:var(--icon-minus);scale:1}
 .eis-checkbox:hover,.eis-radio:hover,.eis-switch:hover,.eis-choice:hover > input{border-color:var(--ink);background-color:var(--surface-canvas)}
 .eis-checkbox:checked:hover,.eis-radio:checked:hover,.eis-switch:checked:hover,.eis-choice:hover > input:checked{background-color:color-mix(in srgb,var(--ink) 80%,var(--surface-panel));border-color:color-mix(in srgb,var(--ink) 80%,var(--surface-panel))}
 .eis-checkbox:disabled,.eis-radio:disabled,.eis-switch:disabled{opacity:.4;cursor:not-allowed;border-color:var(--ink-muted);background-color:var(--surface-panel)}

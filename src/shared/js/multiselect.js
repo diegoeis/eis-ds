@@ -3,7 +3,10 @@
    <details>, so the form sends the values with or without this script. The script:
    - shows each checked option as a chip with a remove button, in the order of the list;
    - unchecks the option when its remove button is clicked;
-   - closes the list on Esc or on a click outside the field.
+   - closes the list on Esc or on a click outside the field;
+   - with an All option (a checkbox with data-eis-multiselect-all and no name, the first of the list):
+     checks or unchecks every option that is not disabled, and shows checked when all are, mixed
+     (indeterminate) when some are. All is never sent with the form and never shows as a chip.
    Load it at the end of <body>:
      <script src="<src>/shared/js/multiselect.js"></script>
    It starts every [data-eis-multiselect] that is in the page when it loads. A page that adds a field
@@ -20,13 +23,22 @@
     var summary = menu && menu.querySelector("summary");
     if (!chips || !menu || !summary) return;
     root.eisMultiselect = true;
-    var boxes = function () { return root.querySelectorAll(".eis-multiselect__options input[type=checkbox]"); };
+    var boxes = function () { return root.querySelectorAll(".eis-multiselect__options input[type=checkbox]:not([data-eis-multiselect-all])"); };
+    var all = root.querySelector(".eis-multiselect__options input[data-eis-multiselect-all]");
 
     function name(box) {
       var label = box.closest("label");
       return (label ? label.textContent : box.value).trim();
     }
+    function syncAll() {
+      if (!all) return;
+      var on = Array.prototype.filter.call(boxes(), function (b) { return !b.disabled; });
+      var n = on.filter(function (b) { return b.checked; }).length;
+      all.checked = on.length > 0 && n === on.length;
+      all.indeterminate = n > 0 && n < on.length;
+    }
     function render() {
+      syncAll();
       chips.textContent = "";
       boxes().forEach(function (box, i) {
         if (!box.checked) return;
@@ -46,6 +58,17 @@
     }
 
     root.addEventListener("change", function (e) {
+      if (e.target === all) {
+        /* every option follows All; each changed box sends its own change event, as the page expects */
+        var want = all.checked;
+        boxes().forEach(function (box) {
+          if (box.disabled || box.checked === want) return;
+          box.checked = want;
+          box.dispatchEvent(new Event("change", { bubbles: true }));
+        });
+        render();
+        return;
+      }
       if (e.target.matches("input[type=checkbox]")) render();
     });
     chips.addEventListener("click", function (e) {

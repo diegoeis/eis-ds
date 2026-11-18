@@ -8,7 +8,10 @@
    a size (--sm, --lg) changes size only: height, padding, gap, font size. */
 
 /* ---------- panel ---------- */
-.eis-panel{background:var(--surface-panel);border:var(--border-width-100) solid var(--line);border-radius:var(--radius-100);overflow:hidden}
+.eis-panel{background:var(--surface-panel);border:var(--border-width-100) solid var(--line);border-radius:var(--radius-100)}
+/* no overflow:hidden, so a popover (multi-select list, menu) can leave the panel. The parts on the edges take the inner radius */
+.eis-panel > :first-child{border-start-start-radius:calc(var(--radius-100) - var(--border-width-100));border-start-end-radius:calc(var(--radius-100) - var(--border-width-100))}
+.eis-panel > :last-child{border-end-start-radius:calc(var(--radius-100) - var(--border-width-100));border-end-end-radius:calc(var(--radius-100) - var(--border-width-100))}
 .eis-panel__head{display:flex;justify-content:space-between;align-items:center;gap:var(--space-200);
   padding:var(--space-200);border-bottom:var(--border-width-100) solid var(--line);background:var(--surface-head);color:var(--ink)}
 /* the panel's title: label type, in ink (it names the panel, it is not a muted label) */

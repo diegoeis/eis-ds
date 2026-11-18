@@ -462,6 +462,18 @@ A panel holds only its parts, as direct children, in this order:
 
 ## Lists and avatar
 
+A list of short texts (facts, steps, notes) is a bare `<ul>` or `<ol>`. It shows its markers: discs for `<ul>`, numbers for `<ol>`, indented by `--space-300`.
+
+```html
+<h3 class="eis-label">Risks</h3>
+<ul>
+  <li>Fines still go to the wrong table.</li>
+  <li>The release has no date.</li>
+</ul>
+```
+
+- An element built on a list (`eis-list`, the breadcrumb, the nav, the multi-select chips) has no markers and no indent. Its own rule removes them. A new element on a list MUST do the same.
+
 A list in its own box:
 
 ```html

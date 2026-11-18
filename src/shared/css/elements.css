@@ -7,6 +7,9 @@
    a variant changes colour only, through the local --bg / --fg / --bd / --glow;
    a size (--sm, --lg) changes size only: height, padding, gap, font size. */
 
+/* ---------- lists that are elements: no markers, no indent (a bare list keeps them, base.css) ---------- */
+.eis-list,.eis-breadcrumb ol,.eis-multiselect__chips{list-style:none;padding-inline-start:0}
+
 /* ---------- panel ---------- */
 .eis-panel{background:var(--surface-panel);border:var(--border-width-100) solid var(--line);border-radius:var(--radius-100)}
 /* no overflow:hidden, so a popover (multi-select list, menu) can leave the panel. The parts on the edges take the inner radius */

@@ -5,6 +5,8 @@
    It never styles bare HTML or shared classes outside .eis-app-*, so it cannot change
    an element or another scope. scripts/check-css.py enforces this. */
 
+.eis-app-nav :where(ul),.eis-app-nav__section :where(ul),.eis-app-notes,.eis-app-pips,.eis-app-legend,.eis-app-people,.eis-app-items,.eis-app-done,.eis-app-topics,
+.eis-app-cells,.eis-app-bar,.eis-app-agenda{list-style:none;padding-inline-start:0}   /* lists that are elements: no markers */
 .eis-app-shell{display:grid;grid-template-columns:var(--app-size-sidebar) minmax(0,1fr);min-height:100vh}
 .eis-app-brand a,.eis-app-nav a{text-decoration:none}
 /* ---------- sidebar ---------- */

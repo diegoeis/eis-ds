@@ -7,7 +7,11 @@
 *{margin:0;padding:0}
 html{background:var(--surface-canvas);color:var(--ink);-webkit-font-smoothing:antialiased}
 body{font-family:var(--type-body-font-family);font-size:var(--type-body-font-size);line-height:var(--type-body-line-height)}
-ul,ol{list-style:none}
+/* lists: a bare <ul>/<ol> is a text list, with its markers. An element built on a list removes them in its own rule.
+   :where keeps this at zero specificity, so any element rule wins */
+:where(ul){list-style:disc}
+:where(ol){list-style:decimal}
+:where(ul,ol){padding-inline-start:var(--space-300)}
 table{border-collapse:collapse;width:100%}
 th,td{vertical-align:middle}
 button,input,select,textarea{font:inherit;color:inherit}

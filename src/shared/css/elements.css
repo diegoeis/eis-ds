@@ -1,6 +1,6 @@
 /* eis-ds · shared/elements.css
    Basic elements shared by every scope: panel, button, chip, fields, choices,
-   tabs, table, breadcrumb, disclosure, avatar.
+   tabs, table, breadcrumb, disclosure, avatar, modal.
    Load after shared/css/base.css.
    Rules: semantic HTML and native controls; every class starts with eis-;
    no raw colours, font sizes or spacing (all from tokens);
@@ -304,6 +304,40 @@ hr{border:0;border-top:var(--border-width-100) solid var(--line);margin:0;inline
 /* ---------- avatar ---------- */
 .eis-avatar{width:28px;height:28px;flex:none;border-radius:50%;border:var(--border-width-100) solid var(--line);display:grid;place-items:center;
   font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);font-weight:var(--type-label-font-weight);color:var(--ink-muted)}
+
+/* ---------- modal: a native <dialog> opened with showModal() (shared/js/modal.js). The browser gives the top layer,
+   the focus trap and Esc. Parts: head (title + close), body (scrolls when tall), optional footer (actions at the right).
+   The backdrop dims the page and blurs it a little. No shadow: the line and the backdrop set the modal apart ---------- */
+.eis-modal{flex-direction:column;inline-size:min(var(--width-500),calc(100% - var(--space-200) * 2));max-inline-size:none;
+  max-block-size:calc(100% - var(--space-200) * 2);margin:auto;padding:0;overflow:hidden;color:var(--ink);background:var(--surface-panel);
+  border:var(--border-width-100) solid var(--line);border-radius:var(--radius-300)}
+.eis-modal[open]{display:flex}
+.eis-modal--lg{inline-size:min(calc(var(--width-500) * 1.5),calc(100% - var(--space-200) * 2))}
+.eis-modal::backdrop{background:color-mix(in srgb,var(--surface-inverse) 24%,transparent);
+  -webkit-backdrop-filter:blur(calc(var(--space-100) / 2));backdrop-filter:blur(calc(var(--space-100) / 2))}
+/* the page under an open modal does not scroll */
+html:has(.eis-modal[open]){overflow:hidden}
+.eis-modal__head{flex:none;display:flex;align-items:center;justify-content:space-between;gap:var(--space-200);
+  padding:var(--space-100) var(--space-100) var(--space-100) var(--space-200);border-bottom:var(--border-width-100) solid var(--line);background:var(--surface-head)}
+.eis-modal__title{margin:0;min-inline-size:0;font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);font-weight:var(--type-label-font-weight);
+  letter-spacing:var(--type-label-letter-spacing);line-height:var(--type-label-line-height);text-transform:uppercase;color:var(--ink)}
+/* close: a square ghost button with the Lucide x, drawn by the CSS */
+.eis-modal__close{flex:none;display:grid;place-items:center;inline-size:var(--space-300);block-size:var(--space-300);
+  border:0;border-radius:var(--radius-100);background:transparent;color:var(--ink);cursor:pointer}
+.eis-modal__close::before{content:"";inline-size:var(--space-200);block-size:var(--space-200);background:currentColor;mask:var(--icon-x) center / contain no-repeat}
+.eis-modal__close:hover{background:var(--surface-hover)}
+.eis-modal__body{flex:1 1 auto;display:flex;flex-direction:column;gap:var(--space-200);min-block-size:0;overflow-y:auto;overscroll-behavior:contain;padding:var(--space-200)}
+.eis-modal__footer{flex:none;display:flex;flex-wrap:wrap;justify-content:flex-end;gap:var(--space-100);
+  padding:var(--space-200);border-top:var(--border-width-100) solid var(--line)}
+/* open: the modal and the backdrop fade in, the modal rises a little. No motion when the user asks for less */
+@media (prefers-reduced-motion:no-preference){
+  .eis-modal[open]{transition:opacity .16s ease,translate .16s ease}
+  .eis-modal[open]::backdrop{transition:opacity .16s ease}
+  @starting-style{
+    .eis-modal[open]{opacity:0;translate:0 var(--space-100)}
+    .eis-modal[open]::backdrop{opacity:0}
+  }
+}
 
 /* ---------- icon: a Lucide SVG (shared/js/icons.js), drawn in the text colour ---------- */
 .eis-icon{display:inline-block;flex:none;inline-size:var(--space-200);block-size:var(--space-200);vertical-align:middle;

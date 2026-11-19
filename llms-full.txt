@@ -333,6 +333,7 @@ Every basic element: when to use it, the HTML to copy, variants, and what is for
 | Group content in a container | **Panel** |
 | Group the buttons that end a form or a step, at the right | **Actions** `<div class="eis-actions">` |
 | Content that opens and closes | **Disclosure** (`<details>`) |
+| Ask for a decision or a short form on top of the page, and block the page until the user closes it | **Modal** `<dialog class="eis-modal">` |
 | Label–value pairs (metrics, metadata) | `<dl>`. A row of numbers: **Metrics** `<dl class="eis-metrics">` |
 
 **Button vs chip** — the most common mistake:
@@ -726,6 +727,52 @@ A panel holds only its parts, as direct children, in this order:
 - Content goes right after the summary: an `eis-panel__body` for text and fields, or an `eis-table` (its first row drops its top line, the summary line already separates them), then an optional `eis-panel__footer`.
 - The styles reach only the disclosure's own summary (`> summary`). A `<details>` inside the content keeps its own style.
 
+##### Modal
+
+```html
+<button class="eis-button eis-button--primary" type="button" data-eis-modal-open="new-task" aria-haspopup="dialog">New task</button>
+
+<dialog class="eis-modal" id="new-task" aria-labelledby="new-task-h">
+  <header class="eis-modal__head">
+    <h2 class="eis-modal__title" id="new-task-h">New task</h2>
+    <button class="eis-modal__close" type="button" data-eis-modal-close aria-label="Close" title="Close"></button>
+  </header>
+  <form class="eis-modal__body" id="new-task-form" method="dialog">
+    <div class="eis-field">
+      <label for="new-task-title">Title</label>
+      <input class="eis-input" id="new-task-title" name="title" type="text" autofocus>
+    </div>
+  </form>
+  <footer class="eis-modal__footer">
+    <button class="eis-button eis-button--ghost" type="button" data-eis-modal-close>Cancel</button>
+    <button class="eis-button eis-button--primary" type="submit" form="new-task-form" value="create">Create</button>
+  </footer>
+</dialog>
+```
+
+Load the script at the end of `<body>`:
+
+```html
+<script src="<src>/shared/js/modal.js"></script>
+```
+
+- Use a modal for a short task that the user ends before they go back to the page. Examples: a small form, a confirmation, a short text. For long content or a form with many parts, use a page or a panel.
+- The modal is a native `<dialog>`. `shared/js/modal.js` opens it with `showModal()`. The browser puts it above the page and keeps the focus in it. When the modal closes, the focus goes back to the opener.
+- Open: a click on an element with `data-eis-modal-open="<dialog id>"`. Put `aria-haspopup="dialog"` on the opener.
+- Close: Esc, the x of the head, an element with `data-eis-modal-close` in the dialog (Cancel), or a click on the backdrop. A drag that starts in the modal and ends on the backdrop does not close it.
+- From code: `EisModal.open(dialog)` and `EisModal.close(dialog)`. `dialog` is the `id` or the element. To act after the modal closes (with Esc, the x, the backdrop or code), listen to the `close` event of the `<dialog>`.
+- The script listens on the document. A dialog or an opener that a page adds later works with no extra call.
+- Parts, in this order, as direct children of the dialog: `eis-modal__head` (first), `eis-modal__body`, optional `eis-modal__footer` (last). No wrapper between the dialog and its parts.
+- The head holds the title (`eis-modal__title`, label type, with an `id`) and the close button (`eis-modal__close`). The dialog has `aria-labelledby` with the `id` of the title. The close button has no text: it MUST have `aria-label` and `title`. The CSS draws its x (Lucide `x`).
+- The body stacks its content with a `--space-200` gap. It scrolls when the modal is taller than the window.
+- The footer holds the buttons, at the right, under a `--line`. The main action goes last, as in every group of buttons.
+- A form in a modal: make the `<form>` the body (`<form class="eis-modal__body" method="dialog">`). The submit button in the footer points to the form with `form="<form id>"`. With `method="dialog"`, a submit closes the modal and puts the `value` of the button in `dialog.returnValue`. A page that sends the data itself listens to `submit` and calls `preventDefault()`.
+- `autofocus` on the first field puts the focus there when the modal opens. Without it, the focus goes to the close button.
+- The modal is `--width-500` wide (480px) and never wider than the window minus `--space-200` on each side. `eis-modal--lg` makes it 1.5 × `--width-500` (720px).
+- Look: `--surface-panel`, a 1px `--line`, `--radius-300`, no shadow. The head takes `--surface-head`, as the head of a panel. The backdrop is `--surface-inverse` at 24% and blurs the page by half of `--space-100`.
+- The modal fades in and rises by `--space-100` when it opens. With `prefers-reduced-motion: reduce` it opens with no motion.
+- While a modal is open, the page under it does not scroll.
+
 ##### Metrics (label–value)
 
 ```html
@@ -877,7 +924,7 @@ Load at the end of `<body>`, Lucide first:
 
 ##### Not yet in the system
 
-Dialog, popover/menu, tooltip, tabs, toast, pagination. Until they exist, use the native element (`<dialog>`, `popover` attribute, `title`) and style it only with tokens. Propose the element for the system. Do not design it inside a piece.
+Popover/menu, tooltip, tabs, toast, pagination. Until they exist, use the native element (`popover` attribute, `title`) and style it only with tokens. Propose the element for the system. Do not design it inside a piece.
 
 ---
 
@@ -1014,7 +1061,7 @@ eis-ds is several design systems in one. They share the same base and never conf
 
 | Folder | Use for | Load | Class prefix | Variable prefix |
 |---|---|---|---|---|
-| `src/shared/` | Every scope | Imported by each scope entry. Optional `shared/js/icons.js` (with Lucide) for icons, `shared/js/multiselect.js` for the multi-select | `eis-` | `--color-`, `--space-`, `--ink`… |
+| `src/shared/` | Every scope | Imported by each scope entry. Optional `shared/js/icons.js` (with Lucide) for icons, `shared/js/multiselect.js` for the multi-select, `shared/js/modal.js` for the modal | `eis-` | `--color-`, `--space-`, `--ink`… |
 | `src/web/` | Websites, landing pages, marketing pages, documentation | `web/web.css` or `dist/eis-web.min.css`, optional `web/js/lines.js` | `eis-web-` | `--web-` |
 | `src/app/` | Dashboards, tools, system screens | `app/app.css` or `dist/eis-app.min.css`, optional `app/js/sidebar.js` | `eis-app-` | `--app-` |
 

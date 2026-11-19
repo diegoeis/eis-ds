@@ -66,7 +66,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </header>
 
   <nav class="eis-web-toc" aria-label="Sections">
-    <a href="#buttons">Buttons</a><a href="#chips">Chips</a><a href="#fields">Fields</a><a href="#choices">Choices</a><a href="#table">Table</a><a href="#panel">Panel</a><a href="#nav">Navigation</a><a href="#lists">Lists</a><a href="#divider">Divider</a>
+    <a href="#buttons">Buttons</a><a href="#chips">Chips</a><a href="#fields">Fields</a><a href="#choices">Choices</a><a href="#table">Table</a><a href="#panel">Panel</a><a href="#nav">Navigation</a><a href="#lists">Lists</a><a href="#divider">Divider</a><a href="#modal">Modal</a>
   </nav>
 
   <!-- BUTTONS -->
@@ -471,6 +471,57 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 
+  <!-- MODAL -->
+  <section class="eis-web-doc" id="modal" aria-labelledby="modal-h">
+    <header>
+      <h2 id="modal-h"><small class="eis-label">10</small>Modal</h2>
+      <p>A native <code>&lt;dialog class="eis-modal"&gt;</code> with a head, a body and an optional footer. A button with <code>data-eis-modal-open</code> opens it. The x, Esc and a click on the dimmed, blurred backdrop close it. <code>src/shared/js/modal.js</code> does the clicks. The browser traps the focus and gives it back on close.</p>
+    </header>
+    <div class="eis-panel">
+      <div class="eis-panel__body">
+        <p><button class="eis-button eis-button--primary" type="button" data-eis-modal-open="m-task" aria-haspopup="dialog"><i data-lucide="plus" class="eis-icon"></i>New task</button>
+        <button class="eis-button" type="button" data-eis-modal-open="m-note" aria-haspopup="dialog">Read note</button></p>
+        <p class="eis-field__hint">The first modal is a form: the body is the <code>&lt;form method="dialog"&gt;</code> and the Create button in the footer submits it. The second has no footer.</p>
+      </div>
+    </div>
+
+    <dialog class="eis-modal" id="m-task" aria-labelledby="m-task-h">
+      <header class="eis-modal__head">
+        <h3 class="eis-modal__title" id="m-task-h">New task</h3>
+        <button class="eis-modal__close" type="button" data-eis-modal-close aria-label="Close" title="Close"></button>
+      </header>
+      <form class="eis-modal__body" id="m-task-form" method="dialog">
+        <div class="eis-field">
+          <label for="m-task-title">Title</label>
+          <input class="eis-input" id="m-task-title" name="title" type="text" placeholder="What needs to be done" autofocus>
+        </div>
+        <div class="eis-field">
+          <label for="m-task-stream">Stream</label>
+          <select class="eis-select" id="m-task-stream" name="stream"><option>Payments</option><option>Growth</option><option>Platform</option></select>
+        </div>
+        <div class="eis-field">
+          <label for="m-task-notes">Notes</label>
+          <textarea class="eis-textarea" id="m-task-notes" name="notes" placeholder="Context, links, who asked"></textarea>
+        </div>
+      </form>
+      <footer class="eis-modal__footer">
+        <button class="eis-button eis-button--ghost" type="button" data-eis-modal-close>Cancel</button>
+        <button class="eis-button eis-button--primary" type="submit" form="m-task-form" value="create">Create</button>
+      </footer>
+    </dialog>
+
+    <dialog class="eis-modal" id="m-note" aria-labelledby="m-note-h">
+      <header class="eis-modal__head">
+        <h3 class="eis-modal__title" id="m-note-h">Release note</h3>
+        <button class="eis-modal__close" type="button" data-eis-modal-close aria-label="Close" title="Close"></button>
+      </header>
+      <div class="eis-modal__body">
+        <p>The night shift moves to the new warehouse app on Monday. Old reports stay in the archive for 90 days.</p>
+        <p class="eis-mono">Posted 18.11 · Harbor</p>
+      </div>
+    </dialog>
+  </section>
+
   <footer class="eis-web-docfoot eis-mono">
     <span>eis-ds · elements · v0.8.0</span>
     <span>src/shared/shared.css: tokens · base · elements</span>
@@ -479,5 +530,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script src="https://unpkg.com/lucide@1.66.0/dist/umd/lucide.min.js"></script>
 <script src="../src/shared/js/icons.js"></script>
 <script src="../src/shared/js/multiselect.js"></script>
+<script src="../src/shared/js/modal.js"></script>
 </body>
 </html>
